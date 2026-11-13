@@ -27,12 +27,19 @@ flowchart TD
         subgraph HLD["2.HLD (High-Level Design)"]
             HN["HLD Topics (Distributed Systems, Architecture, Scaling)"]
         end
+        subgraph FUND["FUNDAMENTALS"]
+            F1["Software Development Lifecycle"]
+            F2["Software Architecture and Modeling"]
+            F3["Science of Language Frameworks [Backend]"]
+            F4["Science of Design System [Front End]"]
+        end
         TOPIC["Topic Workspace"]
     end
     RULES --> TOPIC
     SKILLS --> TOPIC
     TOOLS --> TOPIC
     OUT --> TOPIC
+    TOPIC --> FUND
     TOPIC --> LLD
     TOPIC --> HLD
     TOPIC -->|"records decisions"| LOG
@@ -71,6 +78,11 @@ System-Design/
 │           └── umlBook/                            # [BEST] UML Diagramming.pdf, chapters/, vector_images/, UML_Book.md
 ├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
 │   └── HLD_Overview.md                             # High-Level Design Roadmap & Architecture Guide
+├── FUNDAMENTALS/                                   # Core Software Engineering Foundations
+│   ├── Software Development Lifecycle/
+│   ├── Software Architecture and Modeling/
+│   ├── Science of Language Frameworks [Backend]/
+│   └── Science of Design System [Front End]/
 └── README.md                                       # Repository Root Overview & Entry Point (Rule 10)
 ```
 

@@ -117,5 +117,10 @@ System-Design/
 │   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams (Books/umlBook)
 ├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
 │   └── HLD_Overview.md
+├── FUNDAMENTALS/                                   # Core Software Engineering Foundations
+│   ├── Software Development Lifecycle/
+│   ├── Software Architecture and Modeling/
+│   ├── Science of Language Frameworks [Backend]/
+│   └── Science of Design System [Front End]/
 └── README.md                                       # THE ONLY README.md in the project (Rule 10)
 ```
