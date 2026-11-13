@@ -74,6 +74,12 @@ These rules are permanent operational constraints. The agent must enforce them p
   1. Before creating any new documentation file, confirm it is not named `README.md` (case-insensitive) unless it is the root file.
   2. When renaming a file under this rule, update every markdown link and reference that points to the old name.
   3. The final rendering audit must flag any extra `README.md` found outside the repository root.
+### Rule 11: No `.gitignore` Without Explicit User Instruction
+- **Directive**: The agent must **never create, add, or modify any `.gitignore` file** (at the repository root or in any subfolder) unless the user explicitly tells it to.
+- **Enforcement**:
+  1. Do not use `.gitignore` to hide, exclude, or untrack files (including large files, build output, or private folders) on your own initiative.
+  2. If a file or folder seems like it should be ignored, ask the user first instead of adding a `.gitignore` entry.
+  3. Existing `.gitignore` files inside the project may only be edited when the user explicitly requests it.
 ---
 
 ## 🏛️ 2. Finalized Repository Architecture & Output Guidelines (System-Design: LLD + HLD powered by Project_Engine)

@@ -156,3 +156,12 @@ This file records the chronological session log of all user requests, architectu
   - **Rule 8 (Folder tree)**: refreshed the tree in `chat/finalized chat.md` and `Project_Engine.md`.
   - **Rule 3 (Commit and push)**: committed and pushed all pending changes (including the `architecture` to `Project_Engine` rename and `_TEMPLATE` removals).
   - Historical entries in Sessions 01-05 keep their original file names intentionally (they record past events).
+
+## 📅 Session 09: New Universal Rule - No `.gitignore` Without Instruction
+
+- **Timestamp**: 2026-11-13
+- **User Instruction**:
+  > *"add another universal rule. that is never add .gitignore unless i tell you to"*
+- **Actions Executed**:
+  - Added **Rule 11: No `.gitignore` Without Explicit User Instruction** to `chat/finalized chat.md`.
+  - Ran the rendering audit and committed and pushed (Rule 3).
