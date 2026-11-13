@@ -112,15 +112,16 @@ System-Design/
 │   ├── PROJECT_WORKFLOW.md                         # Graphical overview of how the project runs
 │   └── Project_Engine.md                           # Engine Overview (topic-named, Rule 10)
 ├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
-│   ├── ARCHITECTURE_MODELING/                      # Architecture modeling resources
 │   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
 │   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams (Books/umlBook)
 ├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
 │   └── HLD_Overview.md
 ├── FUNDAMENTALS/                                   # Core Software Engineering Foundations
-│   ├── Software Development Lifecycle/
-│   ├── Software Architecture and Modeling/
-│   ├── Science of Language Frameworks [Backend]/
-│   └── Science of Design System [Front End]/
+│   ├── Software Development Lifecycle/             # Methodologies, SDLC phases, testing, CI/CD (Outline.md)
+│   ├── Software Architecture and Modeling/         # Views, patterns, ADRs, modeling (Outline.md)
+│   │   ├── 1.ARCHITECTURE/                         # Architecture principles and documentation
+│   │   └── 2.ARCHITECTURE_MODELING/                # Viewpoints & perspectives textbook and guides
+│   ├── Science of Language Frameworks [Backend]/   # Runtimes, threading, frameworks, protocols (Outline.md)
+│   └── Design System [Front End]/                  # Design tokens, components, state, a11y (Outline.md)
 └── README.md                                       # THE ONLY README.md in the project (Rule 10)
 ```
