@@ -116,8 +116,7 @@ System-Design/
 │   └── Project_Engine.md                           # Engine Overview (topic-named, Rule 10)
 ├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
 │   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
-│   ├── ARCHITECTURE_MODELING/                      # Architecture modeling resources
-│   └── UML_DIAGRAMMING/                            # UML topic content
+│   └── ARCHITECTURE_MODELING/                      # Architecture modeling resources
 ├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
 │   └── HLD_Overview.md
 └── README.md                                       # THE ONLY README.md in the project (Rule 10)

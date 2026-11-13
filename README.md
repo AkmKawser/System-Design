@@ -22,7 +22,6 @@ flowchart TD
         subgraph LLD["1.LLD (Low-Level Design)"]
             DP["DESIGN_PATTERNS (Strategy, Observer, Decorator, Factory, Singleton)"]
             AM["ARCHITECTURE_MODELING"]
-            UD["UML_DIAGRAMMING"]
         end
         subgraph HLD["2.HLD (High-Level Design)"]
             HN["HLD Topics (Distributed Systems, Architecture, Scaling)"]
@@ -75,8 +74,7 @@ System-Design/
 │   └── Project_Engine.md                           # Engine Overview & Architecture Documentation
 ├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
 │   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
-│   ├── ARCHITECTURE_MODELING/                      # Architecture modeling resources & reference guides
-│   └── UML_DIAGRAMMING/                            # UML case studies, specs, vector diagrams
+│   └── ARCHITECTURE_MODELING/                      # Architecture modeling resources & reference guides
 ├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
 │   └── HLD_Overview.md                             # High-Level Design Roadmap & Architecture Guide
 └── README.md                                       # Repository Root Overview & Entry Point (Rule 10)
