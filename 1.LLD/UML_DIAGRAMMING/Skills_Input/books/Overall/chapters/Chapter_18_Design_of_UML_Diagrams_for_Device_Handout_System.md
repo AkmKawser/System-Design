@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 191–198 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 17: Design of UML Diagrams for National Health ID 2020](Chapter_17_Design_of_UML_Diagrams_for_National_Health_ID_2020.md) | [📚 Book Index](../README.md) | [Chapter 19: Design of UML Diagrams for Online College Magazine System &rarr;](Chapter_19_Design_of_UML_Diagrams_for_Online_College_Magazine_System.md)
+> **Navigation**: [&larr; Chapter 17: Design of UML Diagrams for National Health ID 2020](Chapter_17_Design_of_UML_Diagrams_for_National_Health_ID_2020.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 19: Design of UML Diagrams for Online College Magazine System &rarr;](Chapter_19_Design_of_UML_Diagrams_for_Online_College_Magazine_System.md)
 
 ---
 
@@ -187,5 +187,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for National Health ID 2020](Chapter_17_Design_of_UML_Diagrams_for_National_Health_ID_2020.md)
 - **Next Chapter**: [Design of UML Diagrams for Online College Magazine System](Chapter_19_Design_of_UML_Diagrams_for_Online_College_Magazine_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

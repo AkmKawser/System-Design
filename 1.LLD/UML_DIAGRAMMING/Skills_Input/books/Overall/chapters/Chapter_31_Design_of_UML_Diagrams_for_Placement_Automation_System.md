@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 325–332 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 30: Design of UML Diagrams for E-Visa Processing and Follow-Up System](Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Processing_and_Follow_Up_System.md) | [📚 Book Index](../README.md) | [Chapter 32: Design of UML Diagrams for Farm Management System &rarr;](Chapter_32_Design_of_UML_Diagrams_for_Farm_Management_System.md)
+> **Navigation**: [&larr; Chapter 30: Design of UML Diagrams for E-Visa Processing and Follow-Up System](Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Processing_and_Follow_Up_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 32: Design of UML Diagrams for Farm Management System &rarr;](Chapter_32_Design_of_UML_Diagrams_for_Farm_Management_System.md)
 
 ---
 
@@ -307,5 +307,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for E-Visa Processing and Follow-Up System](Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Processing_and_Follow_Up_System.md)
 - **Next Chapter**: [Design of UML Diagrams for Farm Management System](Chapter_32_Design_of_UML_Diagrams_for_Farm_Management_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

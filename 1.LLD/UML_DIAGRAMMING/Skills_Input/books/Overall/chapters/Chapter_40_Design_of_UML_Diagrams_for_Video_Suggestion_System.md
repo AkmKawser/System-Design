@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 405–417 (Total: 13 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 39: Design of UML Diagrams for STARTUP MEET](Chapter_39_Design_of_UML_Diagrams_for_STARTUP_MEET.md) | [📚 Book Index](../README.md)
+> **Navigation**: [&larr; Chapter 39: Design of UML Diagrams for STARTUP MEET](Chapter_39_Design_of_UML_Diagrams_for_STARTUP_MEET.md) | [📚 Book Index](../Overall_Books.md)
 
 ---
 
@@ -625,5 +625,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for STARTUP MEET](Chapter_39_Design_of_UML_Diagrams_for_STARTUP_MEET.md)
 - **Next Chapter**: None (Last Chapter)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

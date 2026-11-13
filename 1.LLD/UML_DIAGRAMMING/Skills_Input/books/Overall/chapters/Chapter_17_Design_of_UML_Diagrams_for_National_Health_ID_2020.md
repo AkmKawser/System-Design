@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 185–190 (Total: 6 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 16: Design of UML Diagrams for Textile Management System](Chapter_16_Design_of_UML_Diagrams_for_Textile_Management_System.md) | [📚 Book Index](../README.md) | [Chapter 18: Design of UML Diagrams for Device Handout System &rarr;](Chapter_18_Design_of_UML_Diagrams_for_Device_Handout_System.md)
+> **Navigation**: [&larr; Chapter 16: Design of UML Diagrams for Textile Management System](Chapter_16_Design_of_UML_Diagrams_for_Textile_Management_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 18: Design of UML Diagrams for Device Handout System &rarr;](Chapter_18_Design_of_UML_Diagrams_for_Device_Handout_System.md)
 
 ---
 
@@ -190,5 +190,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Textile Management System](Chapter_16_Design_of_UML_Diagrams_for_Textile_Management_System.md)
 - **Next Chapter**: [Design of UML Diagrams for Device Handout System](Chapter_18_Design_of_UML_Diagrams_for_Device_Handout_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

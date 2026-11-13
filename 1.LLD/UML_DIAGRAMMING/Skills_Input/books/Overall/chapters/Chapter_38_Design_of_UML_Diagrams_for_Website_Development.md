@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 389–396 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 37: Design of UML Diagrams for Book Bank Management System](Chapter_37_Design_of_UML_Diagrams_for_Book_Bank_Management_System.md) | [📚 Book Index](../README.md) | [Chapter 39: Design of UML Diagrams for STARTUP MEET &rarr;](Chapter_39_Design_of_UML_Diagrams_for_STARTUP_MEET.md)
+> **Navigation**: [&larr; Chapter 37: Design of UML Diagrams for Book Bank Management System](Chapter_37_Design_of_UML_Diagrams_for_Book_Bank_Management_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 39: Design of UML Diagrams for STARTUP MEET &rarr;](Chapter_39_Design_of_UML_Diagrams_for_STARTUP_MEET.md)
 
 ---
 
@@ -293,5 +293,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Book Bank Management System](Chapter_37_Design_of_UML_Diagrams_for_Book_Bank_Management_System.md)
 - **Next Chapter**: [Design of UML Diagrams for STARTUP MEET](Chapter_39_Design_of_UML_Diagrams_for_STARTUP_MEET.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

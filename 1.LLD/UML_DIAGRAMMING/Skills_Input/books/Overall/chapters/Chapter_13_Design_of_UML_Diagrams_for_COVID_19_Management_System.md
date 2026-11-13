@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 147–156 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 12: Design of UML Diagrams for My Helper](Chapter_12_Design_of_UML_Diagrams_for_My_Helper.md) | [📚 Book Index](../README.md) | [Chapter 14: Design of UML Diagrams for Car Care &rarr;](Chapter_14_Design_of_UML_Diagrams_for_Car_Care.md)
+> **Navigation**: [&larr; Chapter 12: Design of UML Diagrams for My Helper](Chapter_12_Design_of_UML_Diagrams_for_My_Helper.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 14: Design of UML Diagrams for Car Care &rarr;](Chapter_14_Design_of_UML_Diagrams_for_Car_Care.md)
 
 ---
 
@@ -383,5 +383,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for My Helper](Chapter_12_Design_of_UML_Diagrams_for_My_Helper.md)
 - **Next Chapter**: [Design of UML Diagrams for Car Care](Chapter_14_Design_of_UML_Diagrams_for_Car_Care.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 333–340 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 31: Design of UML Diagrams for Placement Automation System](Chapter_31_Design_of_UML_Diagrams_for_Placement_Automation_System.md) | [📚 Book Index](../README.md) | [Chapter 33: Design of UML Diagrams for Green Rides &rarr;](Chapter_33_Design_of_UML_Diagrams_for_Green_Rides.md)
+> **Navigation**: [&larr; Chapter 31: Design of UML Diagrams for Placement Automation System](Chapter_31_Design_of_UML_Diagrams_for_Placement_Automation_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 33: Design of UML Diagrams for Green Rides &rarr;](Chapter_33_Design_of_UML_Diagrams_for_Green_Rides.md)
 
 ---
 
@@ -361,5 +361,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Placement Automation System](Chapter_31_Design_of_UML_Diagrams_for_Placement_Automation_System.md)
 - **Next Chapter**: [Design of UML Diagrams for Green Rides](Chapter_33_Design_of_UML_Diagrams_for_Green_Rides.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

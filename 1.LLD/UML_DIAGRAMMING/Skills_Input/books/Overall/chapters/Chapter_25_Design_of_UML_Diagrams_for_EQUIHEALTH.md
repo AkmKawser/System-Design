@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 265–278 (Total: 14 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 24: Design of UML Diagrams for Online Pharmacy Management System](Chapter_24_Design_of_UML_Diagrams_for_Online_Pharmacy_Management_System.md) | [📚 Book Index](../README.md) | [Chapter 26: Design of UML Diagrams for an OTT-Based System - MINI REEL &rarr;](Chapter_26_Design_of_UML_Diagrams_for_an_OTT_Based_System_MINI_REEL.md)
+> **Navigation**: [&larr; Chapter 24: Design of UML Diagrams for Online Pharmacy Management System](Chapter_24_Design_of_UML_Diagrams_for_Online_Pharmacy_Management_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 26: Design of UML Diagrams for an OTT-Based System - MINI REEL &rarr;](Chapter_26_Design_of_UML_Diagrams_for_an_OTT_Based_System_MINI_REEL.md)
 
 ---
 
@@ -522,5 +522,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Online Pharmacy Management System](Chapter_24_Design_of_UML_Diagrams_for_Online_Pharmacy_Management_System.md)
 - **Next Chapter**: [Design of UML Diagrams for an OTT-Based System - MINI REEL](Chapter_26_Design_of_UML_Diagrams_for_an_OTT_Based_System_MINI_REEL.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

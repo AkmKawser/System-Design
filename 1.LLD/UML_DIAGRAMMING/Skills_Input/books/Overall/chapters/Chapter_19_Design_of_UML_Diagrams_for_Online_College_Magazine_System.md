@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 199–208 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 18: Design of UML Diagrams for Device Handout System](Chapter_18_Design_of_UML_Diagrams_for_Device_Handout_System.md) | [📚 Book Index](../README.md) | [Chapter 20: Design of UML Diagrams for Crime Bureau &rarr;](Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau.md)
+> **Navigation**: [&larr; Chapter 18: Design of UML Diagrams for Device Handout System](Chapter_18_Design_of_UML_Diagrams_for_Device_Handout_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 20: Design of UML Diagrams for Crime Bureau &rarr;](Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau.md)
 
 ---
 
@@ -383,5 +383,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Device Handout System](Chapter_18_Design_of_UML_Diagrams_for_Device_Handout_System.md)
 - **Next Chapter**: [Design of UML Diagrams for Crime Bureau](Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

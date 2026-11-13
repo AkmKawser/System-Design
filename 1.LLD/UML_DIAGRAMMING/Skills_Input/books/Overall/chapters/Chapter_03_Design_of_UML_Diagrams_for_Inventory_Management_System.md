@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 39–58 (Total: 20 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 02: Design of UML Diagrams for Webmed - Healthcare Service System Services](Chapter_02_Design_of_UML_Diagrams_for_Webmed_Healthcare_Service_System_Services.md) | [📚 Book Index](../README.md) | [Chapter 04: Design of UML Diagrams for Business Process Outsourcing (BPO) Management System &rarr;](Chapter_04_Design_of_UML_Diagrams_for_Business_Process_Outsourcing_BPO_Management_System.md)
+> **Navigation**: [&larr; Chapter 02: Design of UML Diagrams for Webmed - Healthcare Service System Services](Chapter_02_Design_of_UML_Diagrams_for_Webmed_Healthcare_Service_System_Services.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 04: Design of UML Diagrams for Business Process Outsourcing (BPO) Management System &rarr;](Chapter_04_Design_of_UML_Diagrams_for_Business_Process_Outsourcing_BPO_Management_System.md)
 
 ---
 
@@ -730,5 +730,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Webmed - Healthcare Service System Services](Chapter_02_Design_of_UML_Diagrams_for_Webmed_Healthcare_Service_System_Services.md)
 - **Next Chapter**: [Design of UML Diagrams for Business Process Outsourcing (BPO) Management System](Chapter_04_Design_of_UML_Diagrams_for_Business_Process_Outsourcing_BPO_Management_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

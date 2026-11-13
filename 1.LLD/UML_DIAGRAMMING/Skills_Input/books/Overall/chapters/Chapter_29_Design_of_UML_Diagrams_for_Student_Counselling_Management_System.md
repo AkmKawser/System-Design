@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 303–312 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 28: Design of UML Diagrams for Diet Care](Chapter_28_Design_of_UML_Diagrams_for_Diet_Care.md) | [📚 Book Index](../README.md) | [Chapter 30: Design of UML Diagrams for E-Visa Processing and Follow-Up System &rarr;](Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Processing_and_Follow_Up_System.md)
+> **Navigation**: [&larr; Chapter 28: Design of UML Diagrams for Diet Care](Chapter_28_Design_of_UML_Diagrams_for_Diet_Care.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 30: Design of UML Diagrams for E-Visa Processing and Follow-Up System &rarr;](Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Processing_and_Follow_Up_System.md)
 
 ---
 
@@ -337,5 +337,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Diet Care](Chapter_28_Design_of_UML_Diagrams_for_Diet_Care.md)
 - **Next Chapter**: [Design of UML Diagrams for E-Visa Processing and Follow-Up System](Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Processing_and_Follow_Up_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

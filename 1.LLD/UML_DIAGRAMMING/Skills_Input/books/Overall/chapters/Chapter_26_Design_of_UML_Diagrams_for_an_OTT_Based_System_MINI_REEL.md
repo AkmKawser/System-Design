@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 279–286 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 25: Design of UML Diagrams for EQUIHEALTH](Chapter_25_Design_of_UML_Diagrams_for_EQUIHEALTH.md) | [📚 Book Index](../README.md) | [Chapter 27: Design of UML Diagrams for e-Med Medical Assistance Tool &rarr;](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md)
+> **Navigation**: [&larr; Chapter 25: Design of UML Diagrams for EQUIHEALTH](Chapter_25_Design_of_UML_Diagrams_for_EQUIHEALTH.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 27: Design of UML Diagrams for e-Med Medical Assistance Tool &rarr;](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md)
 
 ---
 
@@ -287,5 +287,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for EQUIHEALTH](Chapter_25_Design_of_UML_Diagrams_for_EQUIHEALTH.md)
 - **Next Chapter**: [Design of UML Diagrams for e-Med Medical Assistance Tool](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

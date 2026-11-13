@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 227–236 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 21: Design of UML Diagrams for Smart Traffic Management System](Chapter_21_Design_of_UML_Diagrams_for_Smart_Traffic_Management_System.md) | [📚 Book Index](../README.md) | [Chapter 23: Design of UML Diagrams for AAROGYA SETU - Health Care APP &rarr;](Chapter_23_Design_of_UML_Diagrams_for_AAROGYA_SETU_Health_Care_APP.md)
+> **Navigation**: [&larr; Chapter 21: Design of UML Diagrams for Smart Traffic Management System](Chapter_21_Design_of_UML_Diagrams_for_Smart_Traffic_Management_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 23: Design of UML Diagrams for AAROGYA SETU - Health Care APP &rarr;](Chapter_23_Design_of_UML_Diagrams_for_AAROGYA_SETU_Health_Care_APP.md)
 
 ---
 
@@ -375,5 +375,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Smart Traffic Management System](Chapter_21_Design_of_UML_Diagrams_for_Smart_Traffic_Management_System.md)
 - **Next Chapter**: [Design of UML Diagrams for AAROGYA SETU - Health Care APP](Chapter_23_Design_of_UML_Diagrams_for_AAROGYA_SETU_Health_Care_APP.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 23–38 (Total: 16 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 01: Introduction to UML Diagrams and Its Components](Chapter_01_Introduction_to_UML_Diagrams_and_Its_Components.md) | [📚 Book Index](../README.md) | [Chapter 03: Design of UML Diagrams for Inventory Management System &rarr;](Chapter_03_Design_of_UML_Diagrams_for_Inventory_Management_System.md)
+> **Navigation**: [&larr; Chapter 01: Introduction to UML Diagrams and Its Components](Chapter_01_Introduction_to_UML_Diagrams_and_Its_Components.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 03: Design of UML Diagrams for Inventory Management System &rarr;](Chapter_03_Design_of_UML_Diagrams_for_Inventory_Management_System.md)
 
 ---
 
@@ -668,5 +668,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Introduction to UML Diagrams and Its Components](Chapter_01_Introduction_to_UML_Diagrams_and_Its_Components.md)
 - **Next Chapter**: [Design of UML Diagrams for Inventory Management System](Chapter_03_Design_of_UML_Diagrams_for_Inventory_Management_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

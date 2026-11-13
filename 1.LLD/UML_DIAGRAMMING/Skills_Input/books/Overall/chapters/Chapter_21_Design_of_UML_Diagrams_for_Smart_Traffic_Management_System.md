@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 219–226 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 20: Design of UML Diagrams for Crime Bureau](Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau.md) | [📚 Book Index](../README.md) | [Chapter 22: Design of UML Diagrams for Job Seeker Portal System &rarr;](Chapter_22_Design_of_UML_Diagrams_for_Job_Seeker_Portal_System.md)
+> **Navigation**: [&larr; Chapter 20: Design of UML Diagrams for Crime Bureau](Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 22: Design of UML Diagrams for Job Seeker Portal System &rarr;](Chapter_22_Design_of_UML_Diagrams_for_Job_Seeker_Portal_System.md)
 
 ---
 
@@ -293,5 +293,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Crime Bureau](Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau.md)
 - **Next Chapter**: [Design of UML Diagrams for Job Seeker Portal System](Chapter_22_Design_of_UML_Diagrams_for_Job_Seeker_Portal_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

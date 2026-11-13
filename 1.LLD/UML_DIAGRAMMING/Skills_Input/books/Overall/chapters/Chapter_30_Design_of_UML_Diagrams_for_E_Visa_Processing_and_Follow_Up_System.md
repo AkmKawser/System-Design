@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 313–324 (Total: 12 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 29: Design of UML Diagrams for Student Counselling Management System](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md) | [📚 Book Index](../README.md) | [Chapter 31: Design of UML Diagrams for Placement Automation System &rarr;](Chapter_31_Design_of_UML_Diagrams_for_Placement_Automation_System.md)
+> **Navigation**: [&larr; Chapter 29: Design of UML Diagrams for Student Counselling Management System](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 31: Design of UML Diagrams for Placement Automation System &rarr;](Chapter_31_Design_of_UML_Diagrams_for_Placement_Automation_System.md)
 
 ---
 
@@ -439,5 +439,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Student Counselling Management System](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md)
 - **Next Chapter**: [Design of UML Diagrams for Placement Automation System](Chapter_31_Design_of_UML_Diagrams_for_Placement_Automation_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

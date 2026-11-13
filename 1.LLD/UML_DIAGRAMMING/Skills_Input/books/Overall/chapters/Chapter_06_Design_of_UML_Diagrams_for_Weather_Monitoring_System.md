@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 85–94 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 05: Design of UML Diagrams for E-Ticketing for Buses](Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses.md) | [📚 Book Index](../README.md) | [Chapter 07: Design of UML Diagrams for E-Province &rarr;](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md)
+> **Navigation**: [&larr; Chapter 05: Design of UML Diagrams for E-Ticketing for Buses](Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 07: Design of UML Diagrams for E-Province &rarr;](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md)
 
 ---
 
@@ -152,5 +152,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for E-Ticketing for Buses](Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses.md)
 - **Next Chapter**: [Design of UML Diagrams for E-Province](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

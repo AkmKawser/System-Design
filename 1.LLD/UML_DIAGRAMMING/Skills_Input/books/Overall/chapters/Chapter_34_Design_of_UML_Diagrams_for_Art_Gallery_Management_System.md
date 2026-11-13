@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 349–356 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 33: Design of UML Diagrams for Green Rides](Chapter_33_Design_of_UML_Diagrams_for_Green_Rides.md) | [📚 Book Index](../README.md) | [Chapter 35: Design of UML Diagrams for GUIDE - Dropshipping Website &rarr;](Chapter_35_Design_of_UML_Diagrams_for_GUIDE_Dropshipping_Website.md)
+> **Navigation**: [&larr; Chapter 33: Design of UML Diagrams for Green Rides](Chapter_33_Design_of_UML_Diagrams_for_Green_Rides.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 35: Design of UML Diagrams for GUIDE - Dropshipping Website &rarr;](Chapter_35_Design_of_UML_Diagrams_for_GUIDE_Dropshipping_Website.md)
 
 ---
 
@@ -357,5 +357,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Green Rides](Chapter_33_Design_of_UML_Diagrams_for_Green_Rides.md)
 - **Next Chapter**: [Design of UML Diagrams for GUIDE - Dropshipping Website](Chapter_35_Design_of_UML_Diagrams_for_GUIDE_Dropshipping_Website.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

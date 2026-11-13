@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 123–128 (Total: 6 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 09: Design of UML Diagrams for Online Marketplace](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md) | [📚 Book Index](../README.md) | [Chapter 11: Design of UML Diagrams for Advocate Diary &rarr;](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md)
+> **Navigation**: [&larr; Chapter 09: Design of UML Diagrams for Online Marketplace](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 11: Design of UML Diagrams for Advocate Diary &rarr;](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md)
 
 ---
 
@@ -171,5 +171,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Online Marketplace](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md)
 - **Next Chapter**: [Design of UML Diagrams for Advocate Diary](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 367–376 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 35: Design of UML Diagrams for GUIDE - Dropshipping Website](Chapter_35_Design_of_UML_Diagrams_for_GUIDE_Dropshipping_Website.md) | [📚 Book Index](../README.md) | [Chapter 37: Design of UML Diagrams for Book Bank Management System &rarr;](Chapter_37_Design_of_UML_Diagrams_for_Book_Bank_Management_System.md)
+> **Navigation**: [&larr; Chapter 35: Design of UML Diagrams for GUIDE - Dropshipping Website](Chapter_35_Design_of_UML_Diagrams_for_GUIDE_Dropshipping_Website.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 37: Design of UML Diagrams for Book Bank Management System &rarr;](Chapter_37_Design_of_UML_Diagrams_for_Book_Bank_Management_System.md)
 
 ---
 
@@ -339,5 +339,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for GUIDE - Dropshipping Website](Chapter_35_Design_of_UML_Diagrams_for_GUIDE_Dropshipping_Website.md)
 - **Next Chapter**: [Design of UML Diagrams for Book Bank Management System](Chapter_37_Design_of_UML_Diagrams_for_Book_Bank_Management_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

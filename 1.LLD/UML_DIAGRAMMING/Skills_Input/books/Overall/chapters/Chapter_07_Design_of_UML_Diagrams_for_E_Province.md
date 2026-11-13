@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 95–104 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 06: Design of UML Diagrams for Weather Monitoring System](Chapter_06_Design_of_UML_Diagrams_for_Weather_Monitoring_System.md) | [📚 Book Index](../README.md) | [Chapter 08: Design of UML Diagrams for DigiDocLocker &rarr;](Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker.md)
+> **Navigation**: [&larr; Chapter 06: Design of UML Diagrams for Weather Monitoring System](Chapter_06_Design_of_UML_Diagrams_for_Weather_Monitoring_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 08: Design of UML Diagrams for DigiDocLocker &rarr;](Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker.md)
 
 ---
 
@@ -206,5 +206,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Weather Monitoring System](Chapter_06_Design_of_UML_Diagrams_for_Weather_Monitoring_System.md)
 - **Next Chapter**: [Design of UML Diagrams for DigiDocLocker](Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

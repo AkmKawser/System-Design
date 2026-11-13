@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 377–388 (Total: 12 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 36: Design of UML Diagrams for Online Quiz System](Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_System.md) | [📚 Book Index](../README.md) | [Chapter 38: Design of UML Diagrams for Website Development &rarr;](Chapter_38_Design_of_UML_Diagrams_for_Website_Development.md)
+> **Navigation**: [&larr; Chapter 36: Design of UML Diagrams for Online Quiz System](Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_System.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 38: Design of UML Diagrams for Website Development &rarr;](Chapter_38_Design_of_UML_Diagrams_for_Website_Development.md)
 
 ---
 
@@ -463,5 +463,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Online Quiz System](Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_System.md)
 - **Next Chapter**: [Design of UML Diagrams for Website Development](Chapter_38_Design_of_UML_Diagrams_for_Website_Development.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

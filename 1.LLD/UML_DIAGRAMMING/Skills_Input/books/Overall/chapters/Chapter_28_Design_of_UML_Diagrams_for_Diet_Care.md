@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 295–302 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 27: Design of UML Diagrams for e-Med Medical Assistance Tool](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md) | [📚 Book Index](../README.md) | [Chapter 29: Design of UML Diagrams for Student Counselling Management System &rarr;](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md)
+> **Navigation**: [&larr; Chapter 27: Design of UML Diagrams for e-Med Medical Assistance Tool](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 29: Design of UML Diagrams for Student Counselling Management System &rarr;](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md)
 
 ---
 
@@ -289,5 +289,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for e-Med Medical Assistance Tool](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md)
 - **Next Chapter**: [Design of UML Diagrams for Student Counselling Management System](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 139–146 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 11: Design of UML Diagrams for Advocate Diary](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md) | [📚 Book Index](../README.md) | [Chapter 13: Design of UML Diagrams for COVID-19 Management System &rarr;](Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Management_System.md)
+> **Navigation**: [&larr; Chapter 11: Design of UML Diagrams for Advocate Diary](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 13: Design of UML Diagrams for COVID-19 Management System &rarr;](Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Management_System.md)
 
 ---
 
@@ -269,5 +269,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for Advocate Diary](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md)
 - **Next Chapter**: [Design of UML Diagrams for COVID-19 Management System](Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Management_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)

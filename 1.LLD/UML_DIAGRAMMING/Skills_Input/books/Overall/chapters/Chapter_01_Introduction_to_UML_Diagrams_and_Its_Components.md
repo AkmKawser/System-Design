@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 1–22 (Total: 22 pages)  
 > **Classification**: Theoretical Foundations & UP Phases  
-> **Navigation**: [📚 Book Index](../README.md) | [Chapter 02: Design of UML Diagrams for Webmed - Healthcare Service System Services &rarr;](Chapter_02_Design_of_UML_Diagrams_for_Webmed_Healthcare_Service_System_Services.md)
+> **Navigation**: [📚 Book Index](../Overall_Books.md) | [Chapter 02: Design of UML Diagrams for Webmed - Healthcare Service System Services &rarr;](Chapter_02_Design_of_UML_Diagrams_for_Webmed_Healthcare_Service_System_Services.md)
 
 ---
 
@@ -1299,4 +1299,4 @@ node involved in a relationship.
 
 ## 🔗 Navigation
 - **Next Chapter**: [Chapter 02: Design of UML Diagrams for Webmed - Healthcare Service System Services](Chapter_02_Design_of_UML_Diagrams_for_Webmed_Healthcare_Service_System_Services.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)

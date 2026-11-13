@@ -3,7 +3,7 @@
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 113–122 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 08: Design of UML Diagrams for DigiDocLocker](Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker.md) | [📚 Book Index](../README.md) | [Chapter 10: Design of UML Diagrams for Product Recommendation System &rarr;](Chapter_10_Design_of_UML_Diagrams_for_Product_Recommendation_System.md)
+> **Navigation**: [&larr; Chapter 08: Design of UML Diagrams for DigiDocLocker](Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker.md) | [📚 Book Index](../Overall_Books.md) | [Chapter 10: Design of UML Diagrams for Product Recommendation System &rarr;](Chapter_10_Design_of_UML_Diagrams_for_Product_Recommendation_System.md)
 
 ---
 
@@ -355,5 +355,5 @@ The case study defines the following canonical UML models:
 
 - **Previous Chapter**: [Design of UML Diagrams for DigiDocLocker](Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker.md)
 - **Next Chapter**: [Design of UML Diagrams for Product Recommendation System](Chapter_10_Design_of_UML_Diagrams_for_Product_Recommendation_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/README.md`](../README.md)
+- **Central Book Guide**: [`Skills_Input/books/Overall/Overall_Books.md`](../Overall_Books.md)
 - **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)
