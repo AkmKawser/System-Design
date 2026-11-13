@@ -165,3 +165,18 @@ This file records the chronological session log of all user requests, architectu
 - **Actions Executed**:
   - Added **Rule 11: No `.gitignore` Without Explicit User Instruction** to `chat/finalized chat.md`.
   - Ran the rendering audit and committed and pushed (Rule 3).
+
+## 📅 Session 10: Show Project Architecture in the Root README.md
+
+- **Timestamp**: 2026-11-13
+- **User Instruction**:
+  > *"in the only readme.md file show the project architecture"*
+- **Actions Executed**:
+  - Expanded the root [`README.md`](../README.md) to showcase the comprehensive project architecture:
+    1. Mermaid diagram showing relationship between `Project_Engine/` core and `1.LLD/` & `2.HLD/` workspaces.
+    2. Canonical repository directory tree.
+    3. Mermaid diagram of the 8-step task execution lifecycle.
+    4. Summary of all 11 Universal Invariant Directives.
+    5. Clean navigational links to all primary engine and topic entry points.
+  - Successfully ran `python scripts/audit_rendering.py --all` across all markdown files (0 errors).
+  - Staged, committed, and pushed changes to `origin/main` (Rule 3).
