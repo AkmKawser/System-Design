@@ -16,9 +16,13 @@ This repository (**System-Design**) holds all **LLD** (`1.LLD/`) and **HLD** (`2
 
 These rules are permanent operational constraints. The agent must enforce them proactively on every step:
 
-### Rule 1: Continuous Conversation Logging
-- **Directive**: Every interaction, prompt, architectural decision, and action must be systematically recorded in [`chat/chat.md`](chat.md) in chronological session format.
-- **Enforcement**: Never complete a turn involving project updates without appending the session details to `chat/chat.md`.
+### Rule 1: Continuous Conversation Logging (Exhaustive Full-Transcript Protocol)
+- **Directive**: Every single interaction without exception must be systematically recorded in [chat/chat.md](chat.md) in chronological session format **immediately after the agent finishes formulating the response**.
+- **Mandatory Contents for Every Session Entry**:
+  1. **User Request / Prompt**: The exact user prompt or question in full.
+  2. **Agentic Log**: Key internal actions, decisions made, tools invoked, file modifications, and verification steps executed.
+  3. **Agent Response**: The complete response, solution, or guidance delivered to the user.
+- **Enforcement**: By default, automatically update chat/chat.md on every turn before finalizing the Git commit and push (Rule 3). Never conclude an exchange without an exhaustive log entry in chat/chat.md.
 
 ### Rule 2: Strict Rendering & Formatting Audit (Zero-Failure Policy via Optimized Algorithm)
 - **Directive**: Always run or invoke the **Optimized Single-Pass Rendering Auditor** ([`scripts/audit_rendering.py`](../scripts/audit_rendering.py)) before finalizing any prompt or task.
