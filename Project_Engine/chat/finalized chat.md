@@ -111,17 +111,19 @@ System-Design/
 │   │   └── Upcoming Updates.md                     # Serialized Milestone & Feature Tracking
 │   ├── PROJECT_WORKFLOW.md                         # Graphical overview of how the project runs
 │   └── Project_Engine.md                           # Engine Overview (topic-named, Rule 10)
-├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
-│   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
-│   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams (Books/umlBook)
-├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
-│   └── HLD_Overview.md
-├── FUNDAMENTALS/                                   # Core Software Engineering Foundations
+├── 0.FUNDAMENTALS/                                 # Core Software Engineering Foundations
+│   ├── System Requirements/                        # Requirements taxonomies, FRs, NFRs, templates
 │   ├── Software Development Lifecycle/             # Methodologies, SDLC phases, testing, CI/CD (Outline.md)
 │   ├── Software Architecture and Modeling/         # Views, patterns, ADRs, modeling (Outline.md)
 │   │   ├── 1.ARCHITECTURE/                         # Architecture principles and documentation
 │   │   └── 2.ARCHITECTURE_MODELING/                # Viewpoints & perspectives textbook and guides
 │   ├── Science of Language Frameworks [Backend]/   # Runtimes, threading, frameworks, protocols (Outline.md)
-│   └── Design System [Front End]/                  # Design tokens, components, state, a11y (Outline.md)
+│   ├── Design System [Front End]/                  # Design tokens, components, state, a11y (Outline.md)
+│   └── Select Technology Stack/                    # Framework and technology selection matrices
+├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
+│   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
+│   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams (Books/umlBook)
+├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
+│   └── HLD_Overview.md
 └── README.md                                       # THE ONLY README.md in the project (Rule 10)
 ```

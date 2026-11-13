@@ -26,11 +26,13 @@ flowchart TD
         subgraph HLD["2.HLD (High-Level Design)"]
             HN["HLD Topics (Distributed Systems, Architecture, Scaling)"]
         end
-        subgraph FUND["FUNDAMENTALS"]
+        subgraph FUND["0.FUNDAMENTALS"]
+            F0["System Requirements"]
             F1["Software Development Lifecycle"]
             F2["Software Architecture and Modeling (1.ARCHITECTURE, 2.ARCHITECTURE_MODELING)"]
             F3["Science of Language Frameworks [Backend]"]
             F4["Design System [Front End]"]
+            F5["Select Technology Stack"]
         end
         TOPIC["Topic Workspace"]
     end
@@ -69,6 +71,15 @@ System-Design/
 │   │   └── Upcoming Updates.md                     # Serialized Milestone & Feature Tracking
 │   ├── PROJECT_WORKFLOW.md                         # Detailed graphical operational workflows
 │   └── Project_Engine.md                           # Engine Overview & Architecture Documentation
+├── 0.FUNDAMENTALS/                                 # Core Software Engineering Foundations
+│   ├── System Requirements/                        # Requirements taxonomies, FRs, NFRs, templates
+│   ├── Software Development Lifecycle/             # Methodologies, SDLC phases, testing, CI/CD (Outline.md)
+│   ├── Software Architecture and Modeling/         # Views, patterns, ADRs, modeling (Outline.md)
+│   │   ├── 1.ARCHITECTURE/                         # Architecture principles and documentation
+│   │   └── 2.ARCHITECTURE_MODELING/                # Viewpoints & perspectives textbook and guides
+│   ├── Science of Language Frameworks [Backend]/   # Runtimes, threading, frameworks, protocols (Outline.md)
+│   ├── Design System [Front End]/                  # Design tokens, components, state, a11y (Outline.md)
+│   └── Select Technology Stack/                    # Framework and technology selection matrices
 ├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
 │   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
 │   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams
@@ -76,13 +87,6 @@ System-Design/
 │           └── umlBook/                            # [BEST] UML Diagramming.pdf, chapters/, vector_images/, UML_Book.md
 ├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
 │   └── HLD_Overview.md                             # High-Level Design Roadmap & Architecture Guide
-├── FUNDAMENTALS/                                   # Core Software Engineering Foundations
-│   ├── Software Development Lifecycle/             # Methodologies, SDLC phases, testing, CI/CD (Outline.md)
-│   ├── Software Architecture and Modeling/         # Views, patterns, ADRs, modeling (Outline.md)
-│   │   ├── 1.ARCHITECTURE/                         # Architecture principles and documentation
-│   │   └── 2.ARCHITECTURE_MODELING/                # Viewpoints & perspectives textbook and guides
-│   ├── Science of Language Frameworks [Backend]/   # Runtimes, threading, frameworks, protocols (Outline.md)
-│   └── Design System [Front End]/                  # Design tokens, components, state, a11y (Outline.md)
 └── README.md                                       # Repository Root Overview & Entry Point (Rule 10)
 ```
 
