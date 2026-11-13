@@ -20,8 +20,9 @@ flowchart TD
             LOG["chat/chat.md - Decision Log"]
         end
         subgraph LLD["1.LLD (Low-Level Design)"]
-            DP["DESIGN_PATTERNS (Strategy, Observer, Decorator, Factory, Singleton)"]
             AM["ARCHITECTURE_MODELING"]
+            DP["DESIGN_PATTERNS (Strategy, Observer, Decorator, Factory, Singleton)"]
+            UD["UML-DIAGRAMMING (Books/umlBook)"]
         end
         subgraph HLD["2.HLD (High-Level Design)"]
             HN["HLD Topics (Distributed Systems, Architecture, Scaling)"]
@@ -56,25 +57,16 @@ System-Design/
 │   │   ├── chat.md                                 # Chronological Session & Decision Log
 │   │   └── finalized chat.md                       # Single Source of Truth for Governance Rules
 │   ├── scripts/                                    # audit_rendering.py (Single-Pass O(N) Git-Aware Auditor) + tooling
-│   ├── Skills_Input/
-│   │   ├── books/                                  # Curated Textbooks & Specifications
-│   │   │   ├── Overall/                            # [BEST] UML Diagramming.pdf, Overall_Books.md, chapters/, vector_images/
-│   │   │   ├── Structural/                         # Structural_Books.md
-│   │   │   ├── Behavioral/                         # Behavioral_Books.md
-│   │   │   └── Architectural/                      # Architectural_Books.md
-│   │   ├── Templates/                              # Formal Step-by-Step Modeling Blueprints (Class, Sequence, State, Use Case)
-│   │   └── TopicsOutline/                          # Master Domain Outlines (UML 2.5 taxonomy)
 │   ├── Skills_Output/
-│   │   ├── query/                                  # UNIFIED QUERY HUB (All Single & Combined Syntheses)
-│   │   ├── UMLSkill_output/                        # Problem Files/ (question bank) + Solution Files/
-│   │   └── UML25Spec_output/                       # Fixed Resource Output Workspace
+│   │   └── query/                                  # UNIFIED QUERY HUB (All Single & Combined Syntheses)
 │   ├── Upcoming Updates/
 │   │   └── Upcoming Updates.md                     # Serialized Milestone & Feature Tracking
 │   ├── PROJECT_WORKFLOW.md                         # Detailed graphical operational workflows
 │   └── Project_Engine.md                           # Engine Overview & Architecture Documentation
 ├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
+│   ├── ARCHITECTURE_MODELING/                      # Architecture modeling resources & reference guides
 │   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
-│   └── ARCHITECTURE_MODELING/                      # Architecture modeling resources & reference guides
+│   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams (Books/umlBook)
 ├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
 │   └── HLD_Overview.md                             # High-Level Design Roadmap & Architecture Guide
 └── README.md                                       # Repository Root Overview & Entry Point (Rule 10)

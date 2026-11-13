@@ -88,7 +88,7 @@ These rules are permanent operational constraints. The agent must enforce them p
 
 ```
 System-Design/
-├── Project_Engine/                                 # SHARED CORE: every LLD and HLD topic follows this engine
+├── Project_Engine/                                 # SHARED CORE: tooling, skills, scripts, and logs
 │   ├── .agent/
 │   │   └── skills/
 │   │       ├── SkillGenerator/                     # Universal HITL Skill Scaffolder (scripts/, SKILL.md, SkillArchitecture/)
@@ -100,23 +100,17 @@ System-Design/
 │   ├── chat/
 │   │   ├── chat.md                                 # Chronological Session & Decision Log
 │   │   └── finalized chat.md                       # Single Source of Truth for Governance Rules
-│   ├── scripts/                                    # audit_rendering.py (Single-Pass O(N) Git-Aware Auditor) + book tooling
-│   ├── Skills_Input/
-│   │   ├── books/                                  # Curated Textbooks & Specifications
-│   │   │   └── Overall/                            # [BEST] UML Diagramming.pdf, Overall_Books.md, chapters/, vector_images/ (Vector_Images_Catalog.md)
-│   │   ├── Templates/                              # Formal Step-by-Step Modeling Blueprints (Class, Sequence, State, Use Case)
-│   │   └── TopicsOutline/                          # Master Domain Outlines (UML 2.5 taxonomy)
+│   ├── scripts/                                    # audit_rendering.py (Single-Pass O(N) Git-Aware Auditor) + tooling
 │   ├── Skills_Output/
-│   │   ├── query/                                  # UNIFIED QUERY HUB (All Single & Combined Syntheses)
-│   │   ├── UMLSkill_output/                        # Problem Files/ (question bank) + Solution Files/
-│   │   └── UML25Spec_output/                       # Fixed Resource Output Workspace
+│   │   └── query/                                  # UNIFIED QUERY HUB (All Single & Combined Syntheses)
 │   ├── Upcoming Updates/
 │   │   └── Upcoming Updates.md                     # Serialized Milestone & Feature Tracking
 │   ├── PROJECT_WORKFLOW.md                         # Graphical overview of how the project runs
 │   └── Project_Engine.md                           # Engine Overview (topic-named, Rule 10)
 ├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
+│   ├── ARCHITECTURE_MODELING/                      # Architecture modeling resources
 │   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
-│   └── ARCHITECTURE_MODELING/                      # Architecture modeling resources
+│   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams (Books/umlBook)
 ├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
 │   └── HLD_Overview.md
 └── README.md                                       # THE ONLY README.md in the project (Rule 10)
