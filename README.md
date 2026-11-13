@@ -15,8 +15,8 @@ flowchart TD
         subgraph ENGINE["Project_Engine (Shared Core Architecture)"]
             RULES["chat/finalized chat.md - Universal Rules"]
             SKILLS[".agent/skills - SkillGenerator, UMLSkill, UML25Spec"]
-            TEMPL["Skills_Input/Templates - Modeling Blueprints"]
             TOOLS["scripts - audit_rendering.py & Automation"]
+            OUT["Skills_Output/query - Master Manuals Archive"]
             LOG["chat/chat.md - Decision Log"]
         end
         subgraph LLD["1.LLD (Low-Level Design)"]
@@ -31,8 +31,8 @@ flowchart TD
     end
     RULES --> TOPIC
     SKILLS --> TOPIC
-    TEMPL --> TOPIC
     TOOLS --> TOPIC
+    OUT --> TOPIC
     TOPIC --> LLD
     TOPIC --> HLD
     TOPIC -->|"records decisions"| LOG
@@ -44,7 +44,7 @@ flowchart TD
 
 ```
 System-Design/
-├── Project_Engine/                                 # SHARED CORE: every LLD and HLD topic follows this engine
+├── Project_Engine/                                 # SHARED CORE: tooling, skills, scripts, and logs
 │   ├── .agent/
 │   │   └── skills/
 │   │       ├── SkillGenerator/                     # Universal HITL Skill Scaffolder (scripts/, SKILL.md, SkillArchitecture/)
@@ -66,7 +66,9 @@ System-Design/
 ├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
 │   ├── ARCHITECTURE_MODELING/                      # Architecture modeling resources & reference guides
 │   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
-│   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams (Books/umlBook)
+│   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams
+│       └── Books/
+│           └── umlBook/                            # [BEST] UML Diagramming.pdf, chapters/, vector_images/, UML_Book.md
 ├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
 │   └── HLD_Overview.md                             # High-Level Design Roadmap & Architecture Guide
 └── README.md                                       # Repository Root Overview & Entry Point (Rule 10)

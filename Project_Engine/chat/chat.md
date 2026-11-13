@@ -208,3 +208,15 @@ This file records the chronological session log of all user requests, architectu
   - Updated canonical directory trees in root [`README.md`](../../README.md) and [`chat/finalized chat.md`](finalized%20chat.md) (Rule 8).
   - Executed `python scripts/audit_rendering.py --all` (all 18 engine markdown files passed with 0 errors).
   - Staged, committed, and pushed changes to `origin/main` (Rule 3).
+
+## 📅 Session 13: Refresh Root README.md with Detailed Tree & Architecture
+
+- **Timestamp**: 2026-11-13
+- **User Instruction**:
+  > *"update the only readme.md file with the new structure."*
+- **Actions Executed**:
+  - Refined root [`README.md`](../../README.md) architecture diagram and directory tree to accurately show:
+    - `Project_Engine/`: lean core featuring `.agent/skills/`, `chat/`, `scripts/`, and `Skills_Output/query/` (no stale `Skills_Input/Templates/` references).
+    - `1.LLD/UML-DIAGRAMMING/`: expanded view highlighting `Books/umlBook/` (`[BEST] UML Diagramming.pdf`, `chapters/`, `vector_images/`, `UML_Book.md`, `Vector_Images_Catalog.md`).
+  - Ran `python scripts/audit_rendering.py --all` (0 errors across all markdown files).
+  - Staged, committed, and pushed changes to `origin/main` (Rule 3).
