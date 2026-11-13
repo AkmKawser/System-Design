@@ -349,3 +349,27 @@ This file records the chronological session log of all user requests, architectu
   - Staged, committed, and pushed changes to `origin/main` (Rule 3).
 - **Agent Response**:
   - Confirmed the creation of `0.FUNDAMENTALS/System Requirements/System_Requirements_Engineering.md`, the addition of `Select Technology Stack`, and full synchronization with GitHub.
+
+## 📅 Session 21: Author Comprehensive Technology Stack Selection Guide
+
+- **Timestamp**: 2026-11-14
+- **User Instruction**:
+  > *"I have created a folder named selecte technololgu s tack under fundamentals folder. write in detail how to select technology stack for a system in detail in a .md file"*
+- **Agentic Log**:
+  - Authored deep engineering manual [`0.FUNDAMENTALS/Select Technology Stack/Technology_Stack_Selection_Guide.md`](../../0.FUNDAMENTALS/Select%20Technology%20Stack/Technology_Stack_Selection_Guide.md) covering:
+    1. Core Philosophy of Tech Selection & Multi-Criteria Decision Matrix (MCDM) flowchart.
+    2. 5-Dimension Evaluation Vector (Workload I/O vs CPU, Access patterns/ACID, Latency SLAs, Developer velocity vs Type safety, TCO).
+    3. Multi-layer comparative decision trees and tables:
+       - Languages & Runtimes (Go, Java/Spring Boot, Node/TypeScript, Python, Rust).
+       - Databases (RDBMS vs Document vs Wide-Column vs In-Memory vs Search vs Graph).
+       - Caching architectures (In-process Caffeine/Guava vs Distributed Redis/Memcached).
+       - Inter-service messaging (gRPC vs REST, Kafka vs RabbitMQ).
+       - Frontend frameworks (React/Next.js, Vue/Nuxt, SvelteKit, Flutter/React Native).
+       - Infrastructure & Hosting (PaaS, Serverless/CaaS, Kubernetes, Managed IaaS).
+    4. Anti-Pattern Checklist (Resume-Driven Development, premature microservices, one-size-fits-all DBs).
+    5. Standardized Architecture Decision Record (ADR) template with production example.
+  - Ensured Rule 10 compliance by naming the document `Technology_Stack_Selection_Guide.md`.
+  - Audited with `audit_rendering.py` (0 errors).
+  - Staged, committed, and pushed changes to `origin/main` (Rule 3).
+- **Agent Response**:
+  - Delivered comprehensive breakdown of the newly created guide and verified remote synchronization.
