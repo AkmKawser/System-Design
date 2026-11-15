@@ -614,6 +614,25 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Confirmed the dedicated Rule 11 addition in `finalized chat.md` and repository-wide alignment.
 
+---
+
+## 📅 Session 34: Addition of Inefficient Design & Implementation Traps to Design Patterns Guide
+
+- **Timestamp**: 2026-11-15
+- **User Instruction**:
+  > *"@[c:\Users\USER\Documents\.MYGITHUB\System-Design\1.LLD\DESIGN_PATTERNS\design_patterns.md] add other unefficient way to design these patterns in the table for all 4 types of patterns,"*
+- **Agentic Log**:
+  - Enhanced [`1.LLD/DESIGN_PATTERNS/design_patterns.md`](../../1.LLD/DESIGN_PATTERNS/design_patterns.md) across all 4 categories:
+    1. **Creational Patterns**: Added runtime traps (e.g. coarse synchronized `getInstance()`, monolithic static switch-cases, partial family creation, leaking mutable builder references, serialization-based deep clone penalties, lock-contention on object pools).
+    2. **Structural Patterns**: Added runtime traps (e.g. data re-serialization overhead in adapters, dynamic delegation overhead in bridges, full-tree recursion recalculation in composites, hot-loop call stack bloat in decorators, synchronous subsystem chaining in facades, unbounded memory caches in flyweights, N+1 query lazy-loading in proxies).
+    3. **Behavioral Patterns**: Added runtime traps (e.g. un-indexed deep linear scanning in chains, fat snapshot retention in command undo stacks, expression re-parsing in interpreters, eager full-buffering in iterators, synchronous blocking fan-out in mediators, heap allocation churn per state transition, per-call strategy instantiation, massive skeleton methods in template methods, double-dispatch recursion in flat visitors).
+    4. **Concurrency Patterns**: Added runtime traps (e.g. native thread-per-active-object starvation, heavy synchronized metrics locks in circuit breakers, RWLock overhead on short reads and I/O lock retention, busy-waiting polling in consumer queues).
+  - Updated the catalog description in root [`README.md`](../../README.md) per Rule 11.
+  - Executed full repository rendering audit via `audit_rendering.py --all` across all 19 markdown files (100% pass rate, 0 errors).
+  - Staged, committed, and pushed changes to `origin/main` (Rule 3).
+- **Agent Response**:
+  - Updated tables with the new column across all 4 pattern categories and verified remote synchronization.
+
 
 
 

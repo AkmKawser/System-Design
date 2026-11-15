@@ -173,7 +173,7 @@ All investigative queries, multi-skill syntheses, and architectural deliverables
 | :---: | :--- | :--- | :--- | :--- |
 | **`QUERY-001`** | `UML_Metamodels` | **UML 2.5 Metamodel Taxonomy: Structural vs Behavioral** | Full classification of all 14 UML diagrams, static vs dynamic invariants, 3-tier mapping | [`001_uml_2_5_taxonomy_structural_vs_behavioral.md`](Project_Engine/Skills_Output/query/UML_Metamodels/001_uml_2_5_taxonomy_structural_vs_behavioral.md) |
 | **`QUERY-002`** | `UML_Metamodels` | **UML Sequence Diagrams & Object Interaction Mechanics** | Interaction taxonomy, 9 OOP concepts, Clause 17 formal metamodel, Java 21, JVM heap/stack | [`002_sequence_diagram_and_object_interactions.md`](Project_Engine/Skills_Output/query/UML_Metamodels/002_sequence_diagram_and_object_interactions.md) |
-| **`LLD-DP-001`** | `DESIGN_PATTERNS` | **Software Design Patterns & Anti-Patterns Guide** | Complete behavioral, structural, creational, and concurrency design patterns alongside specific anti-patterns and misuse traps | [`design_patterns.md`](1.LLD/DESIGN_PATTERNS/design_patterns.md) |
+| **`LLD-DP-001`** | `DESIGN_PATTERNS` | **Software Design Patterns, Anti-Patterns & Inefficient Traps** | Complete behavioral, structural, creational, and concurrency design patterns alongside specific anti-patterns, misuse traps, and inefficient implementation flaws | [`design_patterns.md`](1.LLD/DESIGN_PATTERNS/design_patterns.md) |
 
 > 💡 **Master Index**: See the centralized query registry in [`Project_Engine/Skills_Output/query/Query_Hub.md`](Project_Engine/Skills_Output/query/Query_Hub.md).
 
