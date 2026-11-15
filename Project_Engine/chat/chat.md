@@ -373,3 +373,27 @@ This file records the chronological session log of all user requests, architectu
   - Staged, committed, and pushed changes to `origin/main` (Rule 3).
 - **Agent Response**:
   - Delivered comprehensive breakdown of the newly created guide and verified remote synchronization.
+
+---
+
+## 📅 Session 22: Architectural Strategy for Query Folder Structure & Multi-Source Synthesis
+
+- **Timestamp**: 2026-11-15
+- **User Instruction**:
+  > *"how does the folder structure should be in query folder. becuase i might query from different surce. i think the inside query there should be a folder for each topic. so that all the .md file can be kept in that query folder"*
+- **Agentic Log**:
+  - Analyzed organizational taxonomy for `Project_Engine/Skills_Output/query/`.
+  - Evaluated **Source-Centric** vs **Topic-Centric** structuring:
+    - Confirmed user intuition: **Topic-Centric** is strictly superior because software engineering inquiries routinely synthesize multiple sources (e.g. OMG UML specs + GoF patterns + Martin Fowler guides + JVM memory semantics).
+    - Source-centric layouts fracture multi-skill syntheses across disparate folders.
+  - Formulated the recommended folder structure:
+    - Master index: `Skills_Output/query/Query_Hub.md` (renaming `Query_Hub_README.md` to conform to Rule 10).
+    - Dedicated topic subdirectories: `UML_Metamodels/`, `Design_Patterns/`, `Distributed_Systems/`, `Concurrency_and_Runtimes/`, `System_Requirements/`.
+    - Standardized query file nomenclature: `<ID>_<slug>.md`.
+    - Internal attribution schema: Rule 7 source callout block listing all skills, books, and specifications consulted per query.
+  - Evaluated HITL options (Rule 4): Flat Topic Hierarchy vs Domain-Tiered (Fundamentals / LLD / HLD) Hierarchy.
+  - Executed rendering audit via `python Project_Engine/scripts/audit_rendering.py --all` (0 errors).
+  - Staged, committed, and pushed changes to `origin/main` (Rule 3).
+- **Agent Response**:
+  - Confirmed the topic-folder architecture, detailed the schema with Mermaid layout and sample metadata, and provided options for user confirmation.
+
