@@ -53,9 +53,12 @@ flowchart LR
 
 ## 3. Inside a Topic Folder
 
+Every topic workspace contains its own dedicated topic skill containing strictly topic-specific instructions, alongside domain deliverables:
+
 ```mermaid
 flowchart TD
-    T["Topic (e.g. Observer_Pattern or URL_Shortener)"] --> D1["diagrams/ - UML, Mermaid, PlantUML, images"]
+    T["Topic (e.g. Observer_Pattern or URL_Shortener)"] --> S["One Topic Skill (SKILL.md) - Topic-specific instructions only"]
+    T --> D1["diagrams/ - UML, Mermaid, PlantUML, images"]
     T --> D2["code/ - Java implementation"]
     T --> D3["notes/ - trade-offs and reasoning"]
     T --> D4["resources/ - books and PDFs"]

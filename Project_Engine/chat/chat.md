@@ -440,5 +440,29 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Delivered comprehensive overview of the newly authored sequence diagram manual, highlighting the 9 OOP interaction mechanisms, the 3-tier mapping, and remote GitHub synchronization.
 
+---
+
+## 📅 Session 25: Architectural Refactoring: Engine & Topic-Skill Decoupling in Root README.md
+
+- **Timestamp**: 2026-11-15
+- **User Instruction**:
+  > *"in the project architecture i want to do things like this. when the engine will take data ingestion as input and common output mechanism will be written in the engine as a generic skill. there will be one skill file in each topic folder. only topic specific instuctions will be written in that specific skill folder. can you please modify my current archutrecture and make this new one in the only readme.md file."*
+- **Agentic Log**:
+  - Formulated the decoupled architectural model:
+    1. **Engine Core Layer (`Project_Engine/`)**:
+       - *Data Ingestion Engine (Input)*: Centralized ingestion pipeline processing raw assets (books, formal specifications, problem sets, case studies), outline extraction, staging, and vectorization.
+       - *Common Output Mechanism (Generic Skill)*: Reusable, universal generator enforcing the mandatory 3-Tier Modeling Standard (Java 21 OOP + Mermaid/PlantUML diagrams + JVM Heap/Stack runtime memory architecture) across all deliverables.
+       - *Global Verification & Governance*: Zero-failure single-pass rendering auditor, continuous session logging, and automated Git synchronization.
+    2. **Topic Workspaces (`0.FUNDAMENTALS/`, `1.LLD/`, `2.HLD/`)**:
+       - Exactly **one topic skill file (`SKILL.md`)** per individual topic folder.
+       - Each topic skill contains **strictly topic-specific instructions**, domain invariants, and design trade-offs, relying on the engine for ingestion, formatting, and audit.
+  - Rewrote root [`README.md`](../../README.md) with comprehensive Mermaid architecture diagrams, component specifications, decoupled directory structure tree, and task execution lifecycle.
+  - Synchronized [`Project_Engine/PROJECT_WORKFLOW.md`](../PROJECT_WORKFLOW.md) (Section 3: Inside a Topic Folder) to reflect the dedicated topic skill layout.
+  - Verified rendering across all markdown files including `README.md` via `audit_rendering.py` and `audit_file` (100% pass rate, 0 errors).
+  - Staged, committed, and pushed changes to `origin/main` (Rule 3).
+- **Agent Response**:
+  - Confirmed the architecture refactor, provided an overview of the new ingestion-engine/generic-output vs topic-skill structure, and verified remote synchronization.
+
+
 
 
