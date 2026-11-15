@@ -526,6 +526,26 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Detailed the exact 4 subfolders and 5 files created by the engine, mapped them directly to the 3-Tier modeling standard, and provided a concrete visual example.
 
+---
+
+## 📅 Session 29: Alignment on Query Subfolder Scaffolding (`query_<Folder_Name>`)
+
+- **Timestamp**: 2026-11-15
+- **User Instruction**:
+  > *"totally wrong. let me difine. and i will update letter what other folder the engine should create. so when i create a folder in LLD what you have to do is create a subfolder by the name of the folder what was createad inside LLD/HLD/FUNDAMENTALS and add query in front. exmaple . i added a folder in LLD named "Topic". the subfolder inside query will be "query_Topic"."*
+- **Agentic Log**:
+  - Realignment of automated scaffolding requirement:
+    - Whenever a folder is created in `1.LLD/`, `2.HLD/`, or `0.FUNDAMENTALS/` (e.g. named `Topic`), the engine automatically creates a corresponding subfolder inside `Project_Engine/Skills_Output/query/` named `query_<Folder_Name>` (e.g. `query_Topic/`).
+  - Refactored [`Project_Engine/scripts/scaffold_engine.py`](../scripts/scaffold_engine.py):
+    1. CLI Mode: `python Project_Engine/scripts/scaffold_engine.py "1.LLD/Topic"` creates `Topic` and auto-creates `Project_Engine/Skills_Output/query/query_Topic/` with `.gitkeep`.
+    2. Watcher Mode: `python Project_Engine/scripts/scaffold_engine.py --watch` continuously monitors `0.FUNDAMENTALS`, `1.LLD`, and `2.HLD` in real time, auto-generating `query_<Folder_Name>/` inside `query/` whenever a new directory is created.
+  - Tested execution with test folder `1.LLD/Topic` -> created `Project_Engine/Skills_Output/query/query_Topic/` with `.gitkeep`, validated, and cleaned test files.
+  - Executed full repository rendering audit via `audit_rendering.py --all` across all 19 markdown files (100% pass rate, 0 errors).
+  - Staged, committed, and pushed changes to `origin/main` (Rule 3).
+- **Agent Response**:
+  - Confirmed realignment, demonstrated the updated `scaffold_engine.py` creating `query_<Folder_Name>/` inside `Skills_Output/query/`, and verified remote synchronization.
+
+
 
 
 
