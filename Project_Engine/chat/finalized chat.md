@@ -72,15 +72,26 @@ These rules are permanent operational constraints. The agent must enforce them p
   3. **Runtime Architecture / Memory State Level**: Show the concrete physical execution state at runtime. Illustrate the JVM heap object graph, pointer references, stack frames during execution, event queue delivery, or distributed microservice network payloads using structured ASCII state maps or data flow diagrams.
 - **Enforcement**: No theoretical concept or operational query manual can be considered complete without this explicit **OOP Code -> UML Diagram -> Runtime State** breakdown.
 
-### Rule 10: Single README Policy (One `README.md` Per Project) & Dynamic Query / Output Indexing
-- **Directive**:
-  1. **Strictly one `README.md`**: There must be **exactly one `README.md` in the entire project**, located at the repository root (`System-Design/README.md`). Every other readme-style or guide file must be named after its topic as `<Topic>.md` (e.g. `Observer_Pattern.md`, `Query_Hub.md`, `Skills_Output_Guide.md`), never `README.md` or `HLD_Overview.md`.
-  2. **Mandatory Query / Output Catalog in Root `README.md`**: The root `README.md` must continuously and dynamically display a dedicated **Generated Outputs & Query Manuals Catalog** table containing direct, clickable links with human-readable titles, topics, and descriptions for all generated outputs, manuals, and deep-dive syntheses (including everything cataloged under `Project_Engine/Skills_Output/query/` and topic deliverable guides like `design_patterns.md`). Whenever a new query manual or major deliverable output is produced, the root `README.md` must be updated immediately with its name and link.
+### Rule 10: Single README Policy (One `README.md` Per Project)
+- **Directive**: There must be **exactly one `README.md` in the entire project**, located at the repository root (`System-Design/README.md`). Every other readme-style or guide file must be named after its topic as `<Topic>.md` (e.g. `Observer_Pattern.md`, `Query_Hub.md`, `Skills_Output_Guide.md`), never `README.md` or `HLD_Overview.md`.
 - **Enforcement**:
   1. Before creating any new documentation file, confirm it is not named `README.md` (case-insensitive) unless it is the root file.
-  2. Maintain and refresh the Output & Query Index table in the root `README.md` on every output addition.
-  3. The final rendering audit flags any extra `README.md` found outside the repository root.
-### Rule 11: No `.gitignore` Without Explicit User Instruction
+  2. When renaming a file under this rule, update every markdown link and reference that points to the old name.
+  3. The final rendering audit must flag any extra `README.md` found outside the repository root.
+
+### Rule 11: Continuous Output and Query Manual Indexing in Root `README.md`
+- **Directive**: The root `README.md` must continuously and dynamically feature an exhaustive, dedicated **Master Output & Query Catalog** table indexing **every single output, query manual, and architectural deliverable** created in this repository (such as files under `Project_Engine/Skills_Output/query/` and topic-level guides like `1.LLD/DESIGN_PATTERNS/design_patterns.md`).
+- **Required Metadata in Root `README.md` for Each Output**:
+  1. **Output ID / Scope**: Serialized identifier (e.g. `QUERY-001`, `QUERY-002`, `LLD-DP-001`).
+  2. **Topic / Category**: Target category or query subfolder (e.g. `UML_Metamodels`, `DESIGN_PATTERNS`, `Distributed_Systems`).
+  3. **Output Title / Name**: Human-readable, descriptive topic title.
+  4. **Core Focus / Description**: Summary of core invariants, 3-tier models, or design analysis covered.
+  5. **Direct Clickable Link**: Direct file link to the output artifact.
+- **Enforcement**:
+  - Whenever any query manual, design pattern guide, or topic output is produced or updated, the agent **MUST immediately add or refresh its entry in the root `README.md` catalog** before concluding the turn.
+  - The rendering audit script (`audit_rendering.py`) and agent verification steps must ensure all links in this catalog resolve cleanly.
+
+### Rule 12: No `.gitignore` Without Explicit User Instruction
 - **Directive**: The agent must **never create, add, or modify any `.gitignore` file** (at the repository root or in any subfolder) unless the user explicitly tells it to.
 - **Enforcement**:
   1. Do not use `.gitignore` to hide, exclude, or untrack files (including large files, build output, or private folders) on your own initiative.

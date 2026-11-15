@@ -159,8 +159,9 @@ All interactions in this repository are governed by the Universal Rules document
    - **Coding Level**: Java OOP application logic.
    - **UML Diagram Level**: Mermaid and PlantUML formal specifications.
    - **Runtime State Level**: Memory heap object graph and network flows.
-9. **Rule 10: Single README Policy & Continuous Output/Query Catalog** — Strictly one `README.md` at root, continuously indexing all generated queries, manuals, and deliverables with names and clickable links.
-10. **Rule 11: No `.gitignore` Without Explicit User Instruction** — Never create, modify, or add `.gitignore` files unless requested.
+9. **Rule 10: Single README Policy** — Strictly one `README.md` at the repository root. All other guides are topic-named (`<Topic>.md`).
+10. **Rule 11: Continuous Output and Query Manual Indexing in Root `README.md`** — Dedicated Master Output & Query Catalog dynamically indexing every single output, query manual, and architectural deliverable with serialized ID, title, description, and clickable link.
+11. **Rule 12: No `.gitignore` Without Explicit User Instruction** — Never create, modify, or add `.gitignore` files unless requested.
 
 ---
 

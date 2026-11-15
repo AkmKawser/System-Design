@@ -595,21 +595,24 @@ This file records the chronological session log of all user requests, architectu
 
 ---
 
-## 📅 Session 33: Permanent Rule for Output and Query Catalog in Root README.md
+## 📅 Session 33: Formalization of Rule 11 (Outputs & Query Catalog in Root README.md)
 
 - **Timestamp**: 2026-11-15
 - **User Instruction**:
   > *"in the readme.md file always show all the outputs link with name. For example all athe queries"*
+  > *"You read the finalized chat. and add this rule of adding the outputs in the readme.md file."*
 - **Agentic Log**:
-  - Updated **Rule 10** in [`Project_Engine/chat/finalized chat.md`](finalized%20chat.md) to mandate that the root `README.md` must continuously and dynamically feature an exhaustive **Master Output & Query Catalog** indexing all generated queries, manuals, and topic deliverables with clickable markdown links and clear titles/descriptions.
-  - Updated root [`README.md`](../../README.md) to add the **Master Output & Query Catalog** table indexing:
-    - `QUERY-001`: `001_uml_2_5_taxonomy_structural_vs_behavioral.md`
-    - `QUERY-002`: `002_sequence_diagram_and_object_interactions.md`
-    - `LLD-DP-001`: `design_patterns.md`
-  - Validated rendering integrity via `audit_rendering.py`.
+  - Read [`Project_Engine/chat/finalized chat.md`](finalized%20chat.md) and codified this requirement into a dedicated, standalone permanent rule:
+    - **Rule 11: Continuous Output and Query Manual Indexing in Root `README.md`**:
+      - Mandates that root `README.md` must continuously and dynamically feature an exhaustive **Master Output & Query Catalog** table indexing every single query manual and topic deliverable.
+      - Requires columns: Output ID / Scope, Topic / Category, Output Title & Deliverable, Description / Core Focus, and Direct Clickable Link.
+      - Enforces that any new output created anywhere in the project must be immediately registered in the root `README.md`.
+    - Shifted previous Rule 11 (No `.gitignore`) to **Rule 12**.
+  - Synchronized the Universal Directives list in root [`README.md`](../../README.md).
+  - Executed full repository rendering audit via `audit_rendering.py --all` across all 19 markdown files (100% pass rate, 0 errors).
   - Staged, committed, and pushed changes to `origin/main` (Rule 3).
 - **Agent Response**:
-  - Updated `README.md`, recorded the rule in `finalized chat.md`, and confirmed synchronization.
+  - Confirmed the dedicated Rule 11 addition in `finalized chat.md` and repository-wide alignment.
 
 
 
