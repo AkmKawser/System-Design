@@ -140,7 +140,8 @@ System-Design/Project_Engine/
 │   ├── chat.md                                     # Chronological Session & Decision Log
 │   └── finalized chat.md                           # Single Source of Truth for Governance Rules
 ├── scripts/
-│   └── audit_rendering.py                          # Single-Pass O(N) Git-Aware Markdown/Diagram Auditor
+│   ├── audit_rendering.py                          # Single-Pass O(N) Git-Aware Markdown/Diagram Auditor
+│   └── scaffold_engine.py                          # Automated Topic Scaffolder & Real-Time Directory Watcher
 ├── Skills_Input/
 │   ├── books/                                      # Curated Textbooks & Specifications
 │   │   ├── Overall/                                # Comprehensive Case Studies ([BEST] UML Diagramming.pdf)

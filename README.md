@@ -78,7 +78,7 @@ System-Design/
 │   ├── chat/
 │   │   ├── chat.md                                 # Chronological Session & Decision Log
 │   │   └── finalized chat.md                       # Single Source of Truth for Governance Rules
-│   ├── scripts/                                    # audit_rendering.py (Single-Pass O(N) Git-Aware Auditor)
+│   ├── scripts/                                    # audit_rendering.py (Auditor) & scaffold_engine.py (Automated Scaffolder & Watcher)
 │   ├── Skills_Output/
 │   │   ├── Skills_Output.md                        # Centralized Output Protocol & Hub Guide
 │   │   └── query/                                  # UNIFIED QUERY HUB (Topic-Centric Multi-Skill Syntheses)
