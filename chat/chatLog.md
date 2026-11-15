@@ -698,20 +698,24 @@ This file records the chronological session log of all user requests, architectu
 - **Timestamp**: 2026-11-16
 - **User Instruction**:
   > *"auto generate the folder in topics\0.FUNDAMENTALS\Software Architecture and Modeling\1.ARCHITECTURE"*
+  > *"topics\0.FUNDAMENTALS\Software Architecture and Modeling\1.ARCHITECTURE did i tell you to create anything like indices? 1st check the engine what folers you are suppose to create."*
 - **Agentic Log**:
-  - Identified `1.ARCHITECTURE` as a terminal leaf node under `topics/0.FUNDAMENTALS/Software Architecture and Modeling/`.
-  - Provisioned canonical subfolders adhering to `Learning-Roadmap_Project-Structure`:
-    - `template/` with `template.md`
-    - `Data_Ingestion/Books/` (`raw_books/`, `indices/`, `scripts/`)
-    - `Data_Ingestion/Courses/`
-    - `Data_Ingestion/Random/` (`docs/`, `transcripts/`)
-    - `output/query_ARCHITECTURE/`
-    - `output/Note_version-1_ARCHITECTURE/`
-  - Added `.gitkeep` to empty leaf folders to ensure Git tracks the topology.
-  - Updated `topics/0.FUNDAMENTALS/outline_0.FUNDAMENTALS.md` and root `outline.md`.
+  - Re-checked [`engine/engine.md`](../engine/engine.md) Section 2.3 (*Terminal Leaf Invariants*):
+    Inside a terminal leaf node, the engine automatically creates strictly:
+    1. `Data_Ingestion/`:
+       - `Books/`
+       - `Courses/`
+       - `Random/`
+    2. `template/`:
+       - `template.md`
+    3. `output/`:
+       - `query_<topic_name>/`
+       - `Note_version-#_<topic_name>/`
+  - Removed all extraneous subfolders (`indices`, `raw_books`, `scripts`, `docs`, `transcripts`).
+  - Retained strictly the canonical leaf topology with `.gitkeep` files where needed.
   - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all` (100% pass rate, 0 errors).
 - **Agent Response**:
-  - Confirmed scaffolding completion and presented HITL Git options.
+  - Confirmed alignment with `engine/engine.md`, demonstrated the clean directory tree, and presented HITL Git options.
 
 
 
