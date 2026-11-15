@@ -736,6 +736,24 @@ This file records the chronological session log of all user requests, architectu
   - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all` (100% pass rate, 0 errors).
 - **Agent Response**:
   - Generated comprehensive architecture reference manual and presented HITL Git confirmation options.
+
+---
+
+## 📅 Session 39: Formalization of Rule 12 (Continuous outline.md Synchronization)
+
+- **Timestamp**: 2026-11-16
+- **User Instruction**:
+  > *"add a universal rule to always update the outline.md file if there is any."*
+- **Agentic Log**:
+  - Added **Rule 12: Continuous Synchronization of `outline.md` Files (Master & Topic Outlines)** to [`chat/universal_rules.md`](universal_rules.md):
+    - Mandates that whenever any topic, subtopic, query manual, versioned study note, or roadmap deliverable is created, modified, or relocated, the agent must immediately update both:
+      1. Root Master Catalog ([`outline.md`](../outline.md))
+      2. Topic Manifests (`topics/<topic>/outline_<topic>.md`)
+    - Adjusted `.gitignore` directive to **Rule 13**.
+  - Synchronized canonical directives in root [`README.md`](../README.md).
+  - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all` (100% pass rate, 0 errors).
+- **Agent Response**:
+  - Confirmed the permanent rule formalization across `chat/universal_rules.md` and `README.md`, presenting HITL Git confirmation options.
 - **Timestamp**: 2026-11-16
 - **User Instruction**:
   > *"auto generate the folder in topics\0.FUNDAMENTALS\Software Architecture and Modeling\1.ARCHITECTURE"*
@@ -776,6 +794,24 @@ This file records the chronological session log of all user requests, architectu
   - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all` (100% pass rate, 0 errors).
 - **Agent Response**:
   - Generated comprehensive architecture reference manual and presented HITL Git confirmation options.
+
+---
+
+## 📅 Session 39: Formalization of Rule 12 (Continuous outline.md Synchronization)
+
+- **Timestamp**: 2026-11-16
+- **User Instruction**:
+  > *"add a universal rule to always update the outline.md file if there is any."*
+- **Agentic Log**:
+  - Added **Rule 12: Continuous Synchronization of `outline.md` Files (Master & Topic Outlines)** to [`chat/universal_rules.md`](universal_rules.md):
+    - Mandates that whenever any topic, subtopic, query manual, versioned study note, or roadmap deliverable is created, modified, or relocated, the agent must immediately update both:
+      1. Root Master Catalog ([`outline.md`](../outline.md))
+      2. Topic Manifests (`topics/<topic>/outline_<topic>.md`)
+    - Adjusted `.gitignore` directive to **Rule 13**.
+  - Synchronized canonical directives in root [`README.md`](../README.md).
+  - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all` (100% pass rate, 0 errors).
+- **Agent Response**:
+  - Confirmed the permanent rule formalization across `chat/universal_rules.md` and `README.md`, presenting HITL Git confirmation options.
 
 
 

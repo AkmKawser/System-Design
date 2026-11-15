@@ -123,8 +123,10 @@ All interactions in this repository are governed by the Universal Rules document
 6. **Rule 6 & 7: Autonomous Reasoning & Source Attribution** — Deep independent conceptual breakdown with explicit references.
 7. **Rule 8: Continuous Canonical Structure Sync** — Directory trees are kept strictly up to date across all architecture docs.
 8. **Rule 9: Single README Policy** — Strictly one `README.md` at the repository root. All other guides are topic-named (`<Topic>.md`).
-9. **Rule 10: Continuous Output and Query Manual Indexing in Root `README.md`** — Dedicated Master Output & Query Catalog dynamically indexing every single output with serialized ID, title, description, and clickable link.
-10. **Rule 11: No `.gitignore` Without Explicit User Instruction** — Never create, modify, or add `.gitignore` files unless requested.
+9. **Rule 10: Mandatory 3-Tier Modeling Standard** — Strict Java 21 OOP code + formal UML models + runtime heap/stack memory architecture.
+10. **Rule 11: Continuous Output and Query Manual Indexing in Root `README.md`** — Dedicated Master Output & Query Catalog dynamically indexing every single output with serialized ID, title, description, and clickable link.
+11. **Rule 12: Continuous Synchronization of `outline.md` Files** — Master catalog (`outline.md`) and topic manifests (`outline_<topic>.md`) are continuously and dynamically kept up-to-date whenever topics, queries, or versioned notes are added or altered.
+12. **Rule 13: No `.gitignore` Without Explicit User Instruction** — Never create, modify, or add `.gitignore` files unless requested.
 
 ---
 

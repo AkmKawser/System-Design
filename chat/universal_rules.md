@@ -80,10 +80,10 @@ These rules are permanent operational constraints. The agent must enforce them p
   3. The final rendering audit must flag any extra `README.md` found outside the repository root.
 
 ### Rule 11: Continuous Output and Query Manual Indexing in Root `README.md`
-- **Directive**: The root `README.md` must continuously and dynamically feature an exhaustive, dedicated **Master Output & Query Catalog** table indexing **every single output, query manual, and architectural deliverable** created in this repository (such as files under `Project_Engine/Skills_Output/query/` and topic-level guides like `1.LLD/DESIGN_PATTERNS/design_patterns.md`).
+- **Directive**: The root `README.md` must continuously and dynamically feature an exhaustive, dedicated **Master Output & Query Catalog** table indexing **every single output, query manual, and architectural deliverable** created in this repository (such as files under `topics/<topic>/output/query_<topic>/` and topic-level guides).
 - **Required Metadata in Root `README.md` for Each Output**:
-  1. **Output ID / Scope**: Serialized identifier (e.g. `QUERY-001`, `QUERY-002`, `LLD-DP-001`).
-  2. **Topic / Category**: Target category or query subfolder (e.g. `UML_Metamodels`, `DESIGN_PATTERNS`, `Distributed_Systems`).
+  1. **Output ID / Scope**: Serialized identifier (e.g. `QUERY-001`, `QUERY-002`, `LLD-DP-001`, `ARCH-001`).
+  2. **Topic / Category**: Target category or query subfolder (e.g. `UML_Metamodels`, `DESIGN_PATTERNS`, `1.ARCHITECTURE`).
   3. **Output Title / Name**: Human-readable, descriptive topic title.
   4. **Core Focus / Description**: Summary of core invariants, 3-tier models, or design analysis covered.
   5. **Direct Clickable Link**: Direct file link to the output artifact.
@@ -91,7 +91,15 @@ These rules are permanent operational constraints. The agent must enforce them p
   - Whenever any query manual, design pattern guide, or topic output is produced or updated, the agent **MUST immediately add or refresh its entry in the root `README.md` catalog** before concluding the turn.
   - The rendering audit script (`audit_rendering.py`) and agent verification steps must ensure all links in this catalog resolve cleanly.
 
-### Rule 12: No `.gitignore` Without Explicit User Instruction
+### Rule 12: Continuous Synchronization of `outline.md` Files (Master & Topic Outlines)
+- **Directive**: Whenever a new topic, subtopic, query manual, versioned study note, or roadmap deliverable is created, modified, or relocated anywhere in the repository, the agent **MUST immediately update the corresponding `outline.md` files**:
+  1. **Root Master Catalog ([`outline.md`](../outline.md))**: The primary navigation catalog at the repository root must always index the topic name, category/scope, terminal subfolder path, active query manuals, and versioned notes.
+  2. **Topic Manifests (`topics/<topic>/outline_<topic>.md`)**: The specific topic manifest must accurately reflect its terminal subfolders, template references, and deliverable paths.
+- **Enforcement**:
+  - The turn is considered incomplete if changes were made to topics or outputs without updating `outline.md`.
+  - All relative links inside `outline.md` and `outline_<topic>.md` must resolve cleanly to existing files and directories on disk.
+
+### Rule 13: No `.gitignore` Without Explicit User Instruction
 - **Directive**: The agent must **never create, add, or modify any `.gitignore` file** (at the repository root or in any subfolder) unless the user explicitly tells it to.
 - **Enforcement**:
   1. Do not use `.gitignore` to hide, exclude, or untrack files (including large files, build output, or private folders) on your own initiative.
@@ -99,53 +107,47 @@ These rules are permanent operational constraints. The agent must enforce them p
   3. Existing `.gitignore` files inside the project may only be edited when the user explicitly requests it.
 ---
 
-## 🏛️ 2. Finalized Repository Architecture & Output Guidelines (System-Design: LLD + HLD powered by Project_Engine)
+## 🏛️ 2. Finalized Repository Architecture & Output Guidelines (Learning-Roadmap Architecture)
 
 ### Canonical Repository Folder Structure (Always Kept Up to Date)
 
 ```
 System-Design/
-├── Project_Engine/                                 # SHARED CORE: tooling, skills, scripts, and logs
-│   ├── .agent/
-│   │   └── skills/
-│   │       ├── SkillGenerator/                     # Universal HITL Skill Scaffolder (scripts/, SKILL.md, SkillArchitecture/)
-│   │       ├── SkillsOnFixedResources/             # Type 1: Textbooks, Specifications & Course Skills
-│   │       │   └── UML25Spec/                      # Formal OMG UML 2.5 Specification & Reference Skill
-│   │       ├── SkillsOnDynamicResources/           # Type 2: Dynamic Practice & Ingestion Skills
-│   │       │   └── UMLSkill/                       # Dynamic intake, HITL categorization, and solution generator
-│   │       └── type of skills.md                   # Skill Typology Specification (Fixed vs Dynamic)
-│   ├── chat/
-│   │   ├── chat.md                                 # Chronological Session & Decision Log
-│   │   └── finalized chat.md                       # Single Source of Truth for Governance Rules
-│   ├── scripts/                                    # audit_rendering.py (Auditor) & scaffold_engine.py (Automated Scaffolder & Watcher)
-│   ├── Skills_Output/
-│   │   ├── Skills_Output.md                        # Centralized Output Protocol & Hub Guide
-│   │   └── query/                                  # UNIFIED QUERY HUB (Topic-Centric Multi-Skill Syntheses)
-│   │       ├── Query_Hub.md                        # Master Index of all generated manuals (Rule 10 compliant)
-│   │       ├── UML_Metamodels/                     # UML 2.5 standards & metamodel taxonomy
-│   │       │   ├── 001_uml_2_5_taxonomy_structural_vs_behavioral.md
-│   │       │   └── 002_sequence_diagram_and_object_interactions.md
-│   │       ├── Design_Patterns/                    # GoF, enterprise & cloud patterns
-│   │       ├── Distributed_Systems/                # Microservices, consensus, replication & caching
-│   │       ├── Concurrency_and_Runtimes/           # JVM memory model, threads, locks
-│   │       └── System_Requirements/                # Capacity planning, FR/NFR analysis
-│   ├── Upcoming Updates/
-│   │   └── Upcoming Updates.md                     # Serialized Milestone & Feature Tracking
-│   ├── PROJECT_WORKFLOW.md                         # Graphical overview of how the project runs
-│   └── Project_Engine.md                           # Engine Overview (topic-named, Rule 10)
-├── 0.FUNDAMENTALS/                                 # Core Software Engineering Foundations
-│   ├── System Requirements/                        # Requirements taxonomies, FRs, NFRs, templates
-│   ├── Software Development Lifecycle/             # Methodologies, SDLC phases, testing, CI/CD (Outline.md)
-│   ├── Software Architecture and Modeling/         # Views, patterns, ADRs, modeling (Outline.md)
-│   │   ├── 1.ARCHITECTURE/                         # Architecture principles and documentation
-│   │   └── 2.ARCHITECTURE_MODELING/                # Viewpoints & perspectives textbook and guides
-│   ├── Science of Language Frameworks [Backend]/   # Runtimes, threading, frameworks, protocols (Outline.md)
-│   ├── Design System [Front End]/                  # Design tokens, components, state, a11y (Outline.md)
-│   └── Select Technology Stack/                    # Framework and technology selection matrices
-├── 1.LLD/                                          # Low-Level Design topics (use Project_Engine)
-│   ├── DESIGN_PATTERNS/                            # Chapter-1 Strategy ... Chapter-5 Singleton
-│   └── UML-DIAGRAMMING/                            # UML case studies, specs, vector diagrams (Books/umlBook)
-├── 2.HLD/                                          # High-Level Design topics (use Project_Engine)
-│   └── HLD_Overview.md
-└── README.md                                       # THE ONLY README.md in the project (Rule 10)
+├── README.md                                 # Single root project overview & Master Output Catalog
+├── outline.md                                # Master Navigation Catalog: Topics, Queries & Notes
+│
+├── architecture/                             # Architectural Specifications Subsystem
+│   ├── architecture.md                       # Comprehensive Project Architecture & Sequence Lifecycles
+│   └── folderstructure.md                    # Canonical Filesystem Topology Specification
+│
+├── engine/                                   # Computational & Agentic Engine Subsystem
+│   ├── engine.md                             # Scaffolding logic, Two-Tier ingestion & verification
+│   ├── scripts/                              # audit_rendering.py, extract_chapters.py, etc.
+│   ├── .agent/skills/                        # SkillGenerator, UMLSkill, UML25Spec, etc.
+│   └── Skills_Output/                        # Universal query hub & skills output
+│
+├── chat/                                     # Governance, Logging & Rules Subsystem
+│   ├── universal_rules.md                    # Permanent Operational Invariants (HITL Git confirmation, etc.)
+│   └── chatLog.md                            # Full-fidelity chronological activity transcript
+│
+└── topics/                                   # Domain Knowledge & Learning Roadmaps Root
+    ├── 0.FUNDAMENTALS/                       # Core Software Engineering Foundations
+    │   ├── outline_0.FUNDAMENTALS.md         # Topic Manifest
+    │   ├── System Requirements/
+    │   ├── Software Development Lifecycle/
+    │   ├── Software Architecture and Modeling/
+    │   │   ├── 1.ARCHITECTURE/               # Terminal Leaf: template/, Data_Ingestion/, output/
+    │   │   └── 2.ARCHITECTURE_MODELING/      # Viewpoints & Perspectives reference
+    │   ├── Science of Language Frameworks [Backend]/
+    │   ├── Design System [Front End]/
+    │   └── Select Technology Stack/
+    │
+    ├── 1.LLD/                                # Low-Level Design Root
+    │   ├── outline_1.LLD.md                  # LLD Manifest
+    │   ├── DESIGN_PATTERNS/                  # Terminal Leaf: template/, Data_Ingestion/, output/
+    │   └── UML-DIAGRAMMING/                  # Terminal Leaf: template/, Data_Ingestion/, output/
+    │
+    └── 2.HLD/                                # High-Level Design Root
+        ├── outline_2.HLD.md                  # HLD Manifest
+        └── HLD_Overview/                     # Terminal Leaf: template/, Data_Ingestion/, output/
 ```
