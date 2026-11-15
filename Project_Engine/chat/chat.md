@@ -560,6 +560,57 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Confirmed that the working tree is clean and fully synchronized with GitHub `origin/main`.
 
+---
+
+## 📅 Session 31: Design Patterns Classification & Anti-Patterns Document
+
+- **Timestamp**: 2026-11-15
+- **User Instruction**:
+  > *"1.LLD\DESIGN_PATTERNS in this folder add a deisgn_pattern.md file where list down the design patterns based of the bevarioural structure and other classification. also list down the antipatterns of each pattern here."*
+- **Agentic Log**:
+  - Created comprehensive design patterns guide categorized by:
+    1. Creational Patterns (Singleton, Factory Method, Abstract Factory, Builder, Prototype, Object Pool)
+    2. Structural Patterns (Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy)
+    3. Behavioral Patterns (Strategy, Observer, Command, Chain of Responsibility, State, Template Method, Iterator, Mediator, Memento, Visitor, Interpreter)
+    4. Concurrency & Architectural Patterns (Active Object, Circuit Breaker, Read-Write Lock, Producer-Consumer)
+    5. Each pattern includes its core intent and detailed anti-patterns / misuse traps.
+  - Wrote to `1.LLD/DESIGN_PATTERNS/design_patterns.md` and `deisgn_pattern.md`.
+  - Committed (`77cd712`) and pushed to `origin/main`.
+- **Agent Response**:
+  - Delivered comprehensive breakdown and linked to the created file.
+
+---
+
+## 📅 Session 32: Removal of Duplicate / Typo File
+
+- **Timestamp**: 2026-11-15
+- **User Instruction**:
+  > *"yes remove"*
+- **Agentic Log**:
+  - Removed `1.LLD/DESIGN_PATTERNS/deisgn_pattern.md` via `git rm`.
+  - Retained `1.LLD/DESIGN_PATTERNS/design_patterns.md`.
+  - Committed (`e63db83`) and pushed to `origin/main`.
+- **Agent Response**:
+  - Confirmed removal of duplicate file and pushed changes.
+
+---
+
+## 📅 Session 33: Permanent Rule for Output and Query Catalog in Root README.md
+
+- **Timestamp**: 2026-11-15
+- **User Instruction**:
+  > *"in the readme.md file always show all the outputs link with name. For example all athe queries"*
+- **Agentic Log**:
+  - Updated **Rule 10** in [`Project_Engine/chat/finalized chat.md`](finalized%20chat.md) to mandate that the root `README.md` must continuously and dynamically feature an exhaustive **Master Output & Query Catalog** indexing all generated queries, manuals, and topic deliverables with clickable markdown links and clear titles/descriptions.
+  - Updated root [`README.md`](../../README.md) to add the **Master Output & Query Catalog** table indexing:
+    - `QUERY-001`: `001_uml_2_5_taxonomy_structural_vs_behavioral.md`
+    - `QUERY-002`: `002_sequence_diagram_and_object_interactions.md`
+    - `LLD-DP-001`: `design_patterns.md`
+  - Validated rendering integrity via `audit_rendering.py`.
+  - Staged, committed, and pushed changes to `origin/main` (Rule 3).
+- **Agent Response**:
+  - Updated `README.md`, recorded the rule in `finalized chat.md`, and confirmed synchronization.
+
 
 
 

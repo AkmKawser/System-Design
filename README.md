@@ -159,8 +159,22 @@ All interactions in this repository are governed by the Universal Rules document
    - **Coding Level**: Java OOP application logic.
    - **UML Diagram Level**: Mermaid and PlantUML formal specifications.
    - **Runtime State Level**: Memory heap object graph and network flows.
-9. **Rule 10: Single README Policy** — Strictly one `README.md` at the repository root. All other guides are topic-named (`<Topic>.md`).
+9. **Rule 10: Single README Policy & Continuous Output/Query Catalog** — Strictly one `README.md` at root, continuously indexing all generated queries, manuals, and deliverables with names and clickable links.
 10. **Rule 11: No `.gitignore` Without Explicit User Instruction** — Never create, modify, or add `.gitignore` files unless requested.
+
+---
+
+## 📑 Master Output & Query Catalog
+
+All investigative queries, multi-skill syntheses, and architectural deliverables are cataloged below with direct links:
+
+| Output ID / Scope | Category | Output Title & Deliverable | Description / Core Focus | Output Link |
+| :---: | :--- | :--- | :--- | :--- |
+| **`QUERY-001`** | `UML_Metamodels` | **UML 2.5 Metamodel Taxonomy: Structural vs Behavioral** | Full classification of all 14 UML diagrams, static vs dynamic invariants, 3-tier mapping | [`001_uml_2_5_taxonomy_structural_vs_behavioral.md`](Project_Engine/Skills_Output/query/UML_Metamodels/001_uml_2_5_taxonomy_structural_vs_behavioral.md) |
+| **`QUERY-002`** | `UML_Metamodels` | **UML Sequence Diagrams & Object Interaction Mechanics** | Interaction taxonomy, 9 OOP concepts, Clause 17 formal metamodel, Java 21, JVM heap/stack | [`002_sequence_diagram_and_object_interactions.md`](Project_Engine/Skills_Output/query/UML_Metamodels/002_sequence_diagram_and_object_interactions.md) |
+| **`LLD-DP-001`** | `DESIGN_PATTERNS` | **Software Design Patterns & Anti-Patterns Guide** | Complete behavioral, structural, creational, and concurrency design patterns alongside specific anti-patterns and misuse traps | [`design_patterns.md`](1.LLD/DESIGN_PATTERNS/design_patterns.md) |
+
+> 💡 **Master Index**: See the centralized query registry in [`Project_Engine/Skills_Output/query/Query_Hub.md`](Project_Engine/Skills_Output/query/Query_Hub.md).
 
 ---
 
