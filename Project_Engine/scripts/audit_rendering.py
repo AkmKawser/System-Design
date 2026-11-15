@@ -51,12 +51,12 @@ def get_target_files(all_files: bool = False) -> list[Path]:
         
         # If no uncommitted files, audit query/ and chat/ by default
         if not changed_paths:
-            query_files = list((ROOT_DIR / "Skills_Output" / "query").glob("*.md"))
+            query_files = list((ROOT_DIR / "Skills_Output" / "query").glob("**/*.md"))
             return sorted(query_files)
         return sorted(changed_paths)
     except Exception:
         # Fallback to all query files
-        return sorted(list((ROOT_DIR / "Skills_Output" / "query").glob("*.md")))
+        return sorted(list((ROOT_DIR / "Skills_Output" / "query").glob("**/*.md")))
 
 def audit_file(file_path: Path) -> list[str]:
     """Audits a single markdown file in one linear pass O(Lines)."""

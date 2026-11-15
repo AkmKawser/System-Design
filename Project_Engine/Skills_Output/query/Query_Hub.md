@@ -33,11 +33,27 @@ flowchart TD
 
 ---
 
+## 📂 Topic-Centric Directory Taxonomy
+
+All query manuals are organized into dedicated topic folders to keep knowledge domains modular while allowing queries to synthesize multiple sources:
+
+```
+Skills_Output/query/
+├── Query_Hub.md                   # Central Master Index & Synthesis Registry (Rule 10 compliant)
+├── UML_Metamodels/                # OMG UML 2.5 standards, classifiers, notations & diagrams
+├── Design_Patterns/               # GoF, enterprise, and cloud design patterns
+├── Distributed_Systems/           # Microservices, consensus, replication, caching & messaging
+├── Concurrency_and_Runtimes/      # Threading, memory barriers, lock-free structures & JVM internals
+└── System_Requirements/           # FR/NFR analysis, capacity planning & back-of-the-envelope estimation
+```
+
+---
+
 ## 📑 Master Query Manuals Index
 
-| Query ID | Title / Manual Topic | Skills & Resources Utilized | Focus & Core Invariants | Status |
-| :---: | :--- | :--- | :--- | :---: |
-| [`001`](001_uml_2_5_taxonomy_structural_vs_behavioral.md) | **UML 2.5 Metamodel Taxonomy: Structural vs Behavioral Architecture** | `UML25Spec` & Canonical Standards | Complete classification of all 14 UML diagrams, static vs dynamic invariants, 3-tier mapping | Published |
+| Query ID | Topic / Domain | Title / Manual Topic | Skills & Resources Utilized | Focus & Core Invariants | Status |
+| :---: | :--- | :--- | :--- | :--- | :---: |
+| [`001`](UML_Metamodels/001_uml_2_5_taxonomy_structural_vs_behavioral.md) | `UML_Metamodels` | **UML 2.5 Metamodel Taxonomy: Structural vs Behavioral Architecture** | `UML25Spec` & Canonical Standards | Complete classification of all 14 UML diagrams, static vs dynamic invariants, 3-tier mapping | Published |
 
 ---
 
@@ -50,4 +66,3 @@ Every query manual generated in `Skills_Output/query/` follows this standardized
 4. **Concrete Implementation in Java**: Strict backend OOP code mapping.
 5. **Runtime Architecture & State Invariants**: JVM heap object graph, activation stack, or message flow.
 6. **Modeling Pitfalls & Anti-Patterns**: Common traps (e.g. unconstrained associations, god classes, lifeline deadlocks).
-

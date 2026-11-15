@@ -106,7 +106,15 @@ System-Design/
 │   │   └── finalized chat.md                       # Single Source of Truth for Governance Rules
 │   ├── scripts/                                    # audit_rendering.py (Single-Pass O(N) Git-Aware Auditor) + tooling
 │   ├── Skills_Output/
-│   │   └── query/                                  # UNIFIED QUERY HUB (All Single & Combined Syntheses)
+│   │   ├── Skills_Output.md                        # Centralized Output Protocol & Hub Guide
+│   │   └── query/                                  # UNIFIED QUERY HUB (Topic-Centric Multi-Skill Syntheses)
+│   │       ├── Query_Hub.md                        # Master Index of all generated manuals (Rule 10 compliant)
+│   │       ├── UML_Metamodels/                     # UML 2.5 standards & metamodel taxonomy
+│   │       │   └── 001_uml_2_5_taxonomy_structural_vs_behavioral.md
+│   │       ├── Design_Patterns/                    # GoF, enterprise & cloud patterns
+│   │       ├── Distributed_Systems/                # Microservices, consensus, replication & caching
+│   │       ├── Concurrency_and_Runtimes/           # JVM memory model, threads, locks
+│   │       └── System_Requirements/                # Capacity planning, FR/NFR analysis
 │   ├── Upcoming Updates/
 │   │   └── Upcoming Updates.md                     # Serialized Milestone & Feature Tracking
 │   ├── PROJECT_WORKFLOW.md                         # Graphical overview of how the project runs

@@ -23,7 +23,7 @@ A centralized tracking board for upcoming LLD and HLD topics, UML modeling manua
   - [x] Machine-readable TOC (`toc.json` & `table_of_contents.md`)
   - [x] Precision query CLI (`query_uml25spec.py`)
   - [x] Comprehensive 22-clause specification outline (`UML25Spec_Complete_Outline.md`)
-  - [x] Published inaugural query manual: `001_uml_2_5_taxonomy_structural_vs_behavioral.md`
+  - [x] Published inaugural query manual: `UML_Metamodels/001_uml_2_5_taxonomy_structural_vs_behavioral.md`
 - [ ] Setup `Fowler_UML` reference skill (Martin Fowler's *UML Distilled* 3rd Edition)
 - [ ] Setup `Booch_OOAD` reference skill (Grady Booch's *Object-Oriented Analysis and Design with Applications*)
 
