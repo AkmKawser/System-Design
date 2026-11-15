@@ -11,7 +11,8 @@ Skills_Output/
 ├── query/                         # 🌟 Universal Query Output Hub (Combined & Single Syntheses)
 │   ├── Query_Hub.md               # Master Index & Topic Registry of query manuals (Rule 10 compliant)
 │   ├── UML_Metamodels/            # OMG UML 2.5 standards, classifiers, notations & diagrams
-│   │   └── 001_uml_2_5_taxonomy_structural_vs_behavioral.md
+│   │   ├── 001_uml_2_5_taxonomy_structural_vs_behavioral.md
+│   │   └── 002_sequence_diagram_and_object_interactions.md
 │   ├── Design_Patterns/           # GoF, enterprise, and cloud design patterns
 │   ├── Distributed_Systems/       # Microservices, consensus, replication, caching & messaging
 │   ├── Concurrency_and_Runtimes/  # Threading, memory barriers, lock-free structures & JVM internals

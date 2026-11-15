@@ -41,6 +41,8 @@ All query manuals are organized into dedicated topic folders to keep knowledge d
 Skills_Output/query/
 ├── Query_Hub.md                   # Central Master Index & Synthesis Registry (Rule 10 compliant)
 ├── UML_Metamodels/                # OMG UML 2.5 standards, classifiers, notations & diagrams
+│   ├── 001_uml_2_5_taxonomy_structural_vs_behavioral.md
+│   └── 002_sequence_diagram_and_object_interactions.md
 ├── Design_Patterns/               # GoF, enterprise, and cloud design patterns
 ├── Distributed_Systems/           # Microservices, consensus, replication, caching & messaging
 ├── Concurrency_and_Runtimes/      # Threading, memory barriers, lock-free structures & JVM internals
@@ -54,6 +56,7 @@ Skills_Output/query/
 | Query ID | Topic / Domain | Title / Manual Topic | Skills & Resources Utilized | Focus & Core Invariants | Status |
 | :---: | :--- | :--- | :--- | :--- | :---: |
 | [`001`](UML_Metamodels/001_uml_2_5_taxonomy_structural_vs_behavioral.md) | `UML_Metamodels` | **UML 2.5 Metamodel Taxonomy: Structural vs Behavioral Architecture** | `UML25Spec` & Canonical Standards | Complete classification of all 14 UML diagrams, static vs dynamic invariants, 3-tier mapping | Published |
+| [`002`](UML_Metamodels/002_sequence_diagram_and_object_interactions.md) | `UML_Metamodels` | **UML Sequence Diagrams & Object Interaction Mechanics** | `UML25Spec` & Fowler *UML Distilled* | Object interaction taxonomy, 9 OOP concepts, Clause 17 formal metamodel, Java 21, JVM heap/stack | Published |
 
 ---
 
