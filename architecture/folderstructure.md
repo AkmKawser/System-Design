@@ -20,7 +20,7 @@ Learning-Roadmap_Project-Structure/
 │   └── engine.md                             # Scaffolding logic, 3-tier ingestion, RAG & STT rules
 │
 ├── chat/                                     # Governance, Logging & Rules Subsystem
-│   ├── universal_rules.md                    # 15 Permanent Operational Invariants (HITL, Audits, etc.)
+│   ├── universal_rules.md                    # 16 Permanent Operational Invariants (HITL, Audits, etc.)
 │   └── chatLog.md                            # Full-fidelity chronological transcript of all turns
 │
 ├── Upcoming Updates/                         # Strategic Roadmaps & Forward-Looking Blueprints
@@ -34,13 +34,12 @@ Learning-Roadmap_Project-Structure/
                 │   └── template.md           # User custom template specification
                 │
                 ├── Data_Ingestion/           # Multi-Source Knowledge Ingestion Gateway
-                │   ├── Books/                # Two-Tier Book Extraction Pipeline
-                │   │   ├── raw_books/        # Original PDFs / EPUBs / DOCX files
-                │   │   ├── indices/          # TOC JSON & markdown structural indices
-                │   │   │   ├── toc_book1.json
-                │   │   │   └── table_of_contents.md
-                │   │   └── scripts/          # Surgical extraction CLI tooling
-                │   │       └── query_book.py # pypdf CLI for surgical page slicing
+                │   ├── Books/                # Dedicated Encapsulated Book Folders (Rule 16)
+                │   │   └── <book_name>/      # Dedicated subfolder matching the book title
+                │   │       ├── <book_name>.pdf  # Source PDF book
+                │   │       ├── images/       # Extracted figures and book diagrams
+                │   │       ├── chapters/     # Extracted chapter markdowns
+                │   │       └── indices/      # TOC JSON & markdown structural indices
                 │   │
                 │   ├── Courses/              # Web & Course Scraped Content (Playwright)
                 │   │   └── <course_name>/    # Syllabi, transcripts & lecture outlines

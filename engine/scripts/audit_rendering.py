@@ -18,6 +18,7 @@ Optimized Single-Pass (O(N)) Validator:
 import sys
 import re
 import subprocess
+from urllib.parse import unquote
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
@@ -129,7 +130,7 @@ def audit_file(file_path: Path) -> list[str]:
             for _, img_rel in image_matches:
                 clean_rel = img_rel.split()[0].strip()
                 clean_rel = clean_rel.split("?")[0].split("#")[0]
-                target_img = (file_path.parent / clean_rel).resolve()
+                target_img = (file_path.parent / unquote(clean_rel)).resolve()
                 if not target_img.exists():
                     errors.append(f"Line {line_idx}: Image target does not exist on disk: '{clean_rel}'")
 

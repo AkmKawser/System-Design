@@ -1,4 +1,4 @@
----
+﻿---
 title: "MVC and MVT in Software Architecture Classification: Taxonomy, Partitioning, and Trade-Off Analysis"
 date: "2026-11-16"
 version: "1.0.0"
@@ -74,11 +74,11 @@ The authors explicitly locate MVC on **Page 162**:
 And on **Page 166**:
 > *"Technically partitioned architectures separate top-level components based on technical capabilities rather than discrete workflows. **This may manifest as layers inspired by Model-View-Controller separation** or some other ad hoc technical partitioning."*
 
-![Figure 9-2: Two types of top-level partitioning: technical (such as the layered architecture) and domain (such as the modular monolith)](../../Data_Ingestion/Books/images/Figure_9_2_technical_vs_domain_partitioning.png)
+![Figure 9-2: Two types of top-level partitioning: technical (such as the layered architecture) and domain (such as the modular monolith)](../../Data_Ingestion/Books/Fundamentals%20of%20Software%20Architecture%20A%20Modern%20Engineering%20Approach%20-Mark%20Richards/images/Figure_9_2_technical_vs_domain_partitioning.png)
 
-![Figure 9-3: Two types of top-level partitioning in architecture](../../Data_Ingestion/Books/images/Figure_9_3_domain_partitioning_concept.png)
+![Figure 9-3: Two types of top-level partitioning in architecture](../../Data_Ingestion/Books/Fundamentals%20of%20Software%20Architecture%20A%20Modern%20Engineering%20Approach%20-Mark%20Richards/images/Figure_9_3_domain_partitioning_concept.png)
 
-![Figure 9-6: A technically partitioned design for Silicon Sandwiches](../../Data_Ingestion/Books/images/Figure_9_6_technical_partitioning_example.png)
+![Figure 9-6: A technically partitioned design for Silicon Sandwiches](../../Data_Ingestion/Books/Fundamentals%20of%20Software%20Architecture%20A%20Modern%20Engineering%20Approach%20-Mark%20Richards/images/Figure_9_6_technical_partitioning_example.png)
 
 ---
 
@@ -86,7 +86,7 @@ And on **Page 166**:
 
 Chapter 10 details the **Layered Architecture Style** (also known as the *N-Tier Monolith*). It is the canonical implementation of technical top-level partitioning.
 
-![Figure 10-1: Standard layered architecture](../../Data_Ingestion/Books/images/Figure_10_1_layered_standard_logical_layers.png)
+![Figure 10-1: Standard layered architecture](../../Data_Ingestion/Books/Fundamentals%20of%20Software%20Architecture%20A%20Modern%20Engineering%20Approach%20-Mark%20Richards/images/Figure_10_1_layered_standard_logical_layers.png)
 
 The standard layered architecture consists of four logical layers:
 1. **Presentation Layer**: Responsible for handling UI and browser communication.
@@ -94,7 +94,7 @@ The standard layered architecture consists of four logical layers:
 3. **Persistence Layer**: Responsible for managing data access and abstracting database operations.
 4. **Database Layer**: Responsible for physical persistence (tables, documents, indexes).
 
-![Figure 10-2: Standard layered architecture physical deployment variants](../../Data_Ingestion/Books/images/Figure_10_2_layered_physical_deployment_variants.png)
+![Figure 10-2: Standard layered architecture physical deployment variants](../../Data_Ingestion/Books/Fundamentals%20of%20Software%20Architecture%20A%20Modern%20Engineering%20Approach%20-Mark%20Richards/images/Figure_10_2_layered_physical_deployment_variants.png)
 
 ---
 
@@ -209,7 +209,7 @@ This governance invariant proves that Controllers and Views reside at the upperm
 
 Because MVC and MVT are implementations of the **Layered Architecture Style**, they inherit all the characteristics, trade-offs, and ratings of Chapter 10:
 
-![Figure 10-6: Layered architecture characteristics ratings](../../Data_Ingestion/Books/images/Figure_10_6_layered_architecture_characteristics_ratings.png)
+![Figure 10-6: Layered architecture characteristics ratings](../../Data_Ingestion/Books/Fundamentals%20of%20Software%20Architecture%20A%20Modern%20Engineering%20Approach%20-Mark%20Richards/images/Figure_10_6_layered_architecture_characteristics_ratings.png)
 
 ### 6.1. Architectural Star Ratings
 

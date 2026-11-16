@@ -120,6 +120,17 @@ These rules are permanent operational constraints. The agent must enforce them p
   2. **Zero Scattered Outlines in Subfolders**: No individual or redundant `outline.md`, `Outline.md`, or `outline_<topic>.md` files may exist in subdirectories or topic folders. All topic-level and subtopic-level learning outlines must be consolidated and maintained exclusively inside root `outline.md`.
   3. **Continuous Synchronization**: Whenever a new topic, subtopic, or curriculum module is created, modified, or reorganized, the agent **MUST** update root `outline.md` to reflect the complete project-wide curriculum.
 
+### Rule 16: Isolated Book Encapsulation & Dedicated Book Folder Protocol
+- **Directive**: Every PDF book in the repository **MUST** reside inside its own dedicated subfolder named after the book itself under `Data_Ingestion/Books/<Book_Folder_Name>/`. Loose PDF book files directly under `Data_Ingestion/Books/` are strictly prohibited.
+- **Mandatory Principles & Invariants**:
+  1. **Automated Folder Creation by Agent**: Whenever the user supplies, drops, or requests the ingestion of a book PDF, the agent **MUST automatically create** a dedicated subfolder matching the book's name (or a clean, canonical identifier of the book) inside `Data_Ingestion/Books/`.
+  2. **Complete Book Asset Co-location**: All data, assets, extracted figures, vector diagrams, chapter breakdowns, and indices derived from that book **MUST** be placed and preserved exclusively inside that specific book's dedicated folder:
+     - The source PDF itself: `Data_Ingestion/Books/<Book_Folder_Name>/<Book_Name>.pdf`
+     - Extracted figures/images: `Data_Ingestion/Books/<Book_Folder_Name>/images/` (or `vector_images/`)
+     - Extracted chapters: `Data_Ingestion/Books/<Book_Folder_Name>/chapters/`
+     - Book documentation and guides: `Data_Ingestion/Books/<Book_Folder_Name>/<Book_Name>.md`
+  3. **Strict Inter-Book Isolation**: No book assets or images may spill into the parent `Data_Ingestion/Books/` directory or mix with assets belonging to another book. Every book folder forms an isolated, self-contained knowledge package.
+
 ---
 
 ## 🏛️ 2. Finalized Repository Architecture & Output Guidelines (Learning-Roadmap Architecture)

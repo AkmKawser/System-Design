@@ -1063,6 +1063,33 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Codified Rule 15, consolidated all topic syllabi into the single root `outline.md`, removed scattered outline files, and verified rendering integrity.
 
+---
+
+## 📅 Session 51: Formulation of Universal Rule 16 (Isolated Book Encapsulation Protocol) & Migration
+
+- **Timestamp**: 2026-11-16
+- **User Instruction**:
+  > *"add another universal rule. that is every pdf book must be inside a folder of the same book name. the folder will be automatically created by the agent. all the data regarding that book for example images of that book will be kept inside that folder."*
+- **Agentic Log**:
+  - Formulated and codified **Rule 16: Isolated Book Encapsulation & Dedicated Book Folder Protocol** in [`chat/universal_rules.md`](universal_rules.md):
+    - Mandated that every PDF book must reside in its own dedicated subfolder named after the book under `Data_Ingestion/Books/<Book_Folder_Name>/`.
+    - Required the agent to automatically create this folder whenever a book is ingested.
+    - Mandated strict co-location of all book assets (PDF, images, chapters, and indices) within that specific book folder.
+  - Implemented repository-wide compliance:
+    - Encapsulated `Fundamentals of Software Architecture A Modern Engineering Approach -Mark Richards.pdf` and its `images/` directory into a dedicated book folder.
+    - Encapsulated `software-architecture-patterns-antipatterns-pitfalls.pdf` into its dedicated book folder.
+    - Encapsulated `modeling-software-architecture-viewpoints-perspectives.pdf` into its dedicated book folder.
+    - Updated image links across `001_architectural_styles_catalog_and_comparative_analysis.md` and `002_mvc_mvt_in_architectural_styles_classification.md` to reference the new encapsulated folder.
+    - Enhanced `engine/scripts/audit_rendering.py` with URL unquoting (`unquote`) to support spaces in asset directories.
+  - Synchronized architectural documentation:
+    - Updated [`README.md`](../README.md) Universal Directives list.
+    - Updated [`architecture/folderstructure.md`](../architecture/folderstructure.md) filesystem topology.
+  - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 68 files with 0 errors**.
+  - Committed and pushed changes to GitHub `origin/main` per Rule 3.
+- **Agent Response**:
+  - Codified Rule 16, encapsulated all books into dedicated folders, updated image references, and synchronized Git remote.
+
+
 
 
 

@@ -60,7 +60,7 @@ System-Design/
 │   └── scripts/                              # audit_rendering.py, extract_chapters.py, etc.
 │
 ├── chat/                                     # Governance, Logging & Rules Subsystem
-│   ├── universal_rules.md                    # 15 Permanent Operational Invariants
+│   ├── universal_rules.md                    # 16 Permanent Operational Invariants
 │   └── chatLog.md                            # Full-fidelity chronological transcript
 │
 ├── Upcoming Updates/                         # Strategic Roadmaps & Forward-Looking Blueprints
@@ -134,6 +134,7 @@ All interactions in this repository are governed by the Universal Rules document
 13. **Rule 13: No `.gitignore` Without Explicit User Instruction** — Never create, modify, or add `.gitignore` files unless requested.
 14. **Rule 14: Comprehensive Resource Image Ingestion for Queries** — Extract and embed relevant diagrams, topologies, and figures from referenced books and courses into query manuals.
 15. **Rule 15: Single `outline.md` Policy (Universal Master Topic Outline Protocol)** — Exactly one `outline.md` file at the repository root where strictly and exclusively topic curriculum outlines from all over the project are kept.
+16. **Rule 16: Isolated Book Encapsulation & Dedicated Book Folder Protocol** — Every PDF book must reside in its own dedicated folder of the same name under `Data_Ingestion/Books/`, automatically created by the agent, co-locating all extracted images and assets.
 
 ---
 
