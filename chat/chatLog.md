@@ -775,6 +775,28 @@ This file records the chronological session log of all user requests, architectu
   - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all` (100% pass rate, 0 errors).
 - **Agent Response**:
   - Generated the manual, updated catalogs, and presented HITL Git confirmation options.
+
+---
+
+## 📅 Session 41: Auditor Path Scope Correction & Universal Rendering Verification
+
+- **Timestamp**: 2026-11-16
+- **User Instruction**:
+  > *"are u checking all the universal rules in every conversation? if so wh y there is a rendering issue in topics\0.FUNDAMENTALS\Software Architecture and Modeling\1.ARCHITECTURE\output\query_ARCHITECTURE\002_architectural_styles_vs_architecture_patterns_vs_design_patterns.md?"*
+- **Agentic Log**:
+  - Investigated `002_architectural_styles_vs_architecture_patterns_vs_design_patterns.md`:
+    - The file itself had 0 syntax errors (clean quotes on Mermaid labels, zero raw HTML, balanced code fences).
+  - Investigated why the audit previously checked only 14 files instead of the full workspace:
+    - Located root-cause bug in [`engine/scripts/audit_rendering.py`](../engine/scripts/audit_rendering.py): when `Project_Engine/scripts/` was relocated to `engine/scripts/`, `ROOT_DIR` calculated `parent.parent` (`engine/`) instead of `parent.parent.parent` (the repository root). As a result, files in `topics/` were not traversed by default `--all`.
+  - Fixed `ROOT_DIR` in `audit_rendering.py` to point to the actual repository root (`resolve().parent.parent.parent`).
+  - Ran `audit_rendering.py --all` across all **82 markdown files** in the repository:
+    - Caught 2 real violations:
+      1. `README.md`: Raw `<br/>` HTML tags inside Mermaid diagram nodes on lines 22–24.
+      2. `001_software_architecture_patterns_antipatterns_and_pitfalls.md`: Raw `<br/>` tags in Mermaid flowchart and unescaped math dollar sign on line 43.
+    - Surgically resolved both issues: replaced `<br/>` with clean text and replaced math symbols with standard code/unicode.
+  - Re-audited: **all 82 files passed with 0 errors**.
+- **Agent Response**:
+  - Explained the root cause, demonstrated the fix to the auditor and the affected markdown files, and presented HITL Git confirmation options.
 - **Timestamp**: 2026-11-16
 - **User Instruction**:
   > *"auto generate the folder in topics\0.FUNDAMENTALS\Software Architecture and Modeling\1.ARCHITECTURE"*
@@ -854,6 +876,28 @@ This file records the chronological session log of all user requests, architectu
   - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all` (100% pass rate, 0 errors).
 - **Agent Response**:
   - Generated the manual, updated catalogs, and presented HITL Git confirmation options.
+
+---
+
+## 📅 Session 41: Auditor Path Scope Correction & Universal Rendering Verification
+
+- **Timestamp**: 2026-11-16
+- **User Instruction**:
+  > *"are u checking all the universal rules in every conversation? if so wh y there is a rendering issue in topics\0.FUNDAMENTALS\Software Architecture and Modeling\1.ARCHITECTURE\output\query_ARCHITECTURE\002_architectural_styles_vs_architecture_patterns_vs_design_patterns.md?"*
+- **Agentic Log**:
+  - Investigated `002_architectural_styles_vs_architecture_patterns_vs_design_patterns.md`:
+    - The file itself had 0 syntax errors (clean quotes on Mermaid labels, zero raw HTML, balanced code fences).
+  - Investigated why the audit previously checked only 14 files instead of the full workspace:
+    - Located root-cause bug in [`engine/scripts/audit_rendering.py`](../engine/scripts/audit_rendering.py): when `Project_Engine/scripts/` was relocated to `engine/scripts/`, `ROOT_DIR` calculated `parent.parent` (`engine/`) instead of `parent.parent.parent` (the repository root). As a result, files in `topics/` were not traversed by default `--all`.
+  - Fixed `ROOT_DIR` in `audit_rendering.py` to point to the actual repository root (`resolve().parent.parent.parent`).
+  - Ran `audit_rendering.py --all` across all **82 markdown files** in the repository:
+    - Caught 2 real violations:
+      1. `README.md`: Raw `<br/>` HTML tags inside Mermaid diagram nodes on lines 22–24.
+      2. `001_software_architecture_patterns_antipatterns_and_pitfalls.md`: Raw `<br/>` tags in Mermaid flowchart and unescaped math dollar sign on line 43.
+    - Surgically resolved both issues: replaced `<br/>` with clean text and replaced math symbols with standard code/unicode.
+  - Re-audited: **all 82 files passed with 0 errors**.
+- **Agent Response**:
+  - Explained the root cause, demonstrated the fix to the auditor and the affected markdown files, and presented HITL Git confirmation options.
 
 
 

@@ -19,9 +19,9 @@ flowchart TD
     User(["User Queries & Instructions"]) <--> Agent(["AI Agent Core"])
     
     subgraph Control_Plane ["Control Plane & Operations"]
-        Rules["chat/universal_rules.md<br/>(11 Operational Invariants)"]
-        ChatLog["chat/chatLog.md<br/>(Full-Fidelity Activity Log)"]
-        Nav["outline.md & README.md<br/>(Master Catalogs)"]
+        Rules["chat/universal_rules.md (Operational Invariants)"]
+        ChatLog["chat/chatLog.md (Full-Fidelity Activity Log)"]
+        Nav["outline.md & README.md (Master Catalogs)"]
     end
     
     subgraph Execution_Engine ["Project Engine (engine/engine.md)"]

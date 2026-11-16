@@ -20,7 +20,7 @@ import re
 import subprocess
 from pathlib import Path
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 
 def get_target_files(all_files: bool = False) -> list[Path]:
     """Gets markdown files to audit using git diff/status for O(1) file scaling."""
