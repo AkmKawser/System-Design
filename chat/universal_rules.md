@@ -105,6 +105,15 @@ These rules are permanent operational constraints. The agent must enforce them p
   1. Do not use `.gitignore` to hide, exclude, or untrack files (including large files, build output, or private folders) on your own initiative.
   2. If a file or folder seems like it should be ignored, ask the user first instead of adding a `.gitignore` entry.
   3. Existing `.gitignore` files inside the project may only be edited when the user explicitly requests it.
+
+### Rule 14: Comprehensive Resource Image Ingestion for Queries (Book & Course Visual Grounding)
+- **Directive**: Whenever the user poses an analytical query or request referencing an ingested resource (book PDF, video course, documentation, or technical slide deck), the agent **MUST** extract, preserve, and integrate all pertinent visual assets (diagrams, architecture topologies, workflow schematics, taxonomy charts, and scorecard ratings) into the generated query manual.
+- **Enforcement & Operational Protocol**:
+  1. **Source Asset Extraction**: Locate the underlying book or course artifact within `Data_Ingestion/Books/` or `Data_Ingestion/Courses/`. Programmatically extract all relevant figures, diagrams, and scorecards associated with the queried topic into a localized asset repository (`Data_Ingestion/Books/images/` or topic-specific asset directories).
+  2. **In-Prose Visual Embedding**: Directly embed each extracted figure in the corresponding section of the generated `.md` file using clean markdown image syntax with backticks or relative path syntax.
+  3. **Multi-Modal Synchronization**: Every embedded diagram must be paired with precise source attribution (Figure number, chapter, page number) alongside the agent's autonomous architectural explanation, failure mode analysis, and trade-off evaluation.
+  4. **Disk Existence & Integrity Verification**: The agent must verify that every embedded image path physically resolves on disk (audited via `scripts/audit_rendering.py`). Broken or non-existent image paths are strictly forbidden.
+
 ---
 
 ## 🏛️ 2. Finalized Repository Architecture & Output Guidelines (Learning-Roadmap Architecture)

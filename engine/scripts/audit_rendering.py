@@ -102,6 +102,10 @@ def audit_file(file_path: Path) -> list[str]:
                         f"Line {line_idx}: Mermaid node label contains unquoted special characters '{label}'. "
                         f"Wrap label in double quotes, e.g., Node[\"{label}\"]."
                     )
+            # Check for reserved keyword as classDef class name
+            reserved_classdef = re.findall(r'classDef\s+(?:style|class|subgraph|end|graph|flowchart)', line, re.IGNORECASE)
+            if reserved_classdef:
+                errors.append(f'Line {line_idx}: Mermaid reserved keyword used as classDef name: {reserved_classdef[0]}. Rename classDef class.')
             continue
             
         # 3. Prose Checks (Outside Code Blocks)
