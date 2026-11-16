@@ -8,7 +8,7 @@ Whenever the user provides an instruction that is later modified or refined, onl
 
 ## 🎯 0. Project Scope
 
-This repository (**System-Design**) holds all **LLD** (`1.LLD/`) and **HLD** (`2.HLD/`) study topics. **`Project_Engine/`** is the shared core: every LLD and HLD topic must follow the Universal Rules below and use the skills, templates, scripts and logs inside it. Paths in the rules (`chat/`, `scripts/`, `Skills_Input/`, `Skills_Output/`) are relative to `Project_Engine/`.
+This repository (**System-Design**) holds all **LLD** (`1.LLD/`) and **HLD** (`2.HLD/`) study topics. **`engine/`** is the shared computational core: every LLD and HLD topic must follow the Universal Rules below and use the templates, scripts, and logs inside it. Paths in the rules (`chat/`, `engine/scripts/`, `engine/Skills_Output/`) are relative to the repository root.
 
 ---
 
@@ -17,12 +17,12 @@ This repository (**System-Design**) holds all **LLD** (`1.LLD/`) and **HLD** (`2
 These rules are permanent operational constraints. The agent must enforce them proactively on every step:
 
 ### Rule 1: Continuous Conversation Logging (Exhaustive Full-Transcript Protocol)
-- **Directive**: Every single interaction without exception must be systematically recorded in [chat/chat.md](chat.md) in chronological session format **immediately after the agent finishes formulating the response**.
+- **Directive**: Every single interaction without exception must be systematically recorded in [chat/chatLog.md](chatLog.md) in chronological session format **immediately after the agent finishes formulating the response**.
 - **Mandatory Contents for Every Session Entry**:
   1. **User Request / Prompt**: The exact user prompt or question in full.
   2. **Agentic Log**: Key internal actions, decisions made, tools invoked, file modifications, and verification steps executed.
   3. **Agent Response**: The complete response, solution, or guidance delivered to the user.
-- **Enforcement**: By default, automatically update chat/chat.md on every turn before finalizing the Git commit and push (Rule 3). Never conclude an exchange without an exhaustive log entry in chat/chat.md.
+- **Enforcement**: By default, automatically update chat/chatLog.md on every turn before finalizing the Git commit and push (Rule 3). Never conclude an exchange without an exhaustive log entry in chat/chatLog.md.
 
 ### Rule 2: Strict Rendering & Formatting Audit (Zero-Failure Policy via Optimized Algorithm)
 - **Directive**: Always run or invoke the **Optimized Single-Pass Rendering Auditor** ([`scripts/audit_rendering.py`](../scripts/audit_rendering.py)) before finalizing any prompt or task.
@@ -63,7 +63,7 @@ These rules are permanent operational constraints. The agent must enforce them p
 - **Enforcement**: Every major section of a generated manual must include a clear source attribution callout alongside a dedicated synthesis table mapping which skill contributed which concept.
 
 ### Rule 8: Continuous Synchronization of the Canonical Folder Structure
-- **Directive**: The agent must maintain and continuously update the **latest, complete folder structure tree** inside this document (`chat/finalized chat.md`). Whenever directories are moved, added, or restructured, the canonical architecture diagram in Section 2 must be refreshed immediately to reflect the exact state of the project.
+- **Directive**: The agent must maintain and continuously update the **latest, complete folder structure tree** inside this document (`chat/universal_rules.md`). Whenever directories are moved, added, or restructured, the canonical architecture diagram in Section 2 must be refreshed immediately to reflect the exact state of the project.
 
 ### Rule 9: Mandatory 3-Tier Modeling Mapping (OOP Code -> UML Diagram -> Runtime Architecture)
 - **Directive**: For **EVERY single modeling concept** discussed, documented, or solved in this repository (e.g., in query manuals, design patterns, architectural syntheses, and problem solutions), the agent **MUST** provide an end-to-end multi-tier demonstration detailing what happens at three distinct layers:
@@ -91,13 +91,12 @@ These rules are permanent operational constraints. The agent must enforce them p
   - Whenever any query manual, design pattern guide, or topic output is produced or updated, the agent **MUST immediately add or refresh its entry in the root `README.md` catalog** before concluding the turn.
   - The rendering audit script (`audit_rendering.py`) and agent verification steps must ensure all links in this catalog resolve cleanly.
 
-### Rule 12: Continuous Synchronization of `index.md` & `outline.md` Files (Master & Topic Catalogs)
-- **Directive**: Whenever a new topic, subtopic, query manual, versioned study note, or roadmap deliverable is created, modified, or relocated anywhere in the repository, the agent **MUST immediately update the corresponding navigation files**:
-  1. **Root Master Catalog ([`index.md`](../index.md))**: The primary navigation catalog at the repository root must always index the topic name, category/scope, terminal subfolder path, active query manuals, and versioned notes.
-  2. **Topic Manifests (`topics/<topic>/outline_<topic>.md`)**: The specific topic manifest must accurately reflect its terminal subfolders, template references, and deliverable paths.
+### Rule 12: Continuous Synchronization of `index.md` (Master Navigation Catalog)
+- **Directive**: Whenever a new topic, subtopic, query manual, versioned study note, or roadmap deliverable is created, modified, or relocated anywhere in the repository, the agent **MUST immediately update the master navigation catalog**:
+  - **Root Master Catalog ([`index.md`](../index.md))**: The primary navigation catalog at the repository root must always index the topic name, category/scope, terminal subfolder path, active query manuals, and versioned notes.
 - **Enforcement**:
   - The turn is considered incomplete if changes were made to topics or outputs without updating `index.md`.
-  - All relative links inside `index.md` and `outline_<topic>.md` must resolve cleanly to existing files and directories on disk.
+  - All relative links inside `index.md` must resolve cleanly to existing files and directories on disk.
 
 ### Rule 13: No `.gitignore` Without Explicit User Instruction
 - **Directive**: The agent must **never create, add, or modify any `.gitignore` file** (at the repository root or in any subfolder) unless the user explicitly tells it to.
@@ -114,6 +113,13 @@ These rules are permanent operational constraints. The agent must enforce them p
   3. **Multi-Modal Synchronization**: Every embedded diagram must be paired with precise source attribution (Figure number, chapter, page number) alongside the agent's autonomous architectural explanation, failure mode analysis, and trade-off evaluation.
   4. **Disk Existence & Integrity Verification**: The agent must verify that every embedded image path physically resolves on disk (audited via `scripts/audit_rendering.py`). Broken or non-existent image paths are strictly forbidden.
 
+### Rule 15: Single `outline.md` Policy (Universal Master Topic Outline Protocol)
+- **Directive**: There must be **strictly one `outline.md` file in the entire repository**, located at the repository root (`System-Design/outline.md`). **Only topic outlines from all over the project are kept in this file**.
+- **Mandatory Principles & Invariants**:
+  1. **Strictly Topic Outline Content**: Unlike `index.md` (which maps filesystem navigation, terminal folders, query outputs, and versioned notes) and `README.md` (which provides the project landing overview and output catalog), `outline.md` is **strictly reserved for holding the comprehensive pedagogical curriculum and topic syllabus breakdown** across all domains (`0.FUNDAMENTALS`, `1.LLD`, `2.HLD`).
+  2. **Zero Scattered Outlines in Subfolders**: No individual or redundant `outline.md`, `Outline.md`, or `outline_<topic>.md` files may exist in subdirectories or topic folders. All topic-level and subtopic-level learning outlines must be consolidated and maintained exclusively inside root `outline.md`.
+  3. **Continuous Synchronization**: Whenever a new topic, subtopic, or curriculum module is created, modified, or reorganized, the agent **MUST** update root `outline.md` to reflect the complete project-wide curriculum.
+
 ---
 
 ## 🏛️ 2. Finalized Repository Architecture & Output Guidelines (Learning-Roadmap Architecture)
@@ -124,6 +130,7 @@ These rules are permanent operational constraints. The agent must enforce them p
 System-Design/
 ├── README.md                                 # Single root project overview & Master Output Catalog
 ├── index.md                                  # Master Navigation Catalog: Topics, Queries & Notes
+├── outline.md                                # Single Master Topic Outline (consolidating all curricula)
 │
 ├── architecture/                             # Architectural Specifications Subsystem
 │   ├── architecture.md                       # Comprehensive Project Architecture & Sequence Lifecycles
@@ -132,12 +139,14 @@ System-Design/
 ├── engine/                                   # Computational & Agentic Engine Subsystem
 │   ├── engine.md                             # Scaffolding logic, Two-Tier ingestion & verification
 │   ├── scripts/                              # audit_rendering.py, extract_chapters.py, etc.
-│   ├── .agent/skills/                        # SkillGenerator, UMLSkill, UML25Spec, etc.
-│   └── Skills_Output/                        # Universal query hub & skills output
+│   └── Skills_Output/                        # Universal query hub & output staging
 │
 ├── chat/                                     # Governance, Logging & Rules Subsystem
 │   ├── universal_rules.md                    # Permanent Operational Invariants (HITL Git confirmation, etc.)
 │   └── chatLog.md                            # Full-fidelity chronological activity transcript
+│
+├── Upcoming Updates/                         # Strategic Roadmaps & Forward-Looking Blueprints
+│   └── Upcoming Updates.md                   # Shared Agent Memory roadmap & implementation plan
 │
 └── topics/                                   # Domain Knowledge & Learning Roadmaps Root
     ├── 0.FUNDAMENTALS/                       # Core Software Engineering Foundations

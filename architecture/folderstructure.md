@@ -10,6 +10,7 @@ This document details the complete canonical filesystem topology, file naming co
 Learning-Roadmap_Project-Structure/
 ├── README.md                                 # Single root project overview & entry point
 ├── index.md                                  # Master Navigation Catalog: Topics, Queries & Notes
+├── outline.md                                # Single Master Topic Outline: Consolidated Curriculum
 │
 ├── architecture/                             # Architectural Specifications Subsystem
 │   ├── architecture.md                       # Comprehensive Project Architecture & Subsystems
@@ -19,14 +20,16 @@ Learning-Roadmap_Project-Structure/
 │   └── engine.md                             # Scaffolding logic, 3-tier ingestion, RAG & STT rules
 │
 ├── chat/                                     # Governance, Logging & Rules Subsystem
-│   ├── universal_rules.md                    # 11 Permanent Operational Invariants (HITL, Audits, etc.)
+│   ├── universal_rules.md                    # 15 Permanent Operational Invariants (HITL, Audits, etc.)
 │   └── chatLog.md                            # Full-fidelity chronological transcript of all turns
 │
+├── Upcoming Updates/                         # Strategic Roadmaps & Forward-Looking Blueprints
+│   └── Upcoming Updates.md                   # Shared Agent Memory roadmap & implementation plan
+│
 └── topics/                                   # Domain Knowledge & Learning Roadmaps Root
-    └── <topic_name>/                         # Immediate Topic Subfolder (e.g. Distributed_Systems/)
-        ├── outline_<topic_name>.md           # Topic Manifest defining the terminal leaf subfolder
+    └── <topic_name>/                         # Immediate Topic Subfolder (e.g. 0.FUNDAMENTALS/)
         └── [Intermediate Subfolders...]/     # Arbitrary nesting (e.g., LLD/, Design_Patterns/)
-            └── <last_subfolder>/             # Terminal Leaf Node (Identified via outline)
+            └── <last_subfolder>/             # Terminal Leaf Node (Identified via index.md)
                 ├── template/                 # Custom Template Blueprint Directory
                 │   └── template.md           # User custom template specification
                 │
