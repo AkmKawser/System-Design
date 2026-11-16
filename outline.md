@@ -115,6 +115,20 @@ flowchart TD
   5. **High-Level Design (HLD) & Edge**: API Gateways (Envoy, Kong), Distributed Rate Limiting (Token Bucket, Leaky Bucket, Sliding Window Counter via Redis/Lua), Backend-for-Frontend (BFF).
   6. **Security & Observability**: OAuth 2.0 (PKCE, Client Credentials), OIDC, JWT vs sessions, mTLS, W3C Trace Context (OpenTelemetry).
 
+### Module 0.8: Computer Networking for Distributed Systems
+- **Directory**: [`topics/0.FUNDAMENTALS/Networking/`](topics/0.FUNDAMENTALS/Networking/)
+- **Deliverable**: [`Networking.md`](topics/0.FUNDAMENTALS/Networking/output/Note_version-1_Networking/Networking.md)
+- **Ingested Course Sources**: [`Udemy: Fundamentals of Network Engineering (Curriculum)`](topics/0.FUNDAMENTALS/Networking/Data_Ingestion/Courses/Udemy-Fundamentals%20of%20Network%20Eng/curriculum.md) by Hussein Nasser
+- **Core Syllabi**:
+  1. **Layer Abstractions**: OSI 7-Layer vs. TCP/IP 4-Layer models, packet encapsulation, and MTU/MSS fragmentation.
+  2. **Layer 2 (Data Link)**: Ethernet frames, MAC addressing, Address Resolution Protocol (ARP), broadcast domains.
+  3. **Layer 3 (Network Layer)**: IPv4 vs. IPv6 headers, CIDR subnetting, NAT / PAT, ICMP, and global routing (BGP, Anycast, OSPF).
+  4. **Layer 4 (Transport Layer)**: TCP connection lifecycle (3-way handshake, sliding window flow control, CUBIC/BBR congestion control, TIME_WAIT socket exhaustion, Nagle's algorithm) vs. UDP vs. QUIC.
+  5. **Layer 7 & Services**: DNS resolution hierarchy (Root, TLD, Authoritative, Anycast), TLS 1.3 cryptographic handshake, HTTP protocols.
+  6. **Kernel & Socket Programming**: BSD Sockets API, kernel buffers (`SO_RCVBUF`, `SO_SNDBUF`), I/O multiplexing (`select`, `poll`, `epoll`, `kqueue`, `io_uring`).
+  7. **Cloud Networking Topologies**: Virtual Private Clouds (VPCs), Public/Private subnets, Internet/NAT Gateways, Overlay networks (VXLAN), L4 vs. L7 Load Balancing.
+  8. **Security & Observability**: Network firewalls, SYN flood defenses (`syncookies`), DDoS mitigation, packet capture (`tcpdump`, Wireshark), and diagnostic CLI tooling (`ping`, `traceroute`, `ss`, `dig`).
+
 ---
 
 ## 🧩 1. LLD (Low-Level Design & Object-Oriented Modeling)

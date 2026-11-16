@@ -74,11 +74,16 @@ System-Design/
     │   ├── Science of Language Frameworks [Backend]/
     │   ├── Design System [Front End]/
     │   ├── Select Technology Stack/
-    │   └── API Architecture and Design/      # Terminal Leaf Node: API Architecture & Engineering
+    │   ├── API Architecture and Design/      # Terminal Leaf Node: API Architecture & Engineering
+    │   │   ├── template/                     # template.md (custom blueprints)
+    │   │   ├── Data_Ingestion/               # Udemy: Fundamentals of Backend Engineering
+    │   │   └── output/
+    │   │       └── Note_version-1_API_Architecture_and_Design/ # API_Architecture_and_Design.md
+    │   └── Networking/                       # Terminal Leaf Node: Computer Networking for Distributed Systems
     │       ├── template/                     # template.md (custom blueprints)
-    │       ├── Data_Ingestion/               # Udemy: Fundamentals of Backend Engineering
+    │       ├── Data_Ingestion/               # Udemy: Fundamentals of Network Engineering
     │       └── output/
-    │           └── Note_version-1_API_Architecture_and_Design/ # API_Architecture_and_Design.md
+    │           └── Note_version-1_Networking/ # Networking.md
     │
     ├── 1.LLD/                                # Low-Level Design Root
     │   ├── DESIGN_PATTERNS/                  # Terminal Leaf Node: Design Patterns
@@ -117,6 +122,7 @@ All investigative queries, multi-skill syntheses, and architectural deliverables
 | **`ARCH-STYLE-001`** | `1. Architecture Styles` | **Architectural Styles Catalog & Comparative Analysis** | Exhaustive taxonomy, topologies, and characteristic trade-offs of all 9 foundational styles from Richards & Ford | [`001_architectural_styles_catalog_and_comparative_analysis.md`](topics/0.FUNDAMENTALS/Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/1.%20Architecture%20Styles/output/query_Architecture_Styles/001_architectural_styles_catalog_and_comparative_analysis.md) |
 | **`ARCH-STYLE-002`** | `1. Architecture Styles` | **MVC and MVT in Software Architecture Classification** | Definitive taxonomy analysis: Why MVC/MVT are Technical Partitioning presentation patterns within the Layered Monolith, not standalone macro styles | [`002_mvc_mvt_in_architectural_styles_classification.md`](topics/0.FUNDAMENTALS/Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/1.%20Architecture%20Styles/output/query_Architecture_Styles/002_mvc_mvt_in_architectural_styles_classification.md) |
 | **`API-NOTE-001`** | `API Architecture` | **API Architecture and Engineering: The Definitive Unified Guide** | End-to-end master curriculum covering protocols (HTTP/1-3, gRPC, GraphQL), contract design (OpenAPI), idempotency, LLD Java 21, HLD Gateways, rate limiting, and OAuth2 | [`API_Architecture_and_Design.md`](topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.md) |
+| **`NET-NOTE-001`** | `Networking` | **Computer Networking for Systems & Distributed Architecture** | Definitive master guide covering OSI 7-layer vs TCP/IP, Ethernet, ARP, IPv4/IPv6, CIDR, NAT, TCP flow/congestion control, TLS 1.3, DNS, BSD sockets, epoll, VPCs, and packet tools | [`Networking.md`](topics/0.FUNDAMENTALS/Networking/output/Note_version-1_Networking/Networking.md) |
 | **`HLD-NOTE-001`**| `HLD_Overview` | **High-Level Design Overview & Distributed Systems Roadmap** | Foundations of large-scale architecture, distributed consensus, caching, microservices | [`HLD_Overview.md`](topics/2.HLD/HLD_Overview/output/Note_version-1_HLD_Overview/HLD_Overview.md) |
 
 ---
