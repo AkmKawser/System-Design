@@ -62,16 +62,19 @@ To understand where MVC and MVT reside, one must distinguish the three tiers of 
 
 ## 3. Direct Analysis of the Canonical Text (*Fundamentals of Software Architecture*)
 
-### 3.1. Chapter 9: Architecture Partitioning (pp. 161–166)
+> [!NOTE]
+> **Page Numbering Alignment**: Citations below provide both the **Printed Book Page** (the number printed in the header/footer of the published book) and the corresponding **PDF Reader Page** (the absolute page index in PDF viewers, offset by 24 pages due to introductory front-matter).
+
+### 3.1. Chapter 9: Architecture Partitioning (Print pp. 137–142 / PDF pp. 161–166)
 
 In Chapter 9, Richards and Ford analyze how architects decompose systems into top-level components. They establish the **First Law of Software Architecture** ("*Everything in software is a trade-off*") and define two diametrically opposed strategies for top-level partitioning:
 1. **Domain Partitioning**: Components are grouped around business workflows, domains, or bounded contexts (e.g., *Billing*, *Orders*, *Shipping*). This is the foundation of Modular Monoliths and Microservices.
 2. **Technical Partitioning**: Components are grouped by technical capabilities and layers of concern (e.g., *Presentation*, *Business Logic*, *Persistence*, *Database*).
 
-The authors explicitly locate MVC on **Page 162**:
+The authors explicitly locate MVC on **Print Page 138 (PDF Page 162)**:
 > *"Even though the basic concept of layered architecture predates it by decades, the **Model-View-Controller design pattern** (one of the fundamental patterns in Head First Design Patterns by Eric Freeman and Elisabeth Robson (O'Reilly, 2020)), **matches with this architectural pattern, making it easy for developers to understand. Thus, in many organizations, it is the default architecture.**"*
 
-And on **Page 166**:
+And on **Print Page 142 (PDF Page 166)**:
 > *"Technically partitioned architectures separate top-level components based on technical capabilities rather than discrete workflows. **This may manifest as layers inspired by Model-View-Controller separation** or some other ad hoc technical partitioning."*
 
 ![Figure 9-2: Two types of top-level partitioning: technical (such as the layered architecture) and domain (such as the modular monolith)](../../Data_Ingestion/Books/Fundamentals%20of%20Software%20Architecture%20A%20Modern%20Engineering%20Approach%20-Mark%20Richards/images/Figure_9_2_technical_vs_domain_partitioning.png)
@@ -82,7 +85,7 @@ And on **Page 166**:
 
 ---
 
-### 3.2. Chapter 10: Layered Architecture Style (pp. 169–185)
+### 3.2. Chapter 10: Layered Architecture Style (Print pp. 153–164 / PDF pp. 177–188)
 
 Chapter 10 details the **Layered Architecture Style** (also known as the *N-Tier Monolith*). It is the canonical implementation of technical top-level partitioning.
 
@@ -182,7 +185,7 @@ In MVT, the framework itself acts as the **Controller**. The developer does not 
 
 Richards and Ford emphasize that in layered architectures, architects must programmatically enforce **layer isolation** using fitness functions (e.g., ArchUnit in Java, import-linter in Python).
 
-On **Page 183–184**, they illustrate how technically partitioned Controller-Service-Repository tiers are locked down to prevent layer violation:
+On **Print Pages 159–160 (PDF Pages 183–184)**, they illustrate how technically partitioned Controller-Service-Repository tiers are locked down to prevent layer violation:
 
 ```java
 // ArchUnit architectural fitness function enforcing technical layer boundaries
@@ -230,16 +233,16 @@ Because MVC and MVT are implementations of the **Layered Architecture Style**, t
 
 Richards and Ford warn architects about specific failure modes inherent in MVC-style technical partitioning:
 
-### 7.1. The Architecture Sinkhole Antipattern (Chapter 10, p. 182)
+### 7.1. The Architecture Sinkhole Antipattern (Chapter 10, Print p. 158 / PDF p. 182)
 - **Problem**: Requests simply pass through multiple layers as simple passthroughs with zero processing logic (e.g., `Controller` calls `Service.getCustomer()`, which calls `Repository.getCustomer()`, which queries DB).
 - **Rule of Thumb**: Richards & Ford state that if **more than 20%** of requests in a system are simple passthroughs, the architecture is suffering from the Sinkhole Antipattern.
 - **Remediation**: Opening specific layers (making the Business Layer open) or migrating to a Modular Monolith.
 
-### 7.2. Global Coupling & Domain Fragmentation (Chapter 9, p. 166)
+### 7.2. Global Coupling & Domain Fragmentation (Chapter 9, Print p. 142 / PDF p. 166)
 - **Problem**: When business workflows change (e.g., adding a customer tax ID), the developer must modify files scattered across every technical layer: `customer_controller.py`, `customer_service.py`, `customer_model.py`, and the database schema.
 - **Trade-off**: Technical partitioning maximizes technical cohesion but severely degrades **functional (domain) cohesion**.
 
-### 7.3. Conway's Law Organizational Silos (Chapter 9, pp. 162–163)
+### 7.3. Conway's Law Organizational Silos (Chapter 9, Print pp. 138–139 / PDF pp. 162–163)
 - Technically partitioned architectures encourage organizations to align teams technically: the "Frontend / UI team" (Views/Templates), the "Backend team" (Controllers/Services), and the "DBA team" (Models/Schemas).
 - This structure creates organizational friction and slow delivery pipelines because every single user-facing feature requires cross-department coordination.
 
