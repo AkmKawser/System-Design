@@ -548,6 +548,83 @@ Canonical Pattern: https://api.enterprise.com/v1/{resource}/{resource-id}/{sub-r
 | **`DELETE`**| Remove resource | No | **YES** | No |
 | **`POST`** | Create child / trigger process | No | **NO** | Only with explicit cache headers |
 
+### 4.3. Data Interchange Formats: XML vs. JSON vs. Protocol Buffers
+
+Modern APIs rely on standardized data interchange formats to transmit structured payloads across the wire:
+
+| Dimension | JSON (JavaScript Object Notation) | XML (Extensible Markup Language) | Protocol Buffers (Protobuf) |
+| :--- | :--- | :--- | :--- |
+| **Encoding** | Human-readable Text | Human-readable Text (Tags & Attributes) | Compact Binary Framing |
+| **Schema Standard** | JSON Schema (Draft 2020-12) | XSD (XML Schema Definition) | `.proto` Interface Definition Language (IDL) |
+| **Parsing Overhead** | Low to Moderate (Standardized CPU parsers) | **High** (Complex DOM/SAX tree traversal) | **Ultra-Low** (Pre-compiled zero-copy deserialization) |
+| **Payload Size** | Moderate (Repeats field keys in every payload) | **Heavy** (Extensive opening/closing tags) | **Smallest** (Field tags replace strings on wire; 60–80% smaller) |
+| **Primary Domain** | Public REST APIs, Mobile/Web Backends | Enterprise Legacy, SOAP Services, Financial (ISO 20022) | High-throughput internal microservices (gRPC) |
+
+#### HTTP Content Negotiation
+Clients and servers negotiate the payload format dynamically using standard HTTP headers:
+- `Content-Type`: Declares the format of the payload currently sent in the request or response (e.g. `Content-Type: application/json; charset=utf-8`).
+- `Accept`: Declares which format the client is willing to receive from the server (e.g. `Accept: application/json, application/xml;q=0.5`).
+- If the server cannot satisfy the requested format, it returns **`HTTP 406 Not Acceptable`**.
+
+---
+
+### 4.4. Serializer and Deserializer (SerDe) Architecture
+
+Serialization and Deserialization are the bidirectional transformation engines that sit between in-memory language runtime objects and external network wire formats.
+
+```mermaid
+flowchart LR
+    subgraph ClientSide ["Client Application"]
+        CO["In-Memory Object\n(Client Runtime)"]
+    end
+
+    subgraph Wire ["Network Wire (HTTP / TCP)"]
+        Payload["Serialized Payload\n(JSON / XML / Protobuf Bytes)"]
+    end
+
+    subgraph ServerSide ["Backend Service"]
+        DTO["Data Transfer Object (DTO)\nwith Schema Validation"]
+        Entity["Internal Domain Entity\n(Database / ORM Model)"]
+    end
+
+    CO -->|"Serialization\n(toJson / encode)"| Payload
+    Payload -->|"Deserialization & Validation\n(Type-checking, Sanitization)"| DTO
+    DTO -->|"Entity Mapping\n(Business Logic)"| Entity
+    Entity -->|"DTO Projection\n(Strip Sensitive PII)"| DTO
+    DTO -->|"Serialization\n(Response Payload)"| Payload
+```
+
+#### Engineering Invariants of API SerDe:
+1. **Never Expose Internal ORM Entities**: Always deserialize incoming requests into dedicated **Data Transfer Objects (DTOs)** and project outgoing data via response DTOs. Exposing database entities directly introduces **Mass Assignment Vulnerabilities** (e.g. an attacker injecting `"is_admin": true` in a user update request).
+2. **Strict Schema & Type Validation**: Deserializers must reject unknown properties or type mismatches early, returning **`HTTP 422 Unprocessable Content`** or **`HTTP 400 Bad Request`** with detailed field-level error messages before touching business logic.
+3. **Deserialization Security (RCE Defense)**: Never enable polymorphic default typing in deserializers (such as unsafe Jackson `enableDefaultTyping()` or Python `pickle`), which allows attackers to instantiate arbitrary Java/Python gadget classes on the server and trigger Remote Code Execution (RCE).
+
+---
+
+### 4.5. Data Passing Techniques in APIs
+
+APIs provide 5 distinct mechanisms to transmit data from the caller to the server. Choosing the correct mechanism preserves HTTP semantics and enables caching:
+
+```mermaid
+flowchart TD
+    subgraph DataPassing ["5 API Data Passing Channels"]
+        direction TB
+        C1["1. Path Parameters: /v1/users/{userId}/orders/{orderId}\n• Primary identity and hierarchical resource navigation\n• Immutable resource identifiers"]
+        C2["2. Query Parameters: /v1/products?category=shoes&sort=price&limit=20\n• Filtering, searching, sorting, and pagination\n• Optional parameters with sensible defaults"]
+        C3["3. Request Headers: Authorization: Bearer <token>, Accept-Language: fr-FR\n• Metadata, credentials, idempotency keys, and routing context\n• Never pass sensitive business data in URL paths"]
+        C4["4. Request Body: POST /v1/users (JSON / XML payload)\n• Complex nested objects, mutation payloads, and bulk arrays\n• Preserved across POST, PUT, and PATCH methods"]
+        C5["5. Multipart Form Data: multipart/form-data (RFC 7578)\n• Binary file uploads combined with structured JSON metadata\n• Boundaries separate discrete text and file chunks"]
+    end
+```
+
+| Channel | Best For | Invariant Rule |
+| :--- | :--- | :--- |
+| **Path Parameters** | Resource identification (`/orders/{id}`) | Must be stable, URL-encoded, and never contain PII (e.g. use UUIDs instead of email addresses). |
+| **Query Parameters** | Filtering, sorting, cursor pagination (`?page=2&limit=50`) | Must not alter resource identity; safe to log in server access logs (do not put passwords/tokens here). |
+| **Request Headers** | Auth, correlation, caching, content negotiation | Case-insensitive; standard headers preferred over legacy `X-` prefixes. |
+| **Request Body** | Complex payloads, creates, updates | Prohibited on `GET` and `DELETE` requests in standard HTTP caching specifications. |
+| **Multipart Form Data** | Media uploads with metadata | Requires streaming parsers to prevent loading multi-gigabyte files into server RAM. |
+
 ---
 
 ## 5. Layer 3: Advanced Behavioral Design Patterns
@@ -639,6 +716,162 @@ Never return plain text or ad-hoc JSON errors (`{"error": "bad request"}`). Impl
   ]
 }
 ```
+
+---
+
+### 5.5. API Caching & Conditional Requests
+
+High-performance APIs minimize network payload and database load using a multi-tiered caching topology:
+
+```mermaid
+flowchart LR
+    Client["Client Browser / Mobile"] -->|"1. Check Local Cache"| ClientCache["HTTP Client Cache"]
+    Client -->|"2. Cache Miss: Request"| CDN["CDN Edge Cache (Cloudflare/CloudFront)"]
+    CDN -->|"3. Edge Miss: Forward"| Gateway["API Gateway / Reverse Proxy"]
+    Gateway -->|"4. Check Key"| Redis["In-Memory Distributed Cache (Redis)"]
+    Gateway -->|"5. App Execution"| App["Backend Application & Database"]
+```
+
+#### Core HTTP Caching Directives (`Cache-Control`)
+- `public`: Response may be cached by any intermediate node (CDNs, proxies, browsers).
+- `private`: Response is user-specific; may only be stored in private client caches (e.g. browser), never in shared CDNs.
+- `no-cache`: Cache may store the response, but **must revalidate with the origin server** via conditional requests before serving it.
+- `no-store`: Prohibits storing the response anywhere under any circumstances (mandatory for sensitive banking/PII endpoints).
+- `max-age=<seconds>`: Maximum relative time the response is considered fresh.
+- `s-maxage=<seconds>`: Overrides `max-age` specifically for shared caches (CDNs).
+- `stale-while-revalidate=<seconds>`: Allows serving a stale cached response immediately while asynchronously fetching an updated version in the background.
+
+#### Validation Caching with ETags and Conditional Requests
+When a resource is cached, the server returns an **Entity Tag (ETag)** representing a hash of the resource state:
+
+```http
+HTTP/1.1 200 OK
+ETag: "686897696a7c76edd82"
+Cache-Control: public, max-age=3600, no-cache
+```
+
+On subsequent requests, the client sends a conditional request:
+```http
+GET /v1/products/8842 HTTP/1.1
+If-None-Match: "686897696a7c76edd82"
+```
+
+1. If the resource has **not changed**, the server returns **`HTTP 304 Not Modified`** with **zero payload body**, saving database queries and network bandwidth.
+2. If the resource has changed, the server returns **`HTTP 200 OK`** with the updated payload and a new `ETag`.
+
+---
+
+### 5.6. Localization and Internationalization (i18n)
+
+Production APIs serving global client applications must decouple presentation language, formatting, and time from internal business logic:
+
+1. **Language Negotiation via `Accept-Language`**:
+   - Clients send their language preference with quality factors:
+     ```http
+     Accept-Language: es-MX, es;q=0.9, en-US;q=0.8, en;q=0.7
+     ```
+   - The backend resolves the closest matching resource bundle, falling back to a default system locale if no match exists.
+2. **Localized Error & Validation Payloads**:
+   - The API contract returns localized messages alongside machine-readable invariant error codes:
+     ```json
+     {
+       "code": "INVALID_POSTAL_CODE",
+       "message": "El código postal ingresado no es válido para México.",
+       "locale": "es-MX"
+     }
+     ```
+3. **Currencies & Number Formatting**:
+   - Never store formatted currency strings (e.g. `$100.00`). Return the raw integer minor unit alongside the **ISO 4217 currency code**:
+     ```json
+     { "amount": 10000, "currency": "USD" }
+     ```
+4. **Timezones & Timestamps**:
+   - APIs must store and transmit all timestamps in **UTC in ISO 8601 format** (`2026-11-17T01:25:00Z`).
+   - Clients may transmit a `Time-Zone` or `X-Timezone` header (e.g. `Time-Zone: America/New_York`) when request processing requires business day calculations.
+
+---
+
+### 5.7. Direct Application Work: File Upload & Blob Streaming Architecture
+
+Streaming large file uploads (video, high-res images, archives) directly through application API servers causes thread pool exhaustion, high memory pressure, and gateway timeouts.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as Client App
+    participant API as API Gateway / Backend
+    participant Storage as Cloud Object Storage (S3 / GCS)
+
+    Note over Client,Storage: The Direct-to-Storage Pre-Signed URL Pattern
+    Client->>API: POST /v1/files/upload-url (filename, mime, size)
+    API->>API: Validate user permissions & file size limits
+    API->>Storage: Generate cryptographic Pre-Signed PUT URL (TTL: 15 min)
+    Storage-->>API: Return signed URL
+    API-->>Client: HTTP 200 OK (upload_url, file_id)
+    
+    Client->>Storage: PUT upload_url (Stream binary payload to cloud storage)
+    Storage-->>Client: HTTP 200 OK (ETag header)
+    
+    Client->>API: POST /v1/files/file_992/complete (Confirms upload finished)
+    API-->>Client: HTTP 200 OK (File Resource Active)
+```
+
+#### Upload Invariants:
+1. **Never Buffer in RAM**: If an API server must proxy file uploads, enforce streaming chunked transfers directly to disk or upstream storage rather than reading the entire payload into a byte array in memory.
+2. **Validate MIME Types via Magic Bytes**: Never trust the client's `Content-Type` header or file extension. Inspect the initial file header bytes (magic numbers) on the server to prevent malicious executable uploads.
+
+---
+
+### 5.8. Direct Application Work: Batching, Bulk Operations & Transactional APIs
+
+When client workflows require modifying dozens or hundreds of resources, firing individual HTTP requests introduces massive network latency round-trips:
+
+1. **Atomic Bulk Endpoint**:
+   - `POST /v1/orders/batch`
+   - Either all items in the batch succeed or the entire batch rolls back transactionally (`HTTP 200 OK` or `HTTP 400 Bad Request`).
+2. **Partial Execution with `HTTP 207 Multi-Status` (RFC 4918)**:
+   - For high-volume ingestions where independent failures should not fail the entire batch:
+   ```json
+   {
+     "status": 207,
+     "results": [
+       { "id": "item_1", "status": 201, "data": { "created_at": "..." } },
+       { "id": "item_2", "status": 422, "error": { "code": "DUPLICATE_SKU", "message": "SKU already exists" } },
+       { "id": "item_3", "status": 201, "data": { "created_at": "..." } }
+     ]
+   }
+   ```
+
+---
+
+### 5.9. Direct Application Work: Webhooks & Reverse APIs (Outbound Event Callbacks)
+
+A Webhook is an **inversion of the API request model**: instead of the client continuously polling the API, the API server acts as an HTTP client that sends an asynchronous POST request to a client-configured URL when an event occurs.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant System as Internal Event Bus (Kafka / RabbitMQ)
+    participant Worker as Webhook Dispatch Worker
+    participant ClientHook as Client Webhook Endpoint (HTTPS)
+
+    System->>Worker: Event: payment.succeeded (Order #8842)
+    Worker->>Worker: Compute HMAC SHA-256 signature using Client Secret
+    Worker->>ClientHook: POST https://client.app/webhooks/payments (with X-Signature-256 and X-Timestamp)
+    
+    alt Client returns 2xx within 5 seconds
+        ClientHook-->>Worker: HTTP 200 OK
+        Worker->>Worker: Mark webhook delivery successful
+    else Client times out or returns 5xx error
+        ClientHook-->>Worker: HTTP 500 Internal Error / Timeout
+        Worker->>Worker: Schedule exponential backoff retry (1m, 5m, 30m, 2h, 24h)
+    end
+```
+
+#### Webhook Security Invariants:
+1. **HMAC SHA-256 Signatures**: Include an `X-Signature-256` header calculated as `HMAC_SHA256(timestamp + "." + payload, shared_secret)`. This guarantees payload integrity and authenticates the sender.
+2. **Replay Attack Defense**: Include an `X-Timestamp` header. The receiver must reject requests older than 5 minutes to prevent replay attacks.
+3. **Strict Timeout Enforcements**: Dispatch workers must set a strict connection and read timeout (e.g. 5 seconds) to prevent slow external client servers from exhausting worker thread pools.
 
 ---
 
@@ -909,17 +1142,100 @@ When a frontend L7 proxy and a backend server disagree on the boundaries of an H
 
 ## 8. Layer 6: Security, Governance & Observability
 
-### 8.1. Authentication & Authorization Protocols
-1. **OAuth 2.0 (RFC 6749)**: Authorization framework delegation protocol.
-   - **Authorization Code Flow with PKCE**: Mandatory for Single Page Apps (SPA) and Native Mobile Apps (mitigates authorization code interception attacks).
-   - **Client Credentials Flow**: Used for machine-to-machine (M2M) service authentication without user involvement.
-2. **OpenID Connect (OIDC)**: Identity layer built on top of OAuth 2.0 issuing standardized **ID Tokens** (JWTs) containing identity claims (`sub`, `email`, `roles`).
-3. **JSON Web Tokens (JWT) vs Opaque Sessions**:
-   - **JWT (Stateless)**: Cryptographically signed (RS256 / EdDSA). Gateways verify signature locally using public key (JWKS) with zero database lookups.
-   - **The Revocation Dilemma**: Stateless JWTs cannot be invalidated immediately if a user is compromised. **Mitigation**: Short expiration lifetimes (5–15 minutes) paired with stateful refresh tokens stored in Redis.
-4. **Mutual TLS (mTLS)**: Enforces bidirectional cryptographic verification where both client and server present X.509 certificates. Primary standard for service-mesh intra-cluster communication.
+### 8.1. Authentication (Verification) vs. Authorization (Access Validation)
 
-### 8.2. Distributed Observability: OpenTelemetry & W3C Trace Context
+API security establishes two distinct cryptographic and logical boundaries:
+
+```mermaid
+flowchart LR
+    Request["Incoming API Request"] --> AuthN{"1. Authentication\n(Verification)\n'Who are you?'"}
+    AuthN -->|Invalid / Missing| E401["HTTP 401 Unauthorized\n(WWW-Authenticate header)"]
+    AuthN -->|Valid Identity| AuthZ{"2. Authorization\n(Validation)\n'Are you allowed to do this?'"}
+    AuthZ -->|Insufficient Scope / Role| E403["HTTP 403 Forbidden\n(Access Denied)"]
+    AuthZ -->|Authorized| Execution["3. Controller & Business Logic Execution"]
+```
+
+| Security Dimension | Authentication (AuthN - Verification) | Authorization (AuthZ - Validation) |
+| :--- | :--- | :--- |
+| **Core Question** | *"Who is making this API request?"* | *"Does this verified caller have permission to perform this action on this resource?"* |
+| **Verification Medium** | Passwords, API Keys, JWT signatures, mTLS client certificates, biometric passkeys | Roles (RBAC), Permissions, OAuth 2.0 Scopes (`read:reports`, `write:orders`), Attribute-Based Policies (ABAC) |
+| **HTTP Failure Status** | **`HTTP 401 Unauthorized`** (Mandates a `WWW-Authenticate` response header) | **`HTTP 403 Forbidden`** (Identity is known and valid, but caller lacks necessary privileges) |
+| **Common Protocols** | OpenID Connect (OIDC), HTTP Basic / Bearer, mTLS (RFC 8705) | OAuth 2.0 (RFC 6749), Open Policy Agent (OPA), AWS IAM / XACML |
+
+---
+
+### 8.2. User Registration & Client Onboarding Lifecycle
+
+APIs expose distinct onboarding channels for human end-users versus automated third-party developer applications:
+
+#### A. End-User Account Registration (`POST /v1/auth/register`)
+1. **Payload**: Client submits user credentials (`email`, `password`, `name`).
+2. **Password Invariant**: Passwords must **never** be stored in plaintext or fast hashing algorithms (MD5, SHA-256). Backends must enforce adaptive, memory-hard hashing functions: **Argon2id** (winner of the Password Hashing Competition) or **BCrypt** (work factor >= 12).
+3. **Verification Token**: The API emits an asynchronous email/SMS containing a cryptographically signed, short-lived activation token (`POST /v1/auth/verify?token=...`).
+
+#### B. Third-Party Developer & Client Application Registration
+1. **Dynamic Client Registration (RFC 7591)** or Developer Portal onboarding:
+   - Developer registers an external client application, providing redirect URIs and company metadata.
+2. **Credential Provisioning**:
+   - The API generates a public **Client ID** (`client_id`) and a cryptographically random, high-entropy **Client Secret** (`client_secret`).
+   - The `client_secret` is displayed **only once** upon creation and stored hashed on the backend.
+3. **Scope Grant Assignment**: The developer requests specific access scopes (e.g. `orders:read`), requiring administrative approval or user consent.
+
+---
+
+### 8.3. Session Cookie Tokens vs. Stateless Bearer Tokens
+
+APIs handle client state and identity through two competing paradigms:
+
+| Architectural Dimension | Stateful Session Cookies (`Set-Cookie`) | Stateless Bearer Tokens (JWT in `Authorization`) |
+| :--- | :--- | :--- |
+| **Storage Mechanism** | Browser Cookie jar (`HttpOnly; Secure; SameSite=Strict`) | Client memory / Secure Storage (iOS Keychain / Android Keystore) |
+| **Transport Header** | Automatically attached by browser: `Cookie: session_id=s_882` | Explicitly attached by client code: `Authorization: Bearer <jwt>` |
+| **Server State Cost** | **Stateful**: Requires fast shared cache (Redis) to look up session data on every call | **Stateless**: Zero database lookups; server verifies signature using public key |
+| **Revocation Speed** | **Immediate**: Deleting the key in Redis revokes the session instantly | **Difficult**: Token remains valid until TTL expires unless checked against a blacklist |
+| **Cross-Platform Fit** | Ideal for traditional browser web applications | **Universal**: Standard for Mobile apps, SPA frontends, CLI tools, and microservices |
+| **CSRF Vulnerability** | **High** (Browser attaches cookies automatically on cross-site calls) | **Immune** (Browsers never attach custom `Authorization` headers automatically) |
+
+---
+
+### 8.4. Cross-Site Request Forgery (CSRF) in API Systems
+
+Cross-Site Request Forgery (CSRF) is an attack where a malicious website tricks a user's browser into executing unwanted actions on a trusted API where the user is currently authenticated.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Victim as User (Browser)
+    participant BankAPI as Bank API (api.bank.com)
+    actor Attacker as Evil Site (evil.com)
+
+    Note over Victim,BankAPI: 1. User logs into Bank API. Bank sets Session Cookie.
+    Victim->>BankAPI: POST /login (Credentials)
+    BankAPI-->>Victim: Set-Cookie: session_id=xyz; Path=/; Domain=bank.com
+    
+    Note over Victim,Attacker: 2. User visits malicious site while session is active.
+    Victim->>Attacker: Visit evil.com
+    Attacker-->>Victim: Returns page with hidden form auto-submitting to api.bank.com
+    
+    Note over Victim,BankAPI: 3. Browser executes auto-submitting form.
+    Victim->>BankAPI: POST /transfer (Browser attaches cookie automatically!)
+    BankAPI->>BankAPI: Validates session_id cookie and transfers funds!
+```
+
+#### Why Pure Token-Based APIs Are Immune to CSRF:
+- If an API requires identity via the `Authorization: Bearer <token>` header, **CSRF attacks are impossible**.
+- Browsers *never* automatically attach custom `Authorization` headers to cross-origin requests. An attacker script on `evil.com` cannot read the victim's token due to the browser's **Same-Origin Policy (SOP)**.
+
+#### Protection for Cookie-Authenticated APIs:
+1. **`SameSite=Strict` Cookie Flag**: Tells the browser never to send the cookie on cross-site requests (e.g. following links from external sites).
+2. **Anti-CSRF Synchronizer Tokens (Double-Submit Cookie Pattern)**:
+   - Server provides an unguessable CSRF token in a non-HttpOnly cookie or via an initial `GET /csrf-token` call.
+   - Client JavaScript reads the token and injects it into a custom header: `X-CSRF-Token: <token>`.
+   - The server validates that the header token matches the session expectation before executing any mutating method (`POST`, `PUT`, `DELETE`).
+
+---
+
+### 8.5. Distributed Observability: OpenTelemetry & W3C Trace Context
 To trace an API request across 20 distributed microservices, APIs propagate standard **W3C Trace Context** HTTP headers:
 - `traceparent`: `00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01`
   - `00`: Protocol version.
@@ -927,7 +1243,9 @@ To trace an API request across 20 distributed microservices, APIs propagate stan
   - `00f067aa...`: Parent Span ID (identifies the immediate upstream calling node).
   - `01`: Trace flags (Sampling active).
 
-### 8.3. The 10-Stage Journey of an API Request to the Backend
+---
+
+### 8.6. The 10-Stage Journey of an API Request to the Backend
 
 > **Source**: Hussein Nasser, *Fundamentals of Backend Engineering*, Section 7 ("The Journey of a Request to the Backend").
 
@@ -950,7 +1268,9 @@ flowchart TD
     class S1,S2,S3,S4,S5,S6,S7,S8,S9,S10 stageStyle;
 ```
 
-### 8.4. Graceful API Connection Shutdown
+---
+
+### 8.7. Graceful API Connection Shutdown
 When deploying new backend versions, servers must never terminate abruptly (which drops in-flight API requests with `502 Bad Gateway`):
 1. **Deregistration**: Load balancer stops sending new traffic to the retiring node.
 2. **Connection Draining**: The server injects the HTTP header `Connection: close` on all active responses.
