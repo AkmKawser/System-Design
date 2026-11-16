@@ -35,8 +35,8 @@ Learning-Roadmap_Project-Structure/
                 │
                 ├── Data_Ingestion/           # Multi-Source Knowledge Ingestion Gateway
                 │   ├── Books/                # Dedicated Encapsulated Book Folders (Rule 16)
-                │   │   └── <book_name>/      # Dedicated subfolder matching the book title
-                │   │       ├── <book_name>.pdf  # Source PDF book
+                │   │   └── <short_slug>/     # Dedicated subfolder (Max 25 chars, kebab-case, no spaces)
+                │   │       ├── <short_slug>.pdf # Source PDF book (Max 30 chars, no spaces)
                 │   │       ├── images/       # Extracted figures and book diagrams
                 │   │       ├── chapters/     # Extracted chapter markdowns
                 │   │       └── indices/      # TOC JSON & markdown structural indices

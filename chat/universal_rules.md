@@ -120,15 +120,19 @@ These rules are permanent operational constraints. The agent must enforce them p
   2. **Zero Scattered Outlines in Subfolders**: No individual or redundant `outline.md`, `Outline.md`, or `outline_<topic>.md` files may exist in subdirectories or topic folders. All topic-level and subtopic-level learning outlines must be consolidated and maintained exclusively inside root `outline.md`.
   3. **Continuous Synchronization**: Whenever a new topic, subtopic, or curriculum module is created, modified, or reorganized, the agent **MUST** update root `outline.md` to reflect the complete project-wide curriculum.
 
-### Rule 16: Isolated Book Encapsulation & Dedicated Book Folder Protocol
-- **Directive**: Every PDF book in the repository **MUST** reside inside its own dedicated subfolder named after the book itself under `Data_Ingestion/Books/<Book_Folder_Name>/`. Loose PDF book files directly under `Data_Ingestion/Books/` are strictly prohibited.
+### Rule 16: Isolated Book Encapsulation & Concise Naming Protocol (Max Length Limits)
+- **Directive**: Every PDF book in the repository **MUST** reside inside its own dedicated subfolder under `Data_Ingestion/Books/<Book_Folder_Name>/`. Loose PDF book files directly under `Data_Ingestion/Books/` are strictly prohibited. Both the folder name and the PDF file name **MUST adhere to strict character length limits and clean slug conventions** to prevent Windows OS MAX_PATH (260 characters) violations and ensure desktop accessibility.
+- **Strict Character Length & Slug Limits**:
+  1. **Folder Name Character Limit**: **Maximum 25 characters** (`len(folder_name) <= 25`). Must use clean, concise kebab-case or snake_case slugs without spaces, subtitles, authors, or special punctuation (e.g., `fund-soft-arch/`, `arch-patterns/`, `arch-viewpoints/`, `headfirst/`, `umlBook/`).
+  2. **PDF File Name Character Limit**: **Maximum 30 characters** (`len(file_name) <= 30`, including the `.pdf` extension). Must be concise, matching the folder slug (e.g., `fund-soft-arch.pdf`, `arch-patterns.pdf`, `arch-viewpoints.pdf`, `uml-diagramming.pdf`).
+  3. **Zero Whitespace & URL Safety**: No spaces or special characters (`[]`, `()`, `&`, `+`) are permitted in book folder or file names. This eliminates URL-encoding artifacts (`%20`) in markdown image links and guarantees cross-platform compatibility across Windows Explorer, macOS, Linux, and terminal CLIs.
 - **Mandatory Principles & Invariants**:
-  1. **Automated Folder Creation by Agent**: Whenever the user supplies, drops, or requests the ingestion of a book PDF, the agent **MUST automatically create** a dedicated subfolder matching the book's name (or a clean, canonical identifier of the book) inside `Data_Ingestion/Books/`.
+  1. **Automated Folder Creation by Agent**: Whenever the user supplies, drops, or requests the ingestion of a book PDF, the agent **MUST automatically create** a dedicated concise subfolder obeying the maximum 25-character limit inside `Data_Ingestion/Books/`.
   2. **Complete Book Asset Co-location**: All data, assets, extracted figures, vector diagrams, chapter breakdowns, and indices derived from that book **MUST** be placed and preserved exclusively inside that specific book's dedicated folder:
-     - The source PDF itself: `Data_Ingestion/Books/<Book_Folder_Name>/<Book_Name>.pdf`
-     - Extracted figures/images: `Data_Ingestion/Books/<Book_Folder_Name>/images/` (or `vector_images/`)
-     - Extracted chapters: `Data_Ingestion/Books/<Book_Folder_Name>/chapters/`
-     - Book documentation and guides: `Data_Ingestion/Books/<Book_Folder_Name>/<Book_Name>.md`
+     - Source PDF: `Data_Ingestion/Books/<short_slug>/<short_slug>.pdf`
+     - Extracted figures/images: `Data_Ingestion/Books/<short_slug>/images/` (or `vector_images/`)
+     - Extracted chapters: `Data_Ingestion/Books/<short_slug>/chapters/`
+     - Book documentation and guides: `Data_Ingestion/Books/<short_slug>/<short_slug>.md`
   3. **Strict Inter-Book Isolation**: No book assets or images may spill into the parent `Data_Ingestion/Books/` directory or mix with assets belonging to another book. Every book folder forms an isolated, self-contained knowledge package.
 
 ---

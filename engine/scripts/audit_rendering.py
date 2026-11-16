@@ -150,9 +150,30 @@ def check_single_readme() -> list[str]:
             if p.resolve() != (repo_root / "README.md").resolve():
                 extras.append(p)
     return [f"Rule 10 violation: extra README found: {p.relative_to(repo_root)} (rename to <Topic>.md)" for p in sorted(extras)]
+
+def check_rule16_book_naming() -> list[str]:
+    """Rule 16: Book folders <= 25 chars, book PDFs <= 30 chars, no spaces."""
+    repo_root = ROOT_DIR.parent if (ROOT_DIR.parent / "README.md").exists() else ROOT_DIR
+    errors = []
+    for book_dir in repo_root.rglob("Data_Ingestion/Books/*"):
+        if book_dir.is_dir() and book_dir.parent.name == "Books":
+            if len(book_dir.name) > 25:
+                errors.append(f"Rule 16 violation: Book folder name too long ({len(book_dir.name)} > 25 chars): '{book_dir.name}'")
+            if " " in book_dir.name:
+                errors.append(f"Rule 16 violation: Book folder name contains spaces: '{book_dir.name}'")
+            for pdf_file in book_dir.glob("*.pdf"):
+                if len(pdf_file.name) > 30:
+                    errors.append(f"Rule 16 violation: Book PDF file name too long ({len(pdf_file.name)} > 30 chars): '{pdf_file.name}'")
+                if " " in pdf_file.name:
+                    errors.append(f"Rule 16 violation: Book PDF file name contains spaces: '{pdf_file.name}'")
+    return errors
+
 def main():
     readme_issues = check_single_readme()
     for issue in readme_issues:
+        print(f"[FAIL] {issue}")
+    book_naming_issues = check_rule16_book_naming()
+    for issue in book_naming_issues:
         print(f"[FAIL] {issue}")
     all_files_flag = "--all" in sys.argv
     targets = get_target_files(all_files=all_files_flag)
@@ -162,7 +183,7 @@ def main():
         sys.exit(0)
 
     print(f"🔍 Auditing {len(targets)} markdown file(s) for rendering integrity...")
-    total_errors = 0
+    total_errors = len(readme_issues) + len(book_naming_issues)
     
     for target in targets:
         rel_path = target.relative_to(ROOT_DIR) if target.is_relative_to(ROOT_DIR) else target

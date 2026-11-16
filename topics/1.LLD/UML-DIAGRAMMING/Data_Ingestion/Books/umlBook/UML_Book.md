@@ -7,7 +7,7 @@ This directory houses comprehensive reference books and case-study manuals cover
 ## 📚 Curated Books in this Directory
 
 ### 1. `UML Diagramming: A Case Study Approach`
-- **File**: `[BEST] UML Diagramming.pdf`
+- **File**: `uml-diagramming.pdf`
 - **Author**: Dr. Suriya Sundaramoorthy
 - **Publisher**: CRC Press / Taylor & Francis Group (1st Edition, 2022)
 - **Volume**: 431 pages, 40 Chapters

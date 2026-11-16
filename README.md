@@ -134,7 +134,7 @@ All interactions in this repository are governed by the Universal Rules document
 13. **Rule 13: No `.gitignore` Without Explicit User Instruction** — Never create, modify, or add `.gitignore` files unless requested.
 14. **Rule 14: Comprehensive Resource Image Ingestion for Queries** — Extract and embed relevant diagrams, topologies, and figures from referenced books and courses into query manuals.
 15. **Rule 15: Single `outline.md` Policy (Universal Master Topic Outline Protocol)** — Exactly one `outline.md` file at the repository root where strictly and exclusively topic curriculum outlines from all over the project are kept.
-16. **Rule 16: Isolated Book Encapsulation & Dedicated Book Folder Protocol** — Every PDF book must reside in its own dedicated folder of the same name under `Data_Ingestion/Books/`, automatically created by the agent, co-locating all extracted images and assets.
+16. **Rule 16: Isolated Book Encapsulation & Concise Naming Protocol (Max Length Limits)** — Every PDF book must reside in its own dedicated subfolder under `Data_Ingestion/Books/<short_slug>/` (folder max 25 chars, PDF max 30 chars, no spaces/special chars) co-locating all extracted images and assets to guarantee desktop accessibility and prevent Windows path length violations.
 
 ---
 
