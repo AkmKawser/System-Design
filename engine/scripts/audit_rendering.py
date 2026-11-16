@@ -42,10 +42,10 @@ def get_target_files(all_files: bool = False) -> list[Path]:
         for line in res.stdout.strip().split("\n"):
             if not line:
                 continue
-            path_str = line[3:].strip()
+            path_str = line[3:].strip().strip('"\'')
             # Handle renames e.g. R old -> new
             if " -> " in path_str:
-                path_str = path_str.split(" -> ")[1].strip()
+                path_str = path_str.split(" -> ")[1].strip().strip('"\'')
             p = ROOT_DIR / path_str
             if p.suffix.lower() == ".md" and p.exists():
                 changed_paths.append(p)
