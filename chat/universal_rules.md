@@ -174,7 +174,7 @@ System-Design/
     │   ├── Science of Language Frameworks [Backend]/
     │   ├── Design System [Front End]/
     │   ├── Select Technology Stack/
-    │   └── API Architecture and Design/          # Terminal Leaf: template/, Data_Ingestion/, output/
+    │   └── API Architecture and Design/      # Terminal Leaf: template/, Data_Ingestion/Courses/, output/
     │
     ├── 1.LLD/                                # Low-Level Design Root
     │   ├── outline_1.LLD.md                  # LLD Manifest
