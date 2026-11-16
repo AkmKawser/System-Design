@@ -106,6 +106,7 @@ flowchart TD
 ### Module 0.7: API Architecture and Design
 - **Directory**: [`topics/0.FUNDAMENTALS/API Architecture and Design/`](topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/)
 - **Deliverable**: [`API_Architecture_and_Design.md`](topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.md)
+- **Ingested Course Sources**: [`Udemy: Fundamentals of Backend Engineering (Curriculum)`](topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/Data_Ingestion/Courses/Udemy-Fundamentals%20of%20Backend%20Engineering/curriculum.md) by Hussein Nasser
 - **Core Syllabi**:
   1. **Protocols & Transport**: TCP/UDP, HTTP/1.1, HTTP/2 (multiplexing, HPACK), HTTP/3 QUIC (UDP binary framing, 0-RTT, connection migration), REST, gRPC (Protobuf IDL), GraphQL (DataLoader), WebSockets, SSE.
   2. **Contract-First Specifications**: OpenAPI 3.1 / Swagger, AsyncAPI, Protobuf `.proto`, URI modeling, safe & idempotent HTTP methods, RFC 7807 Problem Details.
