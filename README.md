@@ -12,7 +12,7 @@ The repository is organized into distinct operational and domain subsystems:
 2. **`engine/`**: Autonomous execution engine, leaf discovery algorithms, multi-source data ingestion pipelines (Books, Courses, Random), and rendering audit tooling.
 3. **`chat/`**: Permanent governance invariants ([`chat/universal_rules.md`](chat/universal_rules.md)) and full-fidelity chronological session log ([`chat/chatLog.md`](chat/chatLog.md)).
 4. **`topics/`**: Domain knowledge root hosting all learning topics (Fundamentals, LLD, HLD), structured into modular leaf nodes with standardized `Data_Ingestion/`, `template/`, and `output/` directories.
-5. **`outline.md`**: Master navigation catalog indexing all topics, query deliverables, and versioned notes across the project.
+5. **`index.md`**: Master navigation catalog indexing all topics, query deliverables, and versioned notes across the project.
 
 ```mermaid
 flowchart TD
@@ -21,7 +21,7 @@ flowchart TD
     subgraph Control_Plane ["Control Plane & Operations"]
         Rules["chat/universal_rules.md (Operational Invariants)"]
         ChatLog["chat/chatLog.md (Full-Fidelity Activity Log)"]
-        Nav["outline.md & README.md (Master Catalogs)"]
+        Nav["index.md & README.md (Master Catalogs)"]
     end
     
     subgraph Execution_Engine ["Project Engine (engine/engine.md)"]
@@ -106,9 +106,9 @@ All investigative queries, multi-skill syntheses, and architectural deliverables
 | **`QUERY-002`** | `UML_Metamodels` | **UML Sequence Diagrams & Object Interaction Mechanics** | Interaction taxonomy, 9 OOP concepts, Clause 17 formal metamodel, Java 21, JVM heap/stack | [`002_sequence_diagram_and_object_interactions.md`](topics/1.LLD/UML-DIAGRAMMING/output/query_UML-DIAGRAMMING/002_sequence_diagram_and_object_interactions.md) |
 | **`LLD-DP-001`** | `DESIGN_PATTERNS` | **Software Design Patterns, Anti-Patterns & Inefficient Traps** | Complete behavioral, structural, creational, and concurrency design patterns alongside specific anti-patterns, misuse traps, and inefficient implementation flaws | [`design_patterns.md`](topics/1.LLD/DESIGN_PATTERNS/output/query_DESIGN_PATTERNS/design_patterns.md) |
 | **`LLD-DP-002`** | `DESIGN_PATTERNS` | **Head First Design Patterns: Complete Patterns & Anti-Patterns Catalog** | Exhaustive breakdown of all patterns in *Head First Design Patterns (2nd Ed)* with book-specific initial traps and Chapter 13 Anti-Patterns | [`001_head_first_design_patterns_and_antipatterns.md`](topics/1.LLD/DESIGN_PATTERNS/output/query_DESIGN_PATTERNS/001_head_first_design_patterns_and_antipatterns.md) |
-| **`ARCH-001`** | `2. Architecture Patterns` | **Software Architecture: Patterns, Antipatterns, and Pitfalls** | Complete catalog of 24 architectural patterns, 5 major antipatterns, and 3 critical pitfalls from Richards, Ford & Gandhi | [`001_software_architecture_patterns_antipatterns_and_pitfalls.md`](topics/0.FUNDAMENTALS/Software Architecture and Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/001_software_architecture_patterns_antipatterns_and_pitfalls.md) |
-| **`ARCH-002`** | `2. Architecture Patterns` | **Architectural Styles vs. Architecture Patterns vs. Design Patterns** | Detailed breakdown distinguishing foundational styles (Monolith, 3-Tier), architecture patterns (CQRS, BFF), and design patterns (GoF, MVC) | [`002_architectural_styles_vs_architecture_patterns_vs_design_patterns.md`](topics/0.FUNDAMENTALS/Software Architecture and Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/002_architectural_styles_vs_architecture_patterns_vs_design_patterns.md) |
-| **`ARCH-STYLE-001`** | `1. Architecture Styles` | **Architectural Styles Catalog & Comparative Analysis** | Exhaustive taxonomy, topologies, and characteristic trade-offs of all 9 foundational styles from Richards & Ford | [`001_architectural_styles_catalog_and_comparative_analysis.md`](topics/0.FUNDAMENTALS/Software Architecture and Modeling/1.ARCHITECTURE/1.%20Architecture%20Styles/output/query_Architecture_Styles/001_architectural_styles_catalog_and_comparative_analysis.md) |
+| **`ARCH-001`** | `2. Architecture Patterns` | **Software Architecture: Patterns, Antipatterns, and Pitfalls** | Complete catalog of 24 architectural patterns, 5 major antipatterns, and 3 critical pitfalls from Richards, Ford & Gandhi | [`001_software_architecture_patterns_antipatterns_and_pitfalls.md`](topics/0.FUNDAMENTALS/Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/001_software_architecture_patterns_antipatterns_and_pitfalls.md) |
+| **`ARCH-002`** | `2. Architecture Patterns` | **Architectural Styles vs. Architecture Patterns vs. Design Patterns** | Detailed breakdown distinguishing foundational styles (Monolith, 3-Tier), architecture patterns (CQRS, BFF), and design patterns (GoF, MVC) | [`002_architectural_styles_vs_architecture_patterns_vs_design_patterns.md`](topics/0.FUNDAMENTALS/Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/002_architectural_styles_vs_architecture_patterns_vs_design_patterns.md) |
+| **`ARCH-STYLE-001`** | `1. Architecture Styles` | **Architectural Styles Catalog & Comparative Analysis** | Exhaustive taxonomy, topologies, and characteristic trade-offs of all 9 foundational styles from Richards & Ford | [`001_architectural_styles_catalog_and_comparative_analysis.md`](topics/0.FUNDAMENTALS/Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/1.%20Architecture%20Styles/output/query_Architecture_Styles/001_architectural_styles_catalog_and_comparative_analysis.md) |
 | **`HLD-NOTE-001`**| `HLD_Overview` | **High-Level Design Overview & Distributed Systems Roadmap** | Foundations of large-scale architecture, distributed consensus, caching, microservices | [`HLD_Overview.md`](topics/2.HLD/HLD_Overview/output/Note_version-1_HLD_Overview/HLD_Overview.md) |
 
 ---
@@ -127,7 +127,7 @@ All interactions in this repository are governed by the Universal Rules document
 8. **Rule 9: Single README Policy** — Strictly one `README.md` at the repository root. All other guides are topic-named (`<Topic>.md`).
 9. **Rule 10: Mandatory 3-Tier Modeling Standard** — Strict Java 21 OOP code + formal UML models + runtime heap/stack memory architecture.
 10. **Rule 11: Continuous Output and Query Manual Indexing in Root `README.md`** — Dedicated Master Output & Query Catalog dynamically indexing every single output with serialized ID, title, description, and clickable link.
-11. **Rule 12: Continuous Synchronization of `outline.md` Files** — Master catalog (`outline.md`) and topic manifests (`outline_<topic>.md`) are continuously and dynamically kept up-to-date whenever topics, queries, or versioned notes are added or altered.
+11. **Rule 12: Continuous Synchronization of `index.md` & `outline.md` Files** — Master catalog (`index.md`) and topic manifests (`outline_<topic>.md`) are continuously and dynamically kept up-to-date whenever topics, queries, or versioned notes are added or altered.
 12. **Rule 13: No `.gitignore` Without Explicit User Instruction** — Never create, modify, or add `.gitignore` files unless requested.
 13. **Rule 14: Comprehensive Resource Image Ingestion for Queries** — Always extract and embed relevant diagrams, topologies, and figures from referenced books and courses into query manuals.
 
@@ -135,7 +135,7 @@ All interactions in this repository are governed by the Universal Rules document
 
 ## 🧭 Navigation & Core Documentation
 
-- **Master Navigation Outline**: [`outline.md`](outline.md)
+- **Master Navigation Index**: [`index.md`](index.md)
 - **Visual Workflow & Architecture**: [`architecture/architecture.md`](architecture/architecture.md)
 - **Folder Structure Blueprint**: [`architecture/folderstructure.md`](architecture/folderstructure.md)
 - **Engine Manual**: [`engine/engine.md`](engine/engine.md)

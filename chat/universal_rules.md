@@ -91,13 +91,13 @@ These rules are permanent operational constraints. The agent must enforce them p
   - Whenever any query manual, design pattern guide, or topic output is produced or updated, the agent **MUST immediately add or refresh its entry in the root `README.md` catalog** before concluding the turn.
   - The rendering audit script (`audit_rendering.py`) and agent verification steps must ensure all links in this catalog resolve cleanly.
 
-### Rule 12: Continuous Synchronization of `outline.md` Files (Master & Topic Outlines)
-- **Directive**: Whenever a new topic, subtopic, query manual, versioned study note, or roadmap deliverable is created, modified, or relocated anywhere in the repository, the agent **MUST immediately update the corresponding `outline.md` files**:
-  1. **Root Master Catalog ([`outline.md`](../outline.md))**: The primary navigation catalog at the repository root must always index the topic name, category/scope, terminal subfolder path, active query manuals, and versioned notes.
+### Rule 12: Continuous Synchronization of `index.md` & `outline.md` Files (Master & Topic Catalogs)
+- **Directive**: Whenever a new topic, subtopic, query manual, versioned study note, or roadmap deliverable is created, modified, or relocated anywhere in the repository, the agent **MUST immediately update the corresponding navigation files**:
+  1. **Root Master Catalog ([`index.md`](../index.md))**: The primary navigation catalog at the repository root must always index the topic name, category/scope, terminal subfolder path, active query manuals, and versioned notes.
   2. **Topic Manifests (`topics/<topic>/outline_<topic>.md`)**: The specific topic manifest must accurately reflect its terminal subfolders, template references, and deliverable paths.
 - **Enforcement**:
-  - The turn is considered incomplete if changes were made to topics or outputs without updating `outline.md`.
-  - All relative links inside `outline.md` and `outline_<topic>.md` must resolve cleanly to existing files and directories on disk.
+  - The turn is considered incomplete if changes were made to topics or outputs without updating `index.md`.
+  - All relative links inside `index.md` and `outline_<topic>.md` must resolve cleanly to existing files and directories on disk.
 
 ### Rule 13: No `.gitignore` Without Explicit User Instruction
 - **Directive**: The agent must **never create, add, or modify any `.gitignore` file** (at the repository root or in any subfolder) unless the user explicitly tells it to.
@@ -123,7 +123,7 @@ These rules are permanent operational constraints. The agent must enforce them p
 ```
 System-Design/
 ├── README.md                                 # Single root project overview & Master Output Catalog
-├── outline.md                                # Master Navigation Catalog: Topics, Queries & Notes
+├── index.md                                  # Master Navigation Catalog: Topics, Queries & Notes
 │
 ├── architecture/                             # Architectural Specifications Subsystem
 │   ├── architecture.md                       # Comprehensive Project Architecture & Sequence Lifecycles

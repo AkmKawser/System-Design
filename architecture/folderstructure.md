@@ -9,7 +9,7 @@ This document details the complete canonical filesystem topology, file naming co
 ```
 Learning-Roadmap_Project-Structure/
 ├── README.md                                 # Single root project overview & entry point
-├── outline.md                                # Master Navigation Catalog: Topics, Queries & Notes
+├── index.md                                  # Master Navigation Catalog: Topics, Queries & Notes
 │
 ├── architecture/                             # Architectural Specifications Subsystem
 │   ├── architecture.md                       # Comprehensive Project Architecture & Subsystems
