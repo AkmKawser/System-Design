@@ -29,6 +29,7 @@ flowchart TD
     F0 --> F_BACK["Science of Language Frameworks (Backend)"]
     F0 --> F_FRONT["Science of Design Systems (Frontend)"]
     F0 --> F_STACK["Technology Stack Selection Guide"]
+    F0 --> F_API["API Architecture and Design"]
 
     L1 --> L_PAT["Design Patterns & Anti-Patterns"]
     L1 --> L_UML["UML 2.5 Metamodels & Modeling"]
@@ -101,6 +102,17 @@ flowchart TD
   1. **Selection Philosophy**: Constraint satisfaction, risk management, total cost of ownership (TCO).
   2. **The 5-Dimension Evaluation Vector**: Workload characteristics (I/O vs CPU), Access patterns (ACID vs BASE), Latency/Throughput SLAs, Developer velocity vs Type safety, Operational maturity.
   3. **Multi-Criteria Decision Matrix (MCDM)**: Weighted scoring methodology, proof-of-concept (PoC) spikes, ADR documentation.
+
+### Module 0.7: API Architecture and Design
+- **Directory**: [`topics/0.FUNDAMENTALS/API Architecture and Design/`](topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/)
+- **Deliverable**: [`API_Architecture_and_Design.md`](topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.md)
+- **Core Syllabi**:
+  1. **Protocols & Transport**: TCP/UDP, HTTP/1.1, HTTP/2 (multiplexing, HPACK), HTTP/3 QUIC (UDP binary framing, 0-RTT, connection migration), REST, gRPC (Protobuf IDL), GraphQL (DataLoader), WebSockets, SSE.
+  2. **Contract-First Specifications**: OpenAPI 3.1 / Swagger, AsyncAPI, Protobuf `.proto`, URI modeling, safe & idempotent HTTP methods, RFC 7807 Problem Details.
+  3. **Advanced Behavioral Patterns**: Pagination (Offset vs Keyset/Cursor), Distributed Idempotency Keys (`Idempotency-Key` + Redis), Versioning (URI path vs custom header vs content negotiation).
+  4. **Low-Level Design (LLD)**: Controller-Service-Repository architecture, DTO mapping, Fluent Client SDKs, Interceptors, 3-tier Java 21 implementation.
+  5. **High-Level Design (HLD) & Edge**: API Gateways (Envoy, Kong), Distributed Rate Limiting (Token Bucket, Leaky Bucket, Sliding Window Counter via Redis/Lua), Backend-for-Frontend (BFF).
+  6. **Security & Observability**: OAuth 2.0 (PKCE, Client Credentials), OIDC, JWT vs sessions, mTLS, W3C Trace Context (OpenTelemetry).
 
 ---
 

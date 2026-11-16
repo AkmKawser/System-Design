@@ -173,7 +173,8 @@ System-Design/
     │   │   └── 2.ARCHITECTURE_MODELING/      # Viewpoints & Perspectives reference
     │   ├── Science of Language Frameworks [Backend]/
     │   ├── Design System [Front End]/
-    │   └── Select Technology Stack/
+    │   ├── Select Technology Stack/
+    │   └── API Architecture and Design/          # Terminal Leaf: template/, Data_Ingestion/, output/
     │
     ├── 1.LLD/                                # Low-Level Design Root
     │   ├── outline_1.LLD.md                  # LLD Manifest
