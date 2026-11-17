@@ -6,5 +6,6 @@ site:
       key: system-design
       title: System Design
       path: /
+      default: true
       content:
         directory: ./

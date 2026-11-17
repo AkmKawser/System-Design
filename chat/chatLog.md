@@ -1675,6 +1675,23 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Generated and pushed `gitbook-docs.yaml` to `origin/main` satisfying GitBook's site-level Git Sync schema, enabling the user to proceed with the GitBook sync without error.
 
+---
+
+## 📅 Session 72: Fix GitBook Site Configuration (`default: true` Schema Constraint)
+
+- **Timestamp**: 2026-11-17
+- **User Instruction**:
+  > *"Failed to parse site configuration — site.structure: root site spaces must include exactly one site space with default: true"*
+- **Agentic Log**:
+  - Diagnosed GitBook site validation error:
+    - GitBook's site structure schema (`https://api.gitbook.com/gitbook-docs.yaml`) strictly enforces that exactly one root space must have `default: true` set to designate the default landing space.
+  - Updated `gitbook-docs.yaml` to include `default: true` on the `system-design` root space.
+  - Executed rendering audit via `engine/scripts/audit_rendering.py`: 100% pass across all files.
+  - Staged `gitbook-docs.yaml` and `chat/chatLog.md`, committed, and pushed directly to `origin/main` per Rule 3.
+- **Agent Response**:
+  - Resolved the parsing error by appending `default: true` to the primary space in `gitbook-docs.yaml` and pushing the update to GitHub.
+
+
 
 
 
