@@ -1556,3 +1556,24 @@ This file records the chronological session log of all user requests, architectu
 
 
 
+---
+
+## 📅 Session 66: Transition to Docsify for GitHub Pages & Broken URL Resolution
+
+- **Timestamp**: 2026-11-17
+- **User Instruction**:
+  > *"option-1"*
+- **Agentic Log**:
+  - Analyzed 404 "Page not found" root causes on GitHub Pages (`https://akmkawser.github.io/System-Design/`):
+    1. **Directory 404s**: Links to subfolders (`topics/0.FUNDAMENTALS/`) failed because static web servers cannot browse directories without index files.
+    2. **Jekyll Extension Rewriting**: Markdown files with YAML frontmatter were converted to `.html` by Jekyll, causing links ending in `.md` to return 404.
+    3. **Query Manuals & Diagrams**: Files without frontmatter remained raw `.md` downloads, and Mermaid diagrams failed to render natively on Jekyll.
+  - Implemented Docsify Single-Page Documentation Architecture (Option 1):
+    1. Created `.nojekyll` at repository root to disable Jekyll and serve raw markdown and web assets directly.
+    2. Created `_sidebar.md` comprehensive navigation tree covering Fundamentals, LLD, HLD, Architecture, Governance, and Engines.
+    3. Created high-performance `index.html` featuring Docsify 4, dynamic Mermaid 10 rendering hook, copy-to-clipboard, full-text search, and multi-language Prism syntax highlighting.
+    4. Updated `index.md` subfolder path links to point directly to GitHub repository trees (`https://github.com/AkmKawser/System-Design/tree/main/...`) to ensure seamless navigation without directory 404s.
+  - Verified rendering integrity using `engine/scripts/audit_rendering.py`: 100% pass across all markdown files.
+  - Synchronized repository changes to GitHub Pages.
+- **Agent Response**:
+  - Deployed Docsify to GitHub Pages with interactive sidebar navigation, native Mermaid diagram rendering, full-text search, and working markdown URLs.
