@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>System Design & Software Architecture</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="A structured, source-grounded engineering repository for Low-Level Design (LLD) and High-Level Design (HLD)">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    :root {
+      --theme-color: #2563eb;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    .sidebar {
+      background-color: #f8fafc;
+      border-right: 1px solid #e2e8f0;
+    }
+    .sidebar-nav strong {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+    }
+    .markdown-section {
+      max-width: 900px;
+      padding: 30px 40px;
+    }
+    .markdown-section pre {
+      border-radius: 6px;
+    }
+    .markdown-section table {
+      display: table;
+      width: 100%;
+      margin: 1.5rem 0;
+      border-collapse: collapse;
+    }
+    .markdown-section table th,
+    .markdown-section table td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+    }
+    .markdown-section table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    .markdown-section table tr:nth-child(2n) {
+      background-color: #f8fafc;
+    }
+    .mermaid {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+    .mermaid svg {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Loading documentation...</div>
+  <script>
+    // Initialize Mermaid
+    window.mermaidInitialized = false;
+
+    window.$docsify = {
+      name: 'System Design',
+      repo: 'https://github.com/AkmKawser/System-Design',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      homepage: 'README.md',
+      relativePath: false,
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Search documentation...',
+        noData: 'No results found.',
+        depth: 4
+      },
+      copyCode: {
+        buttonText: 'Copy',
+        errorText: 'Error',
+        successText: 'Copied'
+      },
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === 'mermaid') {
+              return '<div class="mermaid">' + code + '</div>';
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      },
+      plugins: [
+        function(hook, vm) {
+          hook.ready(function() {
+            if (window.mermaid && !window.mermaidInitialized) {
+              window.mermaid.initialize({
+                startOnLoad: false,
+                theme: 'default',
+                securityLevel: 'loose'
+              });
+              window.mermaidInitialized = true;
+            }
+          });
+
+          hook.doneEach(function() {
+            // Render Mermaid diagrams on each navigation
+            if (window.mermaid) {
+              try {
+                window.mermaid.run({
+                  querySelector: '.mermaid'
+                });
+              } catch (err) {
+                console.warn('Mermaid rendering issue:', err);
+              }
+            }
+
+            // Fix external/repo links
+            document.querySelectorAll('.markdown-section a').forEach(function(a) {
+              var href = a.getAttribute('href');
+              if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+                a.setAttribute('target', '_blank');
+                a.setAttribute('rel', 'noopener noreferrer');
+              }
+            });
+          });
+        }
+      ]
+    };
+  </script>
+  <!-- Docsify Core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+  <!-- Plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+
+  <!-- Mermaid.js for architecture & UML diagrams -->
+  <script src="//cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+  <!-- Prism Syntax Highlighting -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
+</body>
+</html>
