@@ -102,6 +102,51 @@ Reference diagram: [`animated_images/checkout-sequence-diagram.svg`](../animated
 
 ---
 
+### Master Taxonomy: Supported Diagram Archetypes in Canonical Claude Animated Style
+
+From now on, every visual diagram in this repository must be authored as a Canonical Claude animated SVG belonging to one of the following four archetypes:
+
+| Archetype | Best Suited For | Visual Structure | Animation Pattern | Reference File |
+| :--- | :--- | :--- | :--- | :--- |
+| **1. Horizontal Pipeline & Flow** | Request-response cycles, compiler stages, data ingestion pipelines, protocol stacks | 4 boxes horizontally (`120px` wide, `20px` gaps), top request lane, bottom response lane, analogy badges below | Request dot moves along top lane stopping at each box; returning response dot along bottom lane; active box amber outline | [`ui-api-backend-flow.svg`](../animated_images/ui-api-backend-flow.svg) |
+| **2. Interactive Sequence Diagram** | Multi-service orchestration, API protocols (OAuth, WebSockets, gRPC), database transactions, checkout sagas | Participant boxes across top, dashed vertical lifelines, horizontal messages spaced `40px` vertically | Single continuous amber dot traversing the message graph; arrows fade in upon arrival; dynamic step caption at bottom | [`checkout-sequence-diagram.svg`](../animated_images/checkout-sequence-diagram.svg) |
+| **3. Hub-and-Spoke / Topology** | API Gateways, Service Meshes, Event Brokers (Kafka/RabbitMQ) with publishers and consumers | Central orchestrator or broker with directed links to peripheral service nodes | Packet dispatches from client to hub, fans out to workers/topics, aggregates, and returns | `animated_images/topology-flow.svg` |
+| **4. State Machine & Lifecycle** | Connection states (TCP 3-way handshake, TLS handshake, WebSocket states, order states) | State nodes as rounded rectangles with transition arcs | Packet transitions from initial state to intermediate and terminal states, highlighting current active state | `animated_images/state-lifecycle.svg` |
+
+---
+
+### Generation Prompt Template for Sequence Diagrams
+
+```text
+Use the attached checkout-sequence-diagram.svg as the style reference. Create a new standalone SVG sequence diagram for this workflow: [describe your sequence steps]. Follow these rules exactly:
+
+Format:
+- Pure SVG with embedded <style>. No HTML, JavaScript, external files, or CSS variables.
+- width 680, viewBox "0 0 680 H", with 20px padding below the last element.
+- Add <title> and <desc>, and role="img" on the root element.
+
+Participants:
+- Boxes across the top: 120px wide, 20px gaps, centers at x = 160 + 140 * i.
+- Rounded rects (rx 8), 0.5px stroke, font-size 14px weight 500 for title, 12px for subtitle.
+- Vertical dashed lifelines (stroke-dasharray="4 4", stroke-width="1") running down from each box center.
+
+Messages:
+- Horizontal arrows between lifelines spaced exactly 40px apart vertically in chronological order.
+- Requests: solid 1.5px stroke with open arrowhead.
+- Responses: dashed 1.5px stroke (stroke-dasharray="4 3") with open arrowhead pointing back.
+- Centered 12px labels 10px above each arrow line.
+
+Animation:
+- Exactly one 12s linear infinite loop using CSS @keyframes only.
+- ONE single amber dot (r=5.5) follows the full message path continuously, moving horizontally along arrows and vertically down lifelines.
+- Each arrow and label fades in (opacity: 1) when the dot reaches it.
+- Synchronized dynamic caption line at the bottom changing at each step.
+- Wrapped in @media (prefers-reduced-motion: no-preference) with static caption fallback.
+- @media (prefers-color-scheme: dark) block with dark fills and light text.
+```
+
+---
+
 ### Generation Prompt Template for AI Tools
 
 Attach `animated_images/ui-api-backend-flow.svg` as the style reference and apply this prompt:

@@ -178,6 +178,9 @@ These rules are permanent operational constraints. The agent must enforce them p
      - One single amber dot follows the full message path as a continuous line, dropping down lifelines between message steps. Each arrow and label fades in (`opacity: 1`) when the dot reaches it.
      - The caption at the bottom changes dynamically at each message step.
      - Dot keyframe positions (`translate(x, y)`), arrow fade-in times, and caption transition times must be strictly synchronized.
+  7. **Universal Diagram Archetype Policy (Mandatory Claude Animated SVG)**:
+     - Moving forward, **ALL diagrams created across the repository MUST use this Canonical Claude Animated SVG format** adhering to the respective archetype in [`architecture/diagram_style_guide.md`](../architecture/diagram_style_guide.md) (Horizontal Pipeline, Sequence Diagram, Topology, or State Machine).
+     - Static Mermaid diagrams are preserved as companion text-mode code representations, but the primary pedagogical visualization asset must always be the theme-adaptive, animated standalone SVG.
 
 ---
 

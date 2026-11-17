@@ -1831,6 +1831,28 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Implemented the exact Claude Sequence Diagram Animation rules into `checkout-sequence-diagram.svg`, codified the rules into the governance style guide and Universal Rule 17, restored and paired the sequence diagram in the API manual, and pushed all commits to GitHub.
 
+---
+
+## 📅 Session 79: Universal Claude Animated SVG Mandate & Archetype Governance Expansion
+
+- **Timestamp**: 2026-11-18
+- **User Instruction**:
+  > *"so have you udapte d the diagram style guide.md file so that from now on you make types of diagram Canonical Claude animated version?"*
+- **Agentic Log**:
+  - Expanded `architecture/diagram_style_guide.md` with the **Master Taxonomy of Supported Diagram Archetypes**:
+    1. **Archetype 1: Horizontal Pipeline & Data Flow** (`ui-api-backend-flow.svg` standard).
+    2. **Archetype 2: Interactive Sequence Diagram** (`checkout-sequence-diagram.svg` standard with vertical lifelines, 40px message intervals, solid/dashed arrows, and continuous amber dot path).
+    3. **Archetype 3: Hub-and-Spoke / Microservice Topology** (central gateway/broker with radial worker links and dispatch/aggregation loops).
+    4. **Archetype 4: State Machine & Lifecycle Progression** (state nodes with transition arcs and state highlight progression).
+  - Codified the Sequence Diagram AI generation prompt template into `architecture/diagram_style_guide.md`.
+  - Enshrined **Rule 17.7 (Universal Diagram Archetype Policy)** in `chat/universal_rules.md`, mandating that all future diagrams across the entire repository must be authored as Canonical Claude animated SVGs.
+  - Synchronized relocated Science of Language Frameworks files: updated `_sidebar.md` and `SUMMARY.md` navigation paths to `output/Note_version-1_Science_of_Language_Frameworks/Science_of_Language_Frameworks.md`.
+  - Executed rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 210 markdown files with 0 errors**.
+  - Synchronized changes to GitHub `origin/main` per Rule 3.
+- **Agent Response**:
+  - Confirmed and demonstrated that `architecture/diagram_style_guide.md` and `chat/universal_rules.md` (Rule 17) have been permanently updated to enforce Canonical Claude animated SVG diagrams across all 4 major system design archetypes going forward.
+
+
 
 
 
