@@ -170,6 +170,14 @@ These rules are permanent operational constraints. The agent must enforce them p
        ![Alt Text](relative/path/to/diagram.svg)
        ```
      - **NEVER** paste raw SVG XML code directly into Markdown files, as GitHub and GitBook will strip the CSS animations.
+  6. **Sequence Diagram Animation Protocol**:
+     - Participants are boxes across the top (120px wide, 20px gaps, centers at `x = 160 + 140 * i`), each with a dashed vertical lifeline running down (`stroke-dasharray="4 4"`).
+     - Messages are horizontal arrows between lifelines, spaced exactly `40px` apart vertically, in chronological time order from top to bottom.
+     - Requests use solid 1.5px arrows. Responses use dashed 1.5px arrows pointing back.
+     - Message labels are 12px text centered directly above each arrow.
+     - One single amber dot follows the full message path as a continuous line, dropping down lifelines between message steps. Each arrow and label fades in (`opacity: 1`) when the dot reaches it.
+     - The caption at the bottom changes dynamically at each message step.
+     - Dot keyframe positions (`translate(x, y)`), arrow fade-in times, and caption transition times must be strictly synchronized.
 
 ---
 

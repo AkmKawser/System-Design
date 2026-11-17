@@ -75,6 +75,33 @@ For `N` boxes, with box `i` starting at index 0:
 
 ---
 
+### Sequence Diagram Animation Rules
+
+When creating or animating a **Sequence Diagram**, follow these rules:
+
+1. **Participants**:
+   - Boxes across the top: `120px` wide, `20px` gaps, centers at `x = 160 + 140 * i` (with `i` starting at 0: `160`, `300`, `440`, `580`).
+   - Each participant has a **dashed vertical lifeline** running down (`stroke-dasharray="4 4"`, `1px` stroke).
+2. **Messages**:
+   - Horizontal arrows between lifelines, spaced **40px apart vertically**, in chronological order from top to bottom (`y = 120, 160, 200, 240, 280, 320`).
+   - Requests use **solid 1.5px arrows** (`marker-end="url(#arr-r-req)"`).
+   - Responses use **dashed 1.5px arrows pointing back** (`stroke-dasharray="4 3"`, `marker-end="url(#arr-l-res)"`).
+3. **Labels**:
+   - `12px` text centered directly above each arrow line (`y - 10px`).
+4. **Animation Mechanics**:
+   - **One continuous amber dot** follows the full message path across the diagram.
+   - Each arrow and its label fades in (`opacity: 1`) when the amber dot reaches it.
+   - The dot drops vertically down lifelines to transition between messages.
+5. **Captions**:
+   - The caption at the bottom (`y = 380`) changes dynamically at each message step.
+   - Keep the dot's keyframe `translate(x, y)` positions, the message fade-in times, and the caption times strictly consistent with each other.
+
+Reference diagram: [`animated_images/checkout-sequence-diagram.svg`](../animated_images/checkout-sequence-diagram.svg)
+
+![Animated Checkout Sequence Diagram](../animated_images/checkout-sequence-diagram.svg)
+
+---
+
 ### Generation Prompt Template for AI Tools
 
 Attach `animated_images/ui-api-backend-flow.svg` as the style reference and apply this prompt:

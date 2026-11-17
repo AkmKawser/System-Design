@@ -223,7 +223,7 @@ sequenceDiagram
     end
 ```
 
-![API Checkout Workflow Orchestration](../../../../../animated_images/checkout-orchestration-flow.svg)
+![Animated Checkout Sequence Diagram](../../../../../animated_images/checkout-sequence-diagram.svg)
 
 * **Concrete Real-World Example**:
   When you order an Uber, your phone invokes `POST /v1/rides/request`. That single API call calculates the upfront fare based on traffic algorithms, locates nearby active drivers using spatial geospatial indexing, alerts drivers via real-time sockets, and pre-authorizes your payment card.
