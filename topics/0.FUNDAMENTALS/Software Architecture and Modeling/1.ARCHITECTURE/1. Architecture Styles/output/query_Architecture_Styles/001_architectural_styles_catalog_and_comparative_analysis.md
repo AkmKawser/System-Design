@@ -50,10 +50,6 @@ flowchart TD
         end
     end
 
-    classDef monoClass fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
-    classDef distClass fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#f8fafc;
-    class MONO monoClass;
-    class DIST distClass;
 ```
 
 ---

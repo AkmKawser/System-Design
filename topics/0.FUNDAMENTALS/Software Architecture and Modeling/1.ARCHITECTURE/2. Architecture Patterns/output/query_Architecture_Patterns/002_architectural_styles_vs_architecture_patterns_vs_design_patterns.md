@@ -38,12 +38,6 @@ flowchart TD
     STYLES -->|"Houses and adopts"| ARCH_PATTERNS
     ARCH_PATTERNS -->|"Implemented in code via"| DESIGN_PATTERNS
 
-    classDef styleClass fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
-    classDef arch fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#f8fafc;
-    classDef design fill:#1e293b,stroke:#f59e0b,stroke-width:2px,color:#f8fafc;
-    class STYLES styleClass;
-    class ARCH_PATTERNS arch;
-    class DESIGN_PATTERNS design;
 ```
 
 ---

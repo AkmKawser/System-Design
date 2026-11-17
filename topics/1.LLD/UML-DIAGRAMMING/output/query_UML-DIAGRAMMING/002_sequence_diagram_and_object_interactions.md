@@ -40,8 +40,6 @@ flowchart TD
     Lifecycle --> Life["8. Object Instantiation & Destruction"]
     Lifecycle --> Excep["9. Exception Propagation & Interception"]
 
-    classDef stage fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
-    class OOP,StaticRel,DynamicRel,Lifecycle stage;
 ```
 
 ### 1. Message Passing (Method Invocation)
@@ -424,10 +422,6 @@ flowchart TD
     AP3 --> R3
     AP4 --> R4
 
-    classDef bad fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#fecaca;
-    classDef good fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#d1fae5;
-    class AP1,AP2,AP3,AP4 bad;
-    class R1,R2,R3,R4 good;
 ```
 
 1. **The "God Lifeline" (Feature Envy / Procedural Orchestration)**:

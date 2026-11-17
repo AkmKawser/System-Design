@@ -1472,7 +1472,7 @@ This file records the chronological session log of all user requests, architectu
     1. **2.1.1 Pattern 1: Request-Response (The Foundation)**:
        - The TCP byte stream vs. application boundary problem (`Content-Length`, `\r\n\r\n`, chunked transfer encoding).
        - CPU costs of serialization and deserialization (JSON vs. XML vs. Protobuf).
-       - The wire propagation timeline ($t_0$ to $t_6$).
+       - The wire propagation timeline (`t0` to `t6`).
        - Resumable chunked file upload architecture vs. fragile whole-file uploads.
        - Dedicated Mermaid sequence diagram detailing timing phases and boundary parsing.
     2. **2.1.2 Pattern 2: Synchronous vs. Asynchronous Workloads**:
@@ -1497,7 +1497,7 @@ This file records the chronological session log of all user requests, architectu
        - Dedicated Mermaid sequence diagram showing persistent text streams and automatic reconnection.
     6. **2.1.6 Pattern 6: WebSockets (Full-Duplex Bidirectional Streams)**:
        - Private telephone hotline analogy.
-       - Protocol mechanics: HTTP 101 Switching Protocols upgrade handshake $\rightarrow$ raw full-duplex TCP framing with 2–10 byte overhead.
+       - Protocol mechanics: HTTP 101 Switching Protocols upgrade handshake → raw full-duplex TCP framing with 2–10 byte overhead.
        - Stateful cluster connection management (why WebSockets require a Redis Pub/Sub or Kafka backplane).
        - Dedicated Mermaid sequence diagram illustrating the 101 upgrade and bidirectional framing.
     7. **2.1.7 Pattern 7: Publish-Subscribe (PubSub & Event Streaming)**:
@@ -1522,6 +1522,35 @@ This file records the chronological session log of all user requests, architectu
   - Committed and pushed changes to GitHub `origin/main` per Rule 3.
 - **Agent Response**:
   - Expanded all 9 backend communication patterns with first-principles intuition, low-level mechanics, wire protocol headers, failure modes, dedicated diagrams, and the master decision matrix; audited rendering compliance and synchronized Git.
+
+---
+
+## 📅 Session 65: GitHub Light Theme Diagram & Text Visibility Fix
+
+- **Timestamp**: 2026-11-17
+- **User Instruction**:
+  > *"the images and diagrams text are not visible in white github theme. plz fix that"*
+- **Agentic Log**:
+  - Investigated GitHub light/white theme rendering mechanics for Mermaid diagrams:
+    - Root cause: GitHub's CSS stylesheet for light mode sets text color inside Mermaid nodes to dark gray/black (`#1f2328`) via `<span class="nodeLabel">` elements inside `<foreignObject>`.
+    - When Mermaid diagrams define explicit dark background fills (`fill:#0f172a`, `fill:#1e293b`, `fill:#064e3b`, etc.) via `classDef`, dark text renders on top of dark fills, making the text unreadable/invisible.
+    - Similarly, in Mermaid sequence diagrams, `rect rgb(20, 30, 45)` draws an opaque dark rectangle across the diagram while GitHub's light theme keeps actor, note, and message text dark, obscuring all content inside the rectangle.
+  - Rectified diagrams across the repository:
+    1. **`API_Architecture_and_Design.md`**:
+       - Removed all 4 dark sequence diagram `rect rgb(...)` blocks (Diagrams 9, 26, 27, and 31) and their closing `end` statements.
+       - Removed all 63 dark `classDef` definitions and all 63 flowchart class assignment lines (`class ...;`).
+    2. **Architecture Query Files**:
+       - Cleaned `002_sequence_diagram_and_object_interactions.md` by stripping all dark `classDef` styling.
+       - Cleaned `001_software_architecture_patterns_antipatterns_and_pitfalls.md` by stripping dark `classDef` styling.
+       - Cleaned `002_architectural_styles_vs_architecture_patterns_vs_design_patterns.md` by stripping dark `classDef` styling.
+       - Cleaned `001_architectural_styles_catalog_and_comparative_analysis.md` by stripping dark `classDef` styling.
+       - Cleaned `002_mvc_mvt_in_architectural_styles_classification.md` by stripping dark `classDef` styling.
+       - Verified that UML `classDiagram` definitions (`class ClassName { ... }`) were preserved intact.
+  - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 206 markdown files with 0 errors**.
+  - Committed and pushed changes to GitHub `origin/main` per Rule 3.
+- **Agent Response**:
+  - Eliminated all dark fills, background rectangles, and hardcoded dark class definitions across Mermaid diagrams, ensuring crisp, 100% legible text rendering across both GitHub Light (White) and Dark themes natively.
+
 
 
 

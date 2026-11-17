@@ -35,15 +35,7 @@ flowchart TD
     PresTier --> MVC["Pattern: Model-View-Controller (MVC)"]
     PresTier --> MVT["Pattern: Model-View-Template (MVT - Django Variant)"]
 
-    classDef root fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
-    classDef style fill:#1e293b,stroke:#818cf8,stroke-width:2px,color:#f8fafc;
-    classDef part fill:#334155,stroke:#34d399,stroke-width:2px,color:#f8fafc;
-    classDef pat fill:#1e1b4b,stroke:#f472b6,stroke-width:2px,color:#f8fafc;
 
-    class Monolith root;
-    class Layered style;
-    class TechPart part;
-    class PresTier,MVC,MVT pat;
 ```
 
 ---
@@ -138,17 +130,7 @@ flowchart LR
     Service --> View
     View --> Browser
 
-    classDef client fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef pres fill:#1e293b,stroke:#818cf8,stroke-width:1px,color:#f8fafc;
-    classDef biz fill:#1e1b4b,stroke:#f472b6,stroke-width:1px,color:#f8fafc;
-    classDef persist fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-    classDef db fill:#312e81,stroke:#a78bfa,stroke-width:1px,color:#f8fafc;
 
-    class Browser client;
-    class View,Controller pres;
-    class Service biz;
-    class Model persist;
-    class RDBMS db;
 ```
 
 ### 4.1. Classic Model-View-Controller (MVC)

@@ -117,14 +117,6 @@ flowchart LR
     Human["👤 Human User"] -->|"Visual Clicks & Inputs"| UI["🖥️ User Interface (UI)\n(Web Browser / Mobile App)"]
     UI -->|"Machine Data Calls"| API["⚡ Application Programming Interface (API)\n(Contract Boundary)"]
     API -->|"Internal Execution"| Core["🏢 Core Backend Systems\n(Databases, Services, Mainframes)"]
-
-    classDef human fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef boundary fill:#1e1b4b,stroke:#f472b6,stroke-width:2px,color:#f8fafc;
-    classDef server fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class Human,UI human;
-    class API boundary;
-    class Core server;
 ```
 
 #### The 3 Canonical Mental Models of an API:
@@ -162,9 +154,6 @@ flowchart TD
         C5["5. Security, Guardrails & Policy Enforcement\n(Shielding backend infrastructure from attacks, misuse, and leaks)"]
         C6["6. Asynchronous Event Dispatching & Webhooks\n(Pushing real-time notifications when long-running jobs finish)"]
     end
-
-    classDef cap fill:#1e293b,stroke:#818cf8,stroke-width:1px,color:#f8fafc;
-    class C1,C2,C3,C4,C5,C6 cap;
 ```
 
 ---
@@ -192,12 +181,6 @@ flowchart LR
         ClientApp["Mobile / Web App"] -->|"GET /v1/orders/123\n(Bearer Token)"| APIServer["API Server\n(Auth, Schema Mapping)"]
         APIServer -->|"Internal Pooled TCP\n(HikariCP)"| InternalDB[("Private Database\n(Isolated in private VPC)")]
     end
-
-    classDef danger fill:#450a0a,stroke:#f87171,stroke-width:1px,color:#f8fafc;
-    classDef safe fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class BadMobile,BadDB danger;
-    class ClientApp,APIServer,InternalDB safe;
 ```
 
 * **Concrete Real-World Example**:
@@ -280,14 +263,6 @@ flowchart TD
     PublicAPI -->|"gRPC / Protobuf"| MLService
     PublicAPI -->|"gRPC / Protobuf"| BankService
     PublicAPI -->|"gRPC / Protobuf"| SearchService
-
-    classDef client fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef gw fill:#1e1b4b,stroke:#f472b6,stroke-width:2px,color:#f8fafc;
-    classDef poly fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class React,iOS client;
-    class PublicAPI gw;
-    class MLService,BankService,SearchService poly;
 ```
 
 * **Concrete Real-World Example**:
@@ -316,12 +291,6 @@ flowchart LR
     YourApp -->|"POST /v1/messages"| Twilio
     YourApp -->|"POST /v1/chat/completions"| OpenAI
     YourApp -->|"POST /v1/mail/send"| SendGrid
-
-    classDef app fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef saas fill:#312e81,stroke:#a855f7,stroke-width:1px,color:#f8fafc;
-
-    class YourApp app;
-    class Stripe,Twilio,OpenAI,SendGrid saas;
 ```
 
 * **Concrete Real-World Example**:
@@ -357,14 +326,6 @@ flowchart TD
     RBAC -->|"User lacks admin role"| E403["⛔ HTTP 403 Forbidden"]
 
     BorderGuard -->|"✅ Passed All Guardrails"| CoreBackend["Core Internal Microservices\n(Safe & Protected)"]
-
-    classDef bad fill:#450a0a,stroke:#f87171,stroke-width:1px,color:#f8fafc;
-    classDef guard fill:#1e1b4b,stroke:#f472b6,stroke-width:2px,color:#f8fafc;
-    classDef good fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class Attacker,E429,E400,E401,E403 bad;
-    class BorderGuard,RL,WAF,Auth,RBAC guard;
-    class CoreBackend good;
 ```
 
 ---
@@ -415,21 +376,15 @@ sequenceDiagram
     actor Client as Client Application
     participant API as API Server
 
-    rect rgb(20, 30, 45)
     Note over Client,API: 1. THE REQUEST
     Client->>API: POST /v1/orders HTTP/1.1
     Note right of Client: Headers: Authorization, Content-Type\nBody: {"productId": 42, "quantity": 2}
-    end
 
-    rect rgb(20, 45, 30)
     Note over API: 2. SERVER EXECUTION (Auth check, validation, database write)
-    end
 
-    rect rgb(45, 20, 35)
     Note over API,Client: 3. THE RESPONSE
     API-->>Client: HTTP/1.1 201 Created
     Note left of API: Headers: Content-Type: application/json\nBody: {"orderId": "ord_99", "status": "CONFIRMED"}
-    end
 ```
 
 #### The 5 Components of an API Request:
@@ -492,14 +447,6 @@ flowchart TD
     Composite --> SvcA
     Composite --> SvcB
     Composite --> SvcC
-
-    classDef ext fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef edge fill:#1e1b4b,stroke:#f472b6,stroke-width:2px,color:#f8fafc;
-    classDef pri fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class PublicUser,PartnerCorp ext;
-    class Gateway,Composite edge;
-    class SvcA,SvcB,SvcC pri;
 ```
 
 1. **Private / Internal APIs**:
@@ -535,12 +482,6 @@ flowchart TD
         Q2 -->|"4. Process in background"| W2["Background Worker Pool"]
         W2 -->|"5. Push Webhook callback or poll status"| C2
     end
-
-    classDef sStyle fill:#1e293b,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef aStyle fill:#1e1b4b,stroke:#f472b6,stroke-width:1px,color:#f8fafc;
-
-    class SyncFlow sStyle;
-    class AsyncFlow aStyle;
 ```
 
 * **Synchronous Workload**: The client thread blocks and waits until the server completes processing and returns the response. Ideal for fast, deterministic reads and writes (< 200 milliseconds).
@@ -583,14 +524,6 @@ flowchart TD
     CityGates -->|"Authorized Handoff"| InsideCity
     Offices <-->|"East-West: Safe internal communication"| Warehouses
     Offices <-->|"East-West: Decoupled tasks"| ConveyorBelts
-
-    classDef out fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef gate fill:#1e1b4b,stroke:#f472b6,stroke-width:2px,color:#f8fafc;
-    classDef in fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class Visitors out;
-    class GateGuard,TollBooth gate;
-    class Offices,Warehouses,ConveyorBelts in;
 ```
 
 #### The Two Fundamental Directions of Network Traffic:
@@ -694,11 +627,6 @@ flowchart LR
     Phone -->|"3. HTTPS GET /v1/home"| WAF["🛡️ WAF (Cloudflare)\n(Check for attacks)"]
     WAF -->|"4. Clean Traffic"| LB["⚖️ Load Balancer\n(Distribute connections)"]
     LB -->|"5. Routed Request"| Gateway["🚪 API Gateway\n(Validate Token)"]
-
-    classDef c fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef e fill:#1e1b4b,stroke:#f472b6,stroke-width:1px,color:#f8fafc;
-    class Phone c;
-    class DNS,WAF,LB,Gateway e;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -726,11 +654,6 @@ flowchart LR
     GW["🚪 API Gateway"] -->|"Path: /v1/mobile/*"| BFF["📱 Mobile BFF\n(Compacts data for mobile)"]
     GW -->|"Path: /v1/orders/*"| Orders["📦 Order Service"]
     GW -->|"Path: /v1/billing/*"| Billing["💳 Billing Service"]
-
-    classDef gw fill:#1e1b4b,stroke:#f472b6,stroke-width:1px,color:#f8fafc;
-    classDef svc fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-    class GW gw;
-    class BFF,Orders,Billing svc;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -752,11 +675,6 @@ flowchart LR
     Registry -->|"2. Available at IP 10.0.4.12"| OrderSvc
     OrderSvc -->|"3. gRPC: CheckStock(SKU-991)"| InvSvc["🏭 Inventory Service\n(at 10.0.4.12)"]
     InvSvc -->|"4. Stock Confirmed"| OrderSvc
-
-    classDef svc fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-    classDef reg fill:#1e293b,stroke:#818cf8,stroke-width:1px,color:#f8fafc;
-    class OrderSvc,InvSvc svc;
-    class Registry reg;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -783,11 +701,6 @@ flowchart LR
 
     App -->|"1. Plain HTTP to localhost"| Sidecar
     Sidecar -->|"2. Auto-encrypt mTLS + Trace Header"| ExternalSvc
-
-    classDef app fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef side fill:#1e1b4b,stroke:#f472b6,stroke-width:1px,color:#f8fafc;
-    class App app;
-    class Sidecar,ExternalSvc side;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -820,11 +733,6 @@ flowchart LR
     Service -->|"2. Relational Query (SQL)"| Postgres
     Service -->|"3. Search Query (JSON/HTTP)"| Elastic
     Service -->|"4. Upload/Download Blob (REST)"| S3
-
-    classDef svc fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-    classDef db fill:#1e293b,stroke:#818cf8,stroke-width:1px,color:#f8fafc;
-    class Service svc;
-    class Redis,Postgres,Elastic,S3 db;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -848,14 +756,6 @@ flowchart LR
     Kafka -->|"2. Read at own pace"| EmailWorker["📧 Email Worker\n(Sends confirmation)"]
     Kafka -->|"3. Read at own pace"| AnalyticsWorker["📊 Analytics Worker\n(Updates dashboard)"]
     Kafka -->|"4. Read at own pace"| FraudWorker["🚨 Fraud Detector\n(Analyzes risk)"]
-
-    classDef pub fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-    classDef broker fill:#1e1b4b,stroke:#f472b6,stroke-width:1px,color:#f8fafc;
-    classDef sub fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-
-    class OrderSvc pub;
-    class Kafka broker;
-    class EmailWorker,AnalyticsWorker,FraudWorker sub;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -877,9 +777,6 @@ flowchart LR
 flowchart LR
     Primary[("🐘 Primary DB Node\n(Accepts all Writes)")] -->|"Continuous WAL Streaming Replication"| Replica1[("🐘 Read Replica 1\n(Serves Read traffic)")]
     Primary -->|"Continuous WAL Streaming Replication"| Replica2[("🐘 Read Replica 2\n(Serves Read traffic)")]
-
-    classDef db fill:#1e293b,stroke:#818cf8,stroke-width:1px,color:#f8fafc;
-    class Primary,Replica1,Replica2 db;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -906,13 +803,6 @@ flowchart TD
     Kernel -->|"2. DMA Memory Copy"| Hardware
     Hardware -->|"3. Interrupt Signal: 'Data has arrived!'"| Kernel
     Kernel -->|"4. Wake up epoll event loop"| App
-
-    classDef u fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef k fill:#1e1b4b,stroke:#f472b6,stroke-width:1px,color:#f8fafc;
-    classDef h fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-    class App u;
-    class Kernel k;
-    class Hardware h;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -938,11 +828,6 @@ flowchart LR
     User -->|"3. Request + Bearer JWT"| Gateway["🚪 API Gateway"]
     Gateway -->|"4. Fetch Public Keys (Cached)"| JWKS["🔑 JWKS Key Endpoint"]
     Gateway -->|"5. Verify signature offline in < 1ms"| Gateway
-
-    classDef u fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef auth fill:#1e1b4b,stroke:#f472b6,stroke-width:1px,color:#f8fafc;
-    class User u;
-    class IdP,Gateway,JWKS auth;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -967,11 +852,6 @@ flowchart LR
     InternalBackend["🏢 Your Backend Service"] <-->|"Synchronous Outbound API Call\n(POST https://api.stripe.com/v1/charges)"| Stripe["💳 Stripe Cloud"]
     InternalBackend <-->|"Synchronous Outbound API Call\n(POST https://api.twilio.com/v1/messages)"| Twilio["📱 Twilio Cloud"]
     Stripe -->|"Asynchronous Inbound Callback\n(POST https://your-api.com/webhooks/stripe)"| WebhookReceiver["🪝 Your Webhook Receiver"]
-
-    classDef mine fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-    classDef ext fill:#312e81,stroke:#a855f7,stroke-width:1px,color:#f8fafc;
-    class InternalBackend,WebhookReceiver mine;
-    class Stripe,Twilio ext;
 ```
 
 | Source Component | Target Component | Purpose & Responsibility | Protocols & Mechanisms | Interaction Pattern |
@@ -1056,9 +936,6 @@ flowchart TD
         P_MUX["8. Multiplexing vs Demultiplexing\n(HTTP/2 streams vs DB connection pooling)"]
         P_SIDE["9. Sidecar Pattern\n(Offloading mTLS, proxies, and tracing)"]
     end
-
-    classDef pStyle fill:#1e293b,stroke:#818cf8,stroke-width:1px,color:#f8fafc;
-    class P_RR,P_SYNC,P_SPOLL,P_LPOLL,P_SSE,P_WS,P_PUBSUB,P_MUX,P_SIDE pStyle;
 ```
 
 ---
@@ -1087,12 +964,9 @@ sequenceDiagram
     participant Server as Backend Server (App Runtime)
     participant DB as Database / Storage
 
-    rect rgb(20, 30, 45)
     Note over Client: Phase 1: Client Preparation (t0) (Serialize object to JSON / Protobuf)
     Client->>Wire: Flush request bytes to OS socket buffer
-    end
 
-    rect rgb(20, 45, 30)
     Note over Wire: Phase 2: Network Transit (t1) (Packets traverse routers & reorder)
     Wire->>Server: Kernel receives bytes in recv_buf
     Note over Server: Phase 3: Parsing & Deserialization (t2) (Locate boundary & parse DTO)
@@ -1100,13 +974,10 @@ sequenceDiagram
     DB-->>Server: Query Result
     Note over Server: Phase 4: Response Serialization (t4) (Generate HTTP headers + JSON body)
     Server->>Wire: Flush response bytes to socket
-    end
 
-    rect rgb(45, 20, 35)
     Note over Wire: Phase 5: Return Transit (t5)
     Wire->>Client: Bytes arrive at client socket
     Note over Client: Phase 6: Client Consumption (t6) (Parse HTTP response & render)
-    end
 ```
 
 * **The Resumable Chunked Upload Pattern**:
@@ -1132,15 +1003,12 @@ sequenceDiagram
     participant Queue as Message Broker (Kafka/RabbitMQ)
     participant Worker as Background Worker Pool
 
-    rect rgb(45, 20, 20)
     Note over Client,API: Pattern A: Synchronous Blocking Workload
     Client->>API: POST /v1/reports/pdf (Export 1M rows)
     Note over API: API thread BLOCKS and WAITS for 45 seconds (Consumes thread pool & holds socket open)
     Note over Client: Client is frozen waiting...
     API-->>Client: HTTP 200 OK (PDF Binary)
-    end
 
-    rect rgb(20, 45, 30)
     Note over Client,Worker: Pattern B: Asynchronous Worker Queue Workload
     Client->>API: POST /v1/reports/pdf (Export 1M rows)
     API->>Queue: Enqueue task: generate_report (id: job_881)
@@ -1152,7 +1020,6 @@ sequenceDiagram
     
     Client->>API: GET /jobs/job_881 (Status check)
     API-->>Client: HTTP 200 OK (Status: COMPLETED, downloadUrl: s3://...)
-    end
 ```
 
 * **The Synchronous Thread Starvation Trap**:
@@ -1332,15 +1199,12 @@ sequenceDiagram
     participant Proxy as Reverse Proxy (Envoy / Nginx)
     participant WS as WebSocket Backend Server
 
-    rect rgb(20, 30, 45)
     Note over Client,WS: Phase 1: HTTP 101 Handshake Upgrade
     Client->>Proxy: GET /ws (Upgrade: websocket, Connection: Upgrade)
     Proxy->>WS: Forward hop-by-hop Upgrade headers
     WS-->>Proxy: HTTP 101 Switching Protocols
     Proxy-->>Client: HTTP 101 Switching Protocols
-    end
 
-    rect rgb(20, 45, 30)
     Note over Client,WS: Phase 2: Full-Duplex Bi-directional Binary/Text Framing
     Client->>WS: Frame 1: {"action": "join", "room": "lobby"} (Overhead: 2 bytes)
     WS-->>Client: Frame 2: {"status": "joined", "users": 142}
@@ -1349,7 +1213,6 @@ sequenceDiagram
         WS-->>Client: Frame 3: {"sender": "Alice", "msg": "Hello world!"}
     and Client-Initiated Push
         Client->>WS: Frame 4: {"sender": "Bob", "msg": "Hey Alice!"}
-    end
     end
 ```
 
@@ -1394,14 +1257,6 @@ flowchart LR
     Topic -->|"Partition Stream"| EmailGroup
     Topic -->|"Partition Stream"| AnalyticsGroup
     Topic -->|"Partition Stream"| FraudGroup
-
-    classDef pub fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-    classDef brk fill:#1e1b4b,stroke:#f472b6,stroke-width:2px,color:#f8fafc;
-    classDef sub fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-
-    class OrderSvc pub;
-    class Topic brk;
-    class BillingGroup,EmailGroup,AnalyticsGroup,FraudGroup sub;
 ```
 
 * **Push vs. Pull Delivery**:
@@ -1436,12 +1291,6 @@ flowchart TD
         DB2 --> RDBMS
         DB3 --> RDBMS
     end
-
-    classDef mStyle fill:#1e293b,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef dStyle fill:#1e1b4b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class MUX,S1,S2,S3,MuxEngine,Gateway mStyle;
-    class DEMUX,APIReqs,Pool,DB1,DB2,DB3,RDBMS dStyle;
 ```
 
 * **Multiplexing (Frontend Ingress)**:
@@ -1478,12 +1327,6 @@ flowchart LR
     end
 
     SidecarA <==|"2. Mutual TLS (mTLS) Encrypted Tunnel\n+ Distributed Tracing Headers"|==> SidecarB
-
-    classDef app fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef side fill:#1e1b4b,stroke:#f472b6,stroke-width:2px,color:#f8fafc;
-
-    class AppA,AppB app;
-    class SidecarA,SidecarB side;
 ```
 
 ---
@@ -1558,14 +1401,6 @@ flowchart TD
         Q2["Stream 2 (UDP)"] --> QUICLayer
         NoteH3["True Independence: Packet loss on Stream 1 NEVER blocks Stream 2!"]
     end
-
-    classDef h1 fill:#450a0a,stroke:#f87171,stroke-width:1px,color:#f8fafc;
-    classDef h2 fill:#1e293b,stroke:#fbbf24,stroke-width:1px,color:#f8fafc;
-    classDef h3 fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class H1,Req1,Socket1,Req2,Stalled h1;
-    class H2,S1,S2,TCPSocket,NoteH2 h2;
-    class H3,Q1,Q2,QUICLayer,NoteH3 h3;
 ```
 
 ---
@@ -1604,9 +1439,6 @@ flowchart TD
     end
 
     H1 --> H2 --> H3 --> H4 --> H5
-
-    classDef hs fill:#1e293b,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    class H1,H2,H3,H4,H5 hs;
 ```
 
 #### The Critical Security Dilemma: 0-RTT Early Data and Replay Attacks
@@ -1631,9 +1463,6 @@ flowchart LR
         GQL["GraphQL (HTTP)\n• Graph & Query-oriented\n• Client-driven data fetching\n• Solves over/under-fetching\n• Single endpoint POST /graphql"]
         WS["WebSockets (TCP)\n• Connection-oriented\n• Full-duplex bidirectional stream\n• Real-time chat & live feeds"]
     end
-
-    classDef b fill:#1e293b,stroke:#818cf8,stroke-width:1px,color:#f8fafc;
-    class REST,gRPC,GQL,WS b;
 ```
 
 ### 3.1. REST & Richardson Maturity Model
@@ -1838,12 +1667,6 @@ flowchart TD
     subgraph CursorPaging["Keyset / Cursor-Based Pagination: WHERE id > 'ord_999' LIMIT 20"]
         C1["B-Tree index seek directly to 'ord_999'"] --> C2["Reads exactly next 20 rows\n(O(1) index seek, stable under inserts)"]
     end
-
-    classDef bad fill:#450a0a,stroke:#f87171,stroke-width:1px,color:#f8fafc;
-    classDef good fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class OffsetPaging bad;
-    class CursorPaging good;
 ```
 
 1. **Offset-Based (`?page=5&limit=20` or `?offset=100&limit=20`)**:
@@ -2243,9 +2066,6 @@ flowchart LR
     Client["Client (TCP SYN)"] --> SYN_Q["SYN Queue\n(Half-Open TCP Connections\ntcp_max_syn_backlog)"]
     SYN_Q -->|"Client ACK\n(3-Way Complete)"| ACCEPT_Q["Accept Queue\n(Established Sockets awaiting accept()\nsomaxconn)"]
     ACCEPT_Q -->|"accept() syscall"| AppWorker["Application Worker Process\n(epoll / Worker Thread)"]
-
-    classDef qStyle fill:#1e293b,stroke:#818cf8,stroke-width:1px,color:#f8fafc;
-    class SYN_Q,ACCEPT_Q,AppWorker qStyle;
 ```
 
 #### The 4 Canonical Execution Threading Models:
@@ -2272,14 +2092,6 @@ flowchart TD
     Gateway -->|"Route: /v1/users/*"| UserService["User Microservice"]
     Gateway -->|"Route: /v1/orders/*"| OrderService["Order Microservice"]
     Gateway -->|"Route: /v1/payments/*"| PaymentService["Payment Microservice"]
-
-    classDef edge fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    classDef gw fill:#1e1b4b,stroke:#f472b6,stroke-width:2px,color:#f8fafc;
-    classDef svc fill:#064e3b,stroke:#34d399,stroke-width:1px,color:#f8fafc;
-
-    class Client,WAF,LB edge;
-    class Gateway gw;
-    class UserService,OrderService,PaymentService svc;
 ```
 
 ---
@@ -2491,9 +2303,6 @@ flowchart TD
     S10["10. Response Serialization & Keep-Alive\n(HTTP 200 serialized -> socket send_buf -> Keep-Alive reuse)"]
 
     S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8 --> S9 --> S10
-
-    classDef stageStyle fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc;
-    class S1,S2,S3,S4,S5,S6,S7,S8,S9,S10 stageStyle;
 ```
 
 ---

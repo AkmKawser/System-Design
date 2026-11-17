@@ -13,12 +13,6 @@ flowchart LR
     A["Architecture Pattern (Proven solution with balanced trade-offs)"] <--> B["Architecture Antipattern (Looks attractive initially, turns bad over time or scale)"]
     B <--> C["Architecture Pitfall (Superficial good idea, almost immediate negative impact)"]
 
-    classDef pattern fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#f8fafc;
-    classDef antipattern fill:#1e293b,stroke:#f59e0b,stroke-width:2px,color:#f8fafc;
-    classDef pitfall fill:#1e293b,stroke:#ef4444,stroke-width:2px,color:#f8fafc;
-    class A pattern;
-    class B antipattern;
-    class C pitfall;
 ```
 
 ### Core Distinctions Defined by Richards, Ford & Gandhi:
