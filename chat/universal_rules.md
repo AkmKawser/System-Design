@@ -193,7 +193,6 @@ System-Design/
 ├── README.md                                 # Single root project overview & Master Output Catalog
 ├── index.md                                  # Master Navigation Catalog: Topics, Queries & Notes
 ├── outline.md                                # Single Master Topic Outline (consolidating all curricula)
-├── SUMMARY.md                                # GitBook Master Table of Contents
 ├── .gitbook.yaml                             # GitBook Space & Root Configuration
 ├── gitbook-docs.yaml                         # GitBook Site-Wide Git Sync Architecture
 ├── animated_images/                          # Standalone Animated Vector SVGs
