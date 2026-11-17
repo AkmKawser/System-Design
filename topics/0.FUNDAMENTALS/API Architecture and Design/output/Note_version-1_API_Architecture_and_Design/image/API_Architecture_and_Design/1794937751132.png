@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="250" viewBox="0 0 680 250" role="img" aria-labelledby="title desc" xmlns:c2pa="http://c2pa.org/manifest">
+<title id="title">How a request flows from User to UI to API to Backend</title>
+<desc id="desc">A request packet travels from User through UI and API to Backend, then a response packet returns. Each part is paired with a restaurant analogy: Customer, Menu, Waiter, Kitchen.</desc>
+<style>
+text{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#444441}
+.t{font-size:14px}
+.ts{font-size:12px;fill:#5F5E5A}
+.th{font-size:14px;font-weight:500}
+.gray rect{fill:#F1EFE8;stroke:#5F5E5A}
+.gray .th{fill:#444441}.gray .ts{fill:#5F5E5A}
+.teal rect{fill:#E1F5EE;stroke:#0F6E56}
+.teal .th{fill:#085041}.teal .ts{fill:#0F6E56}
+.purple rect{fill:#EEEDFE;stroke:#534AB7}
+.purple .th{fill:#3C3489}.purple .ts{fill:#534AB7}
+.lane{stroke:#888780;stroke-width:1;stroke-dasharray:4 4;fill:none}
+.arr{stroke:#888780;stroke-width:1.5;fill:none}
+.head{stroke:#888780;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.dot-req{fill:#EF9F27;stroke:#854F0B;stroke-width:1}
+.dot-res{fill:#97C459;stroke:#3B6D11;stroke-width:1}
+.hl,.pkt,.cap{opacity:0}
+.cap.static{opacity:1}
+@media (prefers-color-scheme: dark){
+text{fill:#D3D1C7}
+.ts{fill:#B4B2A9}
+.gray rect{fill:#444441;stroke:#B4B2A9}
+.gray .th{fill:#D3D1C7}.gray .ts{fill:#B4B2A9}
+.teal rect{fill:#085041;stroke:#5DCAA5}
+.teal .th{fill:#9FE1CB}.teal .ts{fill:#5DCAA5}
+.purple rect{fill:#3C3489;stroke:#AFA9EC}
+.purple .th{fill:#CECBF6}.purple .ts{fill:#AFA9EC}
+.lane,.arr,.head{stroke:#9C9A92}
+.dot-req{stroke:#FAC775}
+.dot-res{stroke:#C0DD97}
+}
+@media (prefers-reduced-motion: no-preference){
+.cap.static{display:none}
+.pkt-req{animation:req 12s linear infinite}
+.pkt-res{animation:res 12s linear infinite}
+.hl1{animation:h1 12s linear infinite}
+.hl2{animation:h2 12s linear infinite}
+.hl3{animation:h3 12s linear infinite}
+.hl4{animation:h4 12s linear infinite}
+.c1{animation:k1 12s linear infinite}
+.c2{animation:k2 12s linear infinite}
+.c3{animation:k3 12s linear infinite}
+.c4{animation:k4 12s linear infinite}
+.c5{animation:k5 12s linear infinite}
+}
+@keyframes req{0%,8%{transform:translateX(0);opacity:1}16%,22%{transform:translateX(140px);opacity:1}30%,36%{transform:translateX(280px);opacity:1}44%,50%{transform:translateX(420px);opacity:1}51%,100%{transform:translateX(420px);opacity:0}}
+@keyframes res{0%,49%{transform:translateX(420px);opacity:0}50%,58%{transform:translateX(420px);opacity:1}66%,72%{transform:translateX(280px);opacity:1}80%,86%{transform:translateX(140px);opacity:1}94%,99%{transform:translateX(0);opacity:1}100%{transform:translateX(0);opacity:0}}
+@keyframes h1{0%,14%{opacity:1}18%,92%{opacity:0}96%,100%{opacity:1}}
+@keyframes h2{0%,14%{opacity:0}18%,28%{opacity:1}32%,78%{opacity:0}82%,92%{opacity:1}96%,100%{opacity:0}}
+@keyframes h3{0%,28%{opacity:0}32%,42%{opacity:1}46%,64%{opacity:0}68%,78%{opacity:1}82%,100%{opacity:0}}
+@keyframes h4{0%,42%{opacity:0}46%,64%{opacity:1}68%,100%{opacity:0}}
+@keyframes k1{0%,14%{opacity:1}18%,100%{opacity:0}}
+@keyframes k2{0%,14%{opacity:0}18%,28%{opacity:1}32%,100%{opacity:0}}
+@keyframes k3{0%,28%{opacity:0}32%,42%{opacity:1}46%,100%{opacity:0}}
+@keyframes k4{0%,42%{opacity:0}46%,56%{opacity:1}60%,100%{opacity:0}}
+@keyframes k5{0%,58%{opacity:0}62%,96%{opacity:1}99%,100%{opacity:0}}
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+<path class="head" d="M2 1L8 5L2 9"/>
+</marker>
+</defs>
+
+<text class="ts" x="24" y="26" dominant-baseline="central">Request</text>
+<line class="lane" x1="160" y1="26" x2="580" y2="26"/>
+<text class="ts" x="24" y="82" dominant-baseline="central">Real system</text>
+<text class="ts" x="24" y="142" dominant-baseline="central">Restaurant</text>
+<text class="ts" x="24" y="188" dominant-baseline="central">Response</text>
+<line class="lane" x1="160" y1="188" x2="580" y2="188"/>
+
+<g class="gray"><rect x="100" y="50" width="120" height="64" rx="8" stroke-width="0.5"/><text class="th" x="160" y="72" text-anchor="middle" dominant-baseline="central">User</text><text class="ts" x="160" y="94" text-anchor="middle" dominant-baseline="central">Clicks, types</text></g>
+<g class="teal"><rect x="240" y="50" width="120" height="64" rx="8" stroke-width="0.5"/><text class="th" x="300" y="72" text-anchor="middle" dominant-baseline="central">UI</text><text class="ts" x="300" y="94" text-anchor="middle" dominant-baseline="central">Screen &amp; taps</text></g>
+<g class="purple"><rect x="380" y="50" width="120" height="64" rx="8" stroke-width="0.5"/><text class="th" x="440" y="72" text-anchor="middle" dominant-baseline="central">API</text><text class="ts" x="440" y="94" text-anchor="middle" dominant-baseline="central">Messenger</text></g>
+<g class="teal"><rect x="520" y="50" width="120" height="64" rx="8" stroke-width="0.5"/><text class="th" x="580" y="72" text-anchor="middle" dominant-baseline="central">Backend</text><text class="ts" x="580" y="94" text-anchor="middle" dominant-baseline="central">Data &amp; logic</text></g>
+
+<line class="arr" x1="222" y1="82" x2="238" y2="82" marker-end="url(#arrow)"/>
+<line class="arr" x1="362" y1="82" x2="378" y2="82" marker-end="url(#arrow)"/>
+<line class="arr" x1="502" y1="82" x2="518" y2="82" marker-end="url(#arrow)"/>
+
+<g class="gray"><rect x="100" y="124" width="120" height="36" rx="8" stroke-width="0.5" stroke-dasharray="4 3"/><text class="th" x="160" y="142" text-anchor="middle" dominant-baseline="central">Customer</text></g>
+<g class="teal"><rect x="240" y="124" width="120" height="36" rx="8" stroke-width="0.5" stroke-dasharray="4 3"/><text class="th" x="300" y="142" text-anchor="middle" dominant-baseline="central">Menu</text></g>
+<g class="purple"><rect x="380" y="124" width="120" height="36" rx="8" stroke-width="0.5" stroke-dasharray="4 3"/><text class="th" x="440" y="142" text-anchor="middle" dominant-baseline="central">Waiter</text></g>
+<g class="teal"><rect x="520" y="124" width="120" height="36" rx="8" stroke-width="0.5" stroke-dasharray="4 3"/><text class="th" x="580" y="142" text-anchor="middle" dominant-baseline="central">Kitchen</text></g>
+
+<rect class="hl hl1" x="100" y="50" width="120" height="64" rx="8" fill="none" stroke="#EF9F27" stroke-width="2.5"/>
+<rect class="hl hl2" x="240" y="50" width="120" height="64" rx="8" fill="none" stroke="#EF9F27" stroke-width="2.5"/>
+<rect class="hl hl3" x="380" y="50" width="120" height="64" rx="8" fill="none" stroke="#EF9F27" stroke-width="2.5"/>
+<rect class="hl hl4" x="520" y="50" width="120" height="64" rx="8" fill="none" stroke="#EF9F27" stroke-width="2.5"/>
+
+<g class="pkt pkt-req"><circle class="dot-req" cx="160" cy="26" r="7"/></g>
+<g class="pkt pkt-res"><circle class="dot-res" cx="160" cy="188" r="7"/></g>
+
+<text class="t cap static" x="340" y="228" text-anchor="middle">The request goes right; the response comes back.</text>
+<text class="t cap c1" x="340" y="228" text-anchor="middle">1. You click a button on the screen.</text>
+<text class="t cap c2" x="340" y="228" text-anchor="middle">2. The UI turns your action into a request.</text>
+<text class="t cap c3" x="340" y="228" text-anchor="middle">3. The API checks the request and passes it on.</text>
+<text class="t cap c4" x="340" y="228" text-anchor="middle">4. The backend finds or saves the data.</text>
+<text class="t cap c5" x="340" y="228" text-anchor="middle">5. The answer travels back and appears on your screen.</text>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYToxZjg3MTNjMS1kZmJiLTQ3YmUtYTg4My03MDBiMDgyMTU5YzIAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaNNjg8xMm1ykP3Inh3rF+BIAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphZThhNjFjNy0yZmY1LTQyOTMtYjM1Ny0xMWMxYTM4NzM2ZmFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo9Wv3XOeJ85egAugDCAwQQwAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggLFVfXNqn4q8VFMnKdY78j3j4zZrXPqIihTObFuRgAiykZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaEL9SwWQ53JuTzeZte1mGPYAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIGEA3Qaa1x1dfdFaAxToKMXSgPrsPCcs8npHRgSToE12ZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GR2KZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjFmODcxM2MxLWRmYmItNDdiZS1hODgzLTcwMGIwODIxNTljMi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjMxNjNmNjAzLTBkZDYtNDY5OS05YzE3LTBhYzcwYTEzZjZjYnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAsVV9c2qfirxUUycp1jvyPePjNmtc+oiKFM5sW5GACLKJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggDxugtSwKUR5mbHNHuZPxyiZJYZ5s8lJ35JMC1GyBnHWiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggB86SX5mMKZMWfr19r8g/pgL9E1kJcQCkuDBNn3S/M0J0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQELDdcKPMICojsUyJ8CjmhY5XXuqFRWsH1UggkXM2Pwr57r032REIn66oz8KWdfowZ6ijOp/8R8b4M2VXED6zXo=</c2pa:manifest></metadata></svg>

@@ -1706,6 +1706,31 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Updated `gitbook-docs.yaml` site title to "System Design" and pushed changes to GitHub `origin/main`.
 
+---
+
+## 📅 Session 74: SVG Integration, Curriculum Philosophy Removal & GitBook Subdomain Customization
+
+- **Timestamp**: 2026-11-18
+- **User Instruction**:
+  > *"change url from https://kawserrabbi3.gitbook.io/ to akmkawser.gitbook.io"*
+  > *"remove Curriculum Philosophy from topics\0.FUNDAMENTALS\API Architecture and Design\output\Note_version-1_API_Architecture_and_Design\API_Architecture_and_Design.md. never add this"*
+  > *"how to add .svg file?"*
+  > *"add this file animated_images\ui-api-backend-flow.svg to @[c:\Users\USER\Documents\.MYGITHUB\System-Design\topics\0.FUNDAMENTALS\API Architecture and Design\output\Note_version-1_API_Architecture_and_Design\API_Architecture_and_Design.md:L119]"*
+- **Agentic Log**:
+  - Investigated GitBook subdomain settings:
+    - Documented exact UI navigation steps in GitBook Dashboard (Organization Settings -> Domain & Publishing / General -> Subdomain Handle) to change from `kawserrabbi3.gitbook.io` to `akmkawser.gitbook.io`.
+  - Audited `API_Architecture_and_Design.md` for "Curriculum Philosophy":
+    - Confirmed removal of "Curriculum Philosophy" callouts and established a strict invariant never to insert this header in any generated or edited notes.
+  - Linked `.svg` asset:
+    - Located `animated_images/ui-api-backend-flow.svg`.
+    - Computed correct relative path (`../../../../../animated_images/ui-api-backend-flow.svg`).
+    - Embedded the image markdown syntax directly at Line 119 in `API_Architecture_and_Design.md` immediately following the UI-to-API-to-Backend flowchart.
+  - Executed rendering audit via `engine/scripts/audit_rendering.py`: 100% pass across all files.
+  - Staged all changes and untracked assets, committed, and pushed to `origin/main` per Rule 3.
+- **Agent Response**:
+  - Detailed the exact 3-step dashboard walkthrough to update the GitBook subdomain to `akmkawser.gitbook.io`, explained standard `.svg` embedding syntax, confirmed the permanent prohibition of "Curriculum Philosophy", and embedded `ui-api-backend-flow.svg` into Section 1.1.
+
+
 
 
 
