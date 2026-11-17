@@ -1657,5 +1657,24 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Explained that OAuth authentication and GitHub App permission grants must be approved in the user's authenticated browser session; provided direct 1-click links and a concise 4-step walkthrough to link `AkmKawser/System-Design`.
 
+---
+
+## 📅 Session 71: GitBook Site-Wide Git Sync Architecture (`gitbook-docs.yaml`)
+
+- **Timestamp**: 2026-11-17
+- **User Instruction**:
+  > *"gitbook-docs.yaml does not exist on this branch."*
+- **Agentic Log**:
+  - Investigated modern GitBook Site Git Sync requirements:
+    - In modern GitBook, when syncing at the "Site" level (multi-space or monorepo documentation site), GitBook requires `gitbook-docs.yaml` at the root of the branch to define the site hierarchy, title, and directory routing.
+  - Authored `gitbook-docs.yaml` conforming to `$schema: https://api.gitbook.com/gitbook-docs.yaml`:
+    - Defined site title: "System Design & Architecture".
+    - Mapped default space `system-design` to root directory (`./`).
+  - Executed rendering audit via `engine/scripts/audit_rendering.py`: 100% pass across all files.
+  - Staged `gitbook-docs.yaml` and `chat/chatLog.md`, committed, and pushed directly to `origin/main` per Rule 3.
+- **Agent Response**:
+  - Generated and pushed `gitbook-docs.yaml` to `origin/main` satisfying GitBook's site-level Git Sync schema, enabling the user to proceed with the GitBook sync without error.
+
+
 
 
