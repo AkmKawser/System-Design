@@ -1691,6 +1691,21 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Resolved the parsing error by appending `default: true` to the primary space in `gitbook-docs.yaml` and pushing the update to GitHub.
 
+---
+
+## 📅 Session 73: Update GitBook Site Title to 'System Design'
+
+- **Timestamp**: 2026-11-17
+- **User Instruction**:
+  > *"title of this repo is only System Design. not System Design & Architecture"*
+- **Agentic Log**:
+  - Inspected `gitbook-docs.yaml` and identified the site title field `site.title`.
+  - Updated `site.title` from `"System Design & Architecture"` to `"System Design"` to align with repository naming.
+  - Executed rendering audit via `engine/scripts/audit_rendering.py`: 100% pass across all files.
+  - Staged `gitbook-docs.yaml` and `chat/chatLog.md`, committed, and pushed directly to `origin/main` per Rule 3.
+- **Agent Response**:
+  - Updated `gitbook-docs.yaml` site title to "System Design" and pushed changes to GitHub `origin/main`.
+
 
 
 

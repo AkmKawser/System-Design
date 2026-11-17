@@ -1,6 +1,6 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
 site:
-  title: System Design & Architecture
+  title: System Design
   structure:
     - type: space
       key: system-design
