@@ -119,7 +119,6 @@ flowchart LR
 
 ![UI to API to Backend Flow](../../../../../animated_images/ui-api-backend-flow.svg)
 
-
 #### The 3 Canonical Mental Models of an API:
 
 To truly understand why APIs exist, examine these three real-world analogies:
@@ -210,7 +209,7 @@ sequenceDiagram
     User->>API: POST /v1/checkout (items, address, paymentMethod)
     API->>Inv: Reserve 1x Laptop (Lock Stock)
     Inv-->>API: Stock Reserved
-    API->>Pay: Charge $1,200 to Card
+    API->>Pay: Charge 1,200 USD to Card
     alt Card Declined
         Pay-->>API: 402 Card Declined
         API->>Inv: Release Laptop Reservation
@@ -223,6 +222,8 @@ sequenceDiagram
         API-->>User: HTTP 201 Created (Order #ORD-882 Confirmed)
     end
 ```
+
+![API Checkout Workflow Orchestration](../../../../../animated_images/checkout-orchestration-flow.svg)
 
 * **Concrete Real-World Example**:
   When you order an Uber, your phone invokes `POST /v1/rides/request`. That single API call calculates the upfront fare based on traffic algorithms, locates nearby active drivers using spatial geospatial indexing, alerts drivers via real-time sockets, and pre-authorizes your payment card.
@@ -1122,6 +1123,7 @@ sequenceDiagram
 
   1. The client opens a standard HTTP connection with the header `Accept: text/event-stream`.
   2. The server responds with `HTTP 200 OK` and:
+
      ```http
      Content-Type: text/event-stream
      Cache-Control: no-cache
@@ -1129,6 +1131,7 @@ sequenceDiagram
      ```
   3. The server **never closes the HTTP response body**. Instead, it keeps the TCP socket open and writes structured text chunks down the wire whenever an event occurs.
   4. Each event adheres to the standardized W3C SSE format:
+
      ```http
      id: 8842
      event: stockTick
@@ -2325,6 +2328,5 @@ When deploying new backend versions, servers must never terminate abruptly (whic
 - [`001_architectural_styles_catalog_and_comparative_analysis.md`](<../../Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/1.%20Architecture%20Styles/output/query_Architecture_Styles/001_architectural_styles_catalog_and_comparative_analysis.md>): Monolithic vs distributed styles.
 - [`001_software_architecture_patterns_antipatterns_and_pitfalls.md`](<../../Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/001_software_architecture_patterns_antipatterns_and_pitfalls.md>): Enterprise integration patterns.
 - [`HLD_Overview.md`](../../../2.HLD/HLD_Overview/output/Note_version-1_HLD_Overview/HLD_Overview.md): Large-scale distributed systems and consensus.
-
 
 [def]: animated_images\ui-api-backend-flow.svg
