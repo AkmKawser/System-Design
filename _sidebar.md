@@ -6,6 +6,7 @@
 - **System Architecture**
   - [Architecture Blueprint](architecture/architecture.md)
   - [Folder Structure](architecture/folderstructure.md)
+  - [Animated Diagram Style Guide](architecture/diagram_style_guide.md)
 
 - **Execution Engine**
   - [Engine Manual](engine/engine.md)

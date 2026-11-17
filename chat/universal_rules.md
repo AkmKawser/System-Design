@@ -135,6 +135,42 @@ These rules are permanent operational constraints. The agent must enforce them p
      - Book documentation and guides: `Data_Ingestion/Books/<short_slug>/<short_slug>.md`
   3. **Strict Inter-Book Isolation**: No book assets or images may spill into the parent `Data_Ingestion/Books/` directory or mix with assets belonging to another book. Every book folder forms an isolated, self-contained knowledge package.
 
+### Rule 17: Standalone Animated SVG & Diagram Style Guide (Vector & Animation Standards)
+- **Directive**: All standalone animated vector diagrams created or embedded across the repository **MUST strictly adhere to the Canonical Animated Diagram Style Guide** ([`architecture/diagram_style_guide.md`](../architecture/diagram_style_guide.md)), using [`animated_images/ui-api-backend-flow.svg`](../animated_images/ui-api-backend-flow.svg) as the reference standard.
+- **Mandatory Specifications & Invariants**:
+  1. **Format & Sizing**:
+     - Standalone SVG file with an embedded `<style>` block.
+     - Strictly no HTML tags, no `<foreignObject>`, no JavaScript, no external files, and no CSS variables.
+     - Fixed width: `width="680"`, viewport: `viewBox="0 0 680 H"`, with exactly 20px bottom padding below the lowest element.
+     - Root element must define `role="img"`, `<title>`, and `<desc>` for accessibility.
+  2. **Typography**:
+     - System font stack: `-apple-system, "Segoe UI", Helvetica, Arial, sans-serif`.
+     - Exactly two font sizes: `14px` (font-weight 500 for titles) and `12px` (subtitles and labels).
+     - Sentence case capitalization only; subtitles must contain 5 words or fewer.
+     - Centered text alignment: `text-anchor="middle"` and `dominant-baseline="central"` inside all boxes.
+  3. **Boxes, Colors & Arrows**:
+     - Primary concept boxes: Rounded rectangles (`rx="8"`), `120px` width, `20px` inter-box gap, `0.5px` stroke.
+     - Analogy boxes: Matching rounded shape with dashed stroke (`stroke-dasharray="4 3"`), `36px` height.
+     - Palette: 2 to 3 cohesive families (Gray, Teal, Purple). Light fill, darker border, darkest text of that family.
+     - Theme Adaptability: Dedicated `@media (prefers-color-scheme: dark)` block with dark fills, light borders, and light text ensuring 100% legibility in both Light and Dark modes.
+     - Arrows: `1.5px` stroke with small open arrowheads, `16px` span between boxes.
+     - Traffic Lanes: Dashed `1px` lines above (Request lane) and below (Response lane) the boxes.
+  4. **CSS Animation Loop**:
+     - Pure CSS `@keyframes` animating only `opacity` and `transform`.
+     - Continuous loop: Exactly one `12s` linear infinite cycle.
+     - Request packet: Amber circle traveling along the top lane, stopping at the center of each box.
+     - Response packet: Green circle returning along the bottom lane.
+     - Box highlight: `2.5px` amber outline fading in when the packet arrives at the active box.
+     - Dynamic caption: Step-by-step explanatory caption below the diagram synchronized with packet arrival.
+     - Accessibility: Keyframe animations must be wrapped inside `@media (prefers-reduced-motion: no-preference)`, displaying static captions when motion is reduced.
+  5. **Embedding Protocol**:
+     - Must be saved in `animated_images/<name>.svg` (or topic-specific subfolder).
+     - Must be embedded in Markdown exclusively via image syntax:
+       ```markdown
+       ![Alt Text](relative/path/to/diagram.svg)
+       ```
+     - **NEVER** paste raw SVG XML code directly into Markdown files, as GitHub and GitBook will strip the CSS animations.
+
 ---
 
 ## 🏛️ 2. Finalized Repository Architecture & Output Guidelines (Learning-Roadmap Architecture)
@@ -146,10 +182,16 @@ System-Design/
 ├── README.md                                 # Single root project overview & Master Output Catalog
 ├── index.md                                  # Master Navigation Catalog: Topics, Queries & Notes
 ├── outline.md                                # Single Master Topic Outline (consolidating all curricula)
+├── SUMMARY.md                                # GitBook Master Table of Contents
+├── .gitbook.yaml                             # GitBook Space & Root Configuration
+├── gitbook-docs.yaml                         # GitBook Site-Wide Git Sync Architecture
+├── animated_images/                          # Standalone Animated Vector SVGs
+│   └── ui-api-backend-flow.svg               # Canonical reference animated diagram
 │
 ├── architecture/                             # Architectural Specifications Subsystem
 │   ├── architecture.md                       # Comprehensive Project Architecture & Sequence Lifecycles
-│   └── folderstructure.md                    # Canonical Filesystem Topology Specification
+│   ├── folderstructure.md                    # Canonical Filesystem Topology Specification
+│   └── diagram_style_guide.md                # Standalone Animated SVG & Diagram Standards
 │
 ├── engine/                                   # Computational & Agentic Engine Subsystem
 │   ├── engine.md                             # Scaffolding logic, Two-Tier ingestion & verification

@@ -1730,6 +1730,27 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Detailed the exact 3-step dashboard walkthrough to update the GitBook subdomain to `akmkawser.gitbook.io`, explained standard `.svg` embedding syntax, confirmed the permanent prohibition of "Curriculum Philosophy", and embedded `ui-api-backend-flow.svg` into Section 1.1.
 
+---
+
+## 📅 Session 75: Standalone Animated SVG Style Guide & Universal Rule 17 Integration
+
+- **Timestamp**: 2026-11-18
+- **User Instruction**:
+  > *"@[c:\Users\USER\Desktop\DIAGRAM_STYLE_GUIDE.md] add this in the universal rule. for diagram or animation style guide."*
+- **Agentic Log**:
+  - Ingested and parsed `c:\Users\USER\Desktop\DIAGRAM_STYLE_GUIDE.md`:
+    - Extracted core specifications covering Standalone SVG format with embedded `<style>`, pure CSS keyframe animations, dark/light theme `@media (prefers-color-scheme: dark)` compatibility, font typography (14px/12px system fonts), box geometry (120px wide, rx=8, 20px gaps), and mathematical positioning formulas.
+  - Authored dedicated reference specification in `architecture/diagram_style_guide.md`:
+    - Updated reference path to `animated_images/ui-api-backend-flow.svg`.
+    - Added full formatting tables, mathematical layout rules, AI generation prompt template, and verification checklist.
+  - Integrated **Rule 17: Standalone Animated SVG & Diagram Style Guide (Vector & Animation Standards)** into `chat/universal_rules.md`.
+  - Updated master navigation sidebar (`_sidebar.md`) and GitBook table of contents (`SUMMARY.md`) to index the new style guide under **System Architecture**.
+  - Executed rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 209 markdown files with 0 errors**.
+  - Synchronized changes to GitHub `origin/main` per Rule 3.
+- **Agent Response**:
+  - Formally codified the Animated SVG Style Guide as Rule 17 in `chat/universal_rules.md`, added `architecture/diagram_style_guide.md`, updated Docsify and GitBook navigation, and pushed all commits to GitHub.
+
+
 
 
 
