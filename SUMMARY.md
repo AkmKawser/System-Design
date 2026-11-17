@@ -27,6 +27,7 @@
 ### Core Systems & Networking
 * [API Architecture & Design](topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.md)
 * [Computer Networking](topics/0.FUNDAMENTALS/Networking/output/Note_version-1_Networking/Networking.md)
+* [Science of Language Frameworks](topics/0.FUNDAMENTALS/Science%20of%20Language%20Frameworks%20[Backend]/Science_of_Language_Frameworks_Backend_Engineering_and_Project_Types.md)
 
 ## 1. Low-Level Design (LLD)
 
