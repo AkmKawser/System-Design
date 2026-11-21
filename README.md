@@ -1,6 +1,14 @@
 # System Design & Software Architecture
 
-A structured, source-grounded engineering repository for **Low-Level Design (LLD)** and **High-Level Design (HLD)**, built upon the **Learning-Roadmap Project Architecture**.
+A structured, source-grounded engineering repository for **Low-Level Design (LLD)** and **High-Level Design (HLD)**, built upon the **Learning-Roadmap Project Architecture** and published at [akmkawser.gitbook.io](https://akmkawser.gitbook.io/).
+
+---
+
+## 🎨 Interactive Architecture & Flow Showcase
+
+All visual architecture diagrams in this repository adhere to the **Canonical Claude Animated SVG Style Guide** ([`architecture/diagram_style_guide.md`](architecture/diagram_style_guide.md)), providing responsive, theme-adaptive vector animations with synchronized state transitions.
+
+![Animated Checkout Sequence Diagram](animated_images/checkout-sequence-diagram.svg)
 
 ---
 
@@ -8,36 +16,45 @@ A structured, source-grounded engineering repository for **Low-Level Design (LLD
 
 The repository is organized into distinct operational and domain subsystems:
 
-1. **`architecture/`**: Comprehensive system design blueprints, sequence interactions, and canonical filesystem topology specifications ([`architecture/folderstructure.md`](architecture/folderstructure.md)).
-2. **`engine/`**: Autonomous execution engine, leaf discovery algorithms, multi-source data ingestion pipelines (Books, Courses, Random), and rendering audit tooling.
-3. **`chat/`**: Permanent governance invariants ([`chat/universal_rules.md`](chat/universal_rules.md)) and full-fidelity chronological session log ([`chat/chatLog.md`](chat/chatLog.md)).
-4. **`topics/`**: Domain knowledge root hosting all learning topics (Fundamentals, LLD, HLD), structured into modular leaf nodes with standardized `Data_Ingestion/`, `template/`, and `output/` directories.
-5. **`index.md`**: Master navigation catalog indexing all topics, query deliverables, and versioned notes across the project.
+1. **`architecture/`**: Comprehensive system design blueprints, sequence interaction models, canonical filesystem topology specifications ([`architecture/folderstructure.md`](architecture/folderstructure.md)), and the vector animation style guide ([`architecture/diagram_style_guide.md`](architecture/diagram_style_guide.md)).
+2. **`animated_images/`**: Standalone animated vector SVGs complying with Rule 17 (e.g., [`animated_images/ui-api-backend-flow.svg`](animated_images/ui-api-backend-flow.svg) and [`animated_images/checkout-sequence-diagram.svg`](animated_images/checkout-sequence-diagram.svg)).
+3. **`engine/`**: Autonomous execution engine, leaf discovery algorithms, multi-source data ingestion pipelines (Books, Courses, Random), and rendering audit tooling ([`engine/scripts/audit_rendering.py`](engine/scripts/audit_rendering.py)).
+4. **`chat/`**: Permanent governance invariants ([`chat/universal_rules.md`](chat/universal_rules.md)) and full-fidelity chronological session transcript ([`chat/chatLog.md`](chat/chatLog.md)).
+5. **`topics/`**: Domain knowledge root hosting all learning topics (Fundamentals, LLD, HLD), structured into modular leaf nodes with standardized `Data_Ingestion/`, `template/`, and `output/` directories.
+6. **`index.md`**: Master navigation catalog indexing all topics, query deliverables, and versioned notes across the project ([`index.md`](index.md)).
+7. **`outline.md`**: Consolidated universal topic curriculum outline covering all system design tracks ([`outline.md`](outline.md)).
 
 ```mermaid
 flowchart TD
     User(["User Queries & Instructions"]) <--> Agent(["AI Agent Core"])
     
     subgraph Control_Plane ["Control Plane & Operations"]
-        Rules["chat/universal_rules.md (Operational Invariants)"]
+        Rules["chat/universal_rules.md (17 Operational Invariants)"]
         ChatLog["chat/chatLog.md (Full-Fidelity Activity Log)"]
-        Nav["index.md & README.md (Master Catalogs)"]
+        Nav["index.md & outline.md (Master Catalogs)"]
+        StyleGuide["architecture/diagram_style_guide.md (Vector Animation Standards)"]
     end
     
     subgraph Execution_Engine ["Project Engine (engine/engine.md)"]
         Scaffold["Autonomous Leaf Scaffolder"]
-        Ingestion["Two-Tier Book RAG & Ingestion"]
-        Auditor["audit_rendering.py"]
+        Ingestion["Two-Tier Book RAG & Resource Ingestion"]
+        Auditor["audit_rendering.py (Zero-Tolerance Rendering Auditor)"]
     end
     
+    subgraph Visual_Assets ["Animated Vectors (animated_images/)"]
+        SVGFlow["ui-api-backend-flow.svg"]
+        SVGSeq["checkout-sequence-diagram.svg"]
+    end
+
     subgraph Knowledge_Domain ["Topics Hierarchy (topics/)"]
-        Fundamentals["0.FUNDAMENTALS/"]
-        LLD["1.LLD/ (DESIGN_PATTERNS & UML-DIAGRAMMING)"]
-        HLD["2.HLD/ (HLD_Overview)"]
+        Fundamentals["0.FUNDAMENTALS/ (Requirements, Modeling, Frameworks, API, Networking)"]
+        LLD["1.LLD/ (DESIGN_PATTERNS & Object-Oriented Modeling)"]
+        HLD["2.HLD/ (HLD_Overview & Distributed Systems)"]
     end
 
     Agent --> Control_Plane
     Agent --> Execution_Engine
+    Execution_Engine --> Visual_Assets
     Execution_Engine --> Knowledge_Domain
 ```
 
@@ -50,55 +67,64 @@ System-Design/
 ├── README.md                                 # Single root project overview & Master Output Catalog
 ├── index.md                                  # Master Navigation Catalog: Topics, Queries & Notes
 ├── outline.md                                # Single Master Topic Outline: Consolidated Curriculum
+├── .gitbook.yaml                             # GitBook Space & Root Configuration
+├── gitbook-docs.yaml                         # GitBook Site-Wide Git Sync Architecture
+│
+├── animated_images/                          # Standalone Animated Vector SVGs (Rule 17)
+│   ├── ui-api-backend-flow.svg               # Canonical reference horizontal pipeline animation
+│   └── checkout-sequence-diagram.svg         # 6-participant 12-step sequence diagram animation
 │
 ├── architecture/                             # Architectural Specifications Subsystem
 │   ├── architecture.md                       # Comprehensive Project Architecture & Subsystems
-│   └── folderstructure.md                    # Canonical Filesystem Topology Blueprint
+│   ├── folderstructure.md                    # Canonical Filesystem Topology Blueprint
+│   └── diagram_style_guide.md                # Standalone Animated SVG & Diagram Standards
 │
 ├── engine/                                   # Computational & Agentic Engine Subsystem
 │   ├── engine.md                             # Scaffolding logic, Two-Tier ingestion & verification
 │   └── scripts/                              # audit_rendering.py, extract_chapters.py, etc.
 │
 ├── chat/                                     # Governance, Logging & Rules Subsystem
-│   ├── universal_rules.md                    # 16 Permanent Operational Invariants
-│   └── chatLog.md                            # Full-fidelity chronological transcript
+│   ├── universal_rules.md                    # 17 Permanent Operational Invariants
+│   └── chatLog.md                            # Full-fidelity chronological activity transcript
 │
 ├── Upcoming Updates/                         # Strategic Roadmaps & Forward-Looking Blueprints
 │   └── Upcoming Updates.md                   # Shared Agent Memory roadmap & implementation plan
 │
 └── topics/                                   # Domain Knowledge & Learning Roadmaps Root
     ├── 0.FUNDAMENTALS/                       # Core Software Engineering Foundations
-    │   ├── System Requirements/
-    │   ├── Software Development Lifecycle/
+    │   ├── System Requirements/              # Requirements Engineering & Metamodeling
+    │   │   └── UML-DIAGRAMMING/              # Terminal Leaf: template/, Data_Ingestion/Books/umlBook/, output/
+    │   ├── Software Development Lifecycle/   # SDLC Models, Agile, DevOps & CI/CD
     │   ├── Software Architecture and Modeling/
-    │   ├── Science of Language Frameworks [Backend]/
-    │   ├── Design System [Front End]/
-    │   ├── Select Technology Stack/
-    │   ├── API Architecture and Design/      # Terminal Leaf Node: API Architecture & Engineering
+    │   │   ├── 1.ARCHITECTURE/               # Terminal Leaf: Architecture Styles & Patterns
+    │   │   │   ├── 1. Architecture Styles/   # Catalogs, comparative analysis, MVC/MVT classification
+    │   │   │   └── 2. Architecture Patterns/ # Patterns, antipatterns, pitfalls, styles vs patterns
+    │   │   └── 2.ARCHITECTURE_MODELING/      # Viewpoints, Perspectives & C4 Model
+    │   ├── Science of Language Frameworks [Backend]/ # Multi-Language Backend Framework Comparison
+    │   │   └── output/
+    │   │       └── Note_version-1_Science_of_Language_Frameworks/ # Science_of_Language_Frameworks.md
+    │   ├── Design System [Front End]/        # Design Systems, Atomic Design & Component Libraries
+    │   ├── Select Technology Stack/          # Tech Stack Evaluation Matrices & Selection Trade-offs
+    │   ├── API Architecture and Design/      # Terminal Leaf: REST, gRPC, GraphQL, Gateways
     │   │   ├── template/                     # template.md (custom blueprints)
-    │   │   ├── Data_Ingestion/               # Udemy: Fundamentals of Backend Engineering
+    │   │   ├── Data_Ingestion/               # Courses: Udemy Fundamentals of Backend Engineering
     │   │   └── output/
     │   │       └── Note_version-1_API_Architecture_and_Design/ # API_Architecture_and_Design.md
-    │   └── Networking/                       # Terminal Leaf Node: Computer Networking for Distributed Systems
+    │   └── Networking/                       # Terminal Leaf: OSI, TCP/IP, Sockets, TLS, epoll
     │       ├── template/                     # template.md (custom blueprints)
-    │       ├── Data_Ingestion/               # Udemy: Fundamentals of Network Engineering
+    │       ├── Data_Ingestion/               # Courses: Udemy Fundamentals of Network Engineering
     │       └── output/
     │           └── Note_version-1_Networking/ # Networking.md
     │
     ├── 1.LLD/                                # Low-Level Design Root
-    │   ├── DESIGN_PATTERNS/                  # Terminal Leaf Node: Design Patterns
-    │   │   ├── template/                     # template.md (custom blueprints)
-    │   │   ├── Data_Ingestion/               # Head First Design Patterns, GoF, source codes
-    │   │   └── output/
-    │   │       └── query_DESIGN_PATTERNS/    # design_patterns.md (Patterns, Anti-Patterns & Inefficient Traps)
-    │   └── UML-DIAGRAMMING/                  # Terminal Leaf Node: UML Diagramming
+    │   └── DESIGN_PATTERNS/                  # Terminal Leaf: Gang of Four & Modern Design Patterns
     │       ├── template/                     # template.md (custom blueprints)
-    │       ├── Data_Ingestion/               # umlBook PDF, chapter breakdowns, vector SVG library
+    │       ├── Data_Ingestion/               # Head First Design Patterns, GoF, source codes
     │       └── output/
-    │           └── query_UML-DIAGRAMMING/    # 001 and 002 formal UML metamodel manuals
+    │           └── query_DESIGN_PATTERNS/    # design_patterns.md & Head First breakdown
     │
     └── 2.HLD/                                # High-Level Design Root
-        └── HLD_Overview/                     # Terminal Leaf Node: HLD Overview
+        └── HLD_Overview/                     # Terminal Leaf: Large-Scale Distributed Architecture
             ├── template/                     # template.md (custom blueprints)
             ├── Data_Ingestion/               # Staging & reference documents
             └── output/
@@ -113,8 +139,8 @@ All investigative queries, multi-skill syntheses, and architectural deliverables
 
 | Output ID / Scope | Category | Output Title & Deliverable | Description / Core Focus | Output Link |
 | :---: | :--- | :--- | :--- | :--- |
-| **`QUERY-001`** | `UML_Metamodels` | **UML 2.5 Metamodel Taxonomy: Structural vs Behavioral** | Full classification of all 14 UML diagrams, static vs dynamic invariants, 3-tier mapping | [`001_uml_2_5_taxonomy_structural_vs_behavioral.md`](topics/1.LLD/UML-DIAGRAMMING/output/query_UML-DIAGRAMMING/001_uml_2_5_taxonomy_structural_vs_behavioral.md) |
-| **`QUERY-002`** | `UML_Metamodels` | **UML Sequence Diagrams & Object Interaction Mechanics** | Interaction taxonomy, 9 OOP concepts, Clause 17 formal metamodel, Java 21, JVM heap/stack | [`002_sequence_diagram_and_object_interactions.md`](topics/1.LLD/UML-DIAGRAMMING/output/query_UML-DIAGRAMMING/002_sequence_diagram_and_object_interactions.md) |
+| **`QUERY-001`** | `UML_Metamodels` | **UML 2.5 Metamodel Taxonomy: Structural vs Behavioral** | Full classification of all 14 UML diagrams, static vs dynamic invariants, 3-tier mapping | [`001_uml_2_5_taxonomy_structural_vs_behavioral.md`](topics/0.FUNDAMENTALS/System%20Requirements/UML-DIAGRAMMING/output/query_UML-DIAGRAMMING/001_uml_2_5_taxonomy_structural_vs_behavioral.md) |
+| **`QUERY-002`** | `UML_Metamodels` | **UML Sequence Diagrams & Object Interaction Mechanics** | Interaction taxonomy, 9 OOP concepts, Clause 17 formal metamodel, Java 21, JVM heap/stack | [`002_sequence_diagram_and_object_interactions.md`](topics/0.FUNDAMENTALS/System%20Requirements/UML-DIAGRAMMING/output/query_UML-DIAGRAMMING/002_sequence_diagram_and_object_interactions.md) |
 | **`LLD-DP-001`** | `DESIGN_PATTERNS` | **Software Design Patterns, Anti-Patterns & Inefficient Traps** | Complete behavioral, structural, creational, and concurrency design patterns alongside specific anti-patterns, misuse traps, and inefficient implementation flaws | [`design_patterns.md`](topics/1.LLD/DESIGN_PATTERNS/output/query_DESIGN_PATTERNS/design_patterns.md) |
 | **`LLD-DP-002`** | `DESIGN_PATTERNS` | **Head First Design Patterns: Complete Patterns & Anti-Patterns Catalog** | Exhaustive breakdown of all patterns in *Head First Design Patterns (2nd Ed)* with book-specific initial traps and Chapter 13 Anti-Patterns | [`001_head_first_design_patterns_and_antipatterns.md`](topics/1.LLD/DESIGN_PATTERNS/output/query_DESIGN_PATTERNS/001_head_first_design_patterns_and_antipatterns.md) |
 | **`ARCH-001`** | `2. Architecture Patterns` | **Software Architecture: Patterns, Antipatterns, and Pitfalls** | Complete catalog of 24 architectural patterns, 5 major antipatterns, and 3 critical pitfalls from Richards, Ford & Gandhi | [`001_software_architecture_patterns_antipatterns_and_pitfalls.md`](topics/0.FUNDAMENTALS/Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/001_software_architecture_patterns_antipatterns_and_pitfalls.md) |
@@ -147,7 +173,8 @@ All interactions in this repository are governed by the Universal Rules document
 13. **Rule 13: No `.gitignore` Without Explicit User Instruction** — Never create, modify, or add `.gitignore` files unless requested.
 14. **Rule 14: Comprehensive Resource Image Ingestion for Queries** — Extract and embed relevant diagrams, topologies, and figures from referenced books and courses into query manuals.
 15. **Rule 15: Single `outline.md` Policy (Universal Master Topic Outline Protocol)** — Exactly one `outline.md` file at the repository root where strictly and exclusively topic curriculum outlines from all over the project are kept.
-16. **Rule 16: Isolated Book Encapsulation & Concise Naming Protocol (Max Length Limits)** — Every PDF book must reside in its own dedicated subfolder under `Data_Ingestion/Books/<short_slug>/` (folder max 25 chars, PDF max 30 chars, no spaces/special chars) co-locating all extracted images and assets to guarantee desktop accessibility and prevent Windows path length violations.
+16. **Rule 16: Isolated Book Encapsulation & Concise Naming Protocol (Max Length Limits)** — Every PDF book must reside in its own dedicated subfolder under `Data_Ingestion/Books/<short_slug>/` (folder max 25 chars, PDF max 30 chars, no spaces/special chars) co-locating all extracted assets.
+17. **Rule 17: Standalone Animated SVG & Diagram Style Guide (Vector & Animation Standards)** — Standalone theme-adaptive animated SVGs complying with [`architecture/diagram_style_guide.md`](architecture/diagram_style_guide.md) across all diagram archetypes.
 
 ---
 
@@ -155,8 +182,10 @@ All interactions in this repository are governed by the Universal Rules document
 
 - **Master Navigation Index**: [`index.md`](index.md)
 - **Master Topic Curriculum Outline**: [`outline.md`](outline.md)
+- **Live GitBook Portal**: [akmkawser.gitbook.io](https://akmkawser.gitbook.io/)
 - **Visual Workflow & Architecture**: [`architecture/architecture.md`](architecture/architecture.md)
 - **Folder Structure Blueprint**: [`architecture/folderstructure.md`](architecture/folderstructure.md)
+- **Vector & Animation Style Guide**: [`architecture/diagram_style_guide.md`](architecture/diagram_style_guide.md)
 - **Engine Manual**: [`engine/engine.md`](engine/engine.md)
 - **Governance & Rules**: [`chat/universal_rules.md`](chat/universal_rules.md)
 - **Full-Fidelity Activity Log**: [`chat/chatLog.md`](chat/chatLog.md)
