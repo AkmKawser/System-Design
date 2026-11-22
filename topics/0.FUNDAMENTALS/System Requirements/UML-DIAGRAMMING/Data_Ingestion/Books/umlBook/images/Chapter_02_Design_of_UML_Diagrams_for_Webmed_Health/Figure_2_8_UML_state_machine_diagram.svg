@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1620 1200" width="100%" height="auto" role="img" aria-label="Figure 2.8: UML State Machine Diagram — Webmed Healthcare">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card-bg: #f8fafc;
+      --border: #cbd5e1;
+      --border-dark: #475569;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+      
+      --state-bg: #ffffff;
+      --state-header-bg: #e2e8f0;
+      --state-border: #334155;
+      
+      --composite-bg: #f8fafc;
+      --composite-header-bg: #e0e7ff;
+      --composite-border: #4338ca;
+      
+      --fwd-flow: #2563eb;
+      --success-flow: #059669;
+      --danger-flow: #dc2626;
+      --alt-flow: #d97706;
+      --loop-flow: #7c3aed;
+      --callout: #475569;
+      
+      --badge-bg: #1e293b;
+      --badge-text: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0f19;
+        --card-bg: #111827;
+        --border: #334155;
+        --border-dark: #64748b;
+        --text: #f8fafc;
+        --text-muted: #94a3b8;
+        --text-subtle: #64748b;
+        
+        --state-bg: #1e293b;
+        --state-header-bg: #334155;
+        --state-border: #94a3b8;
+        
+        --composite-bg: #0f172a;
+        --composite-header-bg: #1e1b4b;
+        --composite-border: #818cf8;
+        
+        --fwd-flow: #60a5fa;
+        --success-flow: #34d399;
+        --danger-flow: #f87171;
+        --alt-flow: #fbbf24;
+        --loop-flow: #c084fc;
+        --callout: #94a3b8;
+        
+        --badge-bg: #334155;
+        --badge-text: #f8fafc;
+      }
+    }
+
+    text {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .flow-line {
+      stroke-dasharray: 8 6;
+      animation: flowForward 1.2s linear infinite;
+    }
+
+    .flow-line-fast {
+      stroke-dasharray: 8 6;
+      animation: flowForward 0.8s linear infinite;
+    }
+
+    .flow-line-reverse {
+      stroke-dasharray: 8 6;
+      animation: flowBackward 1.4s linear infinite;
+    }
+
+    @keyframes flowForward {
+      to {
+        stroke-dashoffset: -28;
+      }
+    }
+
+    @keyframes flowBackward {
+      to {
+        stroke-dashoffset: 28;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flow-line, .flow-line-fast, .flow-line-reverse {
+        animation: none !important;
+      }
+    }
+
+    .state-group:hover rect.state-box {
+      stroke: var(--fwd-flow);
+      stroke-width: 2.2;
+    }
+  </style>
+
+  <defs>
+        <!-- Standard Arrow Marker -->
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 9 5 L 0 9 z" fill="var(--fwd-flow)" />
+        </marker>
+
+        <!-- Success Green Marker -->
+        <marker id="arrow-success" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 9 5 L 0 9 z" fill="var(--success-flow)" />
+        </marker>
+
+        <!-- Danger Red Marker -->
+        <marker id="arrow-danger" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 9 5 L 0 9 z" fill="var(--danger-flow)" />
+        </marker>
+
+        <!-- Loop Purple Marker -->
+        <marker id="arrow-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 9 5 L 0 9 z" fill="var(--loop-flow)" />
+        </marker>
+
+        <!-- Callout Arrow Marker -->
+        <marker id="arrow-callout" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 2 L 8 5 L 0 8 z" fill="var(--callout)" />
+        </marker>
+
+        <!-- Drop Shadow Filter -->
+        <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity="0.12" />
+        </filter>
+      </defs>
+
+  <!-- Canvas Background for Markdown dark/light rendering -->
+  <rect width="100%" height="100%" fill="var(--bg)" rx="16" />
+  <rect x="1" y="1" width="1618" height="1198" fill="none" stroke="var(--border)" stroke-width="1.5" rx="16" />
+
+  <!-- Diagram Content -->
+  <!-- ========================================== -->
+      <!-- 1. COMPOSITE SUB-MACHINE STATE: LOGIN      -->
+      <!-- ========================================== -->
+      <g id="composite-login" class="state-group">
+        <!-- Outer Box -->
+        <rect x="580" y="25" width="760" height="990" rx="16" ry="16" 
+              fill="var(--composite-bg)" stroke="var(--composite-border)" stroke-width="2.2" filter="url(#shadow)" />
+        
+        <!-- Header Fill -->
+        <path d="M 580 41 Q 580 25 596 25 L 1324 25 Q 1340 25 1340 41 L 1340 68 L 580 68 Z" 
+              fill="var(--composite-header-bg)" />
+        <line x1="580" y1="68" x2="1340" y2="68" stroke="var(--composite-border)" stroke-width="1.8" />
+        
+        <!-- Composite Title -->
+        <text x="960" y="52" text-anchor="middle" font-size="16" font-weight="700" fill="var(--text)">Login</text>
+        
+        <!-- Internal Actions Section -->
+        <rect x="595" y="76" width="730" height="48" rx="6" fill="var(--state-bg)" stroke="var(--border)" stroke-width="1" />
+        <text x="608" y="93" font-size="12" font-weight="600" fill="var(--text-muted)">entry / registered user</text>
+        <text x="608" y="108" font-size="12" font-weight="600" fill="var(--text-muted)">do / permitted to use facilities</text>
+        <text x="608" y="123" font-size="12" font-weight="600" fill="var(--text-muted)">exit / required resources have been accessed</text>
+
+        <!-- SubMachine Decomposition Indicator Icon (Bottom-Right) -->
+        <g transform="translate(1308, 988)">
+          <rect x="0" y="0" width="18" height="12" rx="2" fill="none" stroke="var(--composite-border)" stroke-width="1.4" />
+          <circle cx="5" cy="6" r="2" fill="var(--composite-border)" />
+          <circle cx="13" cy="6" r="2" fill="var(--composite-border)" />
+          <line x1="7" y1="6" x2="11" y2="6" stroke="var(--composite-border)" stroke-width="1.2" />
+        </g>
+      </g>
+
+      <!-- ========================================== -->
+      <!-- 2. OUTER STATES & ELEMENTS (PRE-LOGIN)     -->
+      <!-- ========================================== -->
+
+      <!-- Initial State (Outer) -->
+      <g id="elem-initial-state">
+        <circle cx="35" cy="180" r="12" fill="var(--badge-bg)" stroke="var(--border-dark)" stroke-width="2" />
+      </g>
+
+      <!-- Choice Point 1: [check user] -->
+      <g id="elem-choice-check-user">
+        <circle cx="110" cy="180" r="9" fill="var(--state-bg)" stroke="var(--alt-flow)" stroke-width="2.4" />
+        <text x="75" y="160" font-size="12" font-weight="700" fill="var(--alt-flow)">[ check user ]</text>
+      </g>
+
+      <!-- State: Register -->
+      <g id="state-register" class="state-group">
+        <rect class="state-box" x="180" y="110" width="210" height="135" rx="10" ry="10" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 180 120 Q 180 110 190 110 L 380 110 Q 390 110 390 120 L 390 138 L 180 138 Z" fill="var(--state-header-bg)" />
+        <line x1="180" y1="138" x2="390" y2="138" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="285" y="129" text-anchor="middle" font-size="14" font-weight="700" fill="var(--text)">Register</text>
+        
+        <text x="192" y="160" font-size="11.5" fill="var(--text-muted)">entry / when the user is a new user</text>
+        <text x="192" y="180" font-size="11.5" fill="var(--text-muted)">do / registration process</text>
+        <text x="192" y="200" font-size="11.5" fill="var(--success-flow)">exit / successfully registered</text>
+        <text x="192" y="220" font-size="11.5" fill="var(--danger-flow)">exit / invalid registration</text>
+      </g>
+
+      <!-- Flow Final Node (Invalid Registration) -->
+      <g id="elem-flow-final">
+        <circle cx="390" cy="320" r="14" fill="var(--state-bg)" stroke="var(--danger-flow)" stroke-width="2" />
+        <line x1="380" y1="310" x2="400" y2="330" stroke="var(--danger-flow)" stroke-width="2.2" />
+        <line x1="400" y1="310" x2="380" y2="330" stroke="var(--danger-flow)" stroke-width="2.2" />
+      </g>
+
+      <!-- Junction Point (Pre-Login) -->
+      <g id="elem-junction-prelogin">
+        <circle cx="505" cy="180" r="9" fill="var(--badge-bg)" stroke="var(--fwd-flow)" stroke-width="1.5" />
+      </g>
+
+      <!-- Transitions in Pre-Login Section -->
+      <!-- Initial -> Choice 1 -->
+      <line x1="47" y1="180" x2="101" y2="180" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+
+      <!-- Choice 1 -> Register [New user="yes"] -->
+      <path d="M 119 180 L 178 180" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2.2" marker-end="url(#arrow)" />
+      <text x="120" y="172" font-size="11.5" font-weight="600" fill="var(--fwd-flow)">[ New user="yes" ]</text>
+
+      <!-- Choice 1 -> Junction [New user="no"] (High bypass arc) -->
+      <path d="M 110 171 L 110 65 L 505 65 L 505 171" class="flow-line" fill="none" stroke="var(--success-flow)" stroke-width="2.2" marker-end="url(#arrow-success)" />
+      <text x="270" y="55" font-size="12" font-weight="700" fill="var(--success-flow)">[ New user="no" ]</text>
+
+      <!-- Register -> Flow Final [invalid registration] -->
+      <path d="M 285 245 L 285 320 L 374 320" class="flow-line" fill="none" stroke="var(--danger-flow)" stroke-width="2.2" marker-end="url(#arrow-danger)" />
+      <text x="292" y="280" font-size="11.5" font-weight="600" fill="var(--danger-flow)">[ invalid registration ]</text>
+
+      <!-- Register -> Junction [successfully registered] -->
+      <path d="M 390 180 L 496 180" class="flow-line" fill="none" stroke="var(--success-flow)" stroke-width="2.2" marker-end="url(#arrow-success)" />
+      <text x="395" y="172" font-size="11" font-weight="600" fill="var(--success-flow)">[ successfully registered ]</text>
+
+      <!-- Junction -> Enter Login -->
+      <path d="M 514 180 L 580 180" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2.4" marker-end="url(#arrow)" />
+
+
+      <!-- ========================================== -->
+      <!-- 3. INNER STATES & WORKFLOWS (INSIDE LOGIN) -->
+      <!-- ========================================== -->
+
+      <!-- Inner Initial State -->
+      <circle cx="640" cy="150" r="8" fill="var(--badge-bg)" stroke="var(--border-dark)" stroke-width="1.5" />
+      <line x1="648" y1="150" x2="685" y2="150" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+
+      <!-- State: Facilities -->
+      <g id="state-facilities" class="state-group">
+        <rect class="state-box" x="685" y="130" width="240" height="95" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 685 138 Q 685 130 693 130 L 917 130 Q 925 130 925 138 L 925 155 L 685 155 Z" fill="var(--state-header-bg)" />
+        <line x1="685" y1="155" x2="925" y2="155" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="805" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">Facilities</text>
+        
+        <text x="695" y="174" font-size="11" fill="var(--text-muted)">entry / user must be logged in</text>
+        <text x="695" y="192" font-size="11" fill="var(--text-muted)">do / selection and usage of desired facilities</text>
+        <text x="695" y="210" font-size="11" fill="var(--text-muted)">exit / selected facility can be accessed</text>
+      </g>
+
+      <!-- Choice Point 2: Major Facilities Branching -->
+      <circle cx="670" cy="270" r="9" fill="var(--state-bg)" stroke="var(--alt-flow)" stroke-width="2.4" />
+      
+      <!-- Line from Facilities to Choice 2 -->
+      <path d="M 720 225 L 720 270 L 679 270" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+
+      <!-- BRANCH 1: News and Experts -->
+      <path d="M 678 266 Q 790 250 1025 250" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="850" y="268" font-size="11.5" font-weight="600" fill="var(--fwd-flow)">[ choice="News and experts" ]</text>
+
+      <g id="state-news" class="state-group">
+        <rect class="state-box" x="1025" y="200" width="275" height="95" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 1025 208 Q 1025 200 1033 200 L 1292 200 Q 1300 200 1300 208 L 1300 225 L 1025 225 Z" fill="var(--state-header-bg)" />
+        <line x1="1025" y1="225" x2="1300" y2="225" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="1162" y="218" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">News and Experts</text>
+        
+        <text x="1035" y="244" font-size="11" fill="var(--text-muted)">entry / when user has chosen news and experts</text>
+        <text x="1035" y="262" font-size="11" fill="var(--text-muted)">do / select options</text>
+        <text x="1035" y="280" font-size="11" fill="var(--text-muted)">exit / provide information</text>
+      </g>
+
+      <!-- BRANCH 2: Health A-Z (leads to Choice 3) -->
+      <path d="M 670 279 L 770 345" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="715" y="305" font-size="11.5" font-weight="600" fill="var(--fwd-flow)">[ choice="Health A-Z" ]</text>
+
+      <!-- Choice Point 3: Health A-Z sub-options -->
+      <circle cx="775" cy="350" r="9" fill="var(--state-bg)" stroke="var(--alt-flow)" stroke-width="2.4" />
+
+      <!-- Sub-branch 2A: Symptoms checker -->
+      <path d="M 784 350 L 950 350" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="795" y="340" font-size="11" font-weight="600" fill="var(--fwd-flow)">[ option="Symptoms checker" ]</text>
+
+      <g id="state-symptoms" class="state-group">
+        <rect class="state-box" x="950" y="305" width="280" height="95" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 950 313 Q 950 305 958 305 L 1222 305 Q 1230 305 1230 313 L 1230 330 L 950 330 Z" fill="var(--state-header-bg)" />
+        <line x1="950" y1="330" x2="1230" y2="330" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="1090" y="323" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">Symptoms checker</text>
+        
+        <text x="960" y="349" font-size="11" fill="var(--text-muted)">entry / when user has chosen symptoms checker</text>
+        <text x="960" y="367" font-size="11" fill="var(--text-muted)">do / get symptoms and fetch the disease</text>
+        <text x="960" y="385" font-size="11" fill="var(--text-muted)">exit / display result</text>
+      </g>
+
+      <!-- Sub-branch 2B: Check fitness -->
+      <path d="M 775 359 L 890 440" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="790" y="410" font-size="11" font-weight="600" fill="var(--fwd-flow)">[ option="fitness checker" ]</text>
+
+      <g id="state-fitness" class="state-group">
+        <rect class="state-box" x="895" y="420" width="250" height="95" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 895 428 Q 895 420 903 420 L 1137 420 Q 1145 420 1145 428 L 1145 445 L 895 445 Z" fill="var(--state-header-bg)" />
+        <line x1="895" y1="445" x2="1145" y2="445" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="1020" y="438" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">Check fitness</text>
+        
+        <text x="905" y="464" font-size="11" fill="var(--text-muted)">entry / when user has chosen check fitness</text>
+        <text x="905" y="482" font-size="11" fill="var(--text-muted)">do / get details and calculate fitness</text>
+        <text x="905" y="500" font-size="11" fill="var(--text-muted)">exit / display result</text>
+      </g>
+
+      <!-- Central Resource Hub Junction (collects News, Symptoms, Fitness) -->
+      <circle cx="1195" cy="495" r="8" fill="var(--badge-bg)" stroke="var(--border-dark)" stroke-width="1.5" />
+      
+      <!-- Merges into Hub -->
+      <path d="M 1200 295 L 1200 487" stroke="var(--fwd-flow)" stroke-width="1.8" marker-end="url(#arrow)" />
+      <path d="M 1230 350 L 1250 350 L 1250 495 L 1203 495" stroke="var(--fwd-flow)" stroke-width="1.8" marker-end="url(#arrow)" />
+      <path d="M 1145 470 L 1195 490" stroke="var(--fwd-flow)" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- Choice Point 8 (Resource Loop vs Logout) -->
+      <circle cx="1310" cy="510" r="9" fill="var(--state-bg)" stroke="var(--alt-flow)" stroke-width="2.4" />
+      <line x1="1203" y1="495" x2="1301" y2="510" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+
+      <!-- Loop Back to Facilities -->
+      <path d="M 1310 501 L 1310 115 L 850 115 L 850 128" class="flow-line-reverse" fill="none" stroke="var(--loop-flow)" stroke-width="2.2" marker-end="url(#arrow-loop)" />
+      <text x="1030" y="105" font-size="12" font-weight="700" fill="var(--loop-flow)">[ user needs to access the resources again ]</text>
+
+
+      <!-- BRANCH 3: Finance (leads to Choice 4) -->
+      <path d="M 670 279 L 670 410" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="600" y="350" font-size="11.5" font-weight="600" fill="var(--fwd-flow)">[ choice="Finance" ]</text>
+
+      <!-- Choice Point 4: Insurance availability -->
+      <circle cx="670" cy="415" r="9" fill="var(--state-bg)" stroke="var(--alt-flow)" stroke-width="2.4" />
+
+      <!-- Sub-branch 3A: Insurance available -->
+      <path d="M 661 415 L 600 415 L 600 470" class="flow-line" fill="none" stroke="var(--success-flow)" stroke-width="2" marker-end="url(#arrow-success)" />
+      <text x="590" y="445" font-size="11" font-weight="600" fill="var(--success-flow)">[ insurance="available" ]</text>
+
+      <g id="state-finance" class="state-group">
+        <rect class="state-box" x="595" y="470" width="160" height="90" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 595 478 Q 595 470 603 470 L 747 470 Q 755 470 755 478 L 755 495 L 595 495 Z" fill="var(--state-header-bg)" />
+        <line x1="595" y1="495" x2="755" y2="495" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="675" y="488" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">Finance</text>
+        
+        <text x="605" y="515" font-size="11" fill="var(--text-muted)">entry / user has insurance</text>
+        <text x="605" y="533" font-size="11" fill="var(--text-muted)">do / processing</text>
+        <text x="605" y="551" font-size="11" fill="var(--text-muted)">exit / insurance is validated</text>
+      </g>
+
+      <!-- Sub-branch 3B: Insurance not available -->
+      <path d="M 679 415 L 750 415 L 750 520" class="flow-line" fill="none" stroke="var(--alt-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="690" y="410" font-size="11" font-weight="600" fill="var(--alt-flow)">[ insurance="not available" ]</text>
+
+      <g id="state-apply" class="state-group">
+        <rect class="state-box" x="740" y="525" width="195" height="90" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 740 533 Q 740 525 748 525 L 927 525 Q 935 525 935 533 L 935 550 L 740 550 Z" fill="var(--state-header-bg)" />
+        <line x1="740" y1="550" x2="935" y2="550" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="837" y="543" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">Apply</text>
+        
+        <text x="748" y="570" font-size="11" fill="var(--text-muted)">entry / user doesn't have insurance</text>
+        <text x="748" y="588" font-size="11" fill="var(--text-muted)">do / process and validate details</text>
+        <text x="748" y="606" font-size="11" fill="var(--text-muted)">exit / insurance provided</text>
+      </g>
+
+      <!-- Junction after Finance/Apply -->
+      <circle cx="660" cy="600" r="8" fill="var(--badge-bg)" stroke="var(--border-dark)" stroke-width="1.5" />
+      <line x1="660" y1="560" x2="660" y2="592" stroke="var(--fwd-flow)" stroke-width="1.8" marker-end="url(#arrow)" />
+      <path d="M 740 580 L 668 598" stroke="var(--fwd-flow)" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- Choice Point 5: Resource Utilized -->
+      <path d="M 660 608 L 730 655" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="580" y="635" font-size="11.5" font-weight="600" fill="var(--fwd-flow)">[ when resource is utilized ]</text>
+      
+      <circle cx="735" cy="660" r="9" fill="var(--state-bg)" stroke="var(--alt-flow)" stroke-width="2.4" />
+
+      <!-- Choice 5 -> Payment [doctor consulted] -->
+      <path d="M 735 669 L 775 750" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="635" y="710" font-size="11.5" font-weight="600" fill="var(--fwd-flow)">[ resource="doctor consulted" ]</text>
+
+      <!-- Choice 5 -> Choice 6 [Drugs and supplements] -->
+      <path d="M 744 660 L 860 660" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="750" y="640" font-size="11.5" font-weight="600" fill="var(--fwd-flow)">[ resource="Drugs and supplements" ]</text>
+
+      <!-- Choice Point 6: Payment Type (Cash vs Insurance) -->
+      <circle cx="865" cy="660" r="9" fill="var(--state-bg)" stroke="var(--alt-flow)" stroke-width="2.4" />
+
+      <!-- Choice 6 -> Cash [payment type="cash"] -->
+      <path d="M 874 660 L 1010 660" class="flow-line" fill="none" stroke="var(--alt-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="890" y="675" font-size="11" font-weight="600" fill="var(--alt-flow)">[ payment type="cash" ]</text>
+
+      <g id="state-cash" class="state-group">
+        <rect class="state-box" x="1010" y="615" width="250" height="95" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 1010 623 Q 1010 615 1018 615 L 1252 615 Q 1260 615 1260 623 L 1260 640 L 1010 640 Z" fill="var(--state-header-bg)" />
+        <line x1="1010" y1="640" x2="1260" y2="640" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="1135" y="633" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">Cash</text>
+        
+        <text x="1018" y="658" font-size="10.8" fill="var(--text-muted)">entry / when user is delivered with drugs</text>
+        <text x="1018" y="676" font-size="10.8" fill="var(--text-muted)">do / calculate amount, return date</text>
+        <text x="1018" y="694" font-size="10.8" fill="var(--text-muted)">exit / user is prompted to pay during delivery</text>
+      </g>
+
+      <!-- Choice 6 -> Payment [payment type="through insurance"] -->
+      <path d="M 865 669 L 835 750" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="835" y="725" font-size="11" font-weight="600" fill="var(--fwd-flow)">[ payment type="through insurance" ]</text>
+
+      <!-- State: Payment -->
+      <g id="state-payment" class="state-group">
+        <rect class="state-box" x="640" y="750" width="360" height="95" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 640 758 Q 640 750 648 750 L 992 750 Q 1000 750 1000 758 L 1000 775 L 640 775 Z" fill="var(--state-header-bg)" />
+        <line x1="640" y1="775" x2="1000" y2="775" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="820" y="768" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">Payment</text>
+        
+        <text x="650" y="794" font-size="11" fill="var(--text-muted)">entry / when doctor is consulted or drugs are purchased</text>
+        <text x="650" y="812" font-size="11" fill="var(--text-muted)">do / check insurance details and make payment</text>
+        <text x="650" y="830" font-size="11" fill="var(--success-flow)">exit / payment process completed</text>
+      </g>
+
+      <!-- Payment -> Choice 7 (Feedback Choice) -->
+      <path d="M 820 845 L 720 890" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <circle cx="715" cy="893" r="9" fill="var(--state-bg)" stroke="var(--alt-flow)" stroke-width="2.4" />
+
+      <!-- Choice 7 -> Feedback [user wishes to give feedback] -->
+      <path d="M 724 893 L 955 893" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="760" y="882" font-size="11.5" font-weight="600" fill="var(--fwd-flow)">[ user wishes to give feedback ]</text>
+
+      <g id="state-feedback" class="state-group">
+        <rect class="state-box" x="960" y="850" width="245" height="95" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 960 858 Q 960 850 968 850 L 1197 850 Q 1205 850 1205 858 L 1205 875 L 960 875 Z" fill="var(--state-header-bg)" />
+        <line x1="960" y1="875" x2="1205" y2="875" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="1082" y="868" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">Feedback</text>
+        
+        <text x="968" y="894" font-size="11" fill="var(--text-muted)">entry / user has opted to give feedback</text>
+        <text x="968" y="912" font-size="11" fill="var(--text-muted)">do / collect feedback for service</text>
+        <text x="968" y="930" font-size="11" fill="var(--success-flow)">exit / feedback completed</text>
+      </g>
+
+      <!-- Choice 7 -> Inner Final [user isn't willing to give feedback] -->
+      <path d="M 715 902 L 715 965" class="flow-line" fill="none" stroke="var(--text-muted)" stroke-width="2" marker-end="url(#arrow)" />
+      <text x="722" y="945" font-size="11" font-weight="600" fill="var(--text-muted)">[ user isn't willing to give feedback ]</text>
+
+      <!-- Inner Final State Node (Bullseye inside Login) -->
+      <circle cx="715" cy="970" r="11" fill="none" stroke="var(--border-dark)" stroke-width="2" />
+      <circle cx="715" cy="970" r="6" fill="var(--badge-bg)" />
+
+      <!-- Cash -> Inner Merge Path -->
+      <path d="M 1260 660 L 1270 660 L 1270 855" stroke="var(--fwd-flow)" stroke-width="1.8" />
+
+      <!-- Feedback -> Inner Final / Exit Join -->
+      <circle cx="1270" cy="860" r="8" fill="var(--badge-bg)" stroke="var(--border-dark)" stroke-width="1.5" />
+      <path d="M 1205 893 L 1263 864" stroke="var(--fwd-flow)" stroke-width="1.8" marker-end="url(#arrow)" />
+
+      <!-- Exit Connection: From Cash/Feedback Merge up to Choice 8 -->
+      <path d="M 1270 852 L 1270 520 L 1301 512" stroke="var(--fwd-flow)" stroke-width="2" marker-end="url(#arrow)" />
+
+      <!-- Inner Final Node 2 (Bottom right) -->
+      <circle cx="1210" cy="970" r="11" fill="none" stroke="var(--border-dark)" stroke-width="2" />
+      <circle cx="1210" cy="970" r="6" fill="var(--badge-bg)" />
+      <path d="M 1270 868 L 1270 970 L 1222 970" stroke="var(--fwd-flow)" stroke-width="1.8" marker-end="url(#arrow)" />
+
+
+      <!-- ========================================== -->
+      <!-- 4. EXIT WORKFLOW (LOGOUT & FINAL STATE)    -->
+      <!-- ========================================== -->
+
+      <!-- Choice 8 -> Logout [user needs to logout the system] -->
+      <path d="M 1319 510 L 1380 510 L 1380 440 L 1400 440" class="flow-line" fill="none" stroke="var(--danger-flow)" stroke-width="2.2" marker-end="url(#arrow-danger)" />
+      <text x="1120" y="560" font-size="12" font-weight="700" fill="var(--danger-flow)">[ user needs to logout the system ]</text>
+
+      <!-- State: Logout -->
+      <g id="state-logout" class="state-group">
+        <rect class="state-box" x="1405" y="390" width="195" height="95" rx="8" ry="8" 
+              fill="var(--state-bg)" stroke="var(--state-border)" stroke-width="1.8" filter="url(#shadow)" />
+        <path d="M 1405 398 Q 1405 390 1413 390 L 1592 390 Q 1600 390 1600 398 L 1600 415 L 1405 415 Z" fill="var(--state-header-bg)" />
+        <line x1="1405" y1="415" x2="1600" y2="415" stroke="var(--state-border)" stroke-width="1.2" />
+        <text x="1502" y="408" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)">Logout</text>
+        
+        <text x="1415" y="434" font-size="11" fill="var(--text-muted)">entry / when user opts to logout</text>
+        <text x="1415" y="452" font-size="11" fill="var(--text-muted)">do / update the details</text>
+        <text x="1415" y="470" font-size="11" fill="var(--text-muted)">exit / user will be logged out</text>
+      </g>
+
+      <!-- Logout -> Final State -->
+      <path d="M 1502 485 L 1502 540" class="flow-line" fill="none" stroke="var(--border-dark)" stroke-width="2.2" marker-end="url(#arrow)" />
+
+      <!-- Final State (Outer Bullseye) -->
+      <g id="elem-outer-final-state">
+        <circle cx="1502" cy="555" r="14" fill="none" stroke="var(--border-dark)" stroke-width="2.2" />
+        <circle cx="1502" cy="555" r="8" fill="var(--badge-bg)" />
+      </g>
+
+
+      <!-- ========================================== -->
+      <!-- 5. NOTATION CALLOUTS & LABELS              -->
+      <!-- ========================================== -->
+
+      <!-- Callout: Initial State -->
+      <g class="callout-group">
+        <rect x="10" y="245" width="85" height="28" rx="4" fill="var(--card-bg)" stroke="var(--callout)" stroke-width="1" />
+        <text x="52" y="263" text-anchor="middle" font-size="11" font-weight="600" fill="var(--callout)">Initial State</text>
+        <line x1="52" y1="245" x2="35" y2="195" stroke="var(--callout)" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arrow-callout)" />
+      </g>
+
+      <!-- Callout: Choice Point -->
+      <g class="callout-group">
+        <rect x="75" y="280" width="88" height="28" rx="4" fill="var(--card-bg)" stroke="var(--callout)" stroke-width="1" />
+        <text x="119" y="298" text-anchor="middle" font-size="11" font-weight="600" fill="var(--callout)">Choice Point</text>
+        <line x1="119" y1="280" x2="110" y2="192" stroke="var(--callout)" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arrow-callout)" />
+      </g>
+
+      <!-- Callout: State -->
+      <g class="callout-group">
+        <rect x="220" y="365" width="60" height="28" rx="4" fill="var(--card-bg)" stroke="var(--callout)" stroke-width="1" />
+        <text x="250" y="383" text-anchor="middle" font-size="11" font-weight="600" fill="var(--callout)">State</text>
+        <line x1="250" y1="365" x2="285" y2="248" stroke="var(--callout)" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arrow-callout)" />
+      </g>
+
+      <!-- Callout: Flow Final -->
+      <g class="callout-group">
+        <rect x="345" y="365" width="80" height="28" rx="4" fill="var(--card-bg)" stroke="var(--callout)" stroke-width="1" />
+        <text x="385" y="383" text-anchor="middle" font-size="11" font-weight="600" fill="var(--callout)">Flow Final</text>
+        <line x1="385" y1="365" x2="390" y2="336" stroke="var(--callout)" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arrow-callout)" />
+      </g>
+
+      <!-- Callout: Junction Point -->
+      <g class="callout-group">
+        <rect x="450" y="300" width="100" height="28" rx="4" fill="var(--card-bg)" stroke="var(--callout)" stroke-width="1" />
+        <text x="500" y="318" text-anchor="middle" font-size="11" font-weight="600" fill="var(--callout)">Junction Point</text>
+        <line x1="500" y1="300" x2="505" y2="192" stroke="var(--callout)" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arrow-callout)" />
+      </g>
+
+      <!-- Callout: Sub Machine State -->
+      <g class="callout-group">
+        <rect x="400" y="440" width="125" height="28" rx="4" fill="var(--card-bg)" stroke="var(--callout)" stroke-width="1" />
+        <text x="462" y="458" text-anchor="middle" font-size="11" font-weight="600" fill="var(--callout)">Sub Machine State</text>
+        <line x1="525" y1="454" x2="578" y2="454" stroke="var(--callout)" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arrow-callout)" />
+      </g>
+
+      <!-- Callout: Final State -->
+      <g class="callout-group">
+        <rect x="1455" y="630" width="85" height="28" rx="4" fill="var(--card-bg)" stroke="var(--callout)" stroke-width="1" />
+        <text x="1497" y="648" text-anchor="middle" font-size="11" font-weight="600" fill="var(--callout)">Final State</text>
+        <line x1="1497" y1="630" x2="1502" y2="572" stroke="var(--callout)" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#arrow-callout)" />
+      </g>
+
+  <!-- ========================================== -->
+  <!-- 6. BUILT-IN GRAPHICAL LEGEND & NOTES PANEL  -->
+  <!-- ========================================== -->
+  <g id="built-in-legend">
+    <rect x="30" y="1030" width="1560" height="145" rx="12" fill="var(--card-bg)" stroke="var(--border)" stroke-width="1.5" />
+    
+    <text x="50" y="1058" font-size="14" font-weight="700" fill="var(--text)">🎨 Notation &amp; Transition Flow Legend</text>
+    <text x="50" y="1079" font-size="12" fill="var(--text-muted)">Architectural Scope: The Webmed State Machine governs user lifecycle progression from registration check through the comprehensive composite Login Sub-Machine to checkout, feedback, and logout.</text>
+    
+    <line x1="50" y1="1092" x2="1570" y2="1092" stroke="var(--border)" stroke-width="1" />
+
+    <!-- 1. Forward Operational Transition -->
+    <path d="M 50 1125 L 95 1125" class="flow-line" fill="none" stroke="var(--fwd-flow)" stroke-width="2.5" marker-end="url(#arrow)" />
+    <text x="108" y="1129" font-size="12" font-weight="600" fill="var(--text)">Forward Transition</text>
+
+    <!-- 2. Success / Validation Path -->
+    <path d="M 280 1125 L 325 1125" class="flow-line" fill="none" stroke="var(--success-flow)" stroke-width="2.5" marker-end="url(#arrow-success)" />
+    <text x="338" y="1129" font-size="12" font-weight="600" fill="var(--text)">Success / Valid Path</text>
+
+    <!-- 3. Invalid / Abort Flow -->
+    <path d="M 525 1125 L 570 1125" class="flow-line" fill="none" stroke="var(--danger-flow)" stroke-width="2.5" marker-end="url(#arrow-danger)" />
+    <text x="583" y="1129" font-size="12" font-weight="600" fill="var(--text)">Invalid / Flow Final</text>
+
+    <!-- 4. Resource Re-Access Loop -->
+    <path d="M 760 1125 L 805 1125" class="flow-line-reverse" fill="none" stroke="var(--loop-flow)" stroke-width="2.5" marker-end="url(#arrow-loop)" />
+    <text x="818" y="1129" font-size="12" font-weight="600" fill="var(--text)">Re-Access Loop</text>
+
+    <!-- 5. Choice Pseudostate -->
+    <polygon points="1000,1117 1012,1125 1000,1133 988,1125" fill="var(--alt-flow)" stroke="var(--border-dark)" stroke-width="1.5" />
+    <text x="1025" y="1129" font-size="12" font-weight="600" fill="var(--text)">Choice Pseudostate</text>
+
+    <!-- 6. Sub-Machine Composite State -->
+    <rect x="1225" y="1116" width="22" height="18" rx="4" fill="var(--composite-bg)" stroke="var(--composite-border)" stroke-width="1.5" />
+    <text x="1258" y="1129" font-size="12" font-weight="600" fill="var(--text)">Composite State (Login)</text>
+
+    <!-- 7. Initial / Final States -->
+    <circle cx="1465" cy="1125" r="7" fill="var(--badge-bg)" />
+    <circle cx="1490" cy="1125" r="8" fill="none" stroke="var(--border-dark)" stroke-width="1.5" />
+    <circle cx="1490" cy="1125" r="4.5" fill="var(--badge-bg)" />
+    <text x="1508" y="1129" font-size="12" font-weight="600" fill="var(--text)">Initial / Final</text>
+
+    <text x="50" y="1155" font-size="11" fill="var(--text-subtle)">Built strictly according to UML specifications: zero raster dependencies, 100% vector typography, active CSS directional animation, light/dark theme reactive.</text>
+  </g>
+</svg>

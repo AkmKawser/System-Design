@@ -296,7 +296,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Models the complete lifecycle state transitions for central domain entities in **Design of UML Diagrams for Webmed Healthcare Service System Services**. Tracks transitions from initial creation through intermediate processing states to completion or cancellation. Explicit state triggers, guard expressions `[condition]`, and entry/exit actions guarantee valid business lifecycle states and eliminate invalid operational state jumps.
 
-![Figure 2.8: UML State Machine Diagram](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_8_UML_state_machine_diagram.png)
+![Figure 2.8: UML State Machine Diagram](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_8_UML_state_machine_diagram.svg)
 
 #### 🔍 Component Derivation from Problem Requirements
 
