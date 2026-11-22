@@ -60,7 +60,7 @@ This chapter incorporates **22 crystal-clear, high-resolution diagram(s)** (extr
 **System Design Analysis**:
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Business Process Outsourcing BPO Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
-![Figure 4.1: Login Page](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_1_Login_page.png)
+![Figure 4.1: Login Page](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_1_Login_page.svg)
 
 ### Figure 4.2: Client Profile Upload Request
 
@@ -70,7 +70,7 @@ Illustrates practical user interaction screens and administrative interfaces for
 **System Design Analysis**:
 Structural architectural schematic detailing operational flow and functional requirements in **Design of UML Diagrams for Business Process Outsourcing BPO Management System**.
 
-![Figure 4.2: Client Profile Upload Request](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_2_Client_profile_Upload_request.png)
+![Figure 4.2: Client Profile Upload Request](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_2_Client_profile_Upload_request.svg)
 
 ### Figure 4.3: Client Profile Current Deals
 
@@ -80,7 +80,7 @@ Structural architectural schematic detailing operational flow and functional req
 **System Design Analysis**:
 Structural architectural schematic detailing operational flow and functional requirements in **Design of UML Diagrams for Business Process Outsourcing BPO Management System**.
 
-![Figure 4.3: Client Profile Current Deals](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_3_Client_profile_Current_deals.png)
+![Figure 4.3: Client Profile Current Deals](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_3_Client_profile_Current_deals.svg)
 
 ### Figure 4.4: Client Profile Search Bpo Organization
 
@@ -90,7 +90,7 @@ Structural architectural schematic detailing operational flow and functional req
 **System Design Analysis**:
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Business Process Outsourcing BPO Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
-![Figure 4.4: Client Profile Search Bpo Organization](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_4_Client_profile_Search_BPO_Organization.png)
+![Figure 4.4: Client Profile Search Bpo Organization](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_4_Client_profile_Search_BPO_Organization.svg)
 
 ### Figure 4.5: UML Usecase Diagram
 
@@ -120,7 +120,7 @@ Captures the static structural domain model for **Design of UML Diagrams for Bus
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Business Process Outsourcing BPO Management System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 4.7: UML Activity Diagram Part 1](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_7_UML_activity_diagram_part_1.png)
+![Figure 4.7: UML Activity Diagram Part 1](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_7_UML_activity_diagram_part_1.svg)
 
 ### Figure 4.8: UML Activity Diagram Part 2
 
@@ -130,7 +130,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Business Process Outsourcing BPO Management System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 4.8: UML Activity Diagram Part 2](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_8_UML_activity_diagram_part_2.png)
+![Figure 4.8: UML Activity Diagram Part 2](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_8_UML_activity_diagram_part_2.svg)
 
 ### Figure 4.9: UML Activity Diagram Part 3
 
@@ -140,7 +140,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Business Process Outsourcing BPO Management System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 4.9: UML Activity Diagram Part 3](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_9_UML_activity_diagram_part_3.png)
+![Figure 4.9: UML Activity Diagram Part 3](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_9_UML_activity_diagram_part_3.svg)
 
 ### Figure 4.10: UML Activity Diagram Part 4
 
@@ -160,7 +160,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Business Process Outsourcing BPO Management System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 4.11: UML Activity Diagram Part 5](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_11_UML_activity_diagram_part_5.png)
+![Figure 4.11: UML Activity Diagram Part 5](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_11_UML_activity_diagram_part_5.svg)
 
 ### Figure 4.12: UML Collaboration Diagram
 
@@ -170,7 +170,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for Business Process Outsourcing BPO Management System**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
-![Figure 4.12: UML Collaboration Diagram](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_12_UML_collaboration_diagram.png)
+![Figure 4.12: UML Collaboration Diagram](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_12_UML_collaboration_diagram.svg)
 
 ### Figure 4.13: UML Sequence Diagram
 
@@ -200,7 +200,7 @@ Models the complete lifecycle state transitions for central domain entities in *
 **System Design Analysis**:
 Models the complete lifecycle state transitions for central domain entities in **Design of UML Diagrams for Business Process Outsourcing BPO Management System**. Tracks transitions from initial creation through intermediate processing states to completion or cancellation. Explicit state triggers, guard expressions `[condition]`, and entry/exit actions guarantee valid business lifecycle states and eliminate invalid operational state jumps.
 
-![Figure 4.15: UML State Machine Diagram Part 2](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_15_UML_state_machine_diagram_part_2.png)
+![Figure 4.15: UML State Machine Diagram Part 2](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_15_UML_state_machine_diagram_part_2.svg)
 
 ### Figure 4.16: UML State Machine Diagram Part 3
 
@@ -240,7 +240,7 @@ Architects the modular software organization for **Design of UML Diagrams for Bu
 **System Design Analysis**:
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for Business Process Outsourcing BPO Management System**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
-![Figure 4.19: UML Deployment Diagram](../images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_19_UML_deployment_diagram.png)
+![Figure 4.19: UML Deployment Diagram](../vector_images/Chapter_04_Design_of_UML_Diagrams_for_Business_Proc/Figure_4_19_UML_deployment_diagram.svg)
 
 ### Visual Artifacts & Supplementary Schematics
 

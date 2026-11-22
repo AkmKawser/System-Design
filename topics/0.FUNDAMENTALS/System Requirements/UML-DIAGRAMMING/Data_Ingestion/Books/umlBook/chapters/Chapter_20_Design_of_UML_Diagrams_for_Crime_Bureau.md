@@ -74,7 +74,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Traces the time-ordered message sequence between participating objects and services in **Design of UML Diagrams for Crime Bureau**. Vertical dashed lifelines represent entity instances across time, while horizontal solid and dashed arrows show synchronous invocations, data lookups, and return values. Activation bars delineate execution duration, clarifying object collaboration during key transactional workflows.
 
-![Figure 20.3: UML Sequence Diagram](../images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_3_UML_sequence_diagram.png)
+![Figure 20.3: UML Sequence Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_3_UML_sequence_diagram.svg)
 
 ### Figure 20.4: UML Collaboration Diagram
 
@@ -104,7 +104,7 @@ Models the complete lifecycle state transitions for central domain entities in *
 **System Design Analysis**:
 Captures the static structural domain model for **Design of UML Diagrams for Crime Bureau**. Defines primary entity classes, their private/public attributes, operational methods, and relationships. It enforces structural integrity through multiplicities, composition (strong lifecycle ownership of subsidiary records), aggregation, and inheritance hierarchies, forming the foundation for the relational database schema and domain entity classes.
 
-![Figure 20.6: UML Class Diagram](../images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_6_UML_class_diagram.png)
+![Figure 20.6: UML Class Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_6_UML_class_diagram.svg)
 
 ### Figure 20.7: UML Component Diagram
 

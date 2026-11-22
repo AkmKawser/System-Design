@@ -61,7 +61,7 @@ Illustrates the functional boundary of the **Design of UML Diagrams for Video Su
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Video Suggestion System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 40.2: UML Activity Diagram Main Scenario](../images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_2_UML_activity_diagram_Main_scenario.png)
+![Figure 40.2: UML Activity Diagram Main Scenario](../vector_images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_2_UML_activity_diagram_Main_scenario.svg)
 
 ### Figure 40.3: UML Activity Diagram Other Videos Watched By Simil
 
@@ -71,7 +71,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Video Suggestion System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 40.3: UML Activity Diagram Other Videos Watched By Simil](../images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_3_UML_activity_diagram_Other_videos_watched_by_simil.png)
+![Figure 40.3: UML Activity Diagram Other Videos Watched By Simil](../vector_images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_3_UML_activity_diagram_Other_videos_watched_by_simil.svg)
 
 ### Figure 40.4: UML Activity Diagram Paid Promotion Videos Scenari
 
@@ -81,7 +81,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Video Suggestion System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 40.4: UML Activity Diagram Paid Promotion Videos Scenari](../images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_4_UML_activity_diagram_Paid_promotion_videos_scenari.png)
+![Figure 40.4: UML Activity Diagram Paid Promotion Videos Scenari](../vector_images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_4_UML_activity_diagram_Paid_promotion_videos_scenari.svg)
 
 ### Figure 40.5: UML Activity Diagram Similar Genre Videos Scenario
 
@@ -91,7 +91,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Video Suggestion System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 40.5: UML Activity Diagram Similar Genre Videos Scenario](../images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_5_UML_activity_diagram_Similar_genre_videos_scenario.png)
+![Figure 40.5: UML Activity Diagram Similar Genre Videos Scenario](../vector_images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_5_UML_activity_diagram_Similar_genre_videos_scenario.svg)
 
 ### Figure 40.6: UML Activity Diagram Similar Tag Videos Scenario
 
@@ -101,7 +101,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Video Suggestion System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 40.6: UML Activity Diagram Similar Tag Videos Scenario](../images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_6_UML_activity_diagram_Similar_tag_videos_scenario.png)
+![Figure 40.6: UML Activity Diagram Similar Tag Videos Scenario](../vector_images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_6_UML_activity_diagram_Similar_tag_videos_scenario.svg)
 
 ### Figure 40.7: UML Activity Diagram Trending Videos Scenario
 
@@ -111,7 +111,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Video Suggestion System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 40.7: UML Activity Diagram Trending Videos Scenario](../images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_7_UML_activity_diagram_Trending_videos_scenario.png)
+![Figure 40.7: UML Activity Diagram Trending Videos Scenario](../vector_images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_7_UML_activity_diagram_Trending_videos_scenario.svg)
 
 ### Figure 40.8: UML Activity Diagram Video Attributes Scenario
 
@@ -121,7 +121,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Video Suggestion System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 40.8: UML Activity Diagram Video Attributes Scenario](../images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_8_UML_Activity_diagram_Video_attributes_scenario.png)
+![Figure 40.8: UML Activity Diagram Video Attributes Scenario](../vector_images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_8_UML_Activity_diagram_Video_attributes_scenario.svg)
 
 ### Figure 40.9: UML Sequence Diagram
 
@@ -141,7 +141,7 @@ Traces the time-ordered message sequence between participating objects and servi
 **System Design Analysis**:
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for Video Suggestion System**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
-![Figure 40.10: UML Collaboration Diagram](../images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_10_UML_collaboration_diagram.png)
+![Figure 40.10: UML Collaboration Diagram](../vector_images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_10_UML_collaboration_diagram.svg)
 
 ### Figure 40.11: UML State Chart Diagram
 
@@ -161,7 +161,7 @@ Models the complete lifecycle state transitions for central domain entities in *
 **System Design Analysis**:
 Captures the static structural domain model for **Design of UML Diagrams for Video Suggestion System**. Defines primary entity classes, their private/public attributes, operational methods, and relationships. It enforces structural integrity through multiplicities, composition (strong lifecycle ownership of subsidiary records), aggregation, and inheritance hierarchies, forming the foundation for the relational database schema and domain entity classes.
 
-![Figure 40.12: UML Class Diagram](../images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_12_UML_class_diagram.png)
+![Figure 40.12: UML Class Diagram](../vector_images/Chapter_40_Design_of_UML_Diagrams_for_Video_Suggest/Figure_40_12_UML_class_diagram.svg)
 
 ### Figure 40.13: UML Component Diagram
 

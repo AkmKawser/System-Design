@@ -116,7 +116,7 @@ Architects the modular software organization for **Design of UML Diagrams for Na
 **System Design Analysis**:
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for National Health ID 2020**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
-![Figure 17.8: UML Deployment Diagram](../images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_8_UML_deployment_diagram.png)
+![Figure 17.8: UML Deployment Diagram](../vector_images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_8_UML_deployment_diagram.svg)
 
 ---
 

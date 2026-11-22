@@ -68,7 +68,7 @@ Illustrates the functional boundary of the **Design of UML Diagrams for Art Gall
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Art Gallery Management System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 34.2: UML Activity Diagram](../images/Chapter_34_Design_of_UML_Diagrams_for_Art_Gallery_M/Figure_34_2_UML_activity_diagram.png)
+![Figure 34.2: UML Activity Diagram](../vector_images/Chapter_34_Design_of_UML_Diagrams_for_Art_Gallery_M/Figure_34_2_UML_activity_diagram.svg)
 
 ### Figure 34.3: UML Sequence Diagram
 
@@ -108,7 +108,7 @@ Models the complete lifecycle state transitions for central domain entities in *
 **System Design Analysis**:
 Captures the static structural domain model for **Design of UML Diagrams for Art Gallery Management System**. Defines primary entity classes, their private/public attributes, operational methods, and relationships. It enforces structural integrity through multiplicities, composition (strong lifecycle ownership of subsidiary records), aggregation, and inheritance hierarchies, forming the foundation for the relational database schema and domain entity classes.
 
-![Figure 34.6: UML Class Diagram](../images/Chapter_34_Design_of_UML_Diagrams_for_Art_Gallery_M/Figure_34_6_UML_class_diagram.png)
+![Figure 34.6: UML Class Diagram](../vector_images/Chapter_34_Design_of_UML_Diagrams_for_Art_Gallery_M/Figure_34_6_UML_class_diagram.svg)
 
 ### Figure 34.7: UML Component Diagram
 

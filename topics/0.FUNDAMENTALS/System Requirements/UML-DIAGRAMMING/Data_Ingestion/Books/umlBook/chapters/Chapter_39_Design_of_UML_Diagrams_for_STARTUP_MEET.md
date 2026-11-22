@@ -93,7 +93,7 @@ Emphasizes the spatial and structural organization of collaborating instances in
 **System Design Analysis**:
 Models the complete lifecycle state transitions for central domain entities in **Design of UML Diagrams for STARTUP MEET**. Tracks transitions from initial creation through intermediate processing states to completion or cancellation. Explicit state triggers, guard expressions `[condition]`, and entry/exit actions guarantee valid business lifecycle states and eliminate invalid operational state jumps.
 
-![Figure 39.5: UML State Chart Diagram](../images/Chapter_39_Design_of_UML_Diagrams_for_STARTUP_MEET/Figure_39_5_UML_state_chart_diagram.png)
+![Figure 39.5: UML State Chart Diagram](../vector_images/Chapter_39_Design_of_UML_Diagrams_for_STARTUP_MEET/Figure_39_5_UML_state_chart_diagram.svg)
 
 ### Figure 39.6: UML Class Diagram
 

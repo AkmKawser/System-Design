@@ -51,7 +51,7 @@ This chapter incorporates **12 crystal-clear, high-resolution diagram(s)** (extr
 **System Design Analysis**:
 Represents data transformations and movement in **Design of UML Diagrams for Webmed Healthcare Service System Services**. Details data origins from external actors, functional processing steps, and persistence interactions with data stores without imposing strict control flow, providing an accessible high-level systems analysis perspective.
 
-![Figure 2.2: Level 0 DFD](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_2_Level_0_DFD.png)
+![Figure 2.2: Level 0 DFD](../vector_images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_2_Level_0_DFD.svg)
 
 ### Figure 2.3: Level 1 DFD
 
@@ -61,7 +61,7 @@ Represents data transformations and movement in **Design of UML Diagrams for Web
 **System Design Analysis**:
 Represents data transformations and movement in **Design of UML Diagrams for Webmed Healthcare Service System Services**. Details data origins from external actors, functional processing steps, and persistence interactions with data stores without imposing strict control flow, providing an accessible high-level systems analysis perspective.
 
-![Figure 2.3: Level 1 DFD](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_3_Level_1_DFD.png)
+![Figure 2.3: Level 1 DFD](../vector_images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_3_Level_1_DFD.svg)
 
 ### Figure 2.4: UML Usecase Diagram
 
@@ -91,7 +91,7 @@ Captures the static structural domain model for **Design of UML Diagrams for Web
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Webmed Healthcare Service System Services**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 2.6: UML Activity Diagram 1](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_6_UML_activity_diagram_1.png)
+![Figure 2.6: UML Activity Diagram 1](../vector_images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_6_UML_activity_diagram_1.svg)
 
 ### Figure 2.7: UML Activity Diagram 2
 

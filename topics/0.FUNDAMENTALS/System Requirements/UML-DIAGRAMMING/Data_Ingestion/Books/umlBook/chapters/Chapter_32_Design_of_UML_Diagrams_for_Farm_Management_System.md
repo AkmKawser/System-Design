@@ -74,7 +74,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Traces the time-ordered message sequence between participating objects and services in **Design of UML Diagrams for Farm Management System**. Vertical dashed lifelines represent entity instances across time, while horizontal solid and dashed arrows show synchronous invocations, data lookups, and return values. Activation bars delineate execution duration, clarifying object collaboration during key transactional workflows.
 
-![Figure 32.3: UML Sequence Diagram](../images/Chapter_32_Design_of_UML_Diagrams_for_Farm_Manageme/Figure_32_3_UML_sequence_diagram.png)
+![Figure 32.3: UML Sequence Diagram](../vector_images/Chapter_32_Design_of_UML_Diagrams_for_Farm_Manageme/Figure_32_3_UML_sequence_diagram.svg)
 
 ### Figure 32.4: UML Collaboration Diagram
 
@@ -84,7 +84,7 @@ Traces the time-ordered message sequence between participating objects and servi
 **System Design Analysis**:
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for Farm Management System**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
-![Figure 32.4: UML Collaboration Diagram](../images/Chapter_32_Design_of_UML_Diagrams_for_Farm_Manageme/Figure_32_4_UML_collaboration_diagram.png)
+![Figure 32.4: UML Collaboration Diagram](../vector_images/Chapter_32_Design_of_UML_Diagrams_for_Farm_Manageme/Figure_32_4_UML_collaboration_diagram.svg)
 
 ### Figure 32.5: UML State Chart Diagram
 

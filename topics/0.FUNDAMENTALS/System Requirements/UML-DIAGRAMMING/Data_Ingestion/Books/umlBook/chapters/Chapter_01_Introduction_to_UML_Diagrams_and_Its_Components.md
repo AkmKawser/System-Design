@@ -55,7 +55,7 @@ This chapter incorporates **75 crystal-clear, high-resolution diagram(s)** (extr
 **System Design Analysis**:
 Structural architectural schematic detailing operational flow and functional requirements in **Introduction to UML Diagrams and Its Components**.
 
-![Figure 1.1: Inception Phase](../images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_1_Inception_phase.png)
+![Figure 1.1: Inception Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_1_Inception_phase.svg)
 
 ### Figure 1.2: Elaboration Phase
 
@@ -65,7 +65,7 @@ Structural architectural schematic detailing operational flow and functional req
 **System Design Analysis**:
 Structural architectural schematic detailing operational flow and functional requirements in **Introduction to UML Diagrams and Its Components**.
 
-![Figure 1.2: Elaboration Phase](../images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_2_Elaboration_phase.png)
+![Figure 1.2: Elaboration Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_2_Elaboration_phase.svg)
 
 ### Figure 1.3: Construction Phase
 
@@ -75,7 +75,7 @@ Structural architectural schematic detailing operational flow and functional req
 **System Design Analysis**:
 Structural architectural schematic detailing operational flow and functional requirements in **Introduction to UML Diagrams and Its Components**.
 
-![Figure 1.3: Construction Phase](../images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_3_Construction_phase.png)
+![Figure 1.3: Construction Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_3_Construction_phase.svg)
 
 ### Figure 1.4: Transition Phase
 
@@ -85,7 +85,7 @@ Structural architectural schematic detailing operational flow and functional req
 **System Design Analysis**:
 Structural architectural schematic detailing operational flow and functional requirements in **Introduction to UML Diagrams and Its Components**.
 
-![Figure 1.4: Transition Phase](../images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_4_Transition_phase.png)
+![Figure 1.4: Transition Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_4_Transition_phase.svg)
 
 ### Figure 1.5: Pyramid Of UML Diagrams
 
@@ -95,7 +95,7 @@ Structural architectural schematic detailing operational flow and functional req
 **System Design Analysis**:
 Structural architectural schematic detailing operational flow and functional requirements in **Introduction to UML Diagrams and Its Components**.
 
-![Figure 1.5: Pyramid Of UML Diagrams](../images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_5_Pyramid_of_UML_diagrams.png)
+![Figure 1.5: Pyramid Of UML Diagrams](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_5_Pyramid_of_UML_diagrams.svg)
 
 ### Visual Artifacts & Supplementary Schematics
 

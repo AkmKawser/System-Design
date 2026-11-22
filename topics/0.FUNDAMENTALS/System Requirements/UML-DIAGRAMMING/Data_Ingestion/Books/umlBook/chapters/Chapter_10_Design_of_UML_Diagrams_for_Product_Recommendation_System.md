@@ -85,7 +85,7 @@ Traces the time-ordered message sequence between participating objects and servi
 **System Design Analysis**:
 Models the complete lifecycle state transitions for central domain entities in **Design of UML Diagrams for Product Recommendation System**. Tracks transitions from initial creation through intermediate processing states to completion or cancellation. Explicit state triggers, guard expressions `[condition]`, and entry/exit actions guarantee valid business lifecycle states and eliminate invalid operational state jumps.
 
-![Figure 10.5: UML State Machine Diagram](../images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_5_UML_state_machine_diagram.png)
+![Figure 10.5: UML State Machine Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_5_UML_state_machine_diagram.svg)
 
 ### Figure 10.6: UML Class Diagram
 

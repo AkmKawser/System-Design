@@ -105,7 +105,7 @@ Emphasizes the spatial and structural organization of collaborating instances in
 **System Design Analysis**:
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for E Ticketing for Buses**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
-![Figure 5.9: UML Collaboration Diagram Part 2](../images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_9_UML_collaboration_diagram_part_2.png)
+![Figure 5.9: UML Collaboration Diagram Part 2](../vector_images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_9_UML_collaboration_diagram_part_2.svg)
 
 ### Figure 5.10: UML Component Diagram
 

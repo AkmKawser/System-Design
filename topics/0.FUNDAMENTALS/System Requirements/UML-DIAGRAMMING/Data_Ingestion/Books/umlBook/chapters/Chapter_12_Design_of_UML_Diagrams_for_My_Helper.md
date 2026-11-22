@@ -120,7 +120,7 @@ Architects the modular software organization for **Design of UML Diagrams for My
 **System Design Analysis**:
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for My Helper**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
-![Figure 12.8: UML Deployment Diagram](../images/Chapter_12_Design_of_UML_Diagrams_for_My_Helper/Figure_12_8_UML_deployment_diagram.png)
+![Figure 12.8: UML Deployment Diagram](../vector_images/Chapter_12_Design_of_UML_Diagrams_for_My_Helper/Figure_12_8_UML_deployment_diagram.svg)
 
 ### Visual Artifacts & Supplementary Schematics
 

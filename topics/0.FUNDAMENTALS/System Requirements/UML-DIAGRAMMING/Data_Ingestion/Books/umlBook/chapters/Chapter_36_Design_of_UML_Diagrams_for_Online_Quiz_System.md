@@ -66,7 +66,7 @@ Illustrates the functional boundary of the **Design of UML Diagrams for Online Q
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Online Quiz System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 36.2: UML Activity Diagram Scenario 1](../images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_2_UML_activity_diagram_Scenario_1.png)
+![Figure 36.2: UML Activity Diagram Scenario 1](../vector_images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_2_UML_activity_diagram_Scenario_1.svg)
 
 ### Figure 36.3: UML Activity Diagram Scenario 2
 
@@ -76,7 +76,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Online Quiz System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 36.3: UML Activity Diagram Scenario 2](../images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_3_UML_activity_diagram_Scenario_2.png)
+![Figure 36.3: UML Activity Diagram Scenario 2](../vector_images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_3_UML_activity_diagram_Scenario_2.svg)
 
 ### Figure 36.4: UML Sequence Diagram Scenario 1
 
@@ -86,7 +86,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Traces the time-ordered message sequence between participating objects and services in **Design of UML Diagrams for Online Quiz System**. Vertical dashed lifelines represent entity instances across time, while horizontal solid and dashed arrows show synchronous invocations, data lookups, and return values. Activation bars delineate execution duration, clarifying object collaboration during key transactional workflows.
 
-![Figure 36.4: UML Sequence Diagram Scenario 1](../images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_4_UML_sequence_diagram_Scenario_1.png)
+![Figure 36.4: UML Sequence Diagram Scenario 1](../vector_images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_4_UML_sequence_diagram_Scenario_1.svg)
 
 ### Figure 36.5: UML Sequence Diagram Scenario 2
 
@@ -96,7 +96,7 @@ Traces the time-ordered message sequence between participating objects and servi
 **System Design Analysis**:
 Traces the time-ordered message sequence between participating objects and services in **Design of UML Diagrams for Online Quiz System**. Vertical dashed lifelines represent entity instances across time, while horizontal solid and dashed arrows show synchronous invocations, data lookups, and return values. Activation bars delineate execution duration, clarifying object collaboration during key transactional workflows.
 
-![Figure 36.5: UML Sequence Diagram Scenario 2](../images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_5_UML_sequence_diagram_Scenario_2.png)
+![Figure 36.5: UML Sequence Diagram Scenario 2](../vector_images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_5_UML_sequence_diagram_Scenario_2.svg)
 
 ### Figure 36.6: UML Collaboration Diagram
 
@@ -146,7 +146,7 @@ Architects the modular software organization for **Design of UML Diagrams for On
 **System Design Analysis**:
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for Online Quiz System**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
-![Figure 36.10: UML Deployment Diagram](../images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_10_UML_deployment_diagram.png)
+![Figure 36.10: UML Deployment Diagram](../vector_images/Chapter_36_Design_of_UML_Diagrams_for_Online_Quiz_S/Figure_36_10_UML_deployment_diagram.svg)
 
 ### Visual Artifacts & Supplementary Schematics
 

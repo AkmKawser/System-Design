@@ -73,7 +73,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Traces the time-ordered message sequence between participating objects and services in **Design of UML Diagrams for Car Care**. Vertical dashed lifelines represent entity instances across time, while horizontal solid and dashed arrows show synchronous invocations, data lookups, and return values. Activation bars delineate execution duration, clarifying object collaboration during key transactional workflows.
 
-![Figure 14.3: UML Sequence Diagram](../images/Chapter_14_Design_of_UML_Diagrams_for_Car_Care/Figure_14_3_UML_sequence_diagram.png)
+![Figure 14.3: UML Sequence Diagram](../vector_images/Chapter_14_Design_of_UML_Diagrams_for_Car_Care/Figure_14_3_UML_sequence_diagram.svg)
 
 ### Figure 14.4: UML Collaboration Diagram
 

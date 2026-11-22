@@ -85,7 +85,7 @@ Captures the static structural domain model for **Design of UML Diagrams for E P
 **System Design Analysis**:
 Architects the modular software organization for **Design of UML Diagrams for E Province**. Illustrates autonomous subsystems, business logic controllers, database access layers, and external service adapters. Provided interfaces (ball notation) and required dependencies (socket notation) define clear service contracts, supporting high cohesion and loose coupling.
 
-![Figure 7.7: UML Component Diagram](../images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_7_UML_component_diagram.png)
+![Figure 7.7: UML Component Diagram](../vector_images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_7_UML_component_diagram.svg)
 
 ### Figure 7.8: UML Deployment Diagram
 
@@ -95,7 +95,7 @@ Architects the modular software organization for **Design of UML Diagrams for E 
 **System Design Analysis**:
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for E Province**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
-![Figure 7.8: UML Deployment Diagram](../images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_8_UML_deployment_diagram.png)
+![Figure 7.8: UML Deployment Diagram](../vector_images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_8_UML_deployment_diagram.svg)
 
 ### Visual Artifacts & Supplementary Schematics
 

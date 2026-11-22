@@ -75,7 +75,7 @@ Illustrates practical user interaction screens and administrative interfaces for
 **System Design Analysis**:
 Structural architectural schematic detailing operational flow and functional requirements in **Design of UML Diagrams for Inventory Management System**.
 
-![Figure 3.3: Change Password](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_3_Change_password.png)
+![Figure 3.3: Change Password](../vector_images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_3_Change_password.svg)
 
 ### Figure 3.4: Add Goods
 
@@ -145,7 +145,7 @@ Illustrates practical user interaction screens and administrative interfaces for
 **System Design Analysis**:
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Inventory Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
-![Figure 3.10: Expired Goods](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_10_Expired_goods.png)
+![Figure 3.10: Expired Goods](../vector_images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_10_Expired_goods.svg)
 
 ### Figure 3.11: Billing Counter
 
@@ -245,7 +245,7 @@ Maps the physical runtime deployment architecture for **Design of UML Diagrams f
 **System Design Analysis**:
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Inventory Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
-![Figure 3.20: Case 1](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_20_Case_1.png)
+![Figure 3.20: Case 1](../vector_images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_20_Case_1.svg)
 
 ### Figure 3.21: Case 2
 
@@ -265,7 +265,7 @@ Illustrates practical user interaction screens and administrative interfaces for
 **System Design Analysis**:
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Inventory Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
-![Figure 3.22: Case 3](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_22_Case_3.png)
+![Figure 3.22: Case 3](../vector_images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_22_Case_3.svg)
 
 ### Visual Artifacts & Supplementary Schematics
 

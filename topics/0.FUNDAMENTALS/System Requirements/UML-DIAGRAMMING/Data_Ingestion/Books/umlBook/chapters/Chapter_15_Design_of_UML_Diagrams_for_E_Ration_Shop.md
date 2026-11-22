@@ -80,7 +80,7 @@ Traces the time-ordered message sequence between participating objects and servi
 **System Design Analysis**:
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for E Ration Shop**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
-![Figure 15.4: UML Collaboration Diagram](../images/Chapter_15_Design_of_UML_Diagrams_for_E_Ration_Shop/Figure_15_4_UML_collaboration_diagram.png)
+![Figure 15.4: UML Collaboration Diagram](../vector_images/Chapter_15_Design_of_UML_Diagrams_for_E_Ration_Shop/Figure_15_4_UML_collaboration_diagram.svg)
 
 ### Figure 15.5: UML State Machine Diagram
 

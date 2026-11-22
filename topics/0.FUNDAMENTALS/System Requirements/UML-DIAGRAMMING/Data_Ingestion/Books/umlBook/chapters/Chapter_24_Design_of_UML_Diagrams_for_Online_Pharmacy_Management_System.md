@@ -148,7 +148,7 @@ Emphasizes the spatial and structural organization of collaborating instances in
 **System Design Analysis**:
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for Online Pharmacy Management System**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
-![Figure 24.9: UML Collaboration Diagram Admin](../images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_9_UML_collaboration_diagram_Admin.png)
+![Figure 24.9: UML Collaboration Diagram Admin](../vector_images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_9_UML_collaboration_diagram_Admin.svg)
 
 ### Figure 24.10: UML Collaboration Diagram Delivery Man
 
@@ -158,7 +158,7 @@ Emphasizes the spatial and structural organization of collaborating instances in
 **System Design Analysis**:
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for Online Pharmacy Management System**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
-![Figure 24.10: UML Collaboration Diagram Delivery Man](../images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_10_UML_collaboration_diagram_Delivery_Man.png)
+![Figure 24.10: UML Collaboration Diagram Delivery Man](../vector_images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_10_UML_collaboration_diagram_Delivery_Man.svg)
 
 ### Figure 24.11: UML State Machine Diagram Customer
 
@@ -168,7 +168,7 @@ Emphasizes the spatial and structural organization of collaborating instances in
 **System Design Analysis**:
 Models the complete lifecycle state transitions for central domain entities in **Design of UML Diagrams for Online Pharmacy Management System**. Tracks transitions from initial creation through intermediate processing states to completion or cancellation. Explicit state triggers, guard expressions `[condition]`, and entry/exit actions guarantee valid business lifecycle states and eliminate invalid operational state jumps.
 
-![Figure 24.11: UML State Machine Diagram Customer](../images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_11_UML_state_machine_diagram_Customer.png)
+![Figure 24.11: UML State Machine Diagram Customer](../vector_images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_11_UML_state_machine_diagram_Customer.svg)
 
 ### Figure 24.12: UML State Machine Diagram Admin
 
@@ -178,7 +178,7 @@ Models the complete lifecycle state transitions for central domain entities in *
 **System Design Analysis**:
 Models the complete lifecycle state transitions for central domain entities in **Design of UML Diagrams for Online Pharmacy Management System**. Tracks transitions from initial creation through intermediate processing states to completion or cancellation. Explicit state triggers, guard expressions `[condition]`, and entry/exit actions guarantee valid business lifecycle states and eliminate invalid operational state jumps.
 
-![Figure 24.12: UML State Machine Diagram Admin](../images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_12_UML_state_machine_diagram_Admin.png)
+![Figure 24.12: UML State Machine Diagram Admin](../vector_images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_12_UML_state_machine_diagram_Admin.svg)
 
 ### Figure 24.13: UML State Machine Diagram Delivery Man
 
@@ -188,7 +188,7 @@ Models the complete lifecycle state transitions for central domain entities in *
 **System Design Analysis**:
 Models the complete lifecycle state transitions for central domain entities in **Design of UML Diagrams for Online Pharmacy Management System**. Tracks transitions from initial creation through intermediate processing states to completion or cancellation. Explicit state triggers, guard expressions `[condition]`, and entry/exit actions guarantee valid business lifecycle states and eliminate invalid operational state jumps.
 
-![Figure 24.13: UML State Machine Diagram Delivery Man](../images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_13_UML_State_machine_diagram_Delivery_Man.png)
+![Figure 24.13: UML State Machine Diagram Delivery Man](../vector_images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_13_UML_State_machine_diagram_Delivery_Man.svg)
 
 ### Figure 24.14: UML Class Diagram Customer
 
@@ -228,7 +228,7 @@ Captures the static structural domain model for **Design of UML Diagrams for Onl
 **System Design Analysis**:
 Architects the modular software organization for **Design of UML Diagrams for Online Pharmacy Management System**. Illustrates autonomous subsystems, business logic controllers, database access layers, and external service adapters. Provided interfaces (ball notation) and required dependencies (socket notation) define clear service contracts, supporting high cohesion and loose coupling.
 
-![Figure 24.17: UML Component Diagram Customer](../images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_17_UML_component_diagram_Customer.png)
+![Figure 24.17: UML Component Diagram Customer](../vector_images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_17_UML_component_diagram_Customer.svg)
 
 ### Figure 24.18: UML Component Diagram Admin
 
@@ -248,7 +248,7 @@ Architects the modular software organization for **Design of UML Diagrams for On
 **System Design Analysis**:
 Architects the modular software organization for **Design of UML Diagrams for Online Pharmacy Management System**. Illustrates autonomous subsystems, business logic controllers, database access layers, and external service adapters. Provided interfaces (ball notation) and required dependencies (socket notation) define clear service contracts, supporting high cohesion and loose coupling.
 
-![Figure 24.19: UML Component Diagram Delivery Man](../images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_19_UML_component_diagram_Delivery_Man.png)
+![Figure 24.19: UML Component Diagram Delivery Man](../vector_images/Chapter_24_Design_of_UML_Diagrams_for_Online_Pharma/Figure_24_19_UML_component_diagram_Delivery_Man.svg)
 
 ### Figure 24.20: UML Deployment Diagram
 

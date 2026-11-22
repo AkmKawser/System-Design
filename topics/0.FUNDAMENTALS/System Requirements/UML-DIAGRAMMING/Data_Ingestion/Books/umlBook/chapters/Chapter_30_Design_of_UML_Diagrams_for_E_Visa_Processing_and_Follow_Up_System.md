@@ -78,7 +78,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for E Visa Processing and Follow Up System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 30.3: UML Activity Diagram Scenario 2](../images/Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Proces/Figure_30_3_UML_activity_diagram_Scenario_2.png)
+![Figure 30.3: UML Activity Diagram Scenario 2](../vector_images/Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Proces/Figure_30_3_UML_activity_diagram_Scenario_2.svg)
 
 ### Figure 30.4: UML Sequence Diagram
 
@@ -88,7 +88,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Traces the time-ordered message sequence between participating objects and services in **Design of UML Diagrams for E Visa Processing and Follow Up System**. Vertical dashed lifelines represent entity instances across time, while horizontal solid and dashed arrows show synchronous invocations, data lookups, and return values. Activation bars delineate execution duration, clarifying object collaboration during key transactional workflows.
 
-![Figure 30.4: UML Sequence Diagram](../images/Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Proces/Figure_30_4_UML_sequence_diagram.png)
+![Figure 30.4: UML Sequence Diagram](../vector_images/Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Proces/Figure_30_4_UML_sequence_diagram.svg)
 
 ### Figure 30.5: UML Collaboration Diagram
 
@@ -108,7 +108,7 @@ Emphasizes the spatial and structural organization of collaborating instances in
 **System Design Analysis**:
 Models the complete lifecycle state transitions for central domain entities in **Design of UML Diagrams for E Visa Processing and Follow Up System**. Tracks transitions from initial creation through intermediate processing states to completion or cancellation. Explicit state triggers, guard expressions `[condition]`, and entry/exit actions guarantee valid business lifecycle states and eliminate invalid operational state jumps.
 
-![Figure 30.6: UML State Chart Diagram](../images/Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Proces/Figure_30_6_UML_state_chart_diagram.png)
+![Figure 30.6: UML State Chart Diagram](../vector_images/Chapter_30_Design_of_UML_Diagrams_for_E_Visa_Proces/Figure_30_6_UML_state_chart_diagram.svg)
 
 ### Figure 30.7: UML Class Diagram
 

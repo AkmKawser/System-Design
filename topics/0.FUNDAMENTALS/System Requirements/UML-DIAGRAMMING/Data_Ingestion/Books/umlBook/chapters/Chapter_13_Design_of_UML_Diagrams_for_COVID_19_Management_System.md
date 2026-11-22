@@ -74,7 +74,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for COVID 19 Management System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
-![Figure 13.3: UML Activity Diagram Part 2](../images/Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Mana/Figure_13_3_UML_activity_diagram_part_2.png)
+![Figure 13.3: UML Activity Diagram Part 2](../vector_images/Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Mana/Figure_13_3_UML_activity_diagram_part_2.svg)
 
 ### Figure 13.4: UML Sequence Diagram
 
@@ -84,7 +84,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Traces the time-ordered message sequence between participating objects and services in **Design of UML Diagrams for COVID 19 Management System**. Vertical dashed lifelines represent entity instances across time, while horizontal solid and dashed arrows show synchronous invocations, data lookups, and return values. Activation bars delineate execution duration, clarifying object collaboration during key transactional workflows.
 
-![Figure 13.4: UML Sequence Diagram](../images/Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Mana/Figure_13_4_UML_sequence_diagram.png)
+![Figure 13.4: UML Sequence Diagram](../vector_images/Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Mana/Figure_13_4_UML_sequence_diagram.svg)
 
 ### Figure 13.5: UML Collaboration Diagram
 
@@ -94,7 +94,7 @@ Traces the time-ordered message sequence between participating objects and servi
 **System Design Analysis**:
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for COVID 19 Management System**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
-![Figure 13.5: UML Collaboration Diagram](../images/Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Mana/Figure_13_5_UML_collaboration_diagram.png)
+![Figure 13.5: UML Collaboration Diagram](../vector_images/Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Mana/Figure_13_5_UML_collaboration_diagram.svg)
 
 ### Figure 13.6: UML State Machine Diagram
 
@@ -114,7 +114,7 @@ Models the complete lifecycle state transitions for central domain entities in *
 **System Design Analysis**:
 Captures the static structural domain model for **Design of UML Diagrams for COVID 19 Management System**. Defines primary entity classes, their private/public attributes, operational methods, and relationships. It enforces structural integrity through multiplicities, composition (strong lifecycle ownership of subsidiary records), aggregation, and inheritance hierarchies, forming the foundation for the relational database schema and domain entity classes.
 
-![Figure 13.7: UML Class Diagram](../images/Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Mana/Figure_13_7_UML_class_diagram.png)
+![Figure 13.7: UML Class Diagram](../vector_images/Chapter_13_Design_of_UML_Diagrams_for_COVID_19_Mana/Figure_13_7_UML_class_diagram.svg)
 
 ### Figure 13.8: UML Component Diagram
 

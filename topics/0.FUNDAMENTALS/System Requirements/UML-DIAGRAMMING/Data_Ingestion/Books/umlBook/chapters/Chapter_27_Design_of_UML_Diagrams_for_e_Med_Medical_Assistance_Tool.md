@@ -83,7 +83,7 @@ Traces the time-ordered message sequence between participating objects and servi
 **System Design Analysis**:
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for e Med Medical Assistance Tool**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
-![Figure 27.4: UML Collaboration Diagram](../images/Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical/Figure_27_4_UML_collaboration_diagram.png)
+![Figure 27.4: UML Collaboration Diagram](../vector_images/Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical/Figure_27_4_UML_collaboration_diagram.svg)
 
 ### Figure 27.5: UML State Chart Diagram
 
@@ -113,7 +113,7 @@ Captures the static structural domain model for **Design of UML Diagrams for e M
 **System Design Analysis**:
 Architects the modular software organization for **Design of UML Diagrams for e Med Medical Assistance Tool**. Illustrates autonomous subsystems, business logic controllers, database access layers, and external service adapters. Provided interfaces (ball notation) and required dependencies (socket notation) define clear service contracts, supporting high cohesion and loose coupling.
 
-![Figure 27.7: UML Component Diagram](../images/Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical/Figure_27_7_UML_component_diagram.png)
+![Figure 27.7: UML Component Diagram](../vector_images/Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical/Figure_27_7_UML_component_diagram.svg)
 
 ### Figure 27.8: UML Deployment Diagram
 
@@ -123,7 +123,7 @@ Architects the modular software organization for **Design of UML Diagrams for e 
 **System Design Analysis**:
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for e Med Medical Assistance Tool**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
-![Figure 27.8: UML Deployment Diagram](../images/Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical/Figure_27_8_UML_deployment_diagram.png)
+![Figure 27.8: UML Deployment Diagram](../vector_images/Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical/Figure_27_8_UML_deployment_diagram.svg)
 
 ---
 

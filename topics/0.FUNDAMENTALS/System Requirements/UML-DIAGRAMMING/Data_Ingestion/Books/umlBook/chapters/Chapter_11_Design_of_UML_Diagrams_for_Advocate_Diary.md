@@ -83,7 +83,7 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 **System Design Analysis**:
 Traces the time-ordered message sequence between participating objects and services in **Design of UML Diagrams for Advocate Diary**. Vertical dashed lifelines represent entity instances across time, while horizontal solid and dashed arrows show synchronous invocations, data lookups, and return values. Activation bars delineate execution duration, clarifying object collaboration during key transactional workflows.
 
-![Figure 11.3: UML Sequence Diagram](../images/Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diar/Figure_11_3_UML_sequence_diagram.png)
+![Figure 11.3: UML Sequence Diagram](../vector_images/Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diar/Figure_11_3_UML_sequence_diagram.svg)
 
 ### Figure 11.4: UML Collaboration Diagram
 
@@ -123,7 +123,7 @@ Captures the static structural domain model for **Design of UML Diagrams for Adv
 **System Design Analysis**:
 Architects the modular software organization for **Design of UML Diagrams for Advocate Diary**. Illustrates autonomous subsystems, business logic controllers, database access layers, and external service adapters. Provided interfaces (ball notation) and required dependencies (socket notation) define clear service contracts, supporting high cohesion and loose coupling.
 
-![Figure 11.7: UML Component Diagram](../images/Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diar/Figure_11_7_UML_component_diagram.png)
+![Figure 11.7: UML Component Diagram](../vector_images/Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diar/Figure_11_7_UML_component_diagram.svg)
 
 ### Figure 11.8: UML Deployment Diagram
 
