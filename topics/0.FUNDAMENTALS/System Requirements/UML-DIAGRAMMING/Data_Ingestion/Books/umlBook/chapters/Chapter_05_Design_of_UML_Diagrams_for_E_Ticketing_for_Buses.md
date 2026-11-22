@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-In this case study, a software package to automate the manual procedures of reserving a bus ticket is made through Software Maintenance and Development Center (SMDC) Travels. Specifically, the objectives of this case study consist of providing a web-based bus ticket reservation function where a customer can buy a bus ticket through the online system without a need to queue up at the counter to purchase a bus ticket, enabling customers to check the availability and types of buses online. Customer can check the time departure for every Indian Tourist Centre (ITC) bus through the system, easing bus ticket payment by obtaining a bank pin after payments is made to the various designated banks, the ability of customers to cancel their reservation, admin user privileges in updating and cancelling payment, route and vehicle records (Figures 5.1–5.11).
+- **Core Problem**: Travelers waste hours standing in line at bus terminals only to find seats sold out, while operators risk double-booking.
+- **Business Context**: Transport fleet operators need an automated booking portal to maximize bus occupancy and streamline schedule management.
+- **Key Solution**: Lets passengers view routes, check live seat layouts, select seats, pay cashlessly, and download digital tickets on their phones.
 
 ---
 

@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-Health is wealth. Health plays a major role in everyone’s life. People consume unhealthy food and ruin their diet. Some medication results in side effects. This application benefits people with rich nutrients to improve their health. The application provides recommendations of nutrients they need. Users can provide their daily diet cycle and get good recommendations to improve it. They can also provide their medical reports to get nutrients according to their medical state. The user also gets the privilege to enter the disease name and get the nutrient benefit for fighting that disease. Users can ping professional nutritionists for more clarification. Users are authenticated and recommendation is provided by a trained machine learning model (Figures 28.1–28.10).
+- **Core Problem**: Many people eat unbalanced diets and follow unscientific fad meal plans that cause nutritional deficiencies and health problems.
+- **Business Context**: Wellness companies and nutritionists need an automated, data-driven diet recommendation tool to give users personalized meal advice.
+- **Key Solution**: Calculates user BMI, factors in medical conditions and allergies, uses machine learning to generate balanced daily meal plans, and tracks nutritional intake.
 
 ---
 

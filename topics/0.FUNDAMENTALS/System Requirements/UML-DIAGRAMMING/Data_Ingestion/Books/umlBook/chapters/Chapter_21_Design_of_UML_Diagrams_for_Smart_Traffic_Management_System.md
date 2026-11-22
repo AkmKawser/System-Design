@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-In our modern metropolitan city, people don’t follow the traffic rules. The outcome of it is unfortunate. In India, 64.4% of the total deaths are accounted by road accidents. As the automobiles get revolutionized the number of vehicles keep increasing. Conventional traffic signals are not efficient and strict. Smart traffic system aims in minimizing the risks of accidents by precautionary taking actions on people who violate the traffic rules. Cameras to monitor the roads with high traffic levels in order to facilitate the traffic signal. Helmet and seat belt detection using image processing to warn the drivers. Details of the driver are submitted to the traffic police, when he/she violates the law more than two times via the number plate which is captured by cameras. Street lights are operated based on the population density on road at night, thereby saving electricity. License will be cancelled as penalty, if the law is violated. Details of the driver will be passed on to successive signals on account of speeding. Automated traffic lights regulate the traffic flow in order to avoid congestions (Figures 21.1–21.8).
+- **Core Problem**: Fixed-timer traffic lights cause long traffic jams on busy roads while empty lanes get green lights, and ambulances get stuck in gridlock.
+- **Business Context**: City transport authorities need an automated, sensor-driven signal system to keep traffic moving smoothly and reduce fuel emissions.
+- **Key Solution**: Adjusts green light duration dynamically using live traffic cameras, creates instant green corridors for ambulances, and logs speeding violations automatically.
 
 ---
 

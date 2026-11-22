@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-The Prime Minister of India has announced a new scheme of National Health ID on August 15,
+- **Core Problem**: Patient medical records are scattered across unconnected clinics, preventing emergency doctors from seeing prior conditions, allergies, or past tests.
+- **Business Context**: National health authorities need a unified digital record ecosystem where every citizen carries a portable digital health history.
+- **Key Solution**: Assigns a unique universal health ID (UHID) to every citizen, consolidating prescriptions and lab reports across hospitals with patient-controlled privacy consent.
 
 ---
 

@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-The policies and guidelines for startups vary from state to state. Also, startups related to a particular domain are emphasized in particular areas. The people with the startups ideas at different levels of implementation have to approach different firms or individuals for investment who are in their nearest business circles, if not in the same state. All of these will adversely impact the opportunities for the startups. Startup meet is a platform for people to privately approach firms or angel investors with their ideas implemented at different levels for funding and mentorship. Also, the government policies and loan schemes of different states can be known and applied. If people are interested in the idea a virtual presentation can be given about it to them. There will be profiles for investors and entrepreneurs (people with startup ideas) where they will be describing about what they are looking for. The entrepreneur has to request investors or mentors from different states for submitting his ideas. Once accepted he can send an abstract about it. If the investors like it, they can call for a presentation of it. The mentors also can give mentorship. The government loans and policies can be viewed and also be applied through the portal. So, startup meet is a comprehensive platform for people who are into startups (Figures 39.1–39.8).
+- **Core Problem**: Startup entrepreneurs struggle to connect with angel investors outside their home cities and find it difficult to navigate confusing state startup policies and loans.
+- **Business Context**: Venture accelerators and state economic boards need a unified matchmaking portal connecting founders, investors, and state subsidy schemes.
+- **Key Solution**: Founders submit project pitches to accredited investors, schedule virtual video presentations, get matched with industry mentors, and apply for government startup loans.
 
 ---
 

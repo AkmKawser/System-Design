@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-The proposed software will be user-friendly, so that all interactions between a BPO (Business process outsourcing) organization and clients can be done through the software. The required source documents can be easily uploaded and sent to the BPO organization and vice versa. One of the problems is the communication between the client and the BPO organization being limited to face-to-face interaction for assurance, which is costly and time-consuming. There are costs due to printing and the security of documents, which can be prevented as document are stored in digital form with high security. The system should mainly focus on providing login for the separate users (client and BPO organization), and a facility to search the other party to initiate any project agreements. Source documents can be easily uploaded, and the service provided by the BPO organization can also be uploaded for quality testing. The core motive of the software is to provide communication between the users, with the least cost. The BPO management system proves to be essential because of the over growth of the BPO segment in the present economy. This system will be crucial when organizations wish to outsource their work. It will affect the BPO organizations and the clients who wish to seek their service. If this software gets implemented, conveying information will be easier as it is through the internet.
+- **Core Problem**: Client interaction in Business Process Outsourcing (BPO) often depends on costly physical meetings, paper mail, and insecure emails.
+- **Business Context**: BPO companies need a secure online workspace to handle client contracts, assign work to remote teams, and share sensitive records safely.
+- **Key Solution**: Provides encrypted file uploads, digital milestone tracking, direct client-agent messaging, and unified project billing.
 
 ---
 

@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-e-Med is your perfect medical friend. We often see our grandparents forgetting to take their medicines or getting tensed when they run out of medical supplies. In this fast-paced world with unhealthy lifestyles, a number of young people also have some medical issues. e-Med is a tool that helps keep track of and address all your personal medical needs. Once the data is fed regarding the schedule of intake of medicines, this tool will provide reminders for taking the medicines. It will also send notifications to restock the medicines. It is also programmed to schedule monthly or yearly appointments regularly with the family doctor. Another interesting feature of this tool is that during critical situations, pressing the emergency button will automatically contact your near and dear ones whose contacts are in your emergency contact list. The tool helps in keeping a record of your medical history such as your blood sugar levels, pressure levels, etc. by using the Medical Notes feature. e-Med is an indispensable tool for people of all ages with medical issues to help maintain a good health routine (Figures 27.1–27.8).
+- **Core Problem**: Elderly patients living alone frequently forget to take their daily pills, confuse different dosages, or miss vital doctor appointments.
+- **Business Context**: Caregivers and home-care providers need an easy-to-use digital assistant to keep vulnerable patients on their prescribed medication schedule.
+- **Key Solution**: Sets loud, color-coded medication reminders, maintains a clinic appointment calendar, and features a one-touch SOS emergency alert for family.
 
 ---
 

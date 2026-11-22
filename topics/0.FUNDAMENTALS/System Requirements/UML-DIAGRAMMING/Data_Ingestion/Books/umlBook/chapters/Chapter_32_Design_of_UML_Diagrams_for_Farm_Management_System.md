@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-In India, 1 out of 4 farmers own a smartphone. But they don’t use it optimally for insights on farming based on real-time data – such as weather, soil conditions, market conditions, labour availability etcetera, which can allow them to make data-driven decisions to get the best possible results. Current technologies that solve such issues are either paid services or inaccurate. They also tend to be more complex making it really hard for anyone to understand and interpret. An application if developed should primarily aim at reducing the risks, reducing the costs, improving yield, and most importantly, easy for anyone to interpret (Figures 32.1–32.8).
+- **Core Problem**: Small farmers lack scientific data on soil moisture, upcoming weather shifts, and wholesale market prices, resulting in poor yields and low sales profits.
+- **Business Context**: Agricultural boards and agribusinesses need a simple mobile advisory tool to help farmers make data-driven planting and selling decisions.
+- **Key Solution**: Delivers local weather and soil advice, displays real-time wholesale crop prices across nearby markets, and offers remedies for crop pests and diseases.
 
 ---
 

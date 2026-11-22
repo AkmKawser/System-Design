@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-The Video Suggestion System is used in social networking platforms such as YouTube and Facebook. The ultimate aim of this system is to suggest the videos to the users based on the factors such as trending, similar views of the people and their search results. The Video Suggestion System will be found helpful in place of searching a video based on the preference and taste of the user and it also found that it can play a role in the entertainment sector. The system begins with the collection of the history or activities of the users, processing the collected data, creating dataset for suggesting videos and finally when people refresh for the suggestion, it loads videos based on the dataset (Figures 40.1–40.14).
+- **Core Problem**: On video platforms with millions of videos (like YouTube or Facebook), viewers get overwhelmed and leave if the app does not recommend videos matching their personal taste.
+- **Business Context**: Video streaming platforms depend on smart recommendation algorithms to keep users watching longer and increase advertising revenues.
+- **Key Solution**: Tracks user view history, watch time, and likes, analyzes trending videos, and automatically updates the user's home screen with personalized video recommendations on every refresh.
 
 ---
 

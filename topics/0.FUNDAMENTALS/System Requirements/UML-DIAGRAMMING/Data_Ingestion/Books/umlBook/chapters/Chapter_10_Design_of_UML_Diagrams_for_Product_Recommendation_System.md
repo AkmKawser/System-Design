@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-This case study focuses on using web scrapping for product comparison across websites to reduce the amount of time and effort involved in finding and comparing the products. To assist and enable online shopaholics to buy products with ease (Figures 10.1–10.8).
+- **Core Problem**: Online shoppers waste time jumping across different websites to compare prices, while e-commerce stores struggle to retain visitors.
+- **Business Context**: Shopping portals need automated comparison and suggestion engines to boost customer engagement and sales conversions.
+- **Key Solution**: Uses web scrapers to gather live pricing and specs across stores, showing side-by-side comparisons and suggesting tailored items.
 
 ---
 

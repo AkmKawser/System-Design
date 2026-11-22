@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-This chapter aims to create an inventory management system for the efficient management of goods. The performance will be guided by clear and concise strategic practices for each functional unit by an ongoing quest for perfection. The current systems use a manual method to keep track of the records at stores, but the current system is difficult to maintain due to the difficulty in searching and retrieving products, cost of material, human errors, less data integrity, and feasible loss of records and retrieving files. Therefore, by developing such a system, we propose to increase sales by creating the complete inventory records of stock, receipt, details of purchasers and sellers at the store and also to facilitate the salespersons and inventory managers. The ever-growing population creates a high demand. Thus, the responsibility of delivering goods on time lies in the hands of an effective inventory management system. The inventory management system will be installed in both the warehouse and at the billing counter thereby enabling the salespersons and the inventory managers to get instantaneous information and use it on demand. The customer billing process will happen at the main counter and the inventory management will happen in the background in the warehouse.
+- **Core Problem**: Manual paper-and-ledger tracking in warehouses causes stock count errors, lost sales, misplaced items, and slow customer checkouts.
+- **Business Context**: Retailers and warehouses need real-time stock visibility to prevent stockouts and speed up order fulfillment.
+- **Key Solution**: Automatically syncs front-counter cash registers with back-office warehouse inventory, generating low-stock alerts and purchase orders.
 
 ---
 

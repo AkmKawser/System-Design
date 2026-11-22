@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-Online learning is a part of many institution’s course offerings around the world. The scope of online quiz systems increased in this pandemic situation. The objective of the system is to maintain and improve the education rate by conducting quizzes (exams). The system acts as a bridge between student and teacher to gain knowledge and monitor it by the institution (admin). This system provides teachers to know about the students in remote education. The delightful features of the system are online teachers, remote tests, auto evaluation and feedback from students. Admin is responsible for the registration of both teachers and students. Teachers define the number of questions, time of the quiz, schedule for the quiz and they can edit it. At the end of a quiz, students can see the correct answers and their performance (Figures 36.1–36.10).
+- **Core Problem**: Paper exams in schools and colleges are time-consuming to print, vulnerable to question leaks, and take days or weeks to grade manually.
+- **Business Context**: Educational institutions and online academies need a secure assessment portal to conduct remote quizzes and generate instant scorecards.
+- **Key Solution**: Administers timed tests with randomized questions, grades objective answers automatically upon submission, and shows immediate score reports to students and teachers.
 
 ---
 

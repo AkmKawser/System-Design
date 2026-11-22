@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-The first phase of a person’s life is confined mainly by education and training. Hence, counselling is an important aspect for the students of the current technological generation as an individual counsellor may remain in contact with all individual students as well as parents. Student Counselling Management System will simplify the process and reduce the manual paperwork. It is used to smoothen the work of each counsellor who is facing problems currently, and making complete atomization of manual process to computerized system. The main objective of the Student Counselling Management System is to design a system to rationalize the admission to particular courses in a university/institution. Through this system, the student will be able to register for counselling if he is eligible. If the student is qualifying the criteria then he will get the information regarding the colleges and the universities in which he can apply. The main features are online admission, report generation based on student’s merit list and keeping track of counselling procedures and finally publishing results. A student can also get the information regarding how many seats have been booked and vacant seats available in the institution (Figures 29.1–29.8).
+- **Core Problem**: Students experiencing mental stress or career confusion often avoid seeking help due to peer stigma and the lack of private counseling booking channels.
+- **Business Context**: Educational institutions need an organized, confidential wellness portal to connect students with professional campus counselors.
+- **Key Solution**: Allows students to book private counseling sessions, enables counselors to maintain confidential progress notes, and tracks overall campus wellness trends.
 
 ---
 

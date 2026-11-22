@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-The students in our college have a lot of unnecessary goods lying around, whereas many other people might be benefitted from those things. So I would like to put forward a website that can be used to sell or trade the goods with someone who needs them. It proves to be extremely useful in cases like buying and trading secondhand books or study materials among students and faculties. Initially, the website can exclusively only be accessed by the students within the PSG Tech College campus. Later on, if expected demands are met, it shall be expanded to other colleges. The sellers are given special accounts in which they are rated based on their previous records with which the buyers can choose their seller. Functionalities: 1. The buyer can opt for the payment options with which they control the risk. 2. Userfriendly website layout. 3. The buyer gets to inspect the product in front of the seller which ensures customer satisfaction (Figures 35.1–35.8).
+- **Core Problem**: College students have unused textbooks and dorm supplies sitting idle, while newer students cannot afford expensive retail prices.
+- **Business Context**: Campus communities need a trusted, hyper-local peer-to-peer marketplace where students can buy, sell, or swap used goods safely.
+- **Key Solution**: Students post second-hand textbooks and gadgets for sale, meet safely on campus to inspect the item in person, and complete zero-shipping transactions.
 
 ---
 

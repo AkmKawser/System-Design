@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-Job seekers work hard to gain the right skills and knowledge to give them an edge over others in the role they seek. However, at times, despite their best efforts, one may find it difficult to move a step closer to this sought-after job. Hence a platform for listing out the availability of jobs irrespective of the field is required. Furthermore, a job site serves a dual purpose. On one hand, it lists out the availability of jobs to candidates, and on the other, it serves as a database of registered candidate’s profiles for companies to shortlist. The objective is to develop a software solution to predict the availability of jobs based on location, sectors, package, platform, interest and eligibility. As it is important to keep the candidates engaged during their job search, it is important to provide facets on the abovementioned criteria so that they can narrow down to the jobs of their choice (Figures 22.1–22.8).
+- **Core Problem**: Job seekers struggle to find verified job openings matching their skills, while employers waste time sorting through hundreds of irrelevant resumes.
+- **Business Context**: Hiring agencies and companies need an automated career board that matches candidates with suitable job openings quickly.
+- **Key Solution**: Provides online resume building, matches applicant skill profiles with employer job listings, and tracks applications and interview invitations.
 
 ---
 

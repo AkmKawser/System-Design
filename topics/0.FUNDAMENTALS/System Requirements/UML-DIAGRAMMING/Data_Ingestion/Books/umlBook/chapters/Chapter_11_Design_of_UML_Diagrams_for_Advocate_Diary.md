@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-The need for law and enforcement in a country with a high population like India is salient. Lawyers play a major role in maintaining most of their data as hard copies. This project is mainly designed for lawyers to make their work more easy and efficient. It is a responsive web application that would provide lawyers with various services that would help them to maintain their documents. The services include a logbook that has details about the cases along with a calendar. The lawyers can also upload and save documents related to their case. It contains formats of model forms and links to online filing. It also provides quick references of common cases and detailed information about laws through e-books. Information about the judicial exams for lawyers is also made available. Furthermore, the web application contains news updates for lawyers, blogs and feedback. This case study will serve as a small hand tool for lawyers to maintain the soft copies of their data (Figures 11.1–11.8).
+- **Core Problem**: Practicing lawyers keep case files, hearing dates, and client information in physical paper diaries, risking misplaced files and missed court sessions.
+- **Business Context**: Legal professionals need a secure, mobile tool to organize active litigation, protect client privacy, and automate court scheduling.
+- **Key Solution**: Stores case numbers, client profiles, and briefs in a secure database, sending automated reminders for upcoming court hearings and deadlines.
 
 ---
 

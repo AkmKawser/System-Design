@@ -13,6 +13,14 @@ Chapter 1 establishes the theoretical foundations of object-oriented software en
 
 ---
 
+## 🎯 Problem Statement & Business Context
+
+- **Core Problem**: Building software without visual blueprints leads to severe miscommunication between clients and coders, causing project delays and failures.
+- **Business Context**: Teams need standard visual models to estimate costs, identify risks early, and guide developers before writing code.
+- **Key Solution**: Uses the **Unified Process (UP)** (Inception, Elaboration, Construction, Transition) and standard **UML Diagrams** (structural for code/servers, behavioral for user steps).
+
+---
+
 ## 🎯 Unified Process (UP) Lifecycle Phases
 
 The **Unified Process (UP)** combines industry-proven best practices into an architecture-centric, iterative lifecycle designed to tackle critical architectural risks early. It organizes software development across four sequential phases:

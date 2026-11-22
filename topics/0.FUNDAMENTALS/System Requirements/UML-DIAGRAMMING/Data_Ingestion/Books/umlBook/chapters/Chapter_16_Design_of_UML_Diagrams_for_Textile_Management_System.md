@@ -17,7 +17,9 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
-The ‘Textile Management System’ case study is designed to monitor all the processes in a textile manufacturing industry. There are various processes such as order receiving, purchase of raw materials, classification of raw materials, production of goods and selling the products. The main aim of this system is to ensure the reliability of data and to ease the process of manufacturing and transportation of garments and raw materials. This system ensures that the hardships prevailing in the manual systems are overridden by reducing the errors in data handling. The major functionalities are customer registration, sampling, stock checking, purchasing and processing of raw materials, production of garments, product checking and clearance, shipment, billing and report generation (Figures 16.1–16.8).
+- **Core Problem**: Textile mills and garment shops struggle with manual tracking of fabric rolls, dye batches, custom stitching orders, and supplier bills.
+- **Business Context**: Apparel manufacturers need an integrated ERP system to streamline operations from raw cloth procurement to finished retail sales.
+- **Key Solution**: Monitors fabric rolls, sizes, and dye stocks across warehouses, tracks custom tailoring job orders, and automates wholesale and retail billing.
 
 ---
 
