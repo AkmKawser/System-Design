@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Disease epidemics create logistical chaos when tracking patient infections, quarantine compliance, and hospital bed shortages manually.
 - **Business Context**: Public health departments need a central epidemic response system to control contagion and allocate medical resources quickly.
 - **Key Solution**: Digitally registers patient test results, monitors quarantine periods, tracks available ICU beds/oxygen, and maps infection containment zones.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+The all in one COVID-19 management system simplifies the entire process of decreasing the virus load in the community by digitalization. **It includes tracking and treating COVID-19 patients and monitoring the spread of the virus.** **It aims to assist healthcare organizations and governments to assess patient risk profiles and provide awareness to common people by connecting them with virtual care capabilities.** With the current epidemiological situation of COVID-19, there is a high demand to reduce contact between persons and digitize the whole process. **This will effectively reduce the infection rate, help the common people and empower medical professionals across the world to help more patients through telemedicine and virtual care.** **Functionalities: 1.** **Medical Professionals (Doctors/Nurses): Can monitor the oxygen level, blood pressure level, temperature, symptoms, medicine intake and diet of the registered patient.** **All the information of the patients from screening to discharge can be viewed.** **Medicines can also be prescribed to a specific patient.** 2. **COVID-19 Patients: View the data shared by the doctor, home quarantined patients can update data and checklist of medical shops in their locality.** 3. Common People: Check the number of people infected (symptomatic and asymptomatic) and death in their locality ranging from current street, 500 m, 1 km, 5 km, 10 km and view a blog where recovered persons share their experience. 4. COVID-19 Essentials Seller: Can stock up essentials like masks and gloves according to infection in an area. Medical shops nearby the area will be listed. 5. Corporation Worker Head: Workers will be assigned to disinfect Covid-affected areas regularly based on infection data and updates status. 6. **Admin: Updates current number of infected persons in a locality (**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Content Viewer / User`, `Content Creator`, `Platform Administrator`, `Ad Provider` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Prescribe Medicines`, `Update Data by Home Quarantined Patients`, `View Data Shared by Doctor`, `Buy Medicine`, `Read Blog of Recovered Patients`, `View the Number of Deaths in the Locality` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `VideoItem`, `UserActivityLog`, `RecommendationDataset`, `UserPlaylist`, `Rating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Streaming Web/Mobile App`, `Video Processing Pipeline`, `Recommendation Engine Microservice` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

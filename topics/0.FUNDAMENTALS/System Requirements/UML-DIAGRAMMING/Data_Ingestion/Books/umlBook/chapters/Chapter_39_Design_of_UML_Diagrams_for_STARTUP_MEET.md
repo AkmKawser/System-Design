@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Startup entrepreneurs struggle to connect with angel investors outside their home cities and find it difficult to navigate confusing state startup policies and loans.
 - **Business Context**: Venture accelerators and state economic boards need a unified matchmaking portal connecting founders, investors, and state subsidy schemes.
 - **Key Solution**: Founders submit project pitches to accredited investors, schedule virtual video presentations, get matched with industry mentors, and apply for government startup loans.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+The policies and guidelines for startups vary from state to state. Also, startups related to a particular domain are emphasized in particular areas. The people with the startups ideas at different levels of implementation have to approach different firms or individuals for investment who are in their nearest business circles, if not in the same state. All of these will adversely impact the opportunities for the startups. Startup meet is a platform for people to privately approach firms or angel investors with their ideas implemented at different levels for funding and mentorship. **Also, the government policies and loan schemes of different states can be known and applied.** If people are interested in the idea a virtual presentation can be given about it to them. There will be profiles for investors and entrepreneurs (people with startup ideas) where they will be describing about what they are looking for. The entrepreneur has to request investors or mentors from different states for submitting his ideas. Once accepted he can send an abstract about it. If the investors like it, they can call for a presentation of it. The mentors also can give mentorship. **The government loans and policies can be viewed and also be applied through the portal.** So, startup meet is a comprehensive platform for people who are into startups (Figures 39.1–39.8).
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Buyer / Art Collector`, `Independent Merchant / Artist`, `Moderator`, `Courier Service` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Accept Mentorship`, `Accept Request`, `Accept Request for Idea`, `Deal`, `Decline Mentorship`, `Login to Entrepreneur Account` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `ProductItem`, `Artwork`, `ShoppingCart`, `OrderTransaction`, `SellerRating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `E-Commerce Storefront`, `Vendor Dashboard`, `Payment Gateway`, `Shipment Tracking Node` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

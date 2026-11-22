@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Police departments using paper files suffer delays in logging criminal FIRs, tracking suspects across jurisdictions, and sharing evidence.
 - **Business Context**: Law enforcement bureaus require a centralized, secure digital database to register crimes and investigate cases efficiently.
 - **Key Solution**: Enables online FIR filing, stores biometric and criminal record profiles searchable across police stations, and tracks case evidence and court dates.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+Rules and regulations are paramount to all aspects of life. Certain proponents have asserted that crime which is a violation against laws of the society, is integral to the human nature and hence the society can never be completely free from it. In the existing system, all work is done on papers, so it is very difficult to secure crime reports data. **This system needs more manpower to track the records of crimes and it lacks security.** Modern society is characterized by increasing levels of risk posed by internal and external security threats. This poses the importance to develop an automated crime management system to keep a record of the crime and the criminals involved. **The proposed crime bureau is a database system in which the police keeps the record of criminals who have been arrested, to be arrested, or escaped and the complaints.** **This will help the police department in enhanced management of information.** **The main entities in the whole process include; the petitioner (the person who files a First Incident Report (FIR)), victim, accused or criminal, case and investigating officer.** **The proposed crime record management system can overcome all the limitations of the existing system.** **This system provides proper security and reduces the manual work.** **This project helps to maintain a database through which the entire crime activities in the state can be monitored (Figures 20.1–20.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Citizen / Applicant`, `Investigating / Immigration Officer`, `System Admin`, `Third-party Verifier` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Login`, `Station Details`, `Crimes`, `Police Login`, `Add Police`, `Add User` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `FIRRecord`, `CriminalProfile`, `VisaApplication`, `CitizenDocument`, `Certificate` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Public e-Services Portal`, `Biometric Verification Terminal`, `Central Police / Ministry Database` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

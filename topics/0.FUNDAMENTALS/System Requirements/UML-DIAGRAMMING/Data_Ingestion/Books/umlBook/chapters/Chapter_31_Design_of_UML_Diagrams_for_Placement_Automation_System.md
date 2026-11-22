@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: College placement offices manage student resumes and company eligibility criteria manually using messy spreadsheets, causing scheduling mistakes.
 - **Business Context**: Universities need a central portal to match eligible students with corporate recruiters and manage campus interview drives smoothly.
 - **Key Solution**: Stores student academic records and resumes, automatically filters candidates matching company requirements (GPA/major), and schedules campus interview rounds.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+**Placement provides the opportunity for the students to gain Specific Subject skills as well as Real work employability skills.** Placement Offices play a crucial role in providing students the necessary training and various opportunities where the students can effectively evidence their various skills and abilities on their resume. **Hence, the Automation of Placement office provides a more smooth placement process for both the companies and the students.** **This System mainly focuses on flows between the company’s activity, Registration, Resumes, Users, Skills and Their Training.** **Hence, the system comprises five modules, namely, User module, Company module, Admin module, Registration module and Training module.** **Functionalities: Admin can ◾ Add a new company ◾ Delete/update a company ◾ Keeps track of students interested in placements ◾ Add a new training for students (which is demanded by many companies) ◾ Update/delete a training (which are not demanded by many companies), etc.** **User (Job Seeking Student) can ◾ Register for a particular job ◾ Register for a particular company ◾ Undertake a training ◾ Submit resume ◾ Update resume, etc.** **Company can ◾ Register in the placement office ◾ View Student resume ◾ Recruit a student with good resume and skills ◾ Recruit a student trained in a specific area, etc. (Figures 31.1–31.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Client`, `Outsourced Agent`, `Job Seeker / Student`, `Recruiter`, `Administrator` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Add New Training`, `Discussion Room`, `Creation of Account`, `Premium Account Creation`, `Normal Account Creation`, `Chat Room` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `ProjectDocument`, `SLAContract`, `JobProfile`, `StudentResume`, `Application` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Client Web Portal`, `Document Cloud Vault`, `Interview Scheduling Node`, `Email/SMS Gateway` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

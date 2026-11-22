@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Textile mills and garment shops struggle with manual tracking of fabric rolls, dye batches, custom stitching orders, and supplier bills.
 - **Business Context**: Apparel manufacturers need an integrated ERP system to streamline operations from raw cloth procurement to finished retail sales.
 - **Key Solution**: Monitors fabric rolls, sizes, and dye stocks across warehouses, tracks custom tailoring job orders, and automates wholesale and retail billing.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+The ‘Textile Management System’ case study is designed to monitor all the processes in a textile manufacturing industry. **There are various processes such as order receiving, purchase of raw materials, classification of raw materials, production of goods and selling the products.** The main aim of this system is to ensure the reliability of data and to ease the process of manufacturing and transportation of garments and raw materials. This system ensures that the hardships prevailing in the manual systems are overridden by reducing the errors in data handling. **The major functionalities are customer registration, sampling, stock checking, purchasing and processing of raw materials, production of garments, product checking and clearance, shipment, billing and report generation (Figures 16.1–16.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Store Clerk`, `Salesperson`, `Inventory Manager`, `Supplier / Vendor`, `Customer` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Customer Registration`, `Ordering Garments`, `Sampling`, `Stock Checking`, `Purchasing of Raw Materials`, `Processing of Raw Materials` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `Goods / Item`, `WarehouseStock`, `PurchaseOrder`, `SalesReceipt`, `BillingInvoice` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Main Billing Counter`, `Warehouse Storage Node`, `POS Terminal`, `Inventory Database` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

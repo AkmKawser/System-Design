@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Paper visa applications require multiple embassy trips, long postal waits, and manual document checks with zero application tracking.
 - **Business Context**: Immigration authorities need a secure online platform to receive visa applications, verify travelers, and issue visas digitally.
 - **Key Solution**: Travelers submit applications and upload passport files online, immigration officers review and approve/reject claims, and applicants download an authentic eVisa.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+**A visa is a document issued by a country giving a certain individual permission to enter a country for a given period of time for certain purposes.** It is received after several verifications through offline mode. **It requires the applicant to go to the Passport Verification Centre for the verification of documents.** Sometimes even the cost of getting the visa will be high as there may be middlemen involved in it. It takes anywhere from two weeks to two months to receive the visa if applied in offline mode. **With the use of an online visa processing system, the middlemen entry in getting the visa gets reduced and the process of application of visa becomes easier.** **The overall aim of the system is that the applicant can apply for the visa from anywhere and at any time.** **The applicant can apply for the visa and submit it online.** **It provides more flexibility to the applicant compared to the existing system.** **There are certain types of visas that the applicant can apply for such as employment visa, study visa, resident visa, H1 visa, business visa, etc.** People who apply for the visa for work, education, etc will be benefitted a lot from this system. **The applicant should register by providing a valid email and a password.** **The applicant has to log in to apply for the visa.** **The credentials are checked for correctness and the applicant to allow to log in.** **Once the applicant logs in, he/she will be shown the application form which asks the applicant to provide the necessary details and asks him/her to attach the necessary documents.** **It also provides a list of visas to choose from.** He/she can also view the details of fair to visa for each country. **The applicant can view, modify and delete the details applied.** **The system will have a provision for the administrator to view the details of what types of visas are required by the applicant.** **The administrator will also be able to update and delete the details of the applicants.** **The administrator will have a facility to interact with the Visa Consultant Officer.** **The Visa Consultant Officer can be able to view and check the document proofs (valid passport, Demand Draft Visa Fee I-20 form, letter of admission, aid letter, etc.) submitted by the applicant and can be able to view the purpose of application of visa.** **He/She has the authority to accept/reject the visa application applied by the applicant (Figures 30.1–30.9).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Citizen / Applicant`, `Investigating / Immigration Officer`, `System Admin`, `Third-party Verifier` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Accept Application`, `Accept Visa`, `Apply for Visa`, `Approve Visa`, `Authentication`, `Cancel Application` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `FIRRecord`, `CriminalProfile`, `VisaApplication`, `CitizenDocument`, `Certificate` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Public e-Services Portal`, `Biometric Verification Terminal`, `Central Police / Ministry Database` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

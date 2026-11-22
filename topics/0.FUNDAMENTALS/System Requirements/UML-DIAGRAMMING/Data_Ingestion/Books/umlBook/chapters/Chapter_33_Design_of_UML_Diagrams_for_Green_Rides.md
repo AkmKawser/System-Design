@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Commuters waste hours stuck in traffic jams and breathe in hazardous pollution along congested, accident-prone road corridors.
 - **Business Context**: Transportation authorities and green travel apps need an eco-navigation tool that guides drivers toward less polluted, less congested paths.
 - **Key Solution**: Suggests routes based on real-time traffic density and air quality indexes (AQI), warns of accident-prone areas, and collects community road hazard reports.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+This system is useful in the road transport and highways field (Ministry of Road Transport and Highways). **Green rides is a technical solution for the general public to guide them to a less polluted path while travelling, to know about the traffic jam, identification of accidentprone spots, mealson- wheel, the establishment of drive-mode applications.** **This app consists of a Google map view on the main screen.** **A user can select the source to destination path which then will be processed to give a number of routes to reach the destination from source with amount of traffic at various locations in that path along with current pollution status in that route (which updates overtime).** **If there exists a traffic jam, a user can blow a horn to all users within a specific radius.** According to his current location in the form of a small notification which the persons in the specified radius will receive. **The accidents that occurred at specific spots will be reported by the user to the concerned authority who will do the rescue operations and hence the accidentprone areas will be categorized based on the number of accidents taking place and a notification appears for the user to drive slow and safe when they are in that particular location.** **The road authority admin checks the system often.** **Mealson- wheel provides information about hotels and restaurants which are available in the chosen route so that the user can place the order as per the available menu at a particular eating place including time of service so that one need not wait at the restaurant for placing the order.** Drivemode helps to minimize the risks of accidents while attending mobile phones during driving. This module would send an SMS to the caller that the particular person is driving when the geocoordinates show the mobile shifting of the driver is beyond some specified speed limit (say, 20 kmph). Before start of the journey, this module can be turned on. **The feedback feature allows the user to give feedbacks about the accuracy in the traffic and pollution levels in a given area (Figures 33.1–33.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Passenger / Commuter`, `Bus Operator`, `Driver`, `Traffic Officer`, `Admin` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `From and To`, `Details`, `Feedback`, `Order`, `Menu`, `Accident` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `BusRoute`, `VehicleSchedule`, `SeatReservation`, `Ticket`, `PaymentTransaction` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Passenger Web/Mobile Portal`, `Bank Payment Gateway`, `Traffic Camera Sensor`, `GPS Tracking Node` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

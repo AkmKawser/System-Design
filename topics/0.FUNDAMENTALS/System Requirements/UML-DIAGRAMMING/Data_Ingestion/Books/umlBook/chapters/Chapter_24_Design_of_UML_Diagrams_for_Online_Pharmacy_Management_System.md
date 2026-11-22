@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Elderly and sick patients find it hard to travel to physical pharmacies, while pharmacy owners struggle to track drug expiry dates and verify paper prescriptions.
 - **Business Context**: Pharmacies need an e-commerce platform to dispense regulated medicines legally and deliver them directly to customers' homes.
 - **Key Solution**: Lets patients upload prescription photos for pharmacist verification, tracks drug inventory and expiration dates, and coordinates doorstep medicine delivery.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+The customer goes to the shop and purchases the medicine required. So a lot of time is wasted and the person gets tired. If he wants to exchange the product, once again he goes to the shop and replaces them. The complete process depends on the physical interactions. **The Online Pharmacy is easy to use and order.** **The customer selects the required medicines and orders them with a single click.** **Before it, the customer needs to create a login account and fill all the details like name, address, any id no, etc.** The client can able to view the status of the medicines. **The business goal for the application is to provide the medicines to all the people and admin will provide the supplier details (Figures 24.1–24.20).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Content Viewer / User`, `Content Creator`, `Platform Administrator`, `Ad Provider` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Login`, `Register`, `Account/Profile Information`, `View Orders`, `Add to Wish List`, `Add to Cart` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `VideoItem`, `UserActivityLog`, `RecommendationDataset`, `UserPlaylist`, `Rating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Streaming Web/Mobile App`, `Video Processing Pipeline`, `Recommendation Engine Microservice` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

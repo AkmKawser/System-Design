@@ -17,9 +17,24 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Farmers, travelers, and event organizers suffer from sudden storms and temperature shifts due to delayed or generic forecasts.
 - **Business Context**: Weather services and municipalities need a fast digital channel to share real-time atmospheric data and severe storm warnings.
 - **Key Solution**: Continuously streams local temperature, humidity, and rainfall data, offering visual multi-day forecasts and instant storm alerts.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+**This Weather Monitoring Case study allows people to directly check the weather status online.** **The functionalities are Weather Status, Live Updating, Alert, Graphical Representation, Future Prediction and Weekly.** **Weather Status – With this function, temperature, humidity, rainfall, pressure and dew point are measured using sensors.** **Live Updating – Data are live updated to be viewed by the user.** **Alert – This functionality provides tips and alerts to the user on certain weather conditions.** Graphical Representation – Plotting of graphs based on variations in temperature for easier analysis. **Future Prediction – This functionality helps in predicting the weather for the next few days.** Weekly Analysis – Displaying the average, the highest and lowest temperature of the week. **The final goal is to provide detailed weather conditions for the user based on his/her location (Figures 6.1 and 6.2).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Farmer / Citizen`, `Weather Analyst`, `Agricultural Extension Officer`, `Admin` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Weather Status`, `Live Updating`, `Alert`, `Graphical Representation`, `Future Prediction`, `Weekly
+
+Analysis` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `WeatherReading`, `SensorMetric`, `ForecastModel`, `SoilSample`, `CropMarketPrice` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `IoT Sensor Station`, `Weather Advisory Mobile App`, `SMS Alert Broadcast Gateway` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: People who accidentally leave their mobile phone at home lose access to urgent contacts, incoming emergency calls, and text messages.
 - **Business Context**: Mobile users need a lightweight, low-resource way to check their forgotten phone remotely from simple web or secondary phone channels.
 - **Key Solution**: Allows users to send remote commands via SMS or web to fetch missed calls, urgent text messages, or contact numbers and forward them safely.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+This case study is helpful to people who forget their mobile phones at home as a part of their busy daily routines. Keeping tick of essentials in this fast-paced life sometimes turns out to be quite demanding. People sometimes forget their phones at home. What if we need to make an important call and we don’t remember the contact number? Sometimes our phones just get disappeared and the scariest part is when the phone is put on silent mode. We sometimes want to lock our phones when they aren’t around us. Need to know the exact location of your phone? Therein comes the use of ‘My Helper’. **The solutions to all the problems stated above can be solved easily and very quickly if u have the application ‘My Helper’ pre-installed on your phone and u have completed configuring the app.** All you need to do is just send an SMS to your mobile number from any phone that you have access to…and there goes your problem solved. **The scope of this system is increasing every day across the entire world where everything is happening at the speed of a Formula 1 Car on a race track.** **The objective of this system is to provide help to people facing these types of problems instantly with the help of advanced technology.** **The alluring features of this system are Remote Access without the Internet, Track your phone through an SMS, HassleFree as no OTP and ID PASSWORD is required and an SMS can help you change the sound profile of your phone (silent to normal) without Internet.** **The system is user friendly and the application will be available to even basic smartphones (Figures 12.1–12.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Content Viewer / User`, `Content Creator`, `Platform Administrator`, `Ad Provider` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Login`, `Set Password`, `Send SMS`, `Read SMS`, `Checks Requirement`, `Error` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `VideoItem`, `UserActivityLog`, `RecommendationDataset`, `UserPlaylist`, `Rating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Streaming Web/Mobile App`, `Video Processing Pipeline`, `Recommendation Engine Microservice` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

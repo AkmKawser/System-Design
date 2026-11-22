@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Car owners forget periodic vehicle maintenance intervals and face opaque repair prices from unknown roadside mechanics.
 - **Business Context**: Automotive service chains and garages need a booking portal to build customer trust and provide upfront, transparent pricing.
 - **Key Solution**: Sends automated vehicle service reminders, lets drivers book repairs at accredited garages, provides upfront estimates, and accepts online payments.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+Most of the car owners do not know whether their car is at risk and needs to be serviced. **This considerably increases the risk of malfunctioning of major parts of a car such as the braking system and engine which lead to accidents.** **Car Care is a multi-brand car service and maintenance application that maintains the date at which the specific part of a car is installed and notifies the expiry date of the parts of the car for both the driver and authorized service centre, so that the car can be serviced.** **This application enables car owners and service centres to separately login and enter their cars information.** After issuing the car, the service centre employee enters the estimated expiry dates of parts of the car in this app. **This application notifies the car owners and service centres when the expiry date for parts of the car is reached.** Then the service centre employee contacts the owner of a car about service, once the owner accepts service request, the service centre employee picks up the car from home, this saves the time for owner of car. And then service centre employee examines the entire car and prepares the list of the damaged parts of the car and send it to the owner of the car through this app, once the owner selects the damaged parts to be serviced, the employee services the owner selected parts and updates the information about changed parts in the app so that the car can be service again on the expiry date of changed parts. **Thus, this application helps in exchanging information between car owners and service centres.** **This application also enables the online payment for the services (Figures 14.1–14.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Car Owner / Driver`, `Garage Mechanic`, `Workshop Manager`, `Billing Staff` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Registration`, `Login`, `Vehicle Information System`, `Views Information`, `Enters and Modifies Car Parts Information`, `Vehicle Parts Expiry Notification` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `VehicleProfile`, `ServiceBooking`, `RepairJobCard`, `ServiceEstimate`, `PaymentRecord` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Driver Mobile App`, `Workshop Diagnostics Terminal`, `Cashless Payment Gateway` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

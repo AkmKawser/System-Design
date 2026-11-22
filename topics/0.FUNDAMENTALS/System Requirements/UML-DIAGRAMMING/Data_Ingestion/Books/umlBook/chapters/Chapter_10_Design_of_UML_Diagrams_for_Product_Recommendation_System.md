@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Online shoppers waste time jumping across different websites to compare prices, while e-commerce stores struggle to retain visitors.
 - **Business Context**: Shopping portals need automated comparison and suggestion engines to boost customer engagement and sales conversions.
 - **Key Solution**: Uses web scrapers to gather live pricing and specs across stores, showing side-by-side comparisons and suggesting tailored items.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+**This case study focuses on using web scrapping for product comparison across websites to reduce the amount of time and effort involved in finding and comparing the products.** To assist and enable online shopaholics to buy products with ease (Figures 10.1–10.8).
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Content Viewer / User`, `Content Creator`, `Platform Administrator`, `Ad Provider` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Register`, `Search Product`, `Search Filter`, `Product Filter`, `Get Product` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `VideoItem`, `UserActivityLog`, `RecommendationDataset`, `UserPlaylist`, `Rating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Streaming Web/Mobile App`, `Video Processing Pipeline`, `Recommendation Engine Microservice` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

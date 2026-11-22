@@ -15,9 +15,20 @@ Chapter 1 establishes the theoretical foundations of object-oriented software en
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Building software without visual blueprints leads to severe miscommunication between clients and coders, causing project delays and failures.
 - **Business Context**: Teams need standard visual models to estimate costs, identify risks early, and guide developers before writing code.
 - **Key Solution**: Uses the **Unified Process (UP)** (Inception, Elaboration, Construction, Transition) and standard **UML Diagrams** (structural for code/servers, behavioral for user steps).
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+**Chapter 1 establishes the theoretical foundations of object-oriented software engineering modeling, the Unified Process (UP) development lifecycle, and the role of the Unified Modeling Language (UML) as the universal visual language for specifying, visualizing, constructing, and documenting software system artifacts.** **It structures the engineering lifecycle into four iterative, risk-driven phases: Inception (scope and feasibility), Elaboration (baseline executable architecture), Construction (coding and alpha testing), and Transition (beta testing and customer deployment).** **Furthermore, it formalizes the canonical taxonomy of structural models (Class, Component, Deployment) and behavioral models (Use Case, Activity, Sequence, Communication, State Machine) necessary to represent software systems comprehensively from inception through production deployment.**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Lifecycle Phases (Figures 1.1–1.4)**: `Inception Phase`, `Elaboration Phase`, `Construction Phase`, `Transition Phase`.
+> - **Taxonomy Hierarchy (Figure 1.5)**: `Structural Modeling` (Class, Component, Deployment) and `Behavioral Modeling` (Use Case, Activity, Sequence, State Machine).
 
 ---
 

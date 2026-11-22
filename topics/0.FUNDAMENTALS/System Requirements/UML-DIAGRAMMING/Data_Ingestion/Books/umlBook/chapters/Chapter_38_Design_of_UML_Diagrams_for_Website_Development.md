@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: An established architectural firm (Mega Associates) is losing potential clients because it lacks a modern, attractive website to showcase its work.
 - **Business Context**: Architectural design practices require an impressive digital portfolio to prove credibility, attract premium clients, and recruit top design talent.
 - **Key Solution**: Builds a modern website showcasing completed architectural projects, client case studies, 3D designs, online inquiry chat, and career applications.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+Mega Associates is an evolving architectural firm that is facing a fierce competition. **The competitors have a modern, well-built website that is pulling some of the firm’s clients towards themselves.** **In order to avoid a situation like this and to retain all the firm’s clients and to attract new ones, a refreshing website is needed.** **The website of the firm should include the major projects of the firm, a brief on all the available departments and collaborations, recent news with respect to the firm, the firm’s insights, the history of the firm, mail or chat feature, and career opportunities with regard to the firm (Figures 38.1–38.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Content Viewer / User`, `Content Creator`, `Platform Administrator`, `Ad Provider` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Display Projects`, `Collaborations`, `Available Departments`, `History of the Firm`, `News/Blog`, `Career Opportunities` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `VideoItem`, `UserActivityLog`, `RecommendationDataset`, `UserPlaylist`, `Rating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Streaming Web/Mobile App`, `Video Processing Pipeline`, `Recommendation Engine Microservice` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Independent artists struggle to find physical exhibition spaces to show their art, while collectors lack verified prices and proof of authenticity.
 - **Business Context**: Art curators, auctioneers, and artists need a virtual gallery to exhibit, sell, and auction creative works to a worldwide audience.
 - **Key Solution**: Displays high-resolution artwork catalogs with artist biographies, supports both direct purchases and timed online auction bidding, and coordinates safe shipping.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+To provide an online platform to manage the buying, selling and storage of artistic creations provided by creators/other platforms or auctions and to organize events to exhibit these products. **The system is a gallery having art pieces with its description, price and other information and the order activity, payment activity, order update activity and so on.** **The objective is to provide an online platform through which museums and art galleries can make use-off to exhibit their collections in times of unavailable street galleries.** Like in times of pandemic also people need not bother not going to a museum or art gallery instead they can have online art shopping and art exhibits. The system should be immune to any chances of misuse and unauthorized reproduction of works of arts and designs. **There will be two types of users accessing the system: Admin (Creators/authority of the art displayed) and Customer (One who looks to buy the art).** **The main features provided for the admin are that they will be able to update, add, delete, input price, description and information about an art (stock availability), generate report of gallery and that for the customers are that they will be able to order (Payment), delete order, view end-user projected art particulars (Figures 34.1–34.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Buyer / Art Collector`, `Independent Merchant / Artist`, `Moderator`, `Courier Service` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Buy Art`, `Cash on Delivery`, `Change Info`, `Display Login Error`, `Maintain Profile Info`, `Make Payment` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `ProductItem`, `Artwork`, `ShoppingCart`, `OrderTransaction`, `SellerRating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `E-Commerce Storefront`, `Vendor Dashboard`, `Payment Gateway`, `Shipment Tracking Node` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Mobile users want fast, personalized short-form video entertainment, but existing media apps can be clunky, slow to buffer, and hard to navigate.
 - **Business Context**: Media streaming startups need a scalable Over-The-Top (OTT) video platform to host, stream, and monetize video reels over the internet.
 - **Key Solution**: Streams high-definition video reels with adaptive playback, lets viewers save and like content, and gives creators tools to upload and track video views.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+An over-the-top (OTT) media service is a streaming media service offered directly to viewers via the internet. The OTT media can be streamed anywhere with just the use of an internet connection. The scope of this project lies in the maximised use of the internet by the current generation. The system aims at providing a fun-filled and informative services that they would be able to access easily from their place. **This system includes streaming of shows and movies that could be viewed by the users and an administrator governing the updates in the OTT based on the schedule of the show or movie release.** **Users can have a trial package of the services offered for 1 month and further subscriptions are based on the amount paid categorised as normal users and premium users.** **Creating an account involves payment to the services provided.** **Hence the trial users could use the trial package for a month and create an account for them maintaining a secret password that makes their account safe from other people accessing it.** **The premium users have the privilege of providing suggestions of the shows in the discussion room.** **All the users should be provided with the facility of a chat room where the users can chat and express their views and comments.** **The administrator will have control over the shows broadcasted and maintain a proper timeline of the shows, movies and live shows.** News feeds highlighting the recent updates in the world will also be available in MINIREELS in a brief format. **Users can also add their favourite videos to LIKES list and watch them whenever needed (Figures 26.1–26.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Content Viewer / User`, `Content Creator`, `Platform Administrator`, `Ad Provider` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Discussion Room`, `Creation of Account`, `Premium Account Creation`, `Normal Account Creation`, `Chat Room`, `Save Videos in LIKES` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `VideoItem`, `UserActivityLog`, `RecommendationDataset`, `UserPlaylist`, `Rating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Streaming Web/Mobile App`, `Video Processing Pipeline`, `Recommendation Engine Microservice` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Schools and companies lending electronic devices (laptops, tablets) experience lost equipment, unrecorded damage, and messy paper checkout sheets.
 - **Business Context**: IT departments need an automated lending system to protect valuable hardware assets and hold borrowers accountable.
 - **Key Solution**: Scans device serial numbers upon checkout, logs borrower ID and return dates, sends automated overdue alerts, and tracks device physical condition.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+Amidst this pandemic period, students are being educated through online education platforms on smartphones and other similar devices. Many underprivileged children are unable to get access to such devices. Also, the people who are willing to help aren’t able to reach the needy due to lockdown. The ultimate aim of this system is to help such children by giving the collected devices from the people who were willing to help them. This system requests the donors to enter the details regarding the device they are willing to donate. **It also requests the address details of the donor in order to reach them.** **On successful entry of such details, the user has to wait for the approval of the device.** **The admin has to verify the details of the device and assign it to a pickup executive for collection.** **This system also allows the volunteers to join the team.** So that they could be helped by picking up the devices in their locality (Figures 18.1–18.12).
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Content Viewer / User`, `Content Creator`, `Platform Administrator`, `Ad Provider` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `New Donor`, `Contact Details`, `Device Details`, `Old Donor`, `Personal Info`, `Approve` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `VideoItem`, `UserActivityLog`, `RecommendationDataset`, `UserPlaylist`, `Rating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Streaming Web/Mobile App`, `Video Processing Pipeline`, `Recommendation Engine Microservice` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

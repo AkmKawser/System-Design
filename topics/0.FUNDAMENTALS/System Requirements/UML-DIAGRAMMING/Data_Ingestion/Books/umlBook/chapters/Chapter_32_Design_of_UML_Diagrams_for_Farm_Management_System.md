@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Small farmers lack scientific data on soil moisture, upcoming weather shifts, and wholesale market prices, resulting in poor yields and low sales profits.
 - **Business Context**: Agricultural boards and agribusinesses need a simple mobile advisory tool to help farmers make data-driven planting and selling decisions.
 - **Key Solution**: Delivers local weather and soil advice, displays real-time wholesale crop prices across nearby markets, and offers remedies for crop pests and diseases.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+In India, 1 out of 4 farmers own a smartphone. But they don’t use it optimally for insights on farming based on real-time data – such as weather, soil conditions, market conditions, labour availability etcetera, which can allow them to make data-driven decisions to get the best possible results. Current technologies that solve such issues are either paid services or inaccurate. They also tend to be more complex making it really hard for anyone to understand and interpret. **An application if developed should primarily aim at reducing the risks, reducing the costs, improving yield, and most importantly, easy for anyone to interpret (Figures 32.1–32.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Farmer / Citizen`, `Weather Analyst`, `Agricultural Extension Officer`, `Admin` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Create Account`, `Delete Account`, `Log In`, `Log out`, `Update Details`, `Suitable Crops Based on Soil Conditions` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `WeatherReading`, `SensorMetric`, `ForecastModel`, `SoilSample`, `CropMarketPrice` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `IoT Sensor Station`, `Weather Advisory Mobile App`, `SMS Alert Broadcast Gateway` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

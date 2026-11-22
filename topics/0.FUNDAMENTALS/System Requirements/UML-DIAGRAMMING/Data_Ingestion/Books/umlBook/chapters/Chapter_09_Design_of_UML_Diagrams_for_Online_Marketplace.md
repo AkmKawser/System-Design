@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Small neighborhood merchants cannot afford to build their own e-commerce websites and struggle to reach customers outside their area.
 - **Business Context**: A shared online retail platform lowers barriers for small businesses by connecting multiple independent sellers with online shoppers.
 - **Key Solution**: Small vendors manage digital storefronts and product listings, while buyers browse items, pay through secure gateways, and track deliveries.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+Various new small scale and medium scale sellers face difficulties to reach out to the customers and sell their products along with other competing products in the market. This increases their overall cost, thus reducing their profit or even causing loss. **E-Retail is an online marketplace application case study where small and medium scale sellers can list, showcase, advertise and sell their products directly to the customers without any physical store.** **E-Retail aims in providing a dynamic platform for all small and medium scale sellers to reach out and sell their products directly to all range of customers at a competing price without the need of any physical store.** **This enables the sellers to eliminate the cost of rent or maintenance of a physical store and to minimize other related costs.** It also aims in promoting direct communication between the seller and customer, hence providing a trusted relationship between them. **New sellers can easily authenticate and signup to the portal and sell their products in the portal.** **The application offers separate login for sellers and customers, where the sellers and customers can sign in and start using the application.** Customers can view all the products available from various sellers and buy those products. **It also facilitates online payments for purchasing the products.** Customers can rate or give a review for the product and seller. **Customers can also report a seller for any violations in delivery or if the product does not meet the specified requirement.** Customers can also view the contact information and the rating of the seller before buying the product (Figures 9.1–9.9).
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Buyer / Art Collector`, `Independent Merchant / Artist`, `Moderator`, `Courier Service` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Customer Login`, `Seller Registration`, `Seller Verification`, `Sale Products`, `Promote Products`, `View Products` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `ProductItem`, `Artwork`, `ShoppingCart`, `OrderTransaction`, `SellerRating` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `E-Commerce Storefront`, `Vendor Dashboard`, `Payment Gateway`, `Shipment Tracking Node` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

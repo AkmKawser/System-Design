@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Visiting hospitals in person involves long queues, travel delays, lack of specialist access, and manual pharmacy visits.
 - **Business Context**: Healthcare providers need an integrated digital platform to deliver affordable, on-demand medical care and awareness.
 - **Key Solution**: Offers virtual doctor consultations, online symptom checkers, doorstep prescription medicine delivery, and GPS ambulance dispatch.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+Healthcare service has huge demand these days as it really helps in managing a hospital or a medical office. The scope of healthcare service systems is increasing by each day and it is true for the entire world. **Some of these solutions include improved awareness about healthcare services and health policies.** **The objective of this system is to provide medical assistance to people instantly with the help of technology.** This system eradicates the cultural sensitivity that prevails in many hospitals and improvises the quality of medical assistance. **The captivating features of this system are online doctors, medicines at doorstep and bulletin of awareness.** **The users can also navigate and choose among various insurance schemes that are displayed.** **The primary objectives of Webmed healthcare system are to enable all citizens to receive healthcare services whenever needed, and to deliver health services that are cost-effective and meet pre-established standards of quality.** **The main functions of this system deal with finance, health A–Z, resources, drugs and supplements, news and experts, payment and feedback.** **Register function allows the patients or the caregivers to register on the website.** **Login function allows the patients to access the website.** **Financing focuses on the purchase of insurance.** **Health A–Z displays all the diseases along with their symptoms.** **Resources function consists of the sub-functions including symptoms checker, health calculator, find a doctor based on the geographical location of the patient, insurance guide and ambulance providence.** **Drugs and supplements include online medicine delivery, where people could shop for medicines online.** **News and experts function is to provide health awareness and threats that are prevailing.** **This function also gives information regarding counselling programs and blood donation camps.** **The payment function is to reimburse providers for services delivered.** **The feedback function collects user reviews for the website.**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Patient`, `Caregiver`, `Online Doctor`, `Hospital Admin`, `Pharmacist` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Drugs and Supplements`, `Facilities`, `Feedback`, `Finance`, `Health A–Z`, `Login` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `PatientRecord`, `Appointment`, `Prescription`, `Medicine`, `InsuranceScheme`, `Bill` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Web Portal`, `Mobile Health App`, `Payment Gateway`, `Ambulance Dispatch API` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

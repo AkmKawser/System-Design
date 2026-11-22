@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Patient medical records are scattered across unconnected clinics, preventing emergency doctors from seeing prior conditions, allergies, or past tests.
 - **Business Context**: National health authorities need a unified digital record ecosystem where every citizen carries a portable digital health history.
 - **Key Solution**: Assigns a unique universal health ID (UHID) to every citizen, consolidating prescriptions and lab reports across hospitals with patient-controlled privacy consent.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+**The Prime Minister of India has announced a new scheme of National Health ID on August 15,**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Patient`, `Caregiver`, `Online Doctor`, `Hospital Admin`, `Pharmacist` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Verification`, `Registration`, `Activation`, `Add a Record`, `Permission`, `Health Repository` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `PatientRecord`, `Appointment`, `Prescription`, `Medicine`, `InsuranceScheme`, `Bill` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Web Portal`, `Mobile Health App`, `Payment Gateway`, `Ambulance Dispatch API` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 

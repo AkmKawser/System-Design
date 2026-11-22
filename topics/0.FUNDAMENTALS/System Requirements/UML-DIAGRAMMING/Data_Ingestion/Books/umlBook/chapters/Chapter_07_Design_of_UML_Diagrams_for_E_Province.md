@@ -17,9 +17,22 @@ The case study analyzes the system from multiple architectural perspectives: ide
 
 ## 🎯 Problem Statement & Business Context
 
+### 📋 Executive Summary & Problem Breakdown
 - **Core Problem**: Citizens must repeatedly visit crowded government offices and fill out paper forms to obtain basic certificates and welfare pensions.
 - **Business Context**: District administrations need an e-Governance portal to deliver citizen services transparently and reduce bureaucratic delay.
 - **Key Solution**: Lets citizens apply online for birth, death, caste, and income certificates, apply for pensions, and track application approval stages live.
+
+### 📖 Authentic Problem Description (with Key Diagram Drivers Highlighted)
+
+> *Below is the complete authentic problem statement from the case study specification. The **bold highlighted sentences** denote explicit functional requirements, actors, entities, and workflows that directly drove the creation of the UML diagrams:*
+
+**Citizens in every district face the difficulty with the of government certificates like birth/death certificates, income and caste certificates, old age and widow pensions, etc.** This can be done with e-Province. This case study demonstrates how make the government services available to the citizens in a convenient, efficient and transparent manner, by enabling it simple by reliable access over the Internet. **The main objective is to bring the public services closer to the citizens.** To fulfil the vision of providing an easy and convenient service to the citizens through remote access primarily through Common Service Centre (CSCs), e-Province project is created. **This case study aims to develop a State Portal (SP) to provide all the citizens of the respective province to access the services under a single interface mechanism in the form of the Portal.** **The various modules in the e-Province project are an Admin module that creates, updates, deactivates the users and performs various other tasks.** **A Login module that allows the users to login with their unique Application number with approved status.** **A User module that allows the approved users to register for the respective certificates.** **A User Profile module that creates the pre-requisite information of the user that needs to be stored in the database.** **The Certificate module contains the required forms that are to be filled with the information of the users (Figures 7.1–7.8).**
+
+> 🔑 **Key Diagram Drivers Derived from Highlighted Requirements**:
+> - **Primary & External Actors**: `Citizen / Applicant`, `Investigating / Immigration Officer`, `System Admin`, `Third-party Verifier` *(Derived from user roles explicitly named above)*
+> - **Core Functional Use Cases**: `Registration Process`, `Login Process`, `Registration for Certificate Process`, `Certificate Issuing Process`, `User Profile Viewing Process` *(Derived from functional capabilities and actions stated above)*
+> - **Domain Entities & Data Stores**: `FIRRecord`, `CriminalProfile`, `VisaApplication`, `CitizenDocument`, `Certificate` *(Derived from persistent records and items stated above)*
+> - **Deployment & Runtime Boundaries**: `Public e-Services Portal`, `Biometric Verification Terminal`, `Central Police / Ministry Database` *(Derived from operational touchpoints like web portals, mobile apps, or physical counters)*
 
 ---
 
