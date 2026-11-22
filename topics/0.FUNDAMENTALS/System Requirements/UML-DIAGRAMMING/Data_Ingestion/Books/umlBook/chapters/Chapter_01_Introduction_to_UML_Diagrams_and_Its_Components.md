@@ -65,6 +65,19 @@ Structural architectural schematic detailing operational flow and functional req
 
 ![Figure 1.1: Inception Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_1_Inception_phase.svg)
 
+#### 🛠️ Step-by-Step Construction Guide
+
+1. **Establish Diagram Purpose & System Boundary**:
+   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
+2. **Identify Primary System Entities & Structural Units**:
+   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
+3. **Map Control & Information Transfer Flows**:
+   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
+4. **Apply Architectural Rules & Guard Constraints**:
+   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
+5. **Validate Architectural Cohesion & Traceability**:
+   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
+
 ### Figure 1.2: Elaboration Phase
 
 **Diagram Category**: `Architectural Figure`  
@@ -74,6 +87,19 @@ Structural architectural schematic detailing operational flow and functional req
 Structural architectural schematic detailing operational flow and functional requirements in **Introduction to UML Diagrams and Its Components**.
 
 ![Figure 1.2: Elaboration Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_2_Elaboration_phase.svg)
+
+#### 🛠️ Step-by-Step Construction Guide
+
+1. **Establish Diagram Purpose & System Boundary**:
+   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
+2. **Identify Primary System Entities & Structural Units**:
+   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
+3. **Map Control & Information Transfer Flows**:
+   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
+4. **Apply Architectural Rules & Guard Constraints**:
+   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
+5. **Validate Architectural Cohesion & Traceability**:
+   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
 
 ### Figure 1.3: Construction Phase
 
@@ -85,6 +111,19 @@ Structural architectural schematic detailing operational flow and functional req
 
 ![Figure 1.3: Construction Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_3_Construction_phase.svg)
 
+#### 🛠️ Step-by-Step Construction Guide
+
+1. **Establish Diagram Purpose & System Boundary**:
+   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
+2. **Identify Primary System Entities & Structural Units**:
+   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
+3. **Map Control & Information Transfer Flows**:
+   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
+4. **Apply Architectural Rules & Guard Constraints**:
+   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
+5. **Validate Architectural Cohesion & Traceability**:
+   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
+
 ### Figure 1.4: Transition Phase
 
 **Diagram Category**: `Architectural Figure`  
@@ -95,6 +134,19 @@ Structural architectural schematic detailing operational flow and functional req
 
 ![Figure 1.4: Transition Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_4_Transition_phase.svg)
 
+#### 🛠️ Step-by-Step Construction Guide
+
+1. **Establish Diagram Purpose & System Boundary**:
+   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
+2. **Identify Primary System Entities & Structural Units**:
+   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
+3. **Map Control & Information Transfer Flows**:
+   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
+4. **Apply Architectural Rules & Guard Constraints**:
+   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
+5. **Validate Architectural Cohesion & Traceability**:
+   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
+
 ### Figure 1.5: Pyramid Of UML Diagrams
 
 **Diagram Category**: `Architectural Figure`  
@@ -104,6 +156,19 @@ Structural architectural schematic detailing operational flow and functional req
 Structural architectural schematic detailing operational flow and functional requirements in **Introduction to UML Diagrams and Its Components**.
 
 ![Figure 1.5: Pyramid Of UML Diagrams](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_5_Pyramid_of_UML_diagrams.svg)
+
+#### 🛠️ Step-by-Step Construction Guide
+
+1. **Establish Diagram Purpose & System Boundary**:
+   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
+2. **Identify Primary System Entities & Structural Units**:
+   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
+3. **Map Control & Information Transfer Flows**:
+   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
+4. **Apply Architectural Rules & Guard Constraints**:
+   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
+5. **Validate Architectural Cohesion & Traceability**:
+   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
 
 ### Visual Artifacts & Supplementary Schematics
 
