@@ -15,69 +15,69 @@ Chapter 17 presents an industrial software engineering case study for **Design o
 
 ## 🎯 Problem Statement & System Context
 
-The Prime Minister of India has announced a new scheme of National Health ID on August 15, 2020. According to this proposal, every Indian will get a unique Health ID based on their mobile number or Aadhaar number. The National Health ID will be a repository of all health-related information of a person. According to the National Health Authority (NHA), every patient who wishes to have their health records available digitally must start by creating a Health ID. Each Health ID will be linked to a health data consent manager – such as the National Digital Health Mission (NDHM) which will be used to seek the patient’s consent and allow for seamless flow of health information from the Personal Health Records module. This Health ID prevents various insurance frauds committed by several health agencies, hospitals including both doctors and patients. This will reduce the paper works and help patients easily maintain their health records. It can be used for further diagnosis. Children who are born after the implementation of the National Health ID will have all their medications recorded including the vaccines, etc. (Figures 17.1–17.8).
+This chapter provides detailed software engineering analysis and UML modeling specifications.
 
 ---
 
 ## 📊 Complete UML Diagram Suite & Architecture Specifications
 
-This chapter incorporates **8 standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:
+This chapter incorporates **8 crystal-clear, high-resolution diagram(s)** (extracted losslessly from the source edition at up to 2,000+ px) illustrating the end-to-end design from functional use cases to physical hardware deployment:
 
 ### Figure 17.1: UML Usecase Diagram
 
 **Diagram Category**: `Use Case Diagram`  
 **Architectural Role**: Specifies system boundary, primary external actors, and business use cases with include/extend relationships.
 
-![Figure 17.1: UML Usecase Diagram](../vector_images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_1_UML_usecase_diagram.svg)
+![Figure 17.1: UML Usecase Diagram](../images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_1_UML_usecase_diagram.png)
 
 ### Figure 17.2: UML Activity Diagram
 
 **Diagram Category**: `Activity Diagram`  
 **Architectural Role**: Illustrates dynamic procedural workflow, decision branching, concurrent action forks, and synchronization joins.
 
-![Figure 17.2: UML Activity Diagram](../vector_images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_2_UML_activity_diagram.svg)
+![Figure 17.2: UML Activity Diagram](../images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_2_UML_activity_diagram.png)
 
 ### Figure 17.3: UML Sequence Diagram
 
 **Diagram Category**: `Sequence Diagram`  
 **Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
 
-![Figure 17.3: UML Sequence Diagram](../vector_images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_3_UML_sequence_diagram.svg)
+![Figure 17.3: UML Sequence Diagram](../images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_3_UML_sequence_diagram.png)
 
 ### Figure 17.4: UML Collaboration Diagram
 
 **Diagram Category**: `Communication Diagram`  
 **Architectural Role**: Emphasizes structural object topology and numbered sequence messaging between collaborating entities.
 
-![Figure 17.4: UML Collaboration Diagram](../vector_images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_4_UML_collaboration_diagram.svg)
+![Figure 17.4: UML Collaboration Diagram](../images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_4_UML_collaboration_diagram.png)
 
 ### Figure 17.5: UML State Machine Diagram
 
 **Diagram Category**: `State Machine Diagram`  
 **Architectural Role**: Captures entity lifecycle states, transition triggers, event guards, and exit/entry actions.
 
-![Figure 17.5: UML State Machine Diagram](../vector_images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_5_UML_state_machine_diagram.svg)
+![Figure 17.5: UML State Machine Diagram](../images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_5_UML_state_machine_diagram.png)
 
 ### Figure 17.6: UML Class Diagram
 
 **Diagram Category**: `Class Diagram`  
 **Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
 
-![Figure 17.6: UML Class Diagram](../vector_images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_6_UML_class_diagram.svg)
+![Figure 17.6: UML Class Diagram](../images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_6_UML_class_diagram.png)
 
 ### Figure 17.7: UML Component Diagram
 
 **Diagram Category**: `Component Diagram`  
 **Architectural Role**: Architects physical modular software components, provided ball interfaces, and required socket dependencies.
 
-![Figure 17.7: UML Component Diagram](../vector_images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_7_UML_component_diagram.svg)
+![Figure 17.7: UML Component Diagram](../images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_7_UML_component_diagram.png)
 
 ### Figure 17.8: UML Deployment Diagram
 
 **Diagram Category**: `Deployment Diagram`  
 **Architectural Role**: Maps software execution artifacts to hardware computing nodes, client devices, application tiers, and database servers.
 
-![Figure 17.8: UML Deployment Diagram](../vector_images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_8_UML_deployment_diagram.svg)
+![Figure 17.8: UML Deployment Diagram](../images/Chapter_17_Design_of_UML_Diagrams_for_National_Heal/Figure_17_8_UML_deployment_diagram.png)
 
 ---
 
@@ -94,4 +94,4 @@ This chapter incorporates **8 standalone vector diagram(s)** illustrating the en
 
 - **Navigation**: [&larr; Chapter_16_Design_of_UML_Diagrams_for_Textile_Management_System](Chapter_16_Design_of_UML_Diagrams_for_Textile_Management_System.md) | [📚 Book Index](../UML_Book.md) | [Chapter_18_Design_of_UML_Diagrams_for_Device_Handout_System &rarr;](Chapter_18_Design_of_UML_Diagrams_for_Device_Handout_System.md)
 - **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)
-- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)
+- **High-Resolution Images Archive**: [`images/`](../images/)

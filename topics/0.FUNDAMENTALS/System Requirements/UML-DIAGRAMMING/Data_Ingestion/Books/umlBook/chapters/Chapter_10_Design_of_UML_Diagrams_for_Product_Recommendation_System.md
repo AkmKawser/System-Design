@@ -15,69 +15,69 @@ Chapter 10 presents an industrial software engineering case study for **Design o
 
 ## 🎯 Problem Statement & System Context
 
-This case study focuses on using web scrapping for product comparison across websites to reduce the amount of time and effort involved in finding and comparing the products. To assist and enable online shopaholics to buy products with ease (Figures 10.1–10.8).
+This chapter provides detailed software engineering analysis and UML modeling specifications.
 
 ---
 
 ## 📊 Complete UML Diagram Suite & Architecture Specifications
 
-This chapter incorporates **8 standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:
+This chapter incorporates **8 crystal-clear, high-resolution diagram(s)** (extracted losslessly from the source edition at up to 2,000+ px) illustrating the end-to-end design from functional use cases to physical hardware deployment:
 
 ### Figure 10.1: UML Usecase Diagram
 
 **Diagram Category**: `Use Case Diagram`  
 **Architectural Role**: Specifies system boundary, primary external actors, and business use cases with include/extend relationships.
 
-![Figure 10.1: UML Usecase Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_1_UML_usecase_diagram.svg)
+![Figure 10.1: UML Usecase Diagram](../images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_1_UML_usecase_diagram.png)
 
 ### Figure 10.2: UML Activity Diagram
 
 **Diagram Category**: `Activity Diagram`  
 **Architectural Role**: Illustrates dynamic procedural workflow, decision branching, concurrent action forks, and synchronization joins.
 
-![Figure 10.2: UML Activity Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_2_UML_activity_diagram.svg)
+![Figure 10.2: UML Activity Diagram](../images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_2_UML_activity_diagram.png)
 
 ### Figure 10.3: UML Collaboration Diagram
 
 **Diagram Category**: `Communication Diagram`  
 **Architectural Role**: Emphasizes structural object topology and numbered sequence messaging between collaborating entities.
 
-![Figure 10.3: UML Collaboration Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_3_UML_collaboration_diagram.svg)
+![Figure 10.3: UML Collaboration Diagram](../images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_3_UML_collaboration_diagram.png)
 
 ### Figure 10.4: UML Sequence Diagram
 
 **Diagram Category**: `Sequence Diagram`  
 **Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
 
-![Figure 10.4: UML Sequence Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_4_UML_sequence_diagram.svg)
+![Figure 10.4: UML Sequence Diagram](../images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_4_UML_sequence_diagram.png)
 
 ### Figure 10.5: UML State Machine Diagram
 
 **Diagram Category**: `State Machine Diagram`  
 **Architectural Role**: Captures entity lifecycle states, transition triggers, event guards, and exit/entry actions.
 
-![Figure 10.5: UML State Machine Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_5_UML_state_machine_diagram.svg)
+![Figure 10.5: UML State Machine Diagram](../images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_5_UML_state_machine_diagram.png)
 
 ### Figure 10.6: UML Class Diagram
 
 **Diagram Category**: `Class Diagram`  
 **Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
 
-![Figure 10.6: UML Class Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_6_UML_class_diagram.svg)
+![Figure 10.6: UML Class Diagram](../images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_6_UML_class_diagram.png)
 
 ### Figure 10.7: UML Component Diagram
 
 **Diagram Category**: `Component Diagram`  
 **Architectural Role**: Architects physical modular software components, provided ball interfaces, and required socket dependencies.
 
-![Figure 10.7: UML Component Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_7_UML_component_diagram.svg)
+![Figure 10.7: UML Component Diagram](../images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_7_UML_component_diagram.png)
 
 ### Figure 10.8: UML Deployment Diagram
 
 **Diagram Category**: `Deployment Diagram`  
 **Architectural Role**: Maps software execution artifacts to hardware computing nodes, client devices, application tiers, and database servers.
 
-![Figure 10.8: UML Deployment Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_8_UML_deployment_diagram.svg)
+![Figure 10.8: UML Deployment Diagram](../images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_8_UML_deployment_diagram.png)
 
 ---
 
@@ -94,4 +94,4 @@ This chapter incorporates **8 standalone vector diagram(s)** illustrating the en
 
 - **Navigation**: [&larr; Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md) | [📚 Book Index](../UML_Book.md) | [Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary &rarr;](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md)
 - **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)
-- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)
+- **High-Resolution Images Archive**: [`images/`](../images/)

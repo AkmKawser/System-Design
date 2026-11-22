@@ -5,7 +5,7 @@ refactor_uml_chapters.py
 Systematically refactors all 40 chapter markdown files in umlBook:
 - Extracts original problem statements and requirements from git HEAD.
 - Removes raw verbatim OCR text dumps and double-linebreak artifacts.
-- Embeds ALL extracted vector SVG diagrams per chapter from vector_images/.
+- Embeds ALL extracted ultra-high-resolution (2000+ px) lossless PNG images from images/.
 - Sorts figures in natural chronological order (Figure X.1 before Figure X.10).
 - Synthesizes clear, comprehensive architectural summaries (Problem Statement,
   Functional Modules, DFDs, UML Diagram Suite, Architectural Invariants).
@@ -28,7 +28,7 @@ UML_DIR = os.path.join(
     "umlBook",
 )
 CHAP_DIR = os.path.join(UML_DIR, "chapters")
-VEC_DIR = os.path.join(UML_DIR, "vector_images")
+IMAGES_DIR = os.path.join(UML_DIR, "images")
 
 def natural_sort_key(s):
     """Sort strings containing numbers in human/natural order."""
@@ -45,9 +45,9 @@ def clean_ocr_text(text):
     joined = " ".join([l for l in lines if l])
     return re.sub(r"\s+", " ", joined).strip()
 
-def get_diagram_info(svg_name, chap_num):
+def get_diagram_info(img_name, chap_num):
     """Return diagram category, clean caption, and architectural role description."""
-    clean_stem = svg_name.replace(".svg", "")
+    clean_stem = os.path.splitext(img_name)[0]
     lower = clean_stem.lower()
 
     if "usecase" in lower or "use_case" in lower:
@@ -113,7 +113,6 @@ def get_original_git_content(chap_file):
 
 def format_functional_points(body_text, chap_idx):
     """Extract and format functional modules into clean bullet points."""
-    # Look for section X.2 in body
     fn_m = re.search(
         rf"###\s*{chap_idx}\s*\.?\s*2\s+(?:Major Functionalities|Functional Requirements|Software Requirements)[^\n]*\n+(.*?)(?=\n+\s*(?:###|Figure\s+{chap_idx}|System Architecture|Table\s+{chap_idx})|\Z)",
         body_text,
@@ -126,7 +125,6 @@ def format_functional_points(body_text, chap_idx):
     clean = clean_ocr_text(raw)
     clean = re.sub(r'^(?:and Its Description\s*)?(?:The major functionalities of this system[^:]*:\s*)?', '', clean, flags=re.I)
     
-    # Try bullet pattern 'Module – Description'
     pattern = r'([A-Za-z0-9\s/–-]+?)\s*[–—]\s*(this functionality[^.]*\.|[^.]*\.)'
     matches = re.findall(pattern, clean)
     if len(matches) >= 3:
@@ -138,22 +136,19 @@ def format_functional_points(body_text, chap_idx):
         if items:
             return "\n".join(items)
 
-    # If pattern didn't match cleanly, return a concise cleaned paragraph
     clean = re.sub(r'(?:Figure\s+\d+|System Architecture|Table\s+\d+).*', '', clean, flags=re.I).strip()
     return clean if len(clean) > 30 else ""
 
-def refactor_chapter(chap_file, vec_folder, chap_idx, total_chaps, all_files):
+def refactor_chapter(chap_file, img_folder, chap_idx, total_chaps, all_files):
     orig_content = get_original_git_content(chap_file)
     if not orig_content:
         chap_path = os.path.join(CHAP_DIR, chap_file)
         with open(chap_path, "r", encoding="utf-8", errors="ignore") as f:
             orig_content = f.read()
 
-    # Locate body after 'Detailed Chapter Summary' to skip TOC collisions
     body_idx = orig_content.find("Detailed Chapter Summary")
     body_text = orig_content[body_idx:] if body_idx != -1 else orig_content
 
-    # Extract clean chapter title from filename
     fn_parts = chap_file.replace(".md", "").split("_", 2)
     clean_title = fn_parts[2].replace("_", " ") if len(fn_parts) >= 3 else f"Case Study {chap_idx}"
 
@@ -162,7 +157,6 @@ def refactor_chapter(chap_file, vec_folder, chap_idx, total_chaps, all_files):
 
     class_str = "Theoretical Foundations & UP Phases" if chap_idx == 1 else "Industrial Case Study & Diagram Suite"
 
-    # Extract Problem Statement from body
     if chap_idx == 1:
         ps_text = "The Unified Process (UP) is an iterative, architecture-centric, and risk-driven software development process for building object-oriented systems. UP structures software lifecycles into four sequential phases: Inception (feasibility and project boundary), Elaboration (core architecture and scheduling), Construction (coding, alpha testing, and component assembly), and Transition (beta testing, deployment, and customer validation). Across these phases, the Unified Modeling Language (UML) provides the standardized graphical grammar to model structural building blocks and dynamic behavioral interactions."
     else:
@@ -177,19 +171,17 @@ def refactor_chapter(chap_file, vec_folder, chap_idx, total_chaps, all_files):
             intro_m = re.search(r"## 📌 Chapter Overview\s*\n+(.*?)(?=\n+##|\Z)", orig_content, re.S)
             ps_text = clean_ocr_text(intro_m.group(1)) if intro_m else "This chapter provides detailed software engineering analysis and UML modeling specifications."
 
-    # Navigation links
     prev_link = f"[&larr; {all_files[chap_idx-2].replace('.md', '')}]({all_files[chap_idx-2]})" if chap_idx > 1 else ""
     next_link = f"[{all_files[chap_idx].replace('.md', '')} &rarr;]({all_files[chap_idx]})" if chap_idx < total_chaps else ""
     nav_bar = " | ".join([p for p in [prev_link, "[📚 Book Index](../UML_Book.md)", next_link] if p])
 
-    # SVGs for this chapter with natural sorting
-    vpath = os.path.join(VEC_DIR, vec_folder)
-    svgs = sorted(os.listdir(vpath), key=natural_sort_key) if os.path.exists(vpath) else []
+    # Images for this chapter with natural sorting
+    ipath = os.path.join(IMAGES_DIR, img_folder)
+    images = sorted(os.listdir(ipath), key=natural_sort_key) if os.path.exists(ipath) else []
     
-    core_figures = [s for s in svgs if s.startswith("Figure_")]
-    page_snippets = [s for s in svgs if not s.startswith("Figure_")]
+    core_figures = [s for s in images if s.startswith("Figure_")]
+    page_snippets = [s for s in images if not s.startswith("Figure_")]
 
-    # Build refactored markdown
     out = []
     out.append(f"# Chapter {chap_idx:02d}: {clean_title}")
     out.append("")
@@ -226,14 +218,13 @@ def refactor_chapter(chap_file, vec_folder, chap_idx, total_chaps, all_files):
     out.append("")
     out.append(f"## 📊 Complete UML Diagram Suite & Architecture Specifications")
     out.append("")
-    out.append(f"This chapter incorporates **{len(svgs)} standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:")
+    out.append(f"This chapter incorporates **{len(images)} crystal-clear, high-resolution diagram(s)** (extracted losslessly from the source edition at up to 2,000+ px) illustrating the end-to-end design from functional use cases to physical hardware deployment:")
     out.append("")
 
-    # Embed core diagrams
     if core_figures:
         for s in core_figures:
             cat, caption, desc = get_diagram_info(s, chap_idx)
-            img_rel = f"../vector_images/{vec_folder}/{s}"
+            img_rel = f"../images/{img_folder}/{s}"
             out.append(f"### {caption}")
             out.append("")
             out.append(f"**Diagram Category**: `{cat}`  ")
@@ -242,15 +233,14 @@ def refactor_chapter(chap_file, vec_folder, chap_idx, total_chaps, all_files):
             out.append(f"![{caption}]({img_rel})")
             out.append("")
 
-    # Embed page snippets / visual artifacts
     if page_snippets:
         out.append("### Visual Artifacts & Supplementary Schematics")
         out.append("")
-        out.append("The following vector schematics capture operational screen states, user dashboards, or notation components documented in this chapter:")
+        out.append("The following high-resolution schematics capture operational screen states, user dashboards, or notation components documented in this chapter:")
         out.append("")
         for s in page_snippets:
             cat, caption, desc = get_diagram_info(s, chap_idx)
-            img_rel = f"../vector_images/{vec_folder}/{s}"
+            img_rel = f"../images/{img_folder}/{s}"
             out.append(f"#### {caption}")
             out.append("")
             out.append(f"![{caption}]({img_rel})")
@@ -271,27 +261,27 @@ def refactor_chapter(chap_file, vec_folder, chap_idx, total_chaps, all_files):
     out.append("")
     out.append(f"- **Navigation**: {nav_bar}")
     out.append(f"- **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)")
-    out.append(f"- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)")
+    out.append(f"- **High-Resolution Images Archive**: [`images/`](../images/)")
 
     return "\n".join(out)
 
 def main():
     chaps = sorted([f for f in os.listdir(CHAP_DIR) if f.endswith(".md")])
-    vec_dirs = sorted([d for d in os.listdir(VEC_DIR) if os.path.isdir(os.path.join(VEC_DIR, d))])
+    img_dirs = sorted([d for d in os.listdir(IMAGES_DIR) if os.path.isdir(os.path.join(IMAGES_DIR, d))])
 
-    if len(chaps) != len(vec_dirs):
-        print(f"Mismatch: {len(chaps)} chapter files vs {len(vec_dirs)} vector folders!")
+    if len(chaps) != len(img_dirs):
+        print(f"Mismatch: {len(chaps)} chapter files vs {len(img_dirs)} image folders!")
         sys.exit(1)
 
-    print(f"Refactoring all {len(chaps)} chapters using git HEAD body extraction...")
-    for idx, (cf, vd) in enumerate(zip(chaps, vec_dirs), 1):
-        refactored = refactor_chapter(cf, vd, idx, len(chaps), chaps)
+    print(f"Refactoring all {len(chaps)} chapters using high-resolution images/...")
+    for idx, (cf, idir) in enumerate(zip(chaps, img_dirs), 1):
+        refactored = refactor_chapter(cf, idir, idx, len(chaps), chaps)
         target_path = os.path.join(CHAP_DIR, cf)
         with open(target_path, "w", encoding="utf-8") as f:
             f.write(refactored)
         print(f"✓ [{idx:02d}/40] Refactored: {cf}")
 
-    print("\nAll 40 chapters refactored successfully!")
+    print("\nAll 40 chapters refactored successfully with crystal-clear images!")
 
 if __name__ == "__main__":
     main()

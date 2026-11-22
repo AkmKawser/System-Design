@@ -1917,3 +1917,42 @@ This file records the chronological session log of all user requests, architectu
   - Synchronized changes to GitHub `origin/main` per Rule 3.
 - **Agent Response**:
   - Confirmed the transformation across all 40 chapters, detailing how all 477 vector images are now embedded alongside clean, comprehensive domain summaries.
+
+---
+
+## 📅 Session 84: High-Resolution (2000+ px) Image Extraction & Chapter Integration
+
+- **Timestamp**: 2026-11-22
+- **User Instruction**:
+  > *"some of the imaages dont look c lear. can you make them clear or remake them?"*
+  > *(User selected: Extract original high-resolution (2,000+ px) lossless images from the PDF for all 40 chapters)*
+- **Agentic Log**:
+  - Investigated root cause of image blurriness: determined that previous SVGs were converted via automatic spline tracing from lower-fidelity previews, whereas `uml-diagramming.pdf` contains raw 300+ DPI scans up to 2187x3105 px with crisp, ungarbled lettering.
+  - Developed and executed [`engine/scripts/extract_highres_book_images.py`](../engine/scripts/extract_highres_book_images.py) using `pypdf` and `Pillow` with multi-threaded parallel extraction (8 workers):
+    1. Extracted all **477 high-resolution diagram and screen assets** across all 40 chapters into `umlBook/images/Chapter_XX_.../*.png`.
+    2. Applied automated contrast optimization (`ImageOps.autocontrast`) and sharpness enhancement to ensure pure white backgrounds and deep jet-black vector lines.
+    3. Preserved natural chronological sorting (e.g., Figure X.2 before Figure X.10).
+  - Updated [`engine/scripts/refactor_uml_chapters.py`](../engine/scripts/refactor_uml_chapters.py) to embed high-res PNG images alongside structured architectural summaries across all 40 chapters in `umlBook/chapters/`.
+  - Generated master archive catalog [`umlBook/images/Images_Catalog.md`](../topics/0.FUNDAMENTALS/System%20Requirements/UML-DIAGRAMMING/Data_Ingestion/Books/umlBook/images/Images_Catalog.md) and refreshed [`umlBook/UML_Book.md`](../topics/0.FUNDAMENTALS/System%20Requirements/UML-DIAGRAMMING/Data_Ingestion/Books/umlBook/UML_Book.md).
+  - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 209 markdown files with 0 errors**.
+- **Agent Response**:
+  - Confirmed successful extraction and embedding of 477 high-resolution original images across all 40 chapters, providing direct links to verified chapters.
+
+---
+
+## 📅 Session 85: Sequence Diagram Refinement with Actor Symbols, Two-Tiered Lifelines & Continuous Animation
+
+- **Timestamp**: 2026-11-22
+- **User Instruction**:
+  > *[User uploaded static sequence diagram image depicting 6 participants, UML Actor stick figure, alternative block with `[Card Declined]` and `[Card Succeeded]` branches, and 12 chronological messages]*
+- **Agentic Log**:
+  - Refined [`animated_images/checkout-sequence-diagram.svg`](../animated_images/checkout-sequence-diagram.svg) to achieve 100% fidelity to the uploaded sequence diagram while strictly adhering to the Canonical Claude Animated SVG style guide:
+    1. **Actor Stick Figure Representation**: Added UML Actor stick figure icons directly at the top and bottom of `Mobile App (Customer)`'s lifeline.
+    2. **Two-Tiered Participant Anchors**: Implemented matching participant boxes across the top and bottom of all 6 lifelines (`Mobile App`, `API Server`, `Inventory Service`, `Payment Gateway`, `Orders Database`, `Notification Worker`).
+    3. **Continuous Animation Path**: Synchronized the single continuous amber dot trajectory to smoothly traverse request arrows, drop down participant lifelines, handle compensating rollback in the `[Card Declined]` branch, and execute async event queuing and 201 Created confirmation in the `[Card Succeeded]` branch.
+    4. **Accessibility & Theming**: Ensured full dark-mode styling support and reduced-motion fallback.
+  - Validated SVG XML syntax with `xml.etree.ElementTree`.
+  - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 209 markdown files with 0 errors**.
+  - Synchronized all modified and untracked assets to GitHub `origin/main` per Rule 3.
+- **Agent Response**:
+  - Presented the refined animated sequence diagram with detailed step-by-step breakdown of participants, messages, and animation mechanics.

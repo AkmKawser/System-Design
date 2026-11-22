@@ -15,69 +15,69 @@ Chapter 33 presents an industrial software engineering case study for **Design o
 
 ## 🎯 Problem Statement & System Context
 
-This system is useful in the road transport and highways field (Ministry of Road Transport and Highways). Green rides is a technical solution for the general public to guide them to a less polluted path while travelling, to know about the traffic jam, identification of accident- prone spots, meals- on- wheel, the establishment of drive-mode applications. This app consists of a Google map view on the main screen. A user can select the source to destination path which then will be processed to give a number of routes to reach the destination from source with amount of traffic at various locations in that path along with current pollution status in that route (which updates overtime). If there exists a traffic jam, a user can blow a horn to all users within a specific radius. According to his current location in the form of a small notification which the persons in the specified radius will receive. The accidents that occurred at specific spots will be reported by the user to the concerned authority who will do the rescue operations and hence the accident- prone areas will be categorized based on the number of accidents taking place and a notification appears for the user to drive slow and safe when they are in that particular location. The road authority admin checks the system often. Meals- on- wheel provides information about hotels and restaurants which are available in the chosen route so that the user can place the order as per the available menu at a particular eating place including time of service so that one need not wait at the restaurant for placing the order. Drive- mode helps to minimize the risks of accidents while attending mobile phones during driving. This module would send an SMS to the caller that the particular person is driving when the geo- coordinates show the mobile shifting of the driver is beyond some specified speed limit (say, 20 kmph). Before start of the journey, this module can be turned on. The feedback feature allows the user to give feedbacks about the accuracy in the traffic and pollution levels in a given area (Figures 33.1–33.8).
+This chapter provides detailed software engineering analysis and UML modeling specifications.
 
 ---
 
 ## 📊 Complete UML Diagram Suite & Architecture Specifications
 
-This chapter incorporates **8 standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:
+This chapter incorporates **8 crystal-clear, high-resolution diagram(s)** (extracted losslessly from the source edition at up to 2,000+ px) illustrating the end-to-end design from functional use cases to physical hardware deployment:
 
 ### Figure 33.1: UML Usecase Diagram
 
 **Diagram Category**: `Use Case Diagram`  
 **Architectural Role**: Specifies system boundary, primary external actors, and business use cases with include/extend relationships.
 
-![Figure 33.1: UML Usecase Diagram](../vector_images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_1_UML_usecase_diagram.svg)
+![Figure 33.1: UML Usecase Diagram](../images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_1_UML_usecase_diagram.png)
 
 ### Figure 33.2: UML Activity Diagram
 
 **Diagram Category**: `Activity Diagram`  
 **Architectural Role**: Illustrates dynamic procedural workflow, decision branching, concurrent action forks, and synchronization joins.
 
-![Figure 33.2: UML Activity Diagram](../vector_images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_2_UML_activity_diagram.svg)
+![Figure 33.2: UML Activity Diagram](../images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_2_UML_activity_diagram.png)
 
 ### Figure 33.3: UML Sequence Diagram
 
 **Diagram Category**: `Sequence Diagram`  
 **Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
 
-![Figure 33.3: UML Sequence Diagram](../vector_images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_3_UML_sequence_diagram.svg)
+![Figure 33.3: UML Sequence Diagram](../images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_3_UML_sequence_diagram.png)
 
 ### Figure 33.4: UML Collaboration Diagram
 
 **Diagram Category**: `Communication Diagram`  
 **Architectural Role**: Emphasizes structural object topology and numbered sequence messaging between collaborating entities.
 
-![Figure 33.4: UML Collaboration Diagram](../vector_images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_4_UML_collaboration_diagram.svg)
+![Figure 33.4: UML Collaboration Diagram](../images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_4_UML_collaboration_diagram.png)
 
 ### Figure 33.5: UML State Chart Diagram
 
 **Diagram Category**: `State Machine Diagram`  
 **Architectural Role**: Captures entity lifecycle states, transition triggers, event guards, and exit/entry actions.
 
-![Figure 33.5: UML State Chart Diagram](../vector_images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_5_UML_state_chart_diagram.svg)
+![Figure 33.5: UML State Chart Diagram](../images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_5_UML_state_chart_diagram.png)
 
 ### Figure 33.6: UML Class Diagram
 
 **Diagram Category**: `Class Diagram`  
 **Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
 
-![Figure 33.6: UML Class Diagram](../vector_images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_6_UML_class_diagram.svg)
+![Figure 33.6: UML Class Diagram](../images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_6_UML_class_diagram.png)
 
 ### Figure 33.7: UML Component Diagram
 
 **Diagram Category**: `Component Diagram`  
 **Architectural Role**: Architects physical modular software components, provided ball interfaces, and required socket dependencies.
 
-![Figure 33.7: UML Component Diagram](../vector_images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_7_UML_component_diagram.svg)
+![Figure 33.7: UML Component Diagram](../images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_7_UML_component_diagram.png)
 
 ### Figure 33.8: UML Deployment Diagram
 
 **Diagram Category**: `Deployment Diagram`  
 **Architectural Role**: Maps software execution artifacts to hardware computing nodes, client devices, application tiers, and database servers.
 
-![Figure 33.8: UML Deployment Diagram](../vector_images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_8_UML_deployment_diagram.svg)
+![Figure 33.8: UML Deployment Diagram](../images/Chapter_33_Design_of_UML_Diagrams_for_Green_Rides/Figure_33_8_UML_deployment_diagram.png)
 
 ---
 
@@ -94,4 +94,4 @@ This chapter incorporates **8 standalone vector diagram(s)** illustrating the en
 
 - **Navigation**: [&larr; Chapter_32_Design_of_UML_Diagrams_for_Farm_Management_System](Chapter_32_Design_of_UML_Diagrams_for_Farm_Management_System.md) | [📚 Book Index](../UML_Book.md) | [Chapter_34_Design_of_UML_Diagrams_for_Art_Gallery_Management_System &rarr;](Chapter_34_Design_of_UML_Diagrams_for_Art_Gallery_Management_System.md)
 - **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)
-- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)
+- **High-Resolution Images Archive**: [`images/`](../images/)

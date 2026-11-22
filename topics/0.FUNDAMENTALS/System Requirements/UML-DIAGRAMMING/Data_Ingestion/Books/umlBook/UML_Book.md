@@ -12,7 +12,8 @@ This directory houses comprehensive reference books and case-study manuals cover
 - **Publisher**: CRC Press / Taylor & Francis Group (1st Edition, 2022)
 - **Volume**: 431 pages, 40 Chapters
 - **Chapters Archive**: [`chapters/`](chapters/)
-- **Vector Images Archive**: [`vector_images/`](vector_images/) (All 477 diagrams & figures in Scalable Vector Graphics `.svg` format)
+- **High-Resolution Images Archive**: [`images/`](images/) (All 477 diagrams & figures in crystal-clear, ultra-high-resolution 2,000+ px lossless PNG format)
+- **Vector Images Archive**: [`vector_images/`](vector_images/) (Historical Scalable Vector Graphics `.svg` format)
 - **Focus**: Unified Process (UP) phases, comprehensive UML diagram components, and 39 end-to-end industrial case studies covering:
   - Healthcare & Telemedicine (`Webmed`, `Aarogya Setu`, `National Health ID 2020`, `e-Med`, `Equihealth`)
   - Transportation & Travel (`E-Ticketing for Buses`, `Smart Traffic Management`, `Green Rides`, `E-Visa Processing`)

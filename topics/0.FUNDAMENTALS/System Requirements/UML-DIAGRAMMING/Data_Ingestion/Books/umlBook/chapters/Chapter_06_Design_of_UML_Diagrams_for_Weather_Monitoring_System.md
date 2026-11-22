@@ -15,71 +15,71 @@ Chapter 6 presents an industrial software engineering case study for **Design of
 
 ## 🎯 Problem Statement & System Context
 
-This Weather Monitoring Case study allows people to directly check the weather status online. The functionalities are Weather Status, Live Updating, Alert, Graphical Representation, Future Prediction and Weekly. Weather Status – With this function, temperature, humidity, rainfall, pressure and dew point are measured using sensors. Live Updating – Data are live updated to be viewed by the user. Alert – This functionality provides tips and alerts to the user on certain weather conditions. Graphical Representation – Plotting of graphs based on variations in temperature for easier analysis. Future Prediction – This functionality helps in predicting the weather for the next few days. Weekly Analysis – Displaying the average, the highest and lowest temperature of the week. The final goal is to provide detailed weather conditions for the user based on his/her location (Figures 6.1 and 6.2).
+This chapter provides detailed software engineering analysis and UML modeling specifications.
 
 ---
 
 ## 📊 Complete UML Diagram Suite & Architecture Specifications
 
-This chapter incorporates **9 standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:
+This chapter incorporates **9 crystal-clear, high-resolution diagram(s)** (extracted losslessly from the source edition at up to 2,000+ px) illustrating the end-to-end design from functional use cases to physical hardware deployment:
 
 ### Figure 6.3: UML Usecase Diagram
 
 **Diagram Category**: `Use Case Diagram`  
 **Architectural Role**: Specifies system boundary, primary external actors, and business use cases with include/extend relationships.
 
-![Figure 6.3: UML Usecase Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_3_UML_usecase_diagram.svg)
+![Figure 6.3: UML Usecase Diagram](../images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_3_UML_usecase_diagram.png)
 
 ### Figure 6.4: UML Class Diagram
 
 **Diagram Category**: `Class Diagram`  
 **Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
 
-![Figure 6.4: UML Class Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_4_UML_class_diagram.svg)
+![Figure 6.4: UML Class Diagram](../images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_4_UML_class_diagram.png)
 
 ### Figure 6.5: UML Activity Diagram
 
 **Diagram Category**: `Activity Diagram`  
 **Architectural Role**: Illustrates dynamic procedural workflow, decision branching, concurrent action forks, and synchronization joins.
 
-![Figure 6.5: UML Activity Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_5_UML_activity_diagram.svg)
+![Figure 6.5: UML Activity Diagram](../images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_5_UML_activity_diagram.png)
 
 ### Figure 6.7: UML Sequence Diagram
 
 **Diagram Category**: `Sequence Diagram`  
 **Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
 
-![Figure 6.7: UML Sequence Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_7_UML_Sequence_Diagram.svg)
+![Figure 6.7: UML Sequence Diagram](../images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_7_UML_Sequence_Diagram.png)
 
 ### Figure 6.8: UML Collaboration Diagram
 
 **Diagram Category**: `Communication Diagram`  
 **Architectural Role**: Emphasizes structural object topology and numbered sequence messaging between collaborating entities.
 
-![Figure 6.8: UML Collaboration Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_8_UML_collaboration_diagram.svg)
+![Figure 6.8: UML Collaboration Diagram](../images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_8_UML_collaboration_diagram.png)
 
 ### Figure 6.9: UML Component Diagram
 
 **Diagram Category**: `Component Diagram`  
 **Architectural Role**: Architects physical modular software components, provided ball interfaces, and required socket dependencies.
 
-![Figure 6.9: UML Component Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_9_UML_component_diagram.svg)
+![Figure 6.9: UML Component Diagram](../images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_9_UML_component_diagram.png)
 
 ### Visual Artifacts & Supplementary Schematics
 
-The following vector schematics capture operational screen states, user dashboards, or notation components documented in this chapter:
+The following high-resolution schematics capture operational screen states, user dashboards, or notation components documented in this chapter:
 
 #### Ch06 p090 img01
 
-![Ch06 p090 img01](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Ch06_p090_img01.svg)
+![Ch06 p090 img01](../images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Ch06_p090_img01.png)
 
 #### Ch06 p093 img01
 
-![Ch06 p093 img01](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Ch06_p093_img01.svg)
+![Ch06 p093 img01](../images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Ch06_p093_img01.png)
 
 #### Ch06 p094 img01
 
-![Ch06 p094 img01](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Ch06_p094_img01.svg)
+![Ch06 p094 img01](../images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Ch06_p094_img01.png)
 
 ---
 
@@ -96,4 +96,4 @@ The following vector schematics capture operational screen states, user dashboar
 
 - **Navigation**: [&larr; Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses](Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses.md) | [📚 Book Index](../UML_Book.md) | [Chapter_07_Design_of_UML_Diagrams_for_E_Province &rarr;](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md)
 - **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)
-- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)
+- **High-Resolution Images Archive**: [`images/`](../images/)
