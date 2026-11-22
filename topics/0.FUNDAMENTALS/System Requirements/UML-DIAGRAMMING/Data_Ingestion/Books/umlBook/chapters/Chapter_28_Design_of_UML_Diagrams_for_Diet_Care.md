@@ -1,293 +1,111 @@
-﻿# Chapter 28: Design of UML Diagrams for Diet Care
+# Chapter 28: Design of UML Diagrams for Diet Care
 
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 295–302 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 27: Design of UML Diagrams for e-Med Medical Assistance Tool](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md) | [📚 Book Index](../UML_Book.md) | [Chapter 29: Design of UML Diagrams for Student Counselling Management System &rarr;](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md)
+> **Navigation**: [&larr; Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md) | [📚 Book Index](../UML_Book.md) | [Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System &rarr;](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md)
 
 ---
 
-## 📌 Chapter Overview
+## 📌 Executive Summary
 
-Chapter 28 of *UML Diagramming: A Case Study Approach* focuses on **Design of UML Diagrams for Diet Care**. 
-This case study presents an end-to-end software engineering analysis for **Diet Care**, establishing formal requirements, data-flow models, and complete UML diagram specifications.
-
----
-
-## 📑 Core Topics & Sections
-
-- **28.1 Problem Statement**
-- **28.2 UML Diagrams**
+Chapter 28 presents an industrial software engineering case study for **Design of UML Diagrams for Diet Care**. It details the transition from business requirements and domain constraints into formal software architecture specifications, leveraging data-flow modeling and a complete suite of Unified Modeling Language (UML) structural and behavioral diagrams.
 
 ---
 
-## 📝 Detailed Chapter Summary & Content
+## 🎯 Problem Statement & System Context
 
-Chapter 28
-
-Design of UML Diagrams
-
-for Diet Care
-
-### 28.1 Problem Statement
-
-Health is wealth. Health plays a major role in everyone’s life. People consume unhealthy food and
-
-ruin their diet. Some medication results in side effects. This application benefits people with rich
-
-nutrients to improve their health. The application provides recommendations of nutrients they
-
-need. Users can provide their daily diet cycle and get good recommendations to improve it. They
-
-can also provide their medical reports to get nutrients according to their medical state. The user
-
-also gets the privilege to enter the disease name and get the nutrient benefit for fighting that disease. Users can ping professional nutritionists for more clarification. Users are authenticated and
-
-recommendation is provided by a trained machine learning model (Figures 28.1–28.10).
-
-### 28.2 UML Diagrams
-
-Actor Specification
-
-1. Data Base – A system that maintains the collection of organized data.
-
-2. Professional Nutritionist – A person who is an expert in nutrition science and can solve
-
-user’s issues.
-
-3. System – An Interface that accepts user’s request and provides the result to user.
-
-4. Trained Model – Machine learning model that can suggest the healthy diet.
-
-5. User – People who are making use of this application.
-
-Usecase Specification
-
-1. Analysis
-
-Description: Finding the malnutrition and disease/deficiency from users’ data.
-
-Flow of Events
-
-Basic Flow: Scan user input and find terms that match malnutrition food or any disease
-
-name.
-
-DOI: 10.1201/9781003287124-28
-
-Figure 28.1 UML usecase diagram.
-
-Figure 28.2 UML activity diagram – Scenario 1.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Valid user’s data must be present.
-
-Post-Conditions: Analyse data and find malnutrition or disease/deficiency terms.
-
-2. Consult Professional Nutritionist
-
-Description: Getting to know more about nutrition topics.
-
-Flow of Events
-
-Basic Flow: User can contact any professionals through user’s ID.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: User’s should be registered, and professionals have to be available.
-
-Post-Conditions: User can rate/thank professionals.
-
-3. Daily Diet
-
-Description: User’s routine diet.
-
-Flow of Events
-
-Basic Flow: User inputs his/her daily diet.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Nil.
-
-Post-Conditions: Data is processed for analysis.
-
-4. Disease Name
-
-Description: Provide the name of any disease for medication.
-
-Flow of Events
-
-Basic Flow: Enter disease name.
-
-Figure 28.3 UML activity diagram – Scenario 2.
-
-Figure 28.4 UML sequence diagram – Scenario 1.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Nil.
-
-Post-Conditions: Data are processed for analysis.
-
-5. Find Disease/Deficiency
-
-Description: Find the name of disease/deficiency from user’s analyzed data.
-
-Flow of Events
-
-Basic Flow: Find the name of disease/deficiency from user’s analyzed data.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: User’s data have to be analyzed, disease/deficiency should be present.
-
-Post-Conditions: Suggest a healthy diet.
-
-Figure 28.5 UML sequence diagram – Scenario 2.
-
-Figure 28.6 UML collaboration diagram.
-
-6. Find Healthy Food
-
-Description: Find healthy food that fights corresponding disease or deficiency.
-
-Flow of Events
-
-Basic Flow: Searched food with specific nutrition to fight that disease/deficiency.
-
-Alternative Flow: Nil.
-
-Figure 28.7 UML state chart diagram.
-
-Figure 28.8 UML class diagram.
-
-Pre-Conditions: Presence of disease or deficiency or unhealthy diet.
-
-Post-Conditions: Suggest to users.
-
-7. Login
-
-Description: Identification of user.
-
-Flow of Events
-
-Basic Flow: User enters his/her credentials.
-
-Alternative Flow: Register user.
-
-Pre-Conditions: Nil.
-
-Post-Conditions: User is assigned an identification.
-
-Figure 28.9 UML component diagram.
-
-Figure 28.10 UML deployment diagram.
-
-8. Medical Report
-
-Description: User’s health/medication data.
-
-Flow of Events
-
-Basic Flow: User provides his/her medical report for analysis.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Nil.
-
-Post-Conditions: Medical report is analyzed.
-
-9. Provides Data
-
-Description: User provides his/her data related to health/diet.
-
-Flow of Events
-
-Basic Flow: Data for analysis is got from the user.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Nil.
-
-Post-Conditions: Data are analyzed.
-
-10. Suggest Healthy Diet
-
-Description: Suggest food that fight’s against a given disease or that is nutritious.
-
-Flow of Events
-
-Basic Flow: Identify food that is good in nutrition against identified disease or find any
-
-healthy food in place of malnutritious food.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Disease/deficiency should be identified, malnutritious food has to be
-
-present.
-
-Post-Conditions: Nil.
-
-11. Unhealthy Diet Presence
-
-Description: Presence of malnutritious food in user’s routine diet.
-
-Flow of Events
-
-Basic Flow: Find malnutritious food items from analyzed data.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: User’s data has to be analyzed, and unhealthy diet should be present.
-
-Post-Conditions: Healthy diet is suggested.
-
-12. Verify User
-
-Description: Validates whether the user has entered his credentials.
-
-Flow of Events
-
-Basic Flow: Check user’s login details with registered users list.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: The user has to register.
-
-Post-Conditions: User can get diet suggestion or user can interact with professionals.
+Health is wealth. Health plays a major role in everyone’s life. People consume unhealthy food and ruin their diet. Some medication results in side effects. This application benefits people with rich nutrients to improve their health. The application provides recommendations of nutrients they need. Users can provide their daily diet cycle and get good recommendations to improve it. They can also provide their medical reports to get nutrients according to their medical state. The user also gets the privilege to enter the disease name and get the nutrient benefit for fighting that disease. Users can ping professional nutritionists for more clarification. Users are authenticated and recommendation is provided by a trained machine learning model (Figures 28.1–28.10).
 
 ---
 
-## 📊 UML Modeling Suite for Diet Care
+## 📊 Complete UML Diagram Suite & Architecture Specifications
 
-The case study defines the following canonical UML models:
+This chapter incorporates **10 standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:
 
-| Diagram Type | Perspective | Key Elements & Responsibilities |
-| :--- | :--- | :--- |
-| **Use Case Diagram** | Functional Scope | Primary actors, external APIs, and core business goals (`<<include>>`, `<<extend>>`). |
-| **Activity Diagram** | Workflow / Process | Action states, decision diamonds, object flows, and swimlane partitions. |
-| **Class Diagram** | Structural Backbone | Entity classifiers, attributes, operations, multiplicities, and relationships. |
-| **Sequence Diagram** | Dynamic Interaction | Lifelines, synchronous RPCs, message returns, and execution activations. |
-| **State Chart Diagram** | Lifecycle States | Discrete system states, event triggers, and boolean guard conditions. |
-| **Component Diagram** | Modular Architecture | Encapsulated subsystems, provided interfaces (balls), and required interfaces (sockets). |
-| **Deployment Diagram** | Physical Topology | Hardware nodes, application servers, database instances, and network links. |
+### Figure 28.1: UML Usecase Diagram
+
+**Diagram Category**: `Use Case Diagram`  
+**Architectural Role**: Specifies system boundary, primary external actors, and business use cases with include/extend relationships.
+
+![Figure 28.1: UML Usecase Diagram](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_1_UML_usecase_diagram.svg)
+
+### Figure 28.2: UML Activity Diagram Scenario 1
+
+**Diagram Category**: `Activity Diagram`  
+**Architectural Role**: Illustrates dynamic procedural workflow, decision branching, concurrent action forks, and synchronization joins.
+
+![Figure 28.2: UML Activity Diagram Scenario 1](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_2_UML_activity_diagram_Scenario_1.svg)
+
+### Figure 28.3: UML Activity Diagram Scenario 2
+
+**Diagram Category**: `Activity Diagram`  
+**Architectural Role**: Illustrates dynamic procedural workflow, decision branching, concurrent action forks, and synchronization joins.
+
+![Figure 28.3: UML Activity Diagram Scenario 2](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_3_UML_activity_diagram_Scenario_2.svg)
+
+### Figure 28.4: UML Sequence Diagram Scenario 1
+
+**Diagram Category**: `Sequence Diagram`  
+**Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
+
+![Figure 28.4: UML Sequence Diagram Scenario 1](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_4_UML_sequence_diagram_Scenario_1.svg)
+
+### Figure 28.5: UML Sequence Diagram Scenario 2
+
+**Diagram Category**: `Sequence Diagram`  
+**Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
+
+![Figure 28.5: UML Sequence Diagram Scenario 2](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_5_UML_sequence_diagram_Scenario_2.svg)
+
+### Figure 28.6: UML Collaboration Diagram
+
+**Diagram Category**: `Communication Diagram`  
+**Architectural Role**: Emphasizes structural object topology and numbered sequence messaging between collaborating entities.
+
+![Figure 28.6: UML Collaboration Diagram](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_6_UML_collaboration_diagram.svg)
+
+### Figure 28.7: UML State Chart Diagram
+
+**Diagram Category**: `State Machine Diagram`  
+**Architectural Role**: Captures entity lifecycle states, transition triggers, event guards, and exit/entry actions.
+
+![Figure 28.7: UML State Chart Diagram](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_7_UML_state_chart_diagram.svg)
+
+### Figure 28.8: UML Class Diagram
+
+**Diagram Category**: `Class Diagram`  
+**Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
+
+![Figure 28.8: UML Class Diagram](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_8_UML_class_diagram.svg)
+
+### Figure 28.9: UML Component Diagram
+
+**Diagram Category**: `Component Diagram`  
+**Architectural Role**: Architects physical modular software components, provided ball interfaces, and required socket dependencies.
+
+![Figure 28.9: UML Component Diagram](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_9_UML_component_diagram.svg)
+
+### Figure 28.10: UML Deployment Diagram
+
+**Diagram Category**: `Deployment Diagram`  
+**Architectural Role**: Maps software execution artifacts to hardware computing nodes, client devices, application tiers, and database servers.
+
+![Figure 28.10: UML Deployment Diagram](../vector_images/Chapter_28_Design_of_UML_Diagrams_for_Diet_Care/Figure_28_10_UML_deployment_diagram.svg)
 
 ---
 
-## 🎯 Key Architectural Invariants & Modeling Lessons
+## 💡 Key Architectural Invariants & Modeling Lessons
 
-1. **Requirements Grounding**: All diagrammatic artifacts trace back to functional requirements and domain constraints established in the problem statement.
-2. **Structural Consistency**: Multiplicities and association lifecycles in the Class Diagram mirror the invocation sequences in the Sequence Diagram.
-3. **Behavioral Invariants**: Guard conditions in State Chart and Activity models prevent invalid transitions and runtime failure modes.
+1. **Traceability**: Every software model directly corresponds to explicit functional requirements defined during the initial domain specification.
+2. **Separation of Concerns**: Structural models (Class, Component, Deployment) maintain clear boundaries separating business domain entities from physical infrastructure nodes.
+3. **Behavioral Integrity**: Dynamic models (Activity, Sequence, State Machine) guarantee valid state transitions, prevent deadlocks, and verify message order consistency.
+4. **Deployment Fidelity**: Physical nodes and execution environments accurately map runtime middleware, database engines, and client access channels.
 
 ---
 
 ## 🔗 Related Resources & Navigation
 
-- **Previous Chapter**: [Design of UML Diagrams for e-Med Medical Assistance Tool](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md)
-- **Next Chapter**: [Design of UML Diagrams for Student Counselling Management System](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/UML_Book.md`](../UML_Book.md)
-- **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)
+- **Navigation**: [&larr; Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool](Chapter_27_Design_of_UML_Diagrams_for_e_Med_Medical_Assistance_Tool.md) | [📚 Book Index](../UML_Book.md) | [Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System &rarr;](Chapter_29_Design_of_UML_Diagrams_for_Student_Counselling_Management_System.md)
+- **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)
+- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)

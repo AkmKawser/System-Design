@@ -1,156 +1,99 @@
-﻿# Chapter 06: Design of UML Diagrams for Weather Monitoring System
+# Chapter 06: Design of UML Diagrams for Weather Monitoring System
 
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 85–94 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 05: Design of UML Diagrams for E-Ticketing for Buses](Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses.md) | [📚 Book Index](../UML_Book.md) | [Chapter 07: Design of UML Diagrams for E-Province &rarr;](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md)
+> **Navigation**: [&larr; Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses](Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses.md) | [📚 Book Index](../UML_Book.md) | [Chapter_07_Design_of_UML_Diagrams_for_E_Province &rarr;](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md)
 
 ---
 
-## 📌 Chapter Overview
+## 📌 Executive Summary
 
-Chapter 6 of *UML Diagramming: A Case Study Approach* focuses on **Design of UML Diagrams for Weather Monitoring System**. 
-This case study presents an end-to-end software engineering analysis for **Weather Monitoring System**, establishing formal requirements, data-flow models, and complete UML diagram specifications.
-
----
-
-## 📑 Core Topics & Sections
-
-- **6.1 Problem Statement**
-- **6.2 D  ata Flow Diagrams**
-- **6.3 UML Diagrams**
+Chapter 6 presents an industrial software engineering case study for **Design of UML Diagrams for Weather Monitoring System**. It details the transition from business requirements and domain constraints into formal software architecture specifications, leveraging data-flow modeling and a complete suite of Unified Modeling Language (UML) structural and behavioral diagrams.
 
 ---
 
-## 📝 Detailed Chapter Summary & Content
+## 🎯 Problem Statement & System Context
 
-Chapter 6
-
-Design of UML Diagrams for
-
-Weather Monitoring System
-
-### 6.1 Problem Statement
-
-This Weather Monitoring Case study allows people to directly check the weather status online.
-
-The functionalities are Weather Status, Live Updating, Alert, Graphical Representation, Future
-
-Prediction and Weekly. Weather Status – With this function, temperature, humidity, rainfall, pressure and dew point are measured using sensors. Live Updating – Data are live updated to be viewed by
-
-the user. Alert – This functionality provides tips and alerts to the user on certain weather conditions.
-
-Graphical Representation – Plotting of graphs based on variations in temperature for easier analysis.
-
-Future Prediction – This functionality helps in predicting the weather for the next few days. Weekly
-
-Analysis – Displaying the average, the highest and lowest temperature of the week. The final goal is
-
-to provide detailed weather conditions for the user based on his/her location (Figures 6.1 and 6.2).
-
-### 6.2 D  ata Flow Diagrams
-
-Functionalities:
-
-1. Weather Status: With this function temperature, humidity, rainfall, pressure and dew point
-
-are measured using sensors.
-
-2. Live Updation: Data are live updated to be viewed by the user.
-
-3. Alert: This functionality provides tips and alerts to the user on certain weather conditions.
-
-4. Graphical Representation: Plotting of graphs based on variations in temperature for easier
-
-analysis.
-
-DOI: 10.1201/9781003287124-6
-
-USERWeather Monitoring SystemSENSOR
-
-Figure 6.1 Level 0 DFD.
-
-4. Future Prediction: This functionality helps in predicting the weather for the next few days.
-
-5. Weekly Analysis: Displaying the average, the highest and lowest temperature of the week.
-
-Finally, this case study aims to provide detailed weather conditions for the user based on his/her
-
-location (Figures 6.3–6.10).
-
-USER
-
-Register GET
-
-LOCATION
-
-SENSOR
-
-USERS
-
-LIVE UPDATION GRAPHICAL REPRESENTATION FUTURE PREDICTION ALERTWEEKLY ANALYSIS
-
-DISPLAY
-
-WEATHER
-
-MONITORING
-
-SYSTEM
-
-WEATHER
-
-STATUS
-
-Figure 6.2 Level 1 DFD.
-
-### 6.3 UML Diagrams
-
-Figure 6.3 UML usecase diagram.
-
-Figure 6.4 UML class diagram.
-
-Figure 6.5 UML activity diagram.
-
-. m a r g ia e d in h c a te m a t L s M U  6 . e 6 r u g i F
-
-Figure 6.7 UML Sequence Diagram.
-
-Figure 6.8 UML collaboration diagram.
-
-Figure 6.9 UML component diagram.
-
-m. a gr a i  d t n e m y o l p  de L M U  0 1 . e 6 r u g i F
+This Weather Monitoring Case study allows people to directly check the weather status online. The functionalities are Weather Status, Live Updating, Alert, Graphical Representation, Future Prediction and Weekly. Weather Status – With this function, temperature, humidity, rainfall, pressure and dew point are measured using sensors. Live Updating – Data are live updated to be viewed by the user. Alert – This functionality provides tips and alerts to the user on certain weather conditions. Graphical Representation – Plotting of graphs based on variations in temperature for easier analysis. Future Prediction – This functionality helps in predicting the weather for the next few days. Weekly Analysis – Displaying the average, the highest and lowest temperature of the week. The final goal is to provide detailed weather conditions for the user based on his/her location (Figures 6.1 and 6.2).
 
 ---
 
-## 📊 UML Modeling Suite for Weather Monitoring System
+## 📊 Complete UML Diagram Suite & Architecture Specifications
 
-The case study defines the following canonical UML models:
+This chapter incorporates **9 standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:
 
-| Diagram Type | Perspective | Key Elements & Responsibilities |
-| :--- | :--- | :--- |
-| **Use Case Diagram** | Functional Scope | Primary actors, external APIs, and core business goals (`<<include>>`, `<<extend>>`). |
-| **Activity Diagram** | Workflow / Process | Action states, decision diamonds, object flows, and swimlane partitions. |
-| **Class Diagram** | Structural Backbone | Entity classifiers, attributes, operations, multiplicities, and relationships. |
-| **Sequence Diagram** | Dynamic Interaction | Lifelines, synchronous RPCs, message returns, and execution activations. |
-| **State Chart Diagram** | Lifecycle States | Discrete system states, event triggers, and boolean guard conditions. |
-| **Component Diagram** | Modular Architecture | Encapsulated subsystems, provided interfaces (balls), and required interfaces (sockets). |
-| **Deployment Diagram** | Physical Topology | Hardware nodes, application servers, database instances, and network links. |
+### Figure 6.3: UML Usecase Diagram
+
+**Diagram Category**: `Use Case Diagram`  
+**Architectural Role**: Specifies system boundary, primary external actors, and business use cases with include/extend relationships.
+
+![Figure 6.3: UML Usecase Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_3_UML_usecase_diagram.svg)
+
+### Figure 6.4: UML Class Diagram
+
+**Diagram Category**: `Class Diagram`  
+**Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
+
+![Figure 6.4: UML Class Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_4_UML_class_diagram.svg)
+
+### Figure 6.5: UML Activity Diagram
+
+**Diagram Category**: `Activity Diagram`  
+**Architectural Role**: Illustrates dynamic procedural workflow, decision branching, concurrent action forks, and synchronization joins.
+
+![Figure 6.5: UML Activity Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_5_UML_activity_diagram.svg)
+
+### Figure 6.7: UML Sequence Diagram
+
+**Diagram Category**: `Sequence Diagram`  
+**Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
+
+![Figure 6.7: UML Sequence Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_7_UML_Sequence_Diagram.svg)
+
+### Figure 6.8: UML Collaboration Diagram
+
+**Diagram Category**: `Communication Diagram`  
+**Architectural Role**: Emphasizes structural object topology and numbered sequence messaging between collaborating entities.
+
+![Figure 6.8: UML Collaboration Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_8_UML_collaboration_diagram.svg)
+
+### Figure 6.9: UML Component Diagram
+
+**Diagram Category**: `Component Diagram`  
+**Architectural Role**: Architects physical modular software components, provided ball interfaces, and required socket dependencies.
+
+![Figure 6.9: UML Component Diagram](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Figure_6_9_UML_component_diagram.svg)
+
+### Visual Artifacts & Supplementary Schematics
+
+The following vector schematics capture operational screen states, user dashboards, or notation components documented in this chapter:
+
+#### Ch06 p090 img01
+
+![Ch06 p090 img01](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Ch06_p090_img01.svg)
+
+#### Ch06 p093 img01
+
+![Ch06 p093 img01](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Ch06_p093_img01.svg)
+
+#### Ch06 p094 img01
+
+![Ch06 p094 img01](../vector_images/Chapter_06_Design_of_UML_Diagrams_for_Weather_Monit/Ch06_p094_img01.svg)
 
 ---
 
-## 🎯 Key Architectural Invariants & Modeling Lessons
+## 💡 Key Architectural Invariants & Modeling Lessons
 
-1. **Requirements Grounding**: All diagrammatic artifacts trace back to functional requirements and domain constraints established in the problem statement.
-2. **Structural Consistency**: Multiplicities and association lifecycles in the Class Diagram mirror the invocation sequences in the Sequence Diagram.
-3. **Behavioral Invariants**: Guard conditions in State Chart and Activity models prevent invalid transitions and runtime failure modes.
+1. **Traceability**: Every software model directly corresponds to explicit functional requirements defined during the initial domain specification.
+2. **Separation of Concerns**: Structural models (Class, Component, Deployment) maintain clear boundaries separating business domain entities from physical infrastructure nodes.
+3. **Behavioral Integrity**: Dynamic models (Activity, Sequence, State Machine) guarantee valid state transitions, prevent deadlocks, and verify message order consistency.
+4. **Deployment Fidelity**: Physical nodes and execution environments accurately map runtime middleware, database engines, and client access channels.
 
 ---
 
 ## 🔗 Related Resources & Navigation
 
-- **Previous Chapter**: [Design of UML Diagrams for E-Ticketing for Buses](Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses.md)
-- **Next Chapter**: [Design of UML Diagrams for E-Province](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/UML_Book.md`](../UML_Book.md)
-- **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)
+- **Navigation**: [&larr; Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses](Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_for_Buses.md) | [📚 Book Index](../UML_Book.md) | [Chapter_07_Design_of_UML_Diagrams_for_E_Province &rarr;](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md)
+- **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)
+- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)

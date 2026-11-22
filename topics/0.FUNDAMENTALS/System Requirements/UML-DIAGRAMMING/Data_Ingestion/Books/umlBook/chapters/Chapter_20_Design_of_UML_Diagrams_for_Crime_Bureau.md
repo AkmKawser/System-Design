@@ -1,337 +1,105 @@
-﻿# Chapter 20: Design of UML Diagrams for Crime Bureau
+# Chapter 20: Design of UML Diagrams for Crime Bureau
 
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 209–218 (Total: 10 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 19: Design of UML Diagrams for Online College Magazine System](Chapter_19_Design_of_UML_Diagrams_for_Online_College_Magazine_System.md) | [📚 Book Index](../UML_Book.md) | [Chapter 21: Design of UML Diagrams for Smart Traffic Management System &rarr;](Chapter_21_Design_of_UML_Diagrams_for_Smart_Traffic_Management_System.md)
+> **Navigation**: [&larr; Chapter_19_Design_of_UML_Diagrams_for_Online_College_Magazine_System](Chapter_19_Design_of_UML_Diagrams_for_Online_College_Magazine_System.md) | [📚 Book Index](../UML_Book.md) | [Chapter_21_Design_of_UML_Diagrams_for_Smart_Traffic_Management_System &rarr;](Chapter_21_Design_of_UML_Diagrams_for_Smart_Traffic_Management_System.md)
 
 ---
 
-## 📌 Chapter Overview
+## 📌 Executive Summary
 
-Chapter 20 of *UML Diagramming: A Case Study Approach* focuses on **Design of UML Diagrams for Crime Bureau**. 
-This case study presents an end-to-end software engineering analysis for **Crime Bureau**, establishing formal requirements, data-flow models, and complete UML diagram specifications.
-
----
-
-## 📑 Core Topics & Sections
-
-- **20.1 Problem Statement**
-- **20.2 UML Diagrams**
+Chapter 20 presents an industrial software engineering case study for **Design of UML Diagrams for Crime Bureau**. It details the transition from business requirements and domain constraints into formal software architecture specifications, leveraging data-flow modeling and a complete suite of Unified Modeling Language (UML) structural and behavioral diagrams.
 
 ---
 
-## 📝 Detailed Chapter Summary & Content
+## 🎯 Problem Statement & System Context
 
-Chapter 20
-
-Design of UML Diagrams
-
-for Crime Bureau
-
-### 20.1 Problem Statement
-
-Rules and regulations are paramount to all aspects of life. Certain proponents have asserted that
-
-crime which is a violation against laws of the society, is integral to the human nature and hence
-
-the society can never be completely free from it. In the existing system, all work is done on papers,
-
-so it is very difficult to secure crime reports data. This system needs more manpower to track the
-
-records of crimes and it lacks security. Modern society is characterized by increasing levels of risk
-
-posed by internal and external security threats. This poses the importance to develop an automated crime management system to keep a record of the crime and the criminals involved. The
-
-proposed crime bureau is a database system in which the police keeps the record of criminals who
-
-have been arrested, to be arrested, or escaped and the complaints. This will help the police department in enhanced management of information. The main entities in the whole process include;
-
-the petitioner (the person who files a First Incident Report (FIR)), victim, accused or criminal,
-
-case and investigating officer. The proposed crime record management system can overcome all
-
-the limitations of the existing system. This system provides proper security and reduces the manual work. This project helps to maintain a database through which the entire crime activities in
-
-the state can be monitored (Figures 20.1–20.8).
-
-### 20.2 UML Diagrams
-
-Usecase Specification
-
-1. Login
-
-Description: Officials are provided with a username and password, through which they
-
-can log into the crime bureau.
-
-Flow of Events
-
-Basic Flow: Opens the crime bureau website.
-
-Alternative Flow: NIL.
-
-DOI: 10.1201/9781003287124-20
-
-Figure 20.1 UML usecase diagram.
-
-Figure 20.2 UML activity diagram.
-
-Figure 20.3 UML sequence diagram.
-
-Figure 20.4 UML collaboration diagram.
-
-Figure 20.5 UML state chart diagram.
-
-Figure 20.6 UML class diagram.
-
-Pre-Conditions: Officials should own a valid username and password.
-
-Post-Conditions: The username and password should be correct for accessing the crime
-
-bureau.
-
-2. Station Details
-
-Description: Holds all the information regarding all the police stations in the state.
-
-Flow of Events
-
-Basic Flow: Can add, modify and delete station details.
-
-Alternative Flow: Can view or search station details.
-
-Pre-Conditions: The username and password should be valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-3. Crimes
-
-Description: Lists all the criminal activities for which an FIR or complaint can be
-
-filed.
-
-Flow of Events
-
-Basic Flow: Can add, update or modify crime details.
-
-Alternative Flow: Can view and search crime details.
-
-Pre-Conditions: The username and password of the official must be correct.
-
-Post-Conditions: All the updates made must be saved.
-
-Figure 20.7 UML component diagram.
-
-4. Police Login
-
-Description: Officials are provided with a username and password, through which they
-
-can log into the crime bureau.
-
-Flow of Events
-
-Basic Flow: Opens the crime bureau website.
-
-Alternative Flow: NIL.
-
-Pre-Conditions: The police officers should have a valid username and login.
-
-Post-Conditions: The username and password should be correct for accessing the crime
-
-bureau.
-
-5. Add Police
-
-Description: Holds a record of all the police officers.
-
-Flow of Events
-
-Basic Flow: Can add, update and delete police officer details.
-
-Alternative Flow: Can view and search the police officer details.
-
-Pre-Conditions: The username and password who tries to access the crime bureau should be
-
-valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-Figure 20.8 UML deployment diagram.
-
-6. Add User
-
-Description: Holds a record of all the users who either have filed FIR or complaints.
-
-Flow of Events
-
-Basic Flow: Can add, update and delete user details.
-
-Alternative Flow: Can view and search user details.
-
-Pre-Conditions: The username and password who tries to access the crime bureau should be
-
-valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-7. FIR
-
-Description: Holds a record of all the FIRs filed by the people.
-
-Flow of Events
-
-Basic Flow: Can add and update FIR.
-
-Alternative Flow: Can view and search FIR.
-
-Pre-Conditions: The username and password who tries to access the crime bureau should be
-
-valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-8. Complaints
-
-Description: Holds a record of all the complaints filed by the people.
-
-Flow of Events
-
-Basic Flow: Can add and update complaints.
-
-Alternative Flow: Can view and search complaints.
-
-Pre-Conditions: The username and password who tries to access the crime bureau should be
-
-valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-9. Charge Sheet
-
-Description: Holds a record of all the charge sheets filed by the people.
-
-Flow of Events
-
-Basic Flow: Can add and update complaints.
-
-Alternative Flow: Can view and search complaints.
-
-Pre-Conditions: The username and password who tries to access the crime bureau should be
-
-valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-10. Prisoner List
-
-Description: Holds a list of all the prisoners.
-
-Flow of Events
-
-Basic Flow: Can add, update or delete prisoners.
-
-Alternative Flow: Can view and search prisoners.
-
-Pre-Conditions: The username and password who tries to access the crime bureau should be
-
-valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-11. Criminals
-
-Description: Holds a list of all the criminals.
-
-Flow of Events
-
-Basic Flow: Can add, update or delete criminals.
-
-Alternative Flow: Can view and search criminals.
-
-Pre-Conditions: The username and password who tries to access the crime bureau should be
-
-valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-12. Wanted Persons
-
-Description: Holds a list of wanted persons.
-
-Flow of Events
-
-Basic Flow: Can add, update or delete wanted persons.
-
-Alternative Flow: Can view and search wanted persons.
-
-Pre-Conditions: The username and password who tries to access the crime bureau should be
-
-valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-13. Missing Persons
-
-Description: Holds a list of missing persons.
-
-Flow of Events
-
-Basic Flow: Can add, update or delete missing persons.
-
-Alternative Flow: Can view and search missing persons.
-
-Pre-Conditions: The username and password who tries to access the crime bureau should be
-
-valid and correct.
-
-Post-Conditions: All the updates made must be saved.
-
-14. User Login
-
-Description: Login page for the users
-
-Flow of Events
-
-Basic Flow: Opens the crime bureau website.
-
-Alternative Flow: NIL.
-
-Pre-Conditions: The user must own a valid username and password issued by the police
-
-officers.
-
-Post-Conditions: The username and password must be valid and correct.
+Rules and regulations are paramount to all aspects of life. Certain proponents have asserted that crime which is a violation against laws of the society, is integral to the human nature and hence the society can never be completely free from it. In the existing system, all work is done on papers, so it is very difficult to secure crime reports data. This system needs more manpower to track the records of crimes and it lacks security. Modern society is characterized by increasing levels of risk posed by internal and external security threats. This poses the importance to develop an automated crime management system to keep a record of the crime and the criminals involved. The proposed crime bureau is a database system in which the police keeps the record of criminals who have been arrested, to be arrested, or escaped and the complaints. This will help the police department in enhanced management of information. The main entities in the whole process include; the petitioner (the person who files a First Incident Report (FIR)), victim, accused or criminal, case and investigating officer. The proposed crime record management system can overcome all the limitations of the existing system. This system provides proper security and reduces the manual work. This project helps to maintain a database through which the entire crime activities in the state can be monitored (Figures 20.1–20.8).
 
 ---
 
-## 📊 UML Modeling Suite for Crime Bureau
+## 📊 Complete UML Diagram Suite & Architecture Specifications
 
-The case study defines the following canonical UML models:
+This chapter incorporates **9 standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:
 
-| Diagram Type | Perspective | Key Elements & Responsibilities |
-| :--- | :--- | :--- |
-| **Use Case Diagram** | Functional Scope | Primary actors, external APIs, and core business goals (`<<include>>`, `<<extend>>`). |
-| **Activity Diagram** | Workflow / Process | Action states, decision diamonds, object flows, and swimlane partitions. |
-| **Class Diagram** | Structural Backbone | Entity classifiers, attributes, operations, multiplicities, and relationships. |
-| **Sequence Diagram** | Dynamic Interaction | Lifelines, synchronous RPCs, message returns, and execution activations. |
-| **State Chart Diagram** | Lifecycle States | Discrete system states, event triggers, and boolean guard conditions. |
-| **Component Diagram** | Modular Architecture | Encapsulated subsystems, provided interfaces (balls), and required interfaces (sockets). |
-| **Deployment Diagram** | Physical Topology | Hardware nodes, application servers, database instances, and network links. |
+### Figure 20.1: UML Usecase Diagram
+
+**Diagram Category**: `Use Case Diagram`  
+**Architectural Role**: Specifies system boundary, primary external actors, and business use cases with include/extend relationships.
+
+![Figure 20.1: UML Usecase Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_1_UML_usecase_diagram.svg)
+
+### Figure 20.2: UML Activity Diagram
+
+**Diagram Category**: `Activity Diagram`  
+**Architectural Role**: Illustrates dynamic procedural workflow, decision branching, concurrent action forks, and synchronization joins.
+
+![Figure 20.2: UML Activity Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_2_UML_activity_diagram.svg)
+
+### Figure 20.3: UML Sequence Diagram
+
+**Diagram Category**: `Sequence Diagram`  
+**Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
+
+![Figure 20.3: UML Sequence Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_3_UML_sequence_diagram.svg)
+
+### Figure 20.4: UML Collaboration Diagram
+
+**Diagram Category**: `Communication Diagram`  
+**Architectural Role**: Emphasizes structural object topology and numbered sequence messaging between collaborating entities.
+
+![Figure 20.4: UML Collaboration Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_4_UML_collaboration_diagram.svg)
+
+### Figure 20.5: UML State Chart Diagram
+
+**Diagram Category**: `State Machine Diagram`  
+**Architectural Role**: Captures entity lifecycle states, transition triggers, event guards, and exit/entry actions.
+
+![Figure 20.5: UML State Chart Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_5_UML_state_chart_diagram.svg)
+
+### Figure 20.6: UML Class Diagram
+
+**Diagram Category**: `Class Diagram`  
+**Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
+
+![Figure 20.6: UML Class Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_6_UML_class_diagram.svg)
+
+### Figure 20.7: UML Component Diagram
+
+**Diagram Category**: `Component Diagram`  
+**Architectural Role**: Architects physical modular software components, provided ball interfaces, and required socket dependencies.
+
+![Figure 20.7: UML Component Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_7_UML_component_diagram.svg)
+
+### Figure 20.8: UML Deployment Diagram
+
+**Diagram Category**: `Deployment Diagram`  
+**Architectural Role**: Maps software execution artifacts to hardware computing nodes, client devices, application tiers, and database servers.
+
+![Figure 20.8: UML Deployment Diagram](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Figure_20_8_UML_deployment_diagram.svg)
+
+### Visual Artifacts & Supplementary Schematics
+
+The following vector schematics capture operational screen states, user dashboards, or notation components documented in this chapter:
+
+#### Ch20 p218 img01
+
+![Ch20 p218 img01](../vector_images/Chapter_20_Design_of_UML_Diagrams_for_Crime_Bureau/Ch20_p218_img01.svg)
 
 ---
 
-## 🎯 Key Architectural Invariants & Modeling Lessons
+## 💡 Key Architectural Invariants & Modeling Lessons
 
-1. **Requirements Grounding**: All diagrammatic artifacts trace back to functional requirements and domain constraints established in the problem statement.
-2. **Structural Consistency**: Multiplicities and association lifecycles in the Class Diagram mirror the invocation sequences in the Sequence Diagram.
-3. **Behavioral Invariants**: Guard conditions in State Chart and Activity models prevent invalid transitions and runtime failure modes.
+1. **Traceability**: Every software model directly corresponds to explicit functional requirements defined during the initial domain specification.
+2. **Separation of Concerns**: Structural models (Class, Component, Deployment) maintain clear boundaries separating business domain entities from physical infrastructure nodes.
+3. **Behavioral Integrity**: Dynamic models (Activity, Sequence, State Machine) guarantee valid state transitions, prevent deadlocks, and verify message order consistency.
+4. **Deployment Fidelity**: Physical nodes and execution environments accurately map runtime middleware, database engines, and client access channels.
 
 ---
 
 ## 🔗 Related Resources & Navigation
 
-- **Previous Chapter**: [Design of UML Diagrams for Online College Magazine System](Chapter_19_Design_of_UML_Diagrams_for_Online_College_Magazine_System.md)
-- **Next Chapter**: [Design of UML Diagrams for Smart Traffic Management System](Chapter_21_Design_of_UML_Diagrams_for_Smart_Traffic_Management_System.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/UML_Book.md`](../UML_Book.md)
-- **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)
+- **Navigation**: [&larr; Chapter_19_Design_of_UML_Diagrams_for_Online_College_Magazine_System](Chapter_19_Design_of_UML_Diagrams_for_Online_College_Magazine_System.md) | [📚 Book Index](../UML_Book.md) | [Chapter_21_Design_of_UML_Diagrams_for_Smart_Traffic_Management_System &rarr;](Chapter_21_Design_of_UML_Diagrams_for_Smart_Traffic_Management_System.md)
+- **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)
+- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)

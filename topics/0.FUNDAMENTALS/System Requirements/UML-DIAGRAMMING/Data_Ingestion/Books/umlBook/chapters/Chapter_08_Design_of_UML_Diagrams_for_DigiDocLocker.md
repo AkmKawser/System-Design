@@ -1,231 +1,105 @@
-﻿# Chapter 08: Design of UML Diagrams for DigiDocLocker
+# Chapter 08: Design of UML Diagrams for DigiDocLocker
 
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 105–112 (Total: 8 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 07: Design of UML Diagrams for E-Province](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md) | [📚 Book Index](../UML_Book.md) | [Chapter 09: Design of UML Diagrams for Online Marketplace &rarr;](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md)
+> **Navigation**: [&larr; Chapter_07_Design_of_UML_Diagrams_for_E_Province](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md) | [📚 Book Index](../UML_Book.md) | [Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace &rarr;](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md)
 
 ---
 
-## 📌 Chapter Overview
+## 📌 Executive Summary
 
-Chapter 8 of *UML Diagramming: A Case Study Approach* focuses on **Design of UML Diagrams for DigiDocLocker**. 
-This case study presents an end-to-end software engineering analysis for **DigiDocLocker**, establishing formal requirements, data-flow models, and complete UML diagram specifications.
-
----
-
-## 📑 Core Topics & Sections
-
-- **8.1 Problem Statement**
-- **8.2 UML Diagrams**
+Chapter 8 presents an industrial software engineering case study for **Design of UML Diagrams for DigiDocLocker**. It details the transition from business requirements and domain constraints into formal software architecture specifications, leveraging data-flow modeling and a complete suite of Unified Modeling Language (UML) structural and behavioral diagrams.
 
 ---
 
-## 📝 Detailed Chapter Summary & Content
+## 🎯 Problem Statement & System Context
 
-Chapter 8
-
-Design of UML Diagrams
-
-for DigiDocLocker
-
-### 8.1 Problem Statement
-
-Maintaining the authentic documents physically in a single location is considered to be a challenging task. Thus, digitizing documents enables centralized storage of all the physical documents
-
-enabling easy retrieval from anywhere at anytime. It also prevents the troubles caused by missing
-
-any of those physical certificates. This can be achieved through the DigiDocLocker which is a
-
-platform for issuance and verification of documents and certificates in a digital format, thereby
-
-eliminating the use of physical documents. DigiDocLocker aims at benefitting all the citizens
-
-of the country by providing to access authentic documents/certificates such as driving licence,
-
-vehicle registration and academic mark sheet in digital format from the original issuers of these
-
-certificates. DigiDocLocker has the following functionalities:
-
-i. A Registration module allows the users to register and a Login module that allows the authorized users.
-
-ii. An Upload Document module allows the users to upload documents such as driving licence,
-
-vehicle registration, academic mark sheet and other relevant documents in various file
-
-formats.
-
-iii. A Profile module displays the complete profile of the user as available in the database.
-
-iv. An Issuer module displays the certificate issuers’ names and the number of documents issued
-
-to the user by the issuer. For example, the Income Tax Department, Government of India
-
-has provided PAN Verification Records to Indian citizens via DigiLocker.
-
-v. A Requester module displays the requesters’ names and the number of documents requested
-
-from the user by the requesters. For example, Citizen applying through Union Public
-
-Service Commission (UPSC)’s Online Recruitment Application (ORA) can upload documents through DigiDocLocker as well (Figures 8.1–8.8).
-
-DOI: 10.1201/9781003287124-8
-
-### 8.2 UML Diagrams
-
-Usecase Specification
-
-1. Registration Process
-
-Description: This process enables the new users to register with the DigiDocLocker System.
-
-Flow of Events
-
-Basic Flow: Register with the DigiDocLocker System successfully.
-
-Alternative Flow: Display an error message if the registration details provided by the user
-
-are not valid or Nil.
-
-Pre-Conditions: The user must possess a valid national identity card (Aadhaar).
-
-Post-Conditions: The user is registered with the DigiDocLocker System successfully and
-
-this is reflected in the registered users’ database.
-
-2. Login Process
-
-Description: This process enables the authorized users to login into the DigiDocLocker
-
-System.
-
-Flow of Events
-
-Basic Flow: Login into the DigiDocLocker System.
-
-Alternative Flow: Display an error message if the credentials are not valid or Nil.
-
-Pre-Conditions: The user should be registered with the system prior to the login process.
-
-Post-Conditions: The user is successfully logged in to the DigiDocLocker System.
-
-Figure 8.1 UML usecase diagram.
-
-3. Document Requesting Process
-
-Description: This process enables the Requesters (e.g. UPSC) to request for various
-
-authentic documents/certificates of the citizens that are to be verified online.
-
-Flow of Events
-
-Basic Flow: Display the requested certificate.
-
-Alternative Flow: Request for another certificate or Nil.
-
-Pre-Conditions: The certificate requested by the Requester must have been uploaded by the
-
-user prior.
-
-Post-Conditions: The requested certificate is displayed to the Requester for verification.
-
-Figure 8.2 UML class diagram.
-
-Figure 8.3 UML sequence diagram.
-
-Figure 8.4 UML collaboration diagram.
-
-Figure 8.5 UML state machine diagram.
-
-4. Document Uploading Process
-
-Description: This process enables the users to upload authentic documents/certificates
-
-such as driving licence, vehicle registration, academic mark sheet and other relevant documents in various file formats online.
-
-Flow of Events
-
-Basic Flow: Upload the documents successfully and update the user database.
-
-Alternative Flow: Upload another authentic document/certificate or Nil.
-
-Pre-Conditions: The users should possess valid documents and certificates in an acceptable
-
-file format.
-
-Post-Conditions: The document gets uploaded into the user database.
-
-Figure 8.6 UML class diagram.
-
-Figure 8.7 UML component diagram.
-
-5. Profile Viewing Process
-
-Description: This process enables the users to view their complete profile as available in
-
-the database.
-
-Flow of Events
-
-Basic Flow: Display the complete profile of the user.
-
-Alternative Flow: Display an error message if no documents are available for the user in his
-
-profile or Nil.
-
-Pre-Conditions: The documents should be uploaded by the user prior.
-
-Post-Conditions: The complete profile of the user is displayed.
-
-6. Document Issuing Process
-
-Description: This process enables the citizens to apply for various authentic documents/
-
-certificates online which will be provided by the Issuers (e.g. Income Tax Department).
-
-Flow of Events
-
-Basic Flow: Apply for a certificate to the corresponding authority.
-
-Alternative Flow: Apply for another certificate or Nil.
-
-Pre-Conditions: The user must possess the pre-requisite documents (e.g. Aadhaar card) in
-
-order to apply for a specific certificate.
-
-Post-Conditions: The certificate application process is successfully completed.
-
-Figure 8.8 UML deployment diagram.
+Maintaining the authentic documents physically in a single location is considered to be a challenging task. Thus, digitizing documents enables centralized storage of all the physical documents enabling easy retrieval from anywhere at anytime. It also prevents the troubles caused by missing any of those physical certificates. This can be achieved through the DigiDocLocker which is a platform for issuance and verification of documents and certificates in a digital format, thereby eliminating the use of physical documents. DigiDocLocker aims at benefitting all the citizens of the country by providing to access authentic documents/certificates such as driving licence, vehicle registration and academic mark sheet in digital format from the original issuers of these certificates. DigiDocLocker has the following functionalities: i. A Registration module allows the users to register and a Login module that allows the authorized users. ii. An Upload Document module allows the users to upload documents such as driving licence, vehicle registration, academic mark sheet and other relevant documents in various file formats. iii. A Profile module displays the complete profile of the user as available in the database. iv. An Issuer module displays the certificate issuers’ names and the number of documents issued to the user by the issuer. For example, the Income Tax Department, Government of India has provided PAN Verification Records to Indian citizens via DigiLocker. v. A Requester module displays the requesters’ names and the number of documents requested from the user by the requesters. For example, Citizen applying through Union Public Service Commission (UPSC)’s Online Recruitment Application (ORA) can upload documents through DigiDocLocker as well (Figures 8.1–8.8).
 
 ---
 
-## 📊 UML Modeling Suite for DigiDocLocker
+## 📊 Complete UML Diagram Suite & Architecture Specifications
 
-The case study defines the following canonical UML models:
+This chapter incorporates **9 standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:
 
-| Diagram Type | Perspective | Key Elements & Responsibilities |
-| :--- | :--- | :--- |
-| **Use Case Diagram** | Functional Scope | Primary actors, external APIs, and core business goals (`<<include>>`, `<<extend>>`). |
-| **Activity Diagram** | Workflow / Process | Action states, decision diamonds, object flows, and swimlane partitions. |
-| **Class Diagram** | Structural Backbone | Entity classifiers, attributes, operations, multiplicities, and relationships. |
-| **Sequence Diagram** | Dynamic Interaction | Lifelines, synchronous RPCs, message returns, and execution activations. |
-| **State Chart Diagram** | Lifecycle States | Discrete system states, event triggers, and boolean guard conditions. |
-| **Component Diagram** | Modular Architecture | Encapsulated subsystems, provided interfaces (balls), and required interfaces (sockets). |
-| **Deployment Diagram** | Physical Topology | Hardware nodes, application servers, database instances, and network links. |
+### Figure 8.1: UML Usecase Diagram
+
+**Diagram Category**: `Use Case Diagram`  
+**Architectural Role**: Specifies system boundary, primary external actors, and business use cases with include/extend relationships.
+
+![Figure 8.1: UML Usecase Diagram](../vector_images/Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker/Figure_8_1_UML_usecase_diagram.svg)
+
+### Figure 8.2: UML Class Diagram
+
+**Diagram Category**: `Class Diagram`  
+**Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
+
+![Figure 8.2: UML Class Diagram](../vector_images/Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker/Figure_8_2_UML_class_diagram.svg)
+
+### Figure 8.3: UML Sequence Diagram
+
+**Diagram Category**: `Sequence Diagram`  
+**Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
+
+![Figure 8.3: UML Sequence Diagram](../vector_images/Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker/Figure_8_3_UML_sequence_diagram.svg)
+
+### Figure 8.4: UML Collaboration Diagram
+
+**Diagram Category**: `Communication Diagram`  
+**Architectural Role**: Emphasizes structural object topology and numbered sequence messaging between collaborating entities.
+
+![Figure 8.4: UML Collaboration Diagram](../vector_images/Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker/Figure_8_4_UML_collaboration_diagram.svg)
+
+### Figure 8.5: UML State Machine Diagram
+
+**Diagram Category**: `State Machine Diagram`  
+**Architectural Role**: Captures entity lifecycle states, transition triggers, event guards, and exit/entry actions.
+
+![Figure 8.5: UML State Machine Diagram](../vector_images/Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker/Figure_8_5_UML_state_machine_diagram.svg)
+
+### Figure 8.6: UML Class Diagram
+
+**Diagram Category**: `Class Diagram`  
+**Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
+
+![Figure 8.6: UML Class Diagram](../vector_images/Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker/Figure_8_6_UML_class_diagram.svg)
+
+### Figure 8.7: UML Component Diagram
+
+**Diagram Category**: `Component Diagram`  
+**Architectural Role**: Architects physical modular software components, provided ball interfaces, and required socket dependencies.
+
+![Figure 8.7: UML Component Diagram](../vector_images/Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker/Figure_8_7_UML_component_diagram.svg)
+
+### Figure 8.8: UML Deployment Diagram
+
+**Diagram Category**: `Deployment Diagram`  
+**Architectural Role**: Maps software execution artifacts to hardware computing nodes, client devices, application tiers, and database servers.
+
+![Figure 8.8: UML Deployment Diagram](../vector_images/Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker/Figure_8_8_UML_deployment_diagram.svg)
+
+### Visual Artifacts & Supplementary Schematics
+
+The following vector schematics capture operational screen states, user dashboards, or notation components documented in this chapter:
+
+#### Ch08 p112 img01
+
+![Ch08 p112 img01](../vector_images/Chapter_08_Design_of_UML_Diagrams_for_DigiDocLocker/Ch08_p112_img01.svg)
 
 ---
 
-## 🎯 Key Architectural Invariants & Modeling Lessons
+## 💡 Key Architectural Invariants & Modeling Lessons
 
-1. **Requirements Grounding**: All diagrammatic artifacts trace back to functional requirements and domain constraints established in the problem statement.
-2. **Structural Consistency**: Multiplicities and association lifecycles in the Class Diagram mirror the invocation sequences in the Sequence Diagram.
-3. **Behavioral Invariants**: Guard conditions in State Chart and Activity models prevent invalid transitions and runtime failure modes.
+1. **Traceability**: Every software model directly corresponds to explicit functional requirements defined during the initial domain specification.
+2. **Separation of Concerns**: Structural models (Class, Component, Deployment) maintain clear boundaries separating business domain entities from physical infrastructure nodes.
+3. **Behavioral Integrity**: Dynamic models (Activity, Sequence, State Machine) guarantee valid state transitions, prevent deadlocks, and verify message order consistency.
+4. **Deployment Fidelity**: Physical nodes and execution environments accurately map runtime middleware, database engines, and client access channels.
 
 ---
 
 ## 🔗 Related Resources & Navigation
 
-- **Previous Chapter**: [Design of UML Diagrams for E-Province](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md)
-- **Next Chapter**: [Design of UML Diagrams for Online Marketplace](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/UML_Book.md`](../UML_Book.md)
-- **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)
+- **Navigation**: [&larr; Chapter_07_Design_of_UML_Diagrams_for_E_Province](Chapter_07_Design_of_UML_Diagrams_for_E_Province.md) | [📚 Book Index](../UML_Book.md) | [Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace &rarr;](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md)
+- **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)
+- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)

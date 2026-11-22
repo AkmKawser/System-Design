@@ -1,175 +1,97 @@
-﻿# Chapter 10: Design of UML Diagrams for Product Recommendation System
+# Chapter 10: Design of UML Diagrams for Product Recommendation System
 
 > **Book**: *UML Diagramming: A Case Study Approach* by Dr. Suriya Sundaramoorthy (CRC Press, 2022)  
 > **Pages**: 123–128 (Total: 6 pages)  
 > **Classification**: Industrial Case Study & Diagram Suite  
-> **Navigation**: [&larr; Chapter 09: Design of UML Diagrams for Online Marketplace](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md) | [📚 Book Index](../UML_Book.md) | [Chapter 11: Design of UML Diagrams for Advocate Diary &rarr;](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md)
+> **Navigation**: [&larr; Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md) | [📚 Book Index](../UML_Book.md) | [Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary &rarr;](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md)
 
 ---
 
-## 📌 Chapter Overview
+## 📌 Executive Summary
 
-Chapter 10 of *UML Diagramming: A Case Study Approach* focuses on **Design of UML Diagrams for Product Recommendation System**. 
-This case study presents an end-to-end software engineering analysis for **Product Recommendation System**, establishing formal requirements, data-flow models, and complete UML diagram specifications.
-
----
-
-## 📑 Core Topics & Sections
-
-- **10.1 Problem Statement**
-- **10.2 UML Diagrams**
+Chapter 10 presents an industrial software engineering case study for **Design of UML Diagrams for Product Recommendation System**. It details the transition from business requirements and domain constraints into formal software architecture specifications, leveraging data-flow modeling and a complete suite of Unified Modeling Language (UML) structural and behavioral diagrams.
 
 ---
 
-## 📝 Detailed Chapter Summary & Content
+## 🎯 Problem Statement & System Context
 
-Chapter 10
-
-Design of UML
-
-Diagrams for Product
-
-Recommendation System
-
-### 10.1 Problem Statement
-
-This case study focuses on using web scrapping for product comparison across websites to reduce
-
-the amount of time and effort involved in finding and comparing the products. To assist and
-
-enable online shopaholics to buy products with ease (Figures 10.1–10.8).
-
-### 10.2 UML Diagrams
-
-Usecase Specification
-
-1. Register
-
-Description: Allows the user to register/login to use the system.
-
-Flow of Events
-
-Basic Flow: Allows into the system.
-
-Alternative Flow: Retry to login.
-
-Pre-Conditions: Nil.
-
-Post-Conditions: Control goes to the search product page.
-
-2. Search Product
-
-Description: Allows the user to search for the product of their choices such as medicines,
-
-clothes and machinery.
-
-Flow of Events
-
-Basic Flow: Displays the search result for the product.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Users must have logged in.
-
-Post-Conditions: Nil.
-
-DOI: 10.1201/9781003287124-10
-
-3. Search Filter
-
-Description: This allows the user to specify the website on which their product has to be
-
-searched. Example: Search in Amazon.
-
-Flow of Events
-
-Basic Flow: Shows more desired and user-specific results.
-
-Figure 10.1 UML usecase diagram.
-
-Figure 10.2 UML activity diagram.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Search product.
-
-Post-Conditions: Nil.
-
-4. Product Filter
-
-Description: Filter the product results based on user’s choice like rating, rev
-
-nomber of purchases.
-
-Flow of Events
-
-Basic Flow: Shows more desired and user-specific results.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Search product.
-
-Post-Conditions: Nil.
-
-iews, and
-
-5. Get Product
-
-Description: Redirects the user to the user-selected product’s website. Then, the user can
-
-purchase the product.
-
-Flow of Events
-
-Basic Flow: Enables the user to purchase the product.
-
-Alternative Flow: Nil.
-
-Pre-Conditions: Search product.
-
-Post-Conditions: Nil.
-
-Figure 10.3 UML collaboration diagram.
-
-Figure 10.4 UML sequence diagram.
-
-Figure 10.5 UML state machine diagram.
-
-Figure 10.6 UML class diagram.
-
-Figure 10.7 UML component diagram.
-
-Figure 10.8 UML deployment diagram.
+This case study focuses on using web scrapping for product comparison across websites to reduce the amount of time and effort involved in finding and comparing the products. To assist and enable online shopaholics to buy products with ease (Figures 10.1–10.8).
 
 ---
 
-## 📊 UML Modeling Suite for Product Recommendation System
+## 📊 Complete UML Diagram Suite & Architecture Specifications
 
-The case study defines the following canonical UML models:
+This chapter incorporates **8 standalone vector diagram(s)** illustrating the end-to-end design from functional use cases to physical hardware deployment:
 
-| Diagram Type | Perspective | Key Elements & Responsibilities |
-| :--- | :--- | :--- |
-| **Use Case Diagram** | Functional Scope | Primary actors, external APIs, and core business goals (`<<include>>`, `<<extend>>`). |
-| **Activity Diagram** | Workflow / Process | Action states, decision diamonds, object flows, and swimlane partitions. |
-| **Class Diagram** | Structural Backbone | Entity classifiers, attributes, operations, multiplicities, and relationships. |
-| **Sequence Diagram** | Dynamic Interaction | Lifelines, synchronous RPCs, message returns, and execution activations. |
-| **State Chart Diagram** | Lifecycle States | Discrete system states, event triggers, and boolean guard conditions. |
-| **Component Diagram** | Modular Architecture | Encapsulated subsystems, provided interfaces (balls), and required interfaces (sockets). |
-| **Deployment Diagram** | Physical Topology | Hardware nodes, application servers, database instances, and network links. |
+### Figure 10.1: UML Usecase Diagram
+
+**Diagram Category**: `Use Case Diagram`  
+**Architectural Role**: Specifies system boundary, primary external actors, and business use cases with include/extend relationships.
+
+![Figure 10.1: UML Usecase Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_1_UML_usecase_diagram.svg)
+
+### Figure 10.2: UML Activity Diagram
+
+**Diagram Category**: `Activity Diagram`  
+**Architectural Role**: Illustrates dynamic procedural workflow, decision branching, concurrent action forks, and synchronization joins.
+
+![Figure 10.2: UML Activity Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_2_UML_activity_diagram.svg)
+
+### Figure 10.3: UML Collaboration Diagram
+
+**Diagram Category**: `Communication Diagram`  
+**Architectural Role**: Emphasizes structural object topology and numbered sequence messaging between collaborating entities.
+
+![Figure 10.3: UML Collaboration Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_3_UML_collaboration_diagram.svg)
+
+### Figure 10.4: UML Sequence Diagram
+
+**Diagram Category**: `Sequence Diagram`  
+**Architectural Role**: Details chronological object interactions, synchronous message exchanges, return flows, and activation lifelines.
+
+![Figure 10.4: UML Sequence Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_4_UML_sequence_diagram.svg)
+
+### Figure 10.5: UML State Machine Diagram
+
+**Diagram Category**: `State Machine Diagram`  
+**Architectural Role**: Captures entity lifecycle states, transition triggers, event guards, and exit/entry actions.
+
+![Figure 10.5: UML State Machine Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_5_UML_state_machine_diagram.svg)
+
+### Figure 10.6: UML Class Diagram
+
+**Diagram Category**: `Class Diagram`  
+**Architectural Role**: Models static structural classifiers, entity attributes, operations, and associations (composition, aggregation, inheritance).
+
+![Figure 10.6: UML Class Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_6_UML_class_diagram.svg)
+
+### Figure 10.7: UML Component Diagram
+
+**Diagram Category**: `Component Diagram`  
+**Architectural Role**: Architects physical modular software components, provided ball interfaces, and required socket dependencies.
+
+![Figure 10.7: UML Component Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_7_UML_component_diagram.svg)
+
+### Figure 10.8: UML Deployment Diagram
+
+**Diagram Category**: `Deployment Diagram`  
+**Architectural Role**: Maps software execution artifacts to hardware computing nodes, client devices, application tiers, and database servers.
+
+![Figure 10.8: UML Deployment Diagram](../vector_images/Chapter_10_Design_of_UML_Diagrams_for_Product_Recom/Figure_10_8_UML_deployment_diagram.svg)
 
 ---
 
-## 🎯 Key Architectural Invariants & Modeling Lessons
+## 💡 Key Architectural Invariants & Modeling Lessons
 
-1. **Requirements Grounding**: All diagrammatic artifacts trace back to functional requirements and domain constraints established in the problem statement.
-2. **Structural Consistency**: Multiplicities and association lifecycles in the Class Diagram mirror the invocation sequences in the Sequence Diagram.
-3. **Behavioral Invariants**: Guard conditions in State Chart and Activity models prevent invalid transitions and runtime failure modes.
+1. **Traceability**: Every software model directly corresponds to explicit functional requirements defined during the initial domain specification.
+2. **Separation of Concerns**: Structural models (Class, Component, Deployment) maintain clear boundaries separating business domain entities from physical infrastructure nodes.
+3. **Behavioral Integrity**: Dynamic models (Activity, Sequence, State Machine) guarantee valid state transitions, prevent deadlocks, and verify message order consistency.
+4. **Deployment Fidelity**: Physical nodes and execution environments accurately map runtime middleware, database engines, and client access channels.
 
 ---
 
 ## 🔗 Related Resources & Navigation
 
-- **Previous Chapter**: [Design of UML Diagrams for Online Marketplace](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md)
-- **Next Chapter**: [Design of UML Diagrams for Advocate Diary](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md)
-- **Central Book Guide**: [`Skills_Input/books/Overall/UML_Book.md`](../UML_Book.md)
-- **Problem Bank Intake**: [`Skills_Output/UMLSkill_output/Problem Files/question bank.md`](../../../Skills_Output/UMLSkill_output/Problem%20Files/question%20bank.md)
+- **Navigation**: [&larr; Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace](Chapter_09_Design_of_UML_Diagrams_for_Online_Marketplace.md) | [📚 Book Index](../UML_Book.md) | [Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary &rarr;](Chapter_11_Design_of_UML_Diagrams_for_Advocate_Diary.md)
+- **Master Book Catalog**: [`UML_Book.md`](../UML_Book.md)
+- **Vector Images Catalog**: [`Vector_Images_Catalog.md`](../vector_images/Vector_Images_Catalog.md)
