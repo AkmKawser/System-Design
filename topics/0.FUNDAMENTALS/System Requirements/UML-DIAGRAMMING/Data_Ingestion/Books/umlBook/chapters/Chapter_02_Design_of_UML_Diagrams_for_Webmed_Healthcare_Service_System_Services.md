@@ -124,7 +124,7 @@ Illustrates the functional boundary of the **Design of UML Diagrams for Webmed H
 #### 🔍 Component Derivation from Problem Requirements
 
 - **Actors Selection (Why they are chosen)**:
-  - **Primary Actor (`Patient / Caregiver`)**: Derived from the problem statement as the core user who directly experiences the operational pain points and initiates service requests (e.g., self-service tasks, browsing, and transacting).
+  - **Primary Actor (`Patient / Caregiver`)**: Derived from the problem statement as the core user who directly experiences operational pain points and initiates service requests (e.g., self-service tasks, browsing, and transacting).
   - **Secondary Supporting Actor (`Doctor / Diagnostic Lab / Ambulance Service`)**: Extracted as the external authority or service partner required to fulfill requests (e.g., financial settlements, identity verifications, or physical fulfillment).
   - **Administrative Actor (`Hospital Admin / Pharmacist`)**: Required by governance rules to oversee security, manage backend configurations, and monitor operational compliance.
 - **Use Cases Selection (Why these functions exist)**:

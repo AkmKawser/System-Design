@@ -49,6 +49,18 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 
 ![Figure 7.2: UML Activity Diagram](../images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_2_UML_activity_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Workflow Actions Selection**:
+  - Derived step-by-step action states directly from the chronological steps required to complete Registration Process.
+  - Modeled each human action (e.g., entering data, confirming selection) and automated system action (e.g., validating rules, computing totals, updating records) as discrete rounded rectangles.
+- **Swimlanes & Responsibility Partitioning**:
+  - Partitioned the workflow across swimlanes representing `Citizen / Applicant`, the Application Controller, and `Verification Authority / Law Enforcement Agency`/Database.
+  - Visualizes exactly where operational responsibility transfers across architectural boundaries.
+- **Decisions, Guards & Concurrent Forks**:
+  - **Decision Diamonds**: Inserted wherever business logic requires verification (e.g., `[Valid Credentials]`, `[Stock Available]`, `[Payment Approved]`), ensuring explicit error handling paths.
+  - **Synchronization Bars (Fork/Join)**: Utilized where parallel background tasks (e.g., sending an alert while updating audit logs) occur simultaneously without blocking user execution.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Initial Node & Execution Swimlanes**:
@@ -77,19 +89,31 @@ Traces the time-ordered message sequence between participating objects and servi
 
 ![Figure 7.3: UML Sequence Diagram](../images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_3_UML_sequence_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Participating Lifelines Selection**:
+  - Selected key participants along the communication path: `Citizen / Applicant` (initiator), Boundary Controller (API/UI), Business Service Layer, and the Persistent Database / `Verification Authority / Law Enforcement Agency`.
+  - Ensures full horizontal separation between user interaction, application logic, and backend data storage.
+- **Message Invocations & Temporal Sequence**:
+  - Derived sequential message flows from the transaction lifecycle: initialization -> validation -> business calculation -> persistence -> return response.
+  - Uses solid arrows with filled heads for synchronous calls where the caller waits for a response before proceeding.
+- **Return Payloads & Conditional Fragments**:
+  - **Dashed Return Arrows**: Modeled data payloads and status confirmations returned to the caller to maintain state awareness.
+  - **`alt` Combined Fragments**: Partitioned if-else execution paths (e.g., success vs. validation error) with explicit boolean guard conditions.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Arrange Participating Lifelines Horizontally**:
-   - Position actors, boundary controllers, service managers, and persistence models horizontally across the top of the diagram.
+   - Position `Citizen / Applicant`, boundary controllers, service managers, and persistence models horizontally across the top.
    - Drop vertical dashed lines (lifelines) downward from each participant to represent the passage of time from top to bottom.
 2. **Overlay Activation Focus Bars**:
    - Place thin vertical rectangular boxes on lifelines to indicate active execution periods where an object is processing instructions.
 3. **Model Synchronous & Asynchronous Invocations**:
-   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateCredentials()`).
+   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateRequest()`).
    - Draw open arrowheads for asynchronous events or non-blocking notification dispatches.
 4. **Represent Return Messages & Reply Payloads**:
    - Draw dashed horizontal lines with open arrowheads pointing back to the calling lifeline to model return data or acknowledgment signals.
-   - Label return lines with explicit payload descriptions (e.g., `confirmationToken: String`).
+   - Label return lines with explicit payload descriptions (e.g., `statusConfirmation: Boolean`).
 5. **Structure Logic with Combined Interaction Fragments**:
    - Enclose conditional logic within an `alt` fragment box partitioned into alternative execution compartments with bracketed guard expressions.
    - Utilize `opt` frames for optional branches and `loop` frames for iterative business operations.
@@ -104,6 +128,15 @@ Models the complete lifecycle state transitions for central domain entities in *
 
 ![Figure 7.5: UML State Machine Diagram](../images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_5_UML_state_machine_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Entity & Lifecycle States Selection**:
+  - Selected the central transactional entity in **E Province** whose lifecycle undergoes critical state changes.
+  - Derived distinct operational states (e.g., `Created`, `PendingApproval`, `Active / InProgress`, `Completed`, `Cancelled`) from domain business rules.
+- **State Transitions, Triggers & Guard Rules**:
+  - Identified the exact events (e.g., `submit()`, `verify()`, `processPayment()`, `cancel()`) that trigger transitions between states.
+  - Formulated transition syntax: `Event [GuardCondition] / ActionEffect` to prevent invalid state jumps and enforce business integrity.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Identify the Initial Pseudostate**:
@@ -113,7 +146,7 @@ Models the complete lifecycle state transitions for central domain entities in *
    - Add internal behavior compartments for `entry /`, `do /`, and `exit /` action routines where applicable.
 3. **Map State Transitions & Triggers**:
    - Connect states using directed transition arrows indicating valid status changes.
-   - Label transitions using the formal UML format: `TriggerEvent [GuardCondition] / ActionEffect` (e.g., `submitPayment [balanceSufficient] / generateReceipt()`).
+   - Label transitions using the formal UML format: `TriggerEvent [GuardCondition] / ActionEffect` (e.g., `confirmTransaction [balanceValid] / generateReceipt()`).
 4. **Model Superstates & Substates (Hierarchical States)**:
    - Group related substates within an enclosing composite state rectangle when multiple states share common exit or exception transitions.
 5. **Terminate at Final State Nodes**:
@@ -129,6 +162,19 @@ Captures the static structural domain model for **Design of UML Diagrams for E P
 
 ![Figure 7.6: UML Class Diagram](../images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_6_UML_class_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Domain Classes & Classifiers Selection**:
+  - **Entity Classes**: Extracted key nouns from the domain requirements to form core data models holding system state (e.g., `Citizen`, `Transaction`, `Record`, `Item/Service`).
+  - **Boundary & Controller Classes**: Introduced interface controllers (e.g., `ServiceController`, `SessionManager`) to decouple user presentation inputs from backend database persistence.
+- **Attributes & Methods Selection**:
+  - **Attributes**: Assigned explicit data types and access modifiers (private `-` for information hiding) to track business properties (e.g., unique IDs, statuses, monetary values, timestamps).
+  - **Operations**: Converted domain capabilities (`Registration Process`, `Login Process`, `Registration for Certificate Process`, `Certificate Issuing Process`, `User Profile Viewing Process`) into public (`+`) member methods equipped with validated parameters and deterministic return signatures.
+- **Relationships & Multiplicities Rationale**:
+  - **Composition (Solid Diamond)**: Applied to strong whole-part relationships where child entities cannot exist independently of their parent aggregate (e.g., an invoice strictly owns its line items).
+  - **Aggregation (Hollow Diamond)**: Applied to shared associations where components exist independently in the business domain.
+  - **Multiplicities**: Annotated with strict operational constraints (e.g., `1` user owns `0..*` transactions; each transaction maps to exactly `1` payment record) to maintain data integrity.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Identify Domain Entities & Boundary Objects**:
@@ -142,11 +188,11 @@ Captures the static structural domain model for **Design of UML Diagrams for E P
    - Include parameter types and return signatures (e.g., `+ executeTransaction(amount: Float): Boolean`).
 4. **Establish Structural Relationships & Multiplicities**:
    - Connect related classes using solid association lines annotated with numerical multiplicities (e.g., `1`, `0..*`, `1..*`).
-   - Apply Composition (solid diamond) where parts cannot exist without the whole, and Aggregation (hollow diamond) for shared references.
+   - Apply Composition (solid diamond) for lifecycle-dependent objects, and Aggregation (hollow diamond) for shared references.
    - Model inheritance hierarchies using Generalization (solid line with closed hollow triangular arrowhead).
 5. **Validate Architecture & Reduce Coupling**:
    - Review class cohesion to verify single-responsibility principles across data access and business logic layers.
-   - Ensure abstract classes or interfaces isolate clients from implementation changes.
+   - Ensure interfaces isolate clients from direct database dependencies.
 
 ### Figure 7.7: UML Component Diagram
 
@@ -157,6 +203,15 @@ Captures the static structural domain model for **Design of UML Diagrams for E P
 Architects the modular software organization for **Design of UML Diagrams for E Province**. Illustrates autonomous subsystems, business logic controllers, database access layers, and external service adapters. Provided interfaces (ball notation) and required dependencies (socket notation) define clear service contracts, supporting high cohesion and loose coupling.
 
 ![Figure 7.7: UML Component Diagram](../vector_images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_7_UML_component_diagram.svg)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Modular Components Selection**:
+  - Decomposed **E Province** into autonomous, reusable software units based on separation of concerns: User Interface Controller, Business Service Core, Persistence Engine, and External Integration Gateways.
+  - Ensures each component encapsulates a specific domain capability (`Registration Process`, `Login Process`, `Registration for Certificate Process`, `Certificate Issuing Process`, `User Profile Viewing Process`) without tight coupling.
+- **Provided & Required Interfaces Selection**:
+  - **Provided Interfaces (Ball)**: Defined public APIs and services exposed by components to serve consumer requests.
+  - **Required Interfaces (Socket)**: Defined downstream dependencies, such as database connectors and third-party API contracts required for operation.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -181,6 +236,15 @@ Architects the modular software organization for **Design of UML Diagrams for E 
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for E Province**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
 ![Figure 7.8: UML Deployment Diagram](../vector_images/Chapter_07_Design_of_UML_Diagrams_for_E_Province/Figure_7_8_UML_deployment_diagram.svg)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Hardware Nodes & Infrastructure Selection**:
+  - Derived execution nodes from physical hosting requirements: Client Devices (Smartphones/Desktops), Web & Application Servers, and Database Clusters.
+  - Isolates public-facing presentation endpoints from secure, internal database storage to comply with enterprise security standards.
+- **Artifact Allocation & Communication Protocols**:
+  - **Artifact Deployment**: Mapped executable binaries (`.jar`, `.war`, `.apk`, client web bundles) onto their corresponding execution environments.
+  - **Protocol Selection**: Assigned standard secure networking protocols (`<<HTTPS/TLS>>`, `<<TCP/IP>>`, `<<JDBC>>`) based on data sensitivity and network boundaries.
 
 #### 🛠️ Step-by-Step Construction Guide
 

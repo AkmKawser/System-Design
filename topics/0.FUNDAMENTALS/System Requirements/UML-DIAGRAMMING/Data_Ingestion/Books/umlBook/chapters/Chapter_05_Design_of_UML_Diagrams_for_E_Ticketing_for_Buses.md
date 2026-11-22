@@ -49,6 +49,19 @@ Captures the static structural domain model for **Design of UML Diagrams for E T
 
 ![Figure 5.2: UML Class Diagram](../images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_2_UML_class_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Domain Classes & Classifiers Selection**:
+  - **Entity Classes**: Extracted key nouns from the domain requirements to form core data models holding system state (e.g., `Commuter`, `Transaction`, `Record`, `Item/Service`).
+  - **Boundary & Controller Classes**: Introduced interface controllers (e.g., `ServiceController`, `SessionManager`) to decouple user presentation inputs from backend database persistence.
+- **Attributes & Methods Selection**:
+  - **Attributes**: Assigned explicit data types and access modifiers (private `-` for information hiding) to track business properties (e.g., unique IDs, statuses, monetary values, timestamps).
+  - **Operations**: Converted domain capabilities (`Online Ticket Reservation`, `Bus Schedule & Route Lookup`, `Payment & Bank PIN Issuance`, `Reservation Cancellation & Refunds`, `Fleet & Route Administration`) into public (`+`) member methods equipped with validated parameters and deterministic return signatures.
+- **Relationships & Multiplicities Rationale**:
+  - **Composition (Solid Diamond)**: Applied to strong whole-part relationships where child entities cannot exist independently of their parent aggregate (e.g., an invoice strictly owns its line items).
+  - **Aggregation (Hollow Diamond)**: Applied to shared associations where components exist independently in the business domain.
+  - **Multiplicities**: Annotated with strict operational constraints (e.g., `1` user owns `0..*` transactions; each transaction maps to exactly `1` payment record) to maintain data integrity.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Identify Domain Entities & Boundary Objects**:
@@ -62,11 +75,11 @@ Captures the static structural domain model for **Design of UML Diagrams for E T
    - Include parameter types and return signatures (e.g., `+ executeTransaction(amount: Float): Boolean`).
 4. **Establish Structural Relationships & Multiplicities**:
    - Connect related classes using solid association lines annotated with numerical multiplicities (e.g., `1`, `0..*`, `1..*`).
-   - Apply Composition (solid diamond) where parts cannot exist without the whole, and Aggregation (hollow diamond) for shared references.
+   - Apply Composition (solid diamond) for lifecycle-dependent objects, and Aggregation (hollow diamond) for shared references.
    - Model inheritance hierarchies using Generalization (solid line with closed hollow triangular arrowhead).
 5. **Validate Architecture & Reduce Coupling**:
    - Review class cohesion to verify single-responsibility principles across data access and business logic layers.
-   - Ensure abstract classes or interfaces isolate clients from implementation changes.
+   - Ensure interfaces isolate clients from direct database dependencies.
 
 ### Figure 5.3: UML Activity Diagram Part 1
 
@@ -77,6 +90,18 @@ Captures the static structural domain model for **Design of UML Diagrams for E T
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for E Ticketing for Buses**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
 ![Figure 5.3: UML Activity Diagram Part 1](../images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_3_UML_activity_diagram_part_1.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Workflow Actions Selection**:
+  - Derived step-by-step action states directly from the chronological steps required to complete Online Ticket Reservation.
+  - Modeled each human action (e.g., entering data, confirming selection) and automated system action (e.g., validating rules, computing totals, updating records) as discrete rounded rectangles.
+- **Swimlanes & Responsibility Partitioning**:
+  - Partitioned the workflow across swimlanes representing `Commuter / Passenger`, the Application Controller, and `Payment Gateway / Fleet Tracking GPS`/Database.
+  - Visualizes exactly where operational responsibility transfers across architectural boundaries.
+- **Decisions, Guards & Concurrent Forks**:
+  - **Decision Diamonds**: Inserted wherever business logic requires verification (e.g., `[Valid Credentials]`, `[Stock Available]`, `[Payment Approved]`), ensuring explicit error handling paths.
+  - **Synchronization Bars (Fork/Join)**: Utilized where parallel background tasks (e.g., sending an alert while updating audit logs) occur simultaneously without blocking user execution.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -106,6 +131,18 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 
 ![Figure 5.4: UML Activity Diagram Part 2](../images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_4_UML_activity_diagram_part_2.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Workflow Actions Selection**:
+  - Derived step-by-step action states directly from the chronological steps required to complete Online Ticket Reservation.
+  - Modeled each human action (e.g., entering data, confirming selection) and automated system action (e.g., validating rules, computing totals, updating records) as discrete rounded rectangles.
+- **Swimlanes & Responsibility Partitioning**:
+  - Partitioned the workflow across swimlanes representing `Commuter / Passenger`, the Application Controller, and `Payment Gateway / Fleet Tracking GPS`/Database.
+  - Visualizes exactly where operational responsibility transfers across architectural boundaries.
+- **Decisions, Guards & Concurrent Forks**:
+  - **Decision Diamonds**: Inserted wherever business logic requires verification (e.g., `[Valid Credentials]`, `[Stock Available]`, `[Payment Approved]`), ensuring explicit error handling paths.
+  - **Synchronization Bars (Fork/Join)**: Utilized where parallel background tasks (e.g., sending an alert while updating audit logs) occur simultaneously without blocking user execution.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Initial Node & Execution Swimlanes**:
@@ -134,19 +171,31 @@ Traces the time-ordered message sequence between participating objects and servi
 
 ![Figure 5.6: UML Sequence Diagram Part 1](../images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_6_UML_sequence_diagram_part_1.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Participating Lifelines Selection**:
+  - Selected key participants along the communication path: `Commuter / Passenger` (initiator), Boundary Controller (API/UI), Business Service Layer, and the Persistent Database / `Payment Gateway / Fleet Tracking GPS`.
+  - Ensures full horizontal separation between user interaction, application logic, and backend data storage.
+- **Message Invocations & Temporal Sequence**:
+  - Derived sequential message flows from the transaction lifecycle: initialization -> validation -> business calculation -> persistence -> return response.
+  - Uses solid arrows with filled heads for synchronous calls where the caller waits for a response before proceeding.
+- **Return Payloads & Conditional Fragments**:
+  - **Dashed Return Arrows**: Modeled data payloads and status confirmations returned to the caller to maintain state awareness.
+  - **`alt` Combined Fragments**: Partitioned if-else execution paths (e.g., success vs. validation error) with explicit boolean guard conditions.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Arrange Participating Lifelines Horizontally**:
-   - Position actors, boundary controllers, service managers, and persistence models horizontally across the top of the diagram.
+   - Position `Commuter / Passenger`, boundary controllers, service managers, and persistence models horizontally across the top.
    - Drop vertical dashed lines (lifelines) downward from each participant to represent the passage of time from top to bottom.
 2. **Overlay Activation Focus Bars**:
    - Place thin vertical rectangular boxes on lifelines to indicate active execution periods where an object is processing instructions.
 3. **Model Synchronous & Asynchronous Invocations**:
-   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateCredentials()`).
+   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateRequest()`).
    - Draw open arrowheads for asynchronous events or non-blocking notification dispatches.
 4. **Represent Return Messages & Reply Payloads**:
    - Draw dashed horizontal lines with open arrowheads pointing back to the calling lifeline to model return data or acknowledgment signals.
-   - Label return lines with explicit payload descriptions (e.g., `confirmationToken: String`).
+   - Label return lines with explicit payload descriptions (e.g., `statusConfirmation: Boolean`).
 5. **Structure Logic with Combined Interaction Fragments**:
    - Enclose conditional logic within an `alt` fragment box partitioned into alternative execution compartments with bracketed guard expressions.
    - Utilize `opt` frames for optional branches and `loop` frames for iterative business operations.
@@ -161,19 +210,31 @@ Traces the time-ordered message sequence between participating objects and servi
 
 ![Figure 5.7: UML Sequence Diagram Part 2](../images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_7_UML_sequence_diagram_part_2.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Participating Lifelines Selection**:
+  - Selected key participants along the communication path: `Commuter / Passenger` (initiator), Boundary Controller (API/UI), Business Service Layer, and the Persistent Database / `Payment Gateway / Fleet Tracking GPS`.
+  - Ensures full horizontal separation between user interaction, application logic, and backend data storage.
+- **Message Invocations & Temporal Sequence**:
+  - Derived sequential message flows from the transaction lifecycle: initialization -> validation -> business calculation -> persistence -> return response.
+  - Uses solid arrows with filled heads for synchronous calls where the caller waits for a response before proceeding.
+- **Return Payloads & Conditional Fragments**:
+  - **Dashed Return Arrows**: Modeled data payloads and status confirmations returned to the caller to maintain state awareness.
+  - **`alt` Combined Fragments**: Partitioned if-else execution paths (e.g., success vs. validation error) with explicit boolean guard conditions.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Arrange Participating Lifelines Horizontally**:
-   - Position actors, boundary controllers, service managers, and persistence models horizontally across the top of the diagram.
+   - Position `Commuter / Passenger`, boundary controllers, service managers, and persistence models horizontally across the top.
    - Drop vertical dashed lines (lifelines) downward from each participant to represent the passage of time from top to bottom.
 2. **Overlay Activation Focus Bars**:
    - Place thin vertical rectangular boxes on lifelines to indicate active execution periods where an object is processing instructions.
 3. **Model Synchronous & Asynchronous Invocations**:
-   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateCredentials()`).
+   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateRequest()`).
    - Draw open arrowheads for asynchronous events or non-blocking notification dispatches.
 4. **Represent Return Messages & Reply Payloads**:
    - Draw dashed horizontal lines with open arrowheads pointing back to the calling lifeline to model return data or acknowledgment signals.
-   - Label return lines with explicit payload descriptions (e.g., `confirmationToken: String`).
+   - Label return lines with explicit payload descriptions (e.g., `statusConfirmation: Boolean`).
 5. **Structure Logic with Combined Interaction Fragments**:
    - Enclose conditional logic within an `alt` fragment box partitioned into alternative execution compartments with bracketed guard expressions.
    - Utilize `opt` frames for optional branches and `loop` frames for iterative business operations.
@@ -187,6 +248,15 @@ Traces the time-ordered message sequence between participating objects and servi
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for E Ticketing for Buses**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
 ![Figure 5.8: UML Collaboration Diagram Part 1](../images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_8_UML_collaboration_diagram_part_1.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Collaborating Object Nodes Selection**:
+  - Selected runtime instances of the core architectural entities required to complete the business scenario in **E Ticketing for Buses**.
+  - Emphasizes the structural network of communicating instances rather than chronological time progression.
+- **Structural Links & Message Numbering**:
+  - **Association Links**: Created direct communication links between objects that possess references to each other.
+  - **Hierarchical Numbering (`1`, `1.1`, `2`)**: Formulated numbered message vectors along links to preserve the exact call-stack sequence and nested function invocations.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -213,6 +283,15 @@ Emphasizes the spatial and structural organization of collaborating instances in
 
 ![Figure 5.9: UML Collaboration Diagram Part 2](../vector_images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_9_UML_collaboration_diagram_part_2.svg)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Collaborating Object Nodes Selection**:
+  - Selected runtime instances of the core architectural entities required to complete the business scenario in **E Ticketing for Buses**.
+  - Emphasizes the structural network of communicating instances rather than chronological time progression.
+- **Structural Links & Message Numbering**:
+  - **Association Links**: Created direct communication links between objects that possess references to each other.
+  - **Hierarchical Numbering (`1`, `1.1`, `2`)**: Formulated numbered message vectors along links to preserve the exact call-stack sequence and nested function invocations.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Place Collaborating Object Nodes**:
@@ -238,6 +317,15 @@ Architects the modular software organization for **Design of UML Diagrams for E 
 
 ![Figure 5.10: UML Component Diagram](../images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_10_UML_component_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Modular Components Selection**:
+  - Decomposed **E Ticketing for Buses** into autonomous, reusable software units based on separation of concerns: User Interface Controller, Business Service Core, Persistence Engine, and External Integration Gateways.
+  - Ensures each component encapsulates a specific domain capability (`Online Ticket Reservation`, `Bus Schedule & Route Lookup`, `Payment & Bank PIN Issuance`, `Reservation Cancellation & Refunds`, `Fleet & Route Administration`) without tight coupling.
+- **Provided & Required Interfaces Selection**:
+  - **Provided Interfaces (Ball)**: Defined public APIs and services exposed by components to serve consumer requests.
+  - **Required Interfaces (Socket)**: Defined downstream dependencies, such as database connectors and third-party API contracts required for operation.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Identify Autonomous Modular Units**:
@@ -261,6 +349,15 @@ Architects the modular software organization for **Design of UML Diagrams for E 
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for E Ticketing for Buses**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
 ![Figure 5.11: UML Deployment Diagram](../images/Chapter_05_Design_of_UML_Diagrams_for_E_Ticketing_f/Figure_5_11_UML_deployment_diagram.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Hardware Nodes & Infrastructure Selection**:
+  - Derived execution nodes from physical hosting requirements: Client Devices (Smartphones/Desktops), Web & Application Servers, and Database Clusters.
+  - Isolates public-facing presentation endpoints from secure, internal database storage to comply with enterprise security standards.
+- **Artifact Allocation & Communication Protocols**:
+  - **Artifact Deployment**: Mapped executable binaries (`.jar`, `.war`, `.apk`, client web bundles) onto their corresponding execution environments.
+  - **Protocol Selection**: Assigned standard secure networking protocols (`<<HTTPS/TLS>>`, `<<TCP/IP>>`, `<<JDBC>>`) based on data sensitivity and network boundaries.
 
 #### 🛠️ Step-by-Step Construction Guide
 

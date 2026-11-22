@@ -59,6 +59,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 
 ![Figure 3.1: Login Functionality Home Dashboard](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_1_Login_functionality_home_dashboard.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Diagram Purpose & System Boundary**:
@@ -81,6 +90,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Inventory Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
 ![Figure 3.2: Dashboard Popup](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_2_Dashboard_popup.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -105,6 +123,15 @@ Structural architectural schematic detailing operational flow and functional req
 
 ![Figure 3.3: Change Password](../vector_images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_3_Change_password.svg)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Diagram Purpose & System Boundary**:
@@ -127,6 +154,15 @@ Structural architectural schematic detailing operational flow and functional req
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Inventory Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
 ![Figure 3.4: Add Goods](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_4_Add_goods.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -151,6 +187,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 
 ![Figure 3.5: Remove Goods](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_5_Remove_goods.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Diagram Purpose & System Boundary**:
@@ -173,6 +218,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Inventory Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
 ![Figure 3.6: View Summary](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_6_View_summary.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -197,6 +251,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 
 ![Figure 3.7: Place Order](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_7_Place_order.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Diagram Purpose & System Boundary**:
@@ -219,6 +282,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Inventory Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
 ![Figure 3.8: Tax Details](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_8_Tax_details.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -243,6 +315,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 
 ![Figure 3.9: Search Item](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_9_Search_item.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Diagram Purpose & System Boundary**:
@@ -265,6 +346,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Inventory Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
 ![Figure 3.10: Expired Goods](../vector_images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_10_Expired_goods.svg)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -289,6 +379,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 
 ![Figure 3.11: Billing Counter](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_11_Billing_counter.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Diagram Purpose & System Boundary**:
@@ -312,24 +411,37 @@ Illustrates the functional boundary of the **Design of UML Diagrams for Inventor
 
 ![Figure 3.12: UML Usecase Diagram](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_12_UML_usecase_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Actors Selection (Why they are chosen)**:
+  - **Primary Actor (`Store Clerk / Salesperson`)**: Derived from the problem statement as the core user who directly experiences operational pain points and initiates service requests (e.g., self-service tasks, browsing, and transacting).
+  - **Secondary Supporting Actor (`Supplier / Wholesale Vendor`)**: Extracted as the external authority or service partner required to fulfill requests (e.g., financial settlements, identity verifications, or physical fulfillment).
+  - **Administrative Actor (`Inventory Manager / Warehouse Supervisor`)**: Required by governance rules to oversee security, manage backend configurations, and monitor operational compliance.
+- **Use Cases Selection (Why these functions exist)**:
+  - High-priority functional requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`) were converted into core use cases inside the system boundary to directly satisfy user business goals.
+  - Each use case corresponds directly to a distinct business capability needed to eliminate manual delays, paperwork, or operational bottlenecks.
+- **Relationships & Dependency Rationale**:
+  - **Associations**: Direct solid lines link `Store Clerk / Salesperson` to primary operational use cases, establishing who has authorization to trigger each transaction.
+  - **`<<include>>` Dependencies**: Factored out mandatory sub-routines (such as `Login / Authenticate`, `Verify Eligibility`, and `Process Payment`) that must execute unconditionally during transactions to guarantee security and data consistency.
+  - **`<<extend>>` Dependencies**: Attached optional or conditional paths (such as `Apply Promotional Discount`, `Trigger Emergency Escalation`, or `Cancel Request`) that execute only when specific business guard conditions are satisfied.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Define System Boundary & Scope**:
    - Draw an outer rectangular boundary box representing **Inventory Management System**.
    - Ensure external actors remain outside the boundary while all functional capabilities reside inside.
 2. **Identify Primary & Secondary External Actors**:
-   - Place human primary actors on the left side of the boundary to initiate business interactions.
-   - Position secondary actors (e.g., third-party payment gateways, external APIs, notifications, database systems) on the right side.
+   - Place `Store Clerk / Salesperson` on the left side of the boundary to initiate business interactions.
+   - Position `Supplier / Wholesale Vendor` and `Inventory Manager / Warehouse Supervisor` on the right side as secondary or administrative actors.
 3. **Identify & Model Business Use Cases**:
-   - Draw horizontal ellipses inside the system boundary representing distinct user goals and business services.
-   - Name each usecase using an active verb-noun phrase (e.g., `Register Account`, `Process Payment`, `View Reports`).
+   - Draw horizontal ellipses inside the boundary representing key operational goals (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+   - Name each use case with an active verb-noun phrase.
 4. **Establish Relationships & Stereotypes (`<<include>>`, `<<extend>>`)**:
    - Connect actors to relevant use cases using solid, unarrowed association lines.
    - Use dashed arrows labeled `<<include>>` directed toward mandatory shared sub-routines (e.g., authentication, data validation).
-   - Use dashed arrows labeled `<<extend>>` directed from optional, conditional, or exceptional workflows toward base use cases.
+   - Use dashed arrows labeled `<<extend>>` directed from optional or conditional extension workflows toward base use cases.
 5. **Verify Completeness & Cross-Check Requirements**:
-   - Trace every functional requirement from the problem specification to ensure it is represented by at least one use case.
-   - Confirm there are no isolated, disconnected use cases or unassociated actors.
+   - Trace every functional requirement from the problem specification to confirm complete coverage without disconnected use cases.
 
 ### Figure 3.13: UML Class Diagram
 
@@ -340,6 +452,19 @@ Illustrates the functional boundary of the **Design of UML Diagrams for Inventor
 Captures the static structural domain model for **Design of UML Diagrams for Inventory Management System**. Defines primary entity classes, their private/public attributes, operational methods, and relationships. It enforces structural integrity through multiplicities, composition (strong lifecycle ownership of subsidiary records), aggregation, and inheritance hierarchies, forming the foundation for the relational database schema and domain entity classes.
 
 ![Figure 3.13: UML Class Diagram](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_13_UML_class_diagram.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Domain Classes & Classifiers Selection**:
+  - **Entity Classes**: Extracted key nouns from the domain requirements to form core data models holding system state (e.g., `Store Clerk`, `Transaction`, `Record`, `Item/Service`).
+  - **Boundary & Controller Classes**: Introduced interface controllers (e.g., `ServiceController`, `SessionManager`) to decouple user presentation inputs from backend database persistence.
+- **Attributes & Methods Selection**:
+  - **Attributes**: Assigned explicit data types and access modifiers (private `-` for information hiding) to track business properties (e.g., unique IDs, statuses, monetary values, timestamps).
+  - **Operations**: Converted domain capabilities (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`) into public (`+`) member methods equipped with validated parameters and deterministic return signatures.
+- **Relationships & Multiplicities Rationale**:
+  - **Composition (Solid Diamond)**: Applied to strong whole-part relationships where child entities cannot exist independently of their parent aggregate (e.g., an invoice strictly owns its line items).
+  - **Aggregation (Hollow Diamond)**: Applied to shared associations where components exist independently in the business domain.
+  - **Multiplicities**: Annotated with strict operational constraints (e.g., `1` user owns `0..*` transactions; each transaction maps to exactly `1` payment record) to maintain data integrity.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -354,11 +479,11 @@ Captures the static structural domain model for **Design of UML Diagrams for Inv
    - Include parameter types and return signatures (e.g., `+ executeTransaction(amount: Float): Boolean`).
 4. **Establish Structural Relationships & Multiplicities**:
    - Connect related classes using solid association lines annotated with numerical multiplicities (e.g., `1`, `0..*`, `1..*`).
-   - Apply Composition (solid diamond) where parts cannot exist without the whole, and Aggregation (hollow diamond) for shared references.
+   - Apply Composition (solid diamond) for lifecycle-dependent objects, and Aggregation (hollow diamond) for shared references.
    - Model inheritance hierarchies using Generalization (solid line with closed hollow triangular arrowhead).
 5. **Validate Architecture & Reduce Coupling**:
    - Review class cohesion to verify single-responsibility principles across data access and business logic layers.
-   - Ensure abstract classes or interfaces isolate clients from implementation changes.
+   - Ensure interfaces isolate clients from direct database dependencies.
 
 ### Figure 3.14: UML Activity Diagram
 
@@ -369,6 +494,18 @@ Captures the static structural domain model for **Design of UML Diagrams for Inv
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Inventory Management System**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
 ![Figure 3.14: UML Activity Diagram](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_14_UML_activity_diagram.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Workflow Actions Selection**:
+  - Derived step-by-step action states directly from the chronological steps required to complete Login.
+  - Modeled each human action (e.g., entering data, confirming selection) and automated system action (e.g., validating rules, computing totals, updating records) as discrete rounded rectangles.
+- **Swimlanes & Responsibility Partitioning**:
+  - Partitioned the workflow across swimlanes representing `Store Clerk / Salesperson`, the Application Controller, and `Supplier / Wholesale Vendor`/Database.
+  - Visualizes exactly where operational responsibility transfers across architectural boundaries.
+- **Decisions, Guards & Concurrent Forks**:
+  - **Decision Diamonds**: Inserted wherever business logic requires verification (e.g., `[Valid Credentials]`, `[Stock Available]`, `[Payment Approved]`), ensuring explicit error handling paths.
+  - **Synchronization Bars (Fork/Join)**: Utilized where parallel background tasks (e.g., sending an alert while updating audit logs) occur simultaneously without blocking user execution.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -398,6 +535,15 @@ Models the complete lifecycle state transitions for central domain entities in *
 
 ![Figure 3.15: UML State Machine Diagram](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_15_UML_state_machine_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Entity & Lifecycle States Selection**:
+  - Selected the central transactional entity in **Inventory Management System** whose lifecycle undergoes critical state changes.
+  - Derived distinct operational states (e.g., `Created`, `PendingApproval`, `Active / InProgress`, `Completed`, `Cancelled`) from domain business rules.
+- **State Transitions, Triggers & Guard Rules**:
+  - Identified the exact events (e.g., `submit()`, `verify()`, `processPayment()`, `cancel()`) that trigger transitions between states.
+  - Formulated transition syntax: `Event [GuardCondition] / ActionEffect` to prevent invalid state jumps and enforce business integrity.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Identify the Initial Pseudostate**:
@@ -407,7 +553,7 @@ Models the complete lifecycle state transitions for central domain entities in *
    - Add internal behavior compartments for `entry /`, `do /`, and `exit /` action routines where applicable.
 3. **Map State Transitions & Triggers**:
    - Connect states using directed transition arrows indicating valid status changes.
-   - Label transitions using the formal UML format: `TriggerEvent [GuardCondition] / ActionEffect` (e.g., `submitPayment [balanceSufficient] / generateReceipt()`).
+   - Label transitions using the formal UML format: `TriggerEvent [GuardCondition] / ActionEffect` (e.g., `confirmTransaction [balanceValid] / generateReceipt()`).
 4. **Model Superstates & Substates (Hierarchical States)**:
    - Group related substates within an enclosing composite state rectangle when multiple states share common exit or exception transitions.
 5. **Terminate at Final State Nodes**:
@@ -423,19 +569,31 @@ Traces the time-ordered message sequence between participating objects and servi
 
 ![Figure 3.16: UML Sequence Diagram](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_16_UML_sequence_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Participating Lifelines Selection**:
+  - Selected key participants along the communication path: `Store Clerk / Salesperson` (initiator), Boundary Controller (API/UI), Business Service Layer, and the Persistent Database / `Supplier / Wholesale Vendor`.
+  - Ensures full horizontal separation between user interaction, application logic, and backend data storage.
+- **Message Invocations & Temporal Sequence**:
+  - Derived sequential message flows from the transaction lifecycle: initialization -> validation -> business calculation -> persistence -> return response.
+  - Uses solid arrows with filled heads for synchronous calls where the caller waits for a response before proceeding.
+- **Return Payloads & Conditional Fragments**:
+  - **Dashed Return Arrows**: Modeled data payloads and status confirmations returned to the caller to maintain state awareness.
+  - **`alt` Combined Fragments**: Partitioned if-else execution paths (e.g., success vs. validation error) with explicit boolean guard conditions.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Arrange Participating Lifelines Horizontally**:
-   - Position actors, boundary controllers, service managers, and persistence models horizontally across the top of the diagram.
+   - Position `Store Clerk / Salesperson`, boundary controllers, service managers, and persistence models horizontally across the top.
    - Drop vertical dashed lines (lifelines) downward from each participant to represent the passage of time from top to bottom.
 2. **Overlay Activation Focus Bars**:
    - Place thin vertical rectangular boxes on lifelines to indicate active execution periods where an object is processing instructions.
 3. **Model Synchronous & Asynchronous Invocations**:
-   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateCredentials()`).
+   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateRequest()`).
    - Draw open arrowheads for asynchronous events or non-blocking notification dispatches.
 4. **Represent Return Messages & Reply Payloads**:
    - Draw dashed horizontal lines with open arrowheads pointing back to the calling lifeline to model return data or acknowledgment signals.
-   - Label return lines with explicit payload descriptions (e.g., `confirmationToken: String`).
+   - Label return lines with explicit payload descriptions (e.g., `statusConfirmation: Boolean`).
 5. **Structure Logic with Combined Interaction Fragments**:
    - Enclose conditional logic within an `alt` fragment box partitioned into alternative execution compartments with bracketed guard expressions.
    - Utilize `opt` frames for optional branches and `loop` frames for iterative business operations.
@@ -449,6 +607,15 @@ Traces the time-ordered message sequence between participating objects and servi
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for Inventory Management System**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
 ![Figure 3.17: UML Communication Diagram](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_17_UML_communication_diagram.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Collaborating Object Nodes Selection**:
+  - Selected runtime instances of the core architectural entities required to complete the business scenario in **Inventory Management System**.
+  - Emphasizes the structural network of communicating instances rather than chronological time progression.
+- **Structural Links & Message Numbering**:
+  - **Association Links**: Created direct communication links between objects that possess references to each other.
+  - **Hierarchical Numbering (`1`, `1.1`, `2`)**: Formulated numbered message vectors along links to preserve the exact call-stack sequence and nested function invocations.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -475,6 +642,15 @@ Architects the modular software organization for **Design of UML Diagrams for In
 
 ![Figure 3.18: UML Component Diagram](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_18_UML_component_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Modular Components Selection**:
+  - Decomposed **Inventory Management System** into autonomous, reusable software units based on separation of concerns: User Interface Controller, Business Service Core, Persistence Engine, and External Integration Gateways.
+  - Ensures each component encapsulates a specific domain capability (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`) without tight coupling.
+- **Provided & Required Interfaces Selection**:
+  - **Provided Interfaces (Ball)**: Defined public APIs and services exposed by components to serve consumer requests.
+  - **Required Interfaces (Socket)**: Defined downstream dependencies, such as database connectors and third-party API contracts required for operation.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Identify Autonomous Modular Units**:
@@ -498,6 +674,15 @@ Architects the modular software organization for **Design of UML Diagrams for In
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for Inventory Management System**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
 ![Figure 3.19: UML Deployment Diagram](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_19_UML_deployment_diagram.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Hardware Nodes & Infrastructure Selection**:
+  - Derived execution nodes from physical hosting requirements: Client Devices (Smartphones/Desktops), Web & Application Servers, and Database Clusters.
+  - Isolates public-facing presentation endpoints from secure, internal database storage to comply with enterprise security standards.
+- **Artifact Allocation & Communication Protocols**:
+  - **Artifact Deployment**: Mapped executable binaries (`.jar`, `.war`, `.apk`, client web bundles) onto their corresponding execution environments.
+  - **Protocol Selection**: Assigned standard secure networking protocols (`<<HTTPS/TLS>>`, `<<TCP/IP>>`, `<<JDBC>>`) based on data sensitivity and network boundaries.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -523,6 +708,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 
 ![Figure 3.20: Case 1](../vector_images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_20_Case_1.svg)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Diagram Purpose & System Boundary**:
@@ -546,6 +740,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 
 ![Figure 3.21: Case 2](../images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_21_Case_2.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Diagram Purpose & System Boundary**:
@@ -568,6 +771,15 @@ Illustrates practical user interaction screens and administrative interfaces for
 Illustrates practical user interaction screens and administrative interfaces for **Design of UML Diagrams for Inventory Management System**, demonstrating how human actors interact with software controls, query forms, and reporting dashboards.
 
 ![Figure 3.22: Case 3](../vector_images/Chapter_03_Design_of_UML_Diagrams_for_Inventory_Man/Figure_3_22_Case_3.svg)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Architectural Units & Module Selection**:
+  - Decomposed **Inventory Management System** into structural modules and interface layers directly supporting the business requirements (`Login`, `Change Password`, `Add Goods`, `Remove Goods`, `Expired Goods`, `Place Order`).
+  - Identified data origins, processing checkpoints, and terminal delivery interfaces.
+- **Interface Pathways & Control Logic**:
+  - Established operational connection pathways linking human operator touchpoints to backend compute services and persistent data repositories.
+  - Defined explicit data contracts and protocol boundaries ensuring reliable inter-module communication.
 
 #### 🛠️ Step-by-Step Construction Guide
 

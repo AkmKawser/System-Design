@@ -65,18 +65,29 @@ Structural architectural schematic detailing operational flow and functional req
 
 ![Figure 1.1: Inception Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_1_Inception_phase.svg)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Methodology & Phase Focus Selection**:
+  - **Engineering Need**: Complex software systems require progressive risk reduction before heavy capital investment; `Inception Phase` is derived from the Unified Process (UP) lifecycle to address critical feasibility, architecture, or deployment risks.
+  - **Artifacts & Deliverables**: Formulates core engineering blueprints (Vision documents, Use Case models, Architecture Baselines, or Release Bundles) required to pass the lifecycle milestone gate.
+- **Role & Stakeholder Involvement**:
+  - **Business Analysts & Project Sponsors**: Own feasibility assessment, budget bounds, and business justification.
+  - **Software Architects & Engineers**: Establish architectural baselines, executable prototypes, and subsystem modularity.
+- **Structural Organization & Taxonomy**:
+  - Organizes modeling artifacts into **Structural Perspectives** (static code, database schemas, component wiring, hardware deployment) and **Behavioral Perspectives** (dynamic operational workflows, time-ordered sequence calls, entity state changes).
+
 #### 🛠️ Step-by-Step Construction Guide
 
-1. **Establish Diagram Purpose & System Boundary**:
-   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
-2. **Identify Primary System Entities & Structural Units**:
-   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
-3. **Map Control & Information Transfer Flows**:
-   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
-4. **Apply Architectural Rules & Guard Constraints**:
-   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
-5. **Validate Architectural Cohesion & Traceability**:
-   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
+1. **Define Lifecycle Stage & Milestone Goals**:
+   - Establish the primary engineering objective of `Inception Phase` within the Unified Process development framework.
+2. **Identify Required Input Artifacts & Stakeholder Goals**:
+   - Map business requirements, risk assessments, and architectural hypotheses into actionable engineering artifacts.
+3. **Model Process Workflows & Iteration Cycles**:
+   - Draw sequential workflow stages depicting the transition from requirements capture to implementation and verification.
+4. **Establish Review Gates & Exit Criteria**:
+   - Define concrete milestone checkpoints (e.g., Lifecycle Architecture Milestone, Initial Operational Capability) needed to authorize transition to the next phase.
+5. **Verify Methodological Consistency**:
+   - Ensure alignment between business feasibility criteria and technical software engineering artifacts.
 
 ### Figure 1.2: Elaboration Phase
 
@@ -88,18 +99,29 @@ Structural architectural schematic detailing operational flow and functional req
 
 ![Figure 1.2: Elaboration Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_2_Elaboration_phase.svg)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Methodology & Phase Focus Selection**:
+  - **Engineering Need**: Complex software systems require progressive risk reduction before heavy capital investment; `Elaboration Phase` is derived from the Unified Process (UP) lifecycle to address critical feasibility, architecture, or deployment risks.
+  - **Artifacts & Deliverables**: Formulates core engineering blueprints (Vision documents, Use Case models, Architecture Baselines, or Release Bundles) required to pass the lifecycle milestone gate.
+- **Role & Stakeholder Involvement**:
+  - **Business Analysts & Project Sponsors**: Own feasibility assessment, budget bounds, and business justification.
+  - **Software Architects & Engineers**: Establish architectural baselines, executable prototypes, and subsystem modularity.
+- **Structural Organization & Taxonomy**:
+  - Organizes modeling artifacts into **Structural Perspectives** (static code, database schemas, component wiring, hardware deployment) and **Behavioral Perspectives** (dynamic operational workflows, time-ordered sequence calls, entity state changes).
+
 #### 🛠️ Step-by-Step Construction Guide
 
-1. **Establish Diagram Purpose & System Boundary**:
-   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
-2. **Identify Primary System Entities & Structural Units**:
-   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
-3. **Map Control & Information Transfer Flows**:
-   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
-4. **Apply Architectural Rules & Guard Constraints**:
-   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
-5. **Validate Architectural Cohesion & Traceability**:
-   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
+1. **Define Lifecycle Stage & Milestone Goals**:
+   - Establish the primary engineering objective of `Elaboration Phase` within the Unified Process development framework.
+2. **Identify Required Input Artifacts & Stakeholder Goals**:
+   - Map business requirements, risk assessments, and architectural hypotheses into actionable engineering artifacts.
+3. **Model Process Workflows & Iteration Cycles**:
+   - Draw sequential workflow stages depicting the transition from requirements capture to implementation and verification.
+4. **Establish Review Gates & Exit Criteria**:
+   - Define concrete milestone checkpoints (e.g., Lifecycle Architecture Milestone, Initial Operational Capability) needed to authorize transition to the next phase.
+5. **Verify Methodological Consistency**:
+   - Ensure alignment between business feasibility criteria and technical software engineering artifacts.
 
 ### Figure 1.3: Construction Phase
 
@@ -111,18 +133,29 @@ Structural architectural schematic detailing operational flow and functional req
 
 ![Figure 1.3: Construction Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_3_Construction_phase.svg)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Methodology & Phase Focus Selection**:
+  - **Engineering Need**: Complex software systems require progressive risk reduction before heavy capital investment; `Construction Phase` is derived from the Unified Process (UP) lifecycle to address critical feasibility, architecture, or deployment risks.
+  - **Artifacts & Deliverables**: Formulates core engineering blueprints (Vision documents, Use Case models, Architecture Baselines, or Release Bundles) required to pass the lifecycle milestone gate.
+- **Role & Stakeholder Involvement**:
+  - **Business Analysts & Project Sponsors**: Own feasibility assessment, budget bounds, and business justification.
+  - **Software Architects & Engineers**: Establish architectural baselines, executable prototypes, and subsystem modularity.
+- **Structural Organization & Taxonomy**:
+  - Organizes modeling artifacts into **Structural Perspectives** (static code, database schemas, component wiring, hardware deployment) and **Behavioral Perspectives** (dynamic operational workflows, time-ordered sequence calls, entity state changes).
+
 #### 🛠️ Step-by-Step Construction Guide
 
-1. **Establish Diagram Purpose & System Boundary**:
-   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
-2. **Identify Primary System Entities & Structural Units**:
-   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
-3. **Map Control & Information Transfer Flows**:
-   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
-4. **Apply Architectural Rules & Guard Constraints**:
-   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
-5. **Validate Architectural Cohesion & Traceability**:
-   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
+1. **Define Lifecycle Stage & Milestone Goals**:
+   - Establish the primary engineering objective of `Construction Phase` within the Unified Process development framework.
+2. **Identify Required Input Artifacts & Stakeholder Goals**:
+   - Map business requirements, risk assessments, and architectural hypotheses into actionable engineering artifacts.
+3. **Model Process Workflows & Iteration Cycles**:
+   - Draw sequential workflow stages depicting the transition from requirements capture to implementation and verification.
+4. **Establish Review Gates & Exit Criteria**:
+   - Define concrete milestone checkpoints (e.g., Lifecycle Architecture Milestone, Initial Operational Capability) needed to authorize transition to the next phase.
+5. **Verify Methodological Consistency**:
+   - Ensure alignment between business feasibility criteria and technical software engineering artifacts.
 
 ### Figure 1.4: Transition Phase
 
@@ -134,18 +167,29 @@ Structural architectural schematic detailing operational flow and functional req
 
 ![Figure 1.4: Transition Phase](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_4_Transition_phase.svg)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Methodology & Phase Focus Selection**:
+  - **Engineering Need**: Complex software systems require progressive risk reduction before heavy capital investment; `Transition Phase` is derived from the Unified Process (UP) lifecycle to address critical feasibility, architecture, or deployment risks.
+  - **Artifacts & Deliverables**: Formulates core engineering blueprints (Vision documents, Use Case models, Architecture Baselines, or Release Bundles) required to pass the lifecycle milestone gate.
+- **Role & Stakeholder Involvement**:
+  - **Business Analysts & Project Sponsors**: Own feasibility assessment, budget bounds, and business justification.
+  - **Software Architects & Engineers**: Establish architectural baselines, executable prototypes, and subsystem modularity.
+- **Structural Organization & Taxonomy**:
+  - Organizes modeling artifacts into **Structural Perspectives** (static code, database schemas, component wiring, hardware deployment) and **Behavioral Perspectives** (dynamic operational workflows, time-ordered sequence calls, entity state changes).
+
 #### 🛠️ Step-by-Step Construction Guide
 
-1. **Establish Diagram Purpose & System Boundary**:
-   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
-2. **Identify Primary System Entities & Structural Units**:
-   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
-3. **Map Control & Information Transfer Flows**:
-   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
-4. **Apply Architectural Rules & Guard Constraints**:
-   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
-5. **Validate Architectural Cohesion & Traceability**:
-   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
+1. **Define Lifecycle Stage & Milestone Goals**:
+   - Establish the primary engineering objective of `Transition Phase` within the Unified Process development framework.
+2. **Identify Required Input Artifacts & Stakeholder Goals**:
+   - Map business requirements, risk assessments, and architectural hypotheses into actionable engineering artifacts.
+3. **Model Process Workflows & Iteration Cycles**:
+   - Draw sequential workflow stages depicting the transition from requirements capture to implementation and verification.
+4. **Establish Review Gates & Exit Criteria**:
+   - Define concrete milestone checkpoints (e.g., Lifecycle Architecture Milestone, Initial Operational Capability) needed to authorize transition to the next phase.
+5. **Verify Methodological Consistency**:
+   - Ensure alignment between business feasibility criteria and technical software engineering artifacts.
 
 ### Figure 1.5: Pyramid Of UML Diagrams
 
@@ -157,18 +201,29 @@ Structural architectural schematic detailing operational flow and functional req
 
 ![Figure 1.5: Pyramid Of UML Diagrams](../vector_images/Chapter_01_Introduction_to_UML_Diagrams_and_Its_Com/Figure_1_5_Pyramid_of_UML_diagrams.svg)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Methodology & Phase Focus Selection**:
+  - **Engineering Need**: Complex software systems require progressive risk reduction before heavy capital investment; `Pyramid Of UML Diagrams` is derived from the Unified Process (UP) lifecycle to address critical feasibility, architecture, or deployment risks.
+  - **Artifacts & Deliverables**: Formulates core engineering blueprints (Vision documents, Use Case models, Architecture Baselines, or Release Bundles) required to pass the lifecycle milestone gate.
+- **Role & Stakeholder Involvement**:
+  - **Business Analysts & Project Sponsors**: Own feasibility assessment, budget bounds, and business justification.
+  - **Software Architects & Engineers**: Establish architectural baselines, executable prototypes, and subsystem modularity.
+- **Structural Organization & Taxonomy**:
+  - Organizes modeling artifacts into **Structural Perspectives** (static code, database schemas, component wiring, hardware deployment) and **Behavioral Perspectives** (dynamic operational workflows, time-ordered sequence calls, entity state changes).
+
 #### 🛠️ Step-by-Step Construction Guide
 
-1. **Establish Diagram Purpose & System Boundary**:
-   - Define the architectural scope and structural boundaries for **Introduction to UML Diagrams and Its Components**, identifying all interacting internal and external modules.
-2. **Identify Primary System Entities & Structural Units**:
-   - Lay out primary subsystems, data structures, controllers, and workflow pipelines required to fulfill the illustrated architectural role.
-3. **Map Control & Information Transfer Flows**:
-   - Draw directional connection lines between entities, specifying whether the interaction is synchronous, event-driven, or batch-processed.
-4. **Apply Architectural Rules & Guard Constraints**:
-   - Label transitions, data contracts, and operational states with explicit conditions, protocol types, and operational invariants.
-5. **Validate Architectural Cohesion & Traceability**:
-   - Cross-reference the diagram against system functional specifications to confirm complete coverage, clear modular decoupling, and robust failure handling.
+1. **Define Lifecycle Stage & Milestone Goals**:
+   - Establish the primary engineering objective of `Pyramid Of UML Diagrams` within the Unified Process development framework.
+2. **Identify Required Input Artifacts & Stakeholder Goals**:
+   - Map business requirements, risk assessments, and architectural hypotheses into actionable engineering artifacts.
+3. **Model Process Workflows & Iteration Cycles**:
+   - Draw sequential workflow stages depicting the transition from requirements capture to implementation and verification.
+4. **Establish Review Gates & Exit Criteria**:
+   - Define concrete milestone checkpoints (e.g., Lifecycle Architecture Milestone, Initial Operational Capability) needed to authorize transition to the next phase.
+5. **Verify Methodological Consistency**:
+   - Ensure alignment between business feasibility criteria and technical software engineering artifacts.
 
 ### Visual Artifacts & Supplementary Schematics
 
