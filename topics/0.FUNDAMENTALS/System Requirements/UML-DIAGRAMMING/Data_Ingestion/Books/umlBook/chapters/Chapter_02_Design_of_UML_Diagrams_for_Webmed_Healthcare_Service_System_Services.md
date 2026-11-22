@@ -55,6 +55,15 @@ Represents data transformations and movement in **Design of UML Diagrams for Web
 
 ![Figure 2.2: Level 0 DFD](../vector_images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_2_Level_0_DFD.svg)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **External Entities & Process Selection**:
+  - **External Terminators**: Mapped `Patient / Caregiver` and `Doctor / Diagnostic Lab / Ambulance Service` as peripheral entities that input raw business data or receive processed reports.
+  - **Processes**: Formulated transformation bubbles representing algorithmic data processing steps (e.g., validation, calculation, update) derived from domain capabilities (`Drugs and Supplements`, `Facilities`, `Feedback`, `Finance`, `Health A–Z`, `Login`).
+- **Data Stores & Information Flows**:
+  - **Data Stores (`D1`, `D2`)**: Defined persistence boundaries for storing accounts, transaction logs, and operational catalog data.
+  - **Directional Flows**: Labeled directed arrows with substantive nouns (not verbs) representing data packets in transit.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Identify External Entities (Terminators)**:
@@ -78,6 +87,15 @@ Represents data transformations and movement in **Design of UML Diagrams for Web
 Represents data transformations and movement in **Design of UML Diagrams for Webmed Healthcare Service System Services**. Details data origins from external actors, functional processing steps, and persistence interactions with data stores without imposing strict control flow, providing an accessible high-level systems analysis perspective.
 
 ![Figure 2.3: Level 1 DFD](../vector_images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_3_Level_1_DFD.svg)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **External Entities & Process Selection**:
+  - **External Terminators**: Mapped `Patient / Caregiver` and `Doctor / Diagnostic Lab / Ambulance Service` as peripheral entities that input raw business data or receive processed reports.
+  - **Processes**: Formulated transformation bubbles representing algorithmic data processing steps (e.g., validation, calculation, update) derived from domain capabilities (`Drugs and Supplements`, `Facilities`, `Feedback`, `Finance`, `Health A–Z`, `Login`).
+- **Data Stores & Information Flows**:
+  - **Data Stores (`D1`, `D2`)**: Defined persistence boundaries for storing accounts, transaction logs, and operational catalog data.
+  - **Directional Flows**: Labeled directed arrows with substantive nouns (not verbs) representing data packets in transit.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -103,24 +121,37 @@ Illustrates the functional boundary of the **Design of UML Diagrams for Webmed H
 
 ![Figure 2.4: UML Usecase Diagram](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_4_UML_usecase_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Actors Selection (Why they are chosen)**:
+  - **Primary Actor (`Patient / Caregiver`)**: Derived from the problem statement as the core user who directly experiences the operational pain points and initiates service requests (e.g., self-service tasks, browsing, and transacting).
+  - **Secondary Supporting Actor (`Doctor / Diagnostic Lab / Ambulance Service`)**: Extracted as the external authority or service partner required to fulfill requests (e.g., financial settlements, identity verifications, or physical fulfillment).
+  - **Administrative Actor (`Hospital Admin / Pharmacist`)**: Required by governance rules to oversee security, manage backend configurations, and monitor operational compliance.
+- **Use Cases Selection (Why these functions exist)**:
+  - High-priority functional requirements (`Drugs and Supplements`, `Facilities`, `Feedback`, `Finance`, `Health A–Z`, `Login`) were converted into core use cases inside the system boundary to directly satisfy user business goals.
+  - Each use case corresponds directly to a distinct business capability needed to eliminate manual delays, paperwork, or operational bottlenecks.
+- **Relationships & Dependency Rationale**:
+  - **Associations**: Direct solid lines link `Patient / Caregiver` to primary operational use cases, establishing who has authorization to trigger each transaction.
+  - **`<<include>>` Dependencies**: Factored out mandatory sub-routines (such as `Login / Authenticate`, `Verify Eligibility`, and `Process Payment`) that must execute unconditionally during transactions to guarantee security and data consistency.
+  - **`<<extend>>` Dependencies**: Attached optional or conditional paths (such as `Apply Promotional Discount`, `Trigger Emergency Escalation`, or `Cancel Request`) that execute only when specific business guard conditions are satisfied.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Define System Boundary & Scope**:
    - Draw an outer rectangular boundary box representing **Webmed Healthcare Service System Services**.
    - Ensure external actors remain outside the boundary while all functional capabilities reside inside.
 2. **Identify Primary & Secondary External Actors**:
-   - Place human primary actors on the left side of the boundary to initiate business interactions.
-   - Position secondary actors (e.g., third-party payment gateways, external APIs, notifications, database systems) on the right side.
+   - Place `Patient / Caregiver` on the left side of the boundary to initiate business interactions.
+   - Position `Doctor / Diagnostic Lab / Ambulance Service` and `Hospital Admin / Pharmacist` on the right side as secondary or administrative actors.
 3. **Identify & Model Business Use Cases**:
-   - Draw horizontal ellipses inside the system boundary representing distinct user goals and business services.
-   - Name each usecase using an active verb-noun phrase (e.g., `Register Account`, `Process Payment`, `View Reports`).
+   - Draw horizontal ellipses inside the boundary representing key operational goals (`Drugs and Supplements`, `Facilities`, `Feedback`, `Finance`, `Health A–Z`, `Login`).
+   - Name each use case with an active verb-noun phrase.
 4. **Establish Relationships & Stereotypes (`<<include>>`, `<<extend>>`)**:
    - Connect actors to relevant use cases using solid, unarrowed association lines.
    - Use dashed arrows labeled `<<include>>` directed toward mandatory shared sub-routines (e.g., authentication, data validation).
-   - Use dashed arrows labeled `<<extend>>` directed from optional, conditional, or exceptional workflows toward base use cases.
+   - Use dashed arrows labeled `<<extend>>` directed from optional or conditional extension workflows toward base use cases.
 5. **Verify Completeness & Cross-Check Requirements**:
-   - Trace every functional requirement from the problem specification to ensure it is represented by at least one use case.
-   - Confirm there are no isolated, disconnected use cases or unassociated actors.
+   - Trace every functional requirement from the problem specification to confirm complete coverage without disconnected use cases.
 
 ### Figure 2.5: UML Class Diagram
 
@@ -131,6 +162,19 @@ Illustrates the functional boundary of the **Design of UML Diagrams for Webmed H
 Captures the static structural domain model for **Design of UML Diagrams for Webmed Healthcare Service System Services**. Defines primary entity classes, their private/public attributes, operational methods, and relationships. It enforces structural integrity through multiplicities, composition (strong lifecycle ownership of subsidiary records), aggregation, and inheritance hierarchies, forming the foundation for the relational database schema and domain entity classes.
 
 ![Figure 2.5: UML Class Diagram](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_5_UML_class_diagram.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Domain Classes & Classifiers Selection**:
+  - **Entity Classes**: Extracted key nouns from the domain requirements to form core data models holding system state (e.g., `Patient`, `Transaction`, `Record`, `Item/Service`).
+  - **Boundary & Controller Classes**: Introduced interface controllers (e.g., `ServiceController`, `SessionManager`) to decouple user presentation inputs from backend database persistence.
+- **Attributes & Methods Selection**:
+  - **Attributes**: Assigned explicit data types and access modifiers (private `-` for information hiding) to track business properties (e.g., unique IDs, statuses, monetary values, timestamps).
+  - **Operations**: Converted domain capabilities (`Drugs and Supplements`, `Facilities`, `Feedback`, `Finance`, `Health A–Z`, `Login`) into public (`+`) member methods equipped with validated parameters and deterministic return signatures.
+- **Relationships & Multiplicities Rationale**:
+  - **Composition (Solid Diamond)**: Applied to strong whole-part relationships where child entities cannot exist independently of their parent aggregate (e.g., an invoice strictly owns its line items).
+  - **Aggregation (Hollow Diamond)**: Applied to shared associations where components exist independently in the business domain.
+  - **Multiplicities**: Annotated with strict operational constraints (e.g., `1` user owns `0..*` transactions; each transaction maps to exactly `1` payment record) to maintain data integrity.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -145,11 +189,11 @@ Captures the static structural domain model for **Design of UML Diagrams for Web
    - Include parameter types and return signatures (e.g., `+ executeTransaction(amount: Float): Boolean`).
 4. **Establish Structural Relationships & Multiplicities**:
    - Connect related classes using solid association lines annotated with numerical multiplicities (e.g., `1`, `0..*`, `1..*`).
-   - Apply Composition (solid diamond) where parts cannot exist without the whole, and Aggregation (hollow diamond) for shared references.
+   - Apply Composition (solid diamond) for lifecycle-dependent objects, and Aggregation (hollow diamond) for shared references.
    - Model inheritance hierarchies using Generalization (solid line with closed hollow triangular arrowhead).
 5. **Validate Architecture & Reduce Coupling**:
    - Review class cohesion to verify single-responsibility principles across data access and business logic layers.
-   - Ensure abstract classes or interfaces isolate clients from implementation changes.
+   - Ensure interfaces isolate clients from direct database dependencies.
 
 ### Figure 2.6: UML Activity Diagram 1
 
@@ -160,6 +204,18 @@ Captures the static structural domain model for **Design of UML Diagrams for Web
 Details the step-by-step procedural execution flow for core operations in **Design of UML Diagrams for Webmed Healthcare Service System Services**. Begins at an initial state, navigates action states, evaluates guard conditions at decision diamonds, and models parallel execution branches using fork and join synchronizations before reaching the terminal state, ensuring business workflows are deterministic and free of race conditions.
 
 ![Figure 2.6: UML Activity Diagram 1](../vector_images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_6_UML_activity_diagram_1.svg)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Workflow Actions Selection**:
+  - Derived step-by-step action states directly from the chronological steps required to complete Drugs and Supplements.
+  - Modeled each human action (e.g., entering data, confirming selection) and automated system action (e.g., validating rules, computing totals, updating records) as discrete rounded rectangles.
+- **Swimlanes & Responsibility Partitioning**:
+  - Partitioned the workflow across swimlanes representing `Patient / Caregiver`, the Application Controller, and `Doctor / Diagnostic Lab / Ambulance Service`/Database.
+  - Visualizes exactly where operational responsibility transfers across architectural boundaries.
+- **Decisions, Guards & Concurrent Forks**:
+  - **Decision Diamonds**: Inserted wherever business logic requires verification (e.g., `[Valid Credentials]`, `[Stock Available]`, `[Payment Approved]`), ensuring explicit error handling paths.
+  - **Synchronization Bars (Fork/Join)**: Utilized where parallel background tasks (e.g., sending an alert while updating audit logs) occur simultaneously without blocking user execution.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -189,6 +245,18 @@ Details the step-by-step procedural execution flow for core operations in **Desi
 
 ![Figure 2.7: UML Activity Diagram 2](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_7_UML_activity_diagram_2.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Workflow Actions Selection**:
+  - Derived step-by-step action states directly from the chronological steps required to complete Drugs and Supplements.
+  - Modeled each human action (e.g., entering data, confirming selection) and automated system action (e.g., validating rules, computing totals, updating records) as discrete rounded rectangles.
+- **Swimlanes & Responsibility Partitioning**:
+  - Partitioned the workflow across swimlanes representing `Patient / Caregiver`, the Application Controller, and `Doctor / Diagnostic Lab / Ambulance Service`/Database.
+  - Visualizes exactly where operational responsibility transfers across architectural boundaries.
+- **Decisions, Guards & Concurrent Forks**:
+  - **Decision Diamonds**: Inserted wherever business logic requires verification (e.g., `[Valid Credentials]`, `[Stock Available]`, `[Payment Approved]`), ensuring explicit error handling paths.
+  - **Synchronization Bars (Fork/Join)**: Utilized where parallel background tasks (e.g., sending an alert while updating audit logs) occur simultaneously without blocking user execution.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Establish Initial Node & Execution Swimlanes**:
@@ -217,6 +285,15 @@ Models the complete lifecycle state transitions for central domain entities in *
 
 ![Figure 2.8: UML State Machine Diagram](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_8_UML_state_machine_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Entity & Lifecycle States Selection**:
+  - Selected the central transactional entity in **Webmed Healthcare Service System Services** whose lifecycle undergoes critical state changes.
+  - Derived distinct operational states (e.g., `Created`, `PendingApproval`, `Active / InProgress`, `Completed`, `Cancelled`) from domain business rules.
+- **State Transitions, Triggers & Guard Rules**:
+  - Identified the exact events (e.g., `submit()`, `verify()`, `processPayment()`, `cancel()`) that trigger transitions between states.
+  - Formulated transition syntax: `Event [GuardCondition] / ActionEffect` to prevent invalid state jumps and enforce business integrity.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Identify the Initial Pseudostate**:
@@ -226,7 +303,7 @@ Models the complete lifecycle state transitions for central domain entities in *
    - Add internal behavior compartments for `entry /`, `do /`, and `exit /` action routines where applicable.
 3. **Map State Transitions & Triggers**:
    - Connect states using directed transition arrows indicating valid status changes.
-   - Label transitions using the formal UML format: `TriggerEvent [GuardCondition] / ActionEffect` (e.g., `submitPayment [balanceSufficient] / generateReceipt()`).
+   - Label transitions using the formal UML format: `TriggerEvent [GuardCondition] / ActionEffect` (e.g., `confirmTransaction [balanceValid] / generateReceipt()`).
 4. **Model Superstates & Substates (Hierarchical States)**:
    - Group related substates within an enclosing composite state rectangle when multiple states share common exit or exception transitions.
 5. **Terminate at Final State Nodes**:
@@ -242,19 +319,31 @@ Traces the time-ordered message sequence between participating objects and servi
 
 ![Figure 2.9: UML Sequence Diagram](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_9_UML_sequence_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Participating Lifelines Selection**:
+  - Selected key participants along the communication path: `Patient / Caregiver` (initiator), Boundary Controller (API/UI), Business Service Layer, and the Persistent Database / `Doctor / Diagnostic Lab / Ambulance Service`.
+  - Ensures full horizontal separation between user interaction, application logic, and backend data storage.
+- **Message Invocations & Temporal Sequence**:
+  - Derived sequential message flows from the transaction lifecycle: initialization -> validation -> business calculation -> persistence -> return response.
+  - Uses solid arrows with filled heads for synchronous calls where the caller waits for a response before proceeding.
+- **Return Payloads & Conditional Fragments**:
+  - **Dashed Return Arrows**: Modeled data payloads and status confirmations returned to the caller to maintain state awareness.
+  - **`alt` Combined Fragments**: Partitioned if-else execution paths (e.g., success vs. validation error) with explicit boolean guard conditions.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Arrange Participating Lifelines Horizontally**:
-   - Position actors, boundary controllers, service managers, and persistence models horizontally across the top of the diagram.
+   - Position `Patient / Caregiver`, boundary controllers, service managers, and persistence models horizontally across the top.
    - Drop vertical dashed lines (lifelines) downward from each participant to represent the passage of time from top to bottom.
 2. **Overlay Activation Focus Bars**:
    - Place thin vertical rectangular boxes on lifelines to indicate active execution periods where an object is processing instructions.
 3. **Model Synchronous & Asynchronous Invocations**:
-   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateCredentials()`).
+   - Draw solid horizontal arrows with filled triangular arrowheads for synchronous method calls (e.g., `validateRequest()`).
    - Draw open arrowheads for asynchronous events or non-blocking notification dispatches.
 4. **Represent Return Messages & Reply Payloads**:
    - Draw dashed horizontal lines with open arrowheads pointing back to the calling lifeline to model return data or acknowledgment signals.
-   - Label return lines with explicit payload descriptions (e.g., `confirmationToken: String`).
+   - Label return lines with explicit payload descriptions (e.g., `statusConfirmation: Boolean`).
 5. **Structure Logic with Combined Interaction Fragments**:
    - Enclose conditional logic within an `alt` fragment box partitioned into alternative execution compartments with bracketed guard expressions.
    - Utilize `opt` frames for optional branches and `loop` frames for iterative business operations.
@@ -268,6 +357,15 @@ Traces the time-ordered message sequence between participating objects and servi
 Emphasizes the spatial and structural organization of collaborating instances in **Design of UML Diagrams for Webmed Healthcare Service System Services**. Shows object links overlaid with numbered messages (e.g., 1.0, 1.1, 2.0), illustrating both structural connectivity and invocation hierarchy, complementing the temporal perspective of the sequence diagram.
 
 ![Figure 2.10: UML Communication Diagram](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_10_UML_communication_diagram.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Collaborating Object Nodes Selection**:
+  - Selected runtime instances of the core architectural entities required to complete the business scenario in **Webmed Healthcare Service System Services**.
+  - Emphasizes the structural network of communicating instances rather than chronological time progression.
+- **Structural Links & Message Numbering**:
+  - **Association Links**: Created direct communication links between objects that possess references to each other.
+  - **Hierarchical Numbering (`1`, `1.1`, `2`)**: Formulated numbered message vectors along links to preserve the exact call-stack sequence and nested function invocations.
 
 #### 🛠️ Step-by-Step Construction Guide
 
@@ -294,6 +392,15 @@ Architects the modular software organization for **Design of UML Diagrams for We
 
 ![Figure 2.11: UML Component Diagram](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_11_UML_component_diagram.png)
 
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Modular Components Selection**:
+  - Decomposed **Webmed Healthcare Service System Services** into autonomous, reusable software units based on separation of concerns: User Interface Controller, Business Service Core, Persistence Engine, and External Integration Gateways.
+  - Ensures each component encapsulates a specific domain capability (`Drugs and Supplements`, `Facilities`, `Feedback`, `Finance`, `Health A–Z`, `Login`) without tight coupling.
+- **Provided & Required Interfaces Selection**:
+  - **Provided Interfaces (Ball)**: Defined public APIs and services exposed by components to serve consumer requests.
+  - **Required Interfaces (Socket)**: Defined downstream dependencies, such as database connectors and third-party API contracts required for operation.
+
 #### 🛠️ Step-by-Step Construction Guide
 
 1. **Identify Autonomous Modular Units**:
@@ -317,6 +424,15 @@ Architects the modular software organization for **Design of UML Diagrams for We
 Maps the physical runtime deployment architecture for **Design of UML Diagrams for Webmed Healthcare Service System Services**. Depicts client hardware devices (web browsers, mobile apps), application servers, network firewalls, and persistence database nodes. Communication paths and execution environments reflect production infrastructure, scalability considerations, and network security boundaries.
 
 ![Figure 2.12: UML Deployment Diagram](../images/Chapter_02_Design_of_UML_Diagrams_for_Webmed_Health/Figure_2_12_UML_deployment_diagram.png)
+
+#### 🔍 Component Derivation from Problem Requirements
+
+- **Hardware Nodes & Infrastructure Selection**:
+  - Derived execution nodes from physical hosting requirements: Client Devices (Smartphones/Desktops), Web & Application Servers, and Database Clusters.
+  - Isolates public-facing presentation endpoints from secure, internal database storage to comply with enterprise security standards.
+- **Artifact Allocation & Communication Protocols**:
+  - **Artifact Deployment**: Mapped executable binaries (`.jar`, `.war`, `.apk`, client web bundles) onto their corresponding execution environments.
+  - **Protocol Selection**: Assigned standard secure networking protocols (`<<HTTPS/TLS>>`, `<<TCP/IP>>`, `<<JDBC>>`) based on data sensitivity and network boundaries.
 
 #### 🛠️ Step-by-Step Construction Guide
 
