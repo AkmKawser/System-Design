@@ -1,0 +1,286 @@
+#!/usr/bin/env python3
+"""
+Generates animated_images/api-communication-decision-tree.svg
+Complies strictly with architecture/diagram_style_guide.md:
+- Standalone animated SVG
+- Width 680, viewBox="0 0 680 540"
+- Cohesive color palettes (Purple for questions, Teal for solutions, Gray for sync default)
+- Light/Dark theme adaptability via @media (prefers-color-scheme: dark)
+- CSS @keyframes animation with moving packet, active box highlights, and step captions
+- Reduced motion fallback
+"""
+
+from pathlib import Path
+
+SVG_CONTENT = '''<svg xmlns="http://www.w3.org/2000/svg" width="680" height="540" viewBox="0 0 680 540" role="img" aria-labelledby="title desc">
+<title id="title">API Communication Patterns Decision Tree</title>
+<desc id="desc">Decision framework mapping real-time, streaming, long-running, pub/sub, and synchronous query requirements to optimal API communication patterns.</desc>
+<style>
+text{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#444441}
+.th{font-size:13px;font-weight:500}
+.ts{font-size:11px;fill:#5F5E5A}
+.branch-lbl{font-size:11px;font-weight:600;fill:#534AB7}
+.branch-lbl-no{font-size:11px;font-weight:600;fill:#888780}
+
+.purple rect{fill:#EEEDFE;stroke:#534AB7;stroke-width:1}
+.purple .th{fill:#3C3489}.purple .ts{fill:#534AB7}
+
+.teal rect{fill:#E1F5EE;stroke:#0F6E56;stroke-width:1}
+.teal .th{fill:#085041}.teal .ts{fill:#0F6E56}
+
+.gray rect{fill:#F1EFE8;stroke:#5F5E5A;stroke-width:1}
+.gray .th{fill:#444441}.gray .ts{fill:#5F5E5A}
+
+.arr{stroke:#888780;stroke-width:1.5;fill:none}
+.head{stroke:#888780;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.dot{fill:#EF9F27;stroke:#854F0B;stroke-width:1}
+.dot-green{fill:#97C459;stroke:#3B6D11;stroke-width:1}
+
+.hl{opacity:0;fill:none;stroke:#EF9F27;stroke-width:2.5;rx:8}
+.cap{opacity:0}
+.cap.static{opacity:1}
+
+@media (prefers-color-scheme: dark){
+  text{fill:#D3D1C7}
+  .ts{fill:#B4B2A9}
+  .branch-lbl{fill:#AFA9EC}
+  .branch-lbl-no{fill:#9C9A92}
+  
+  .purple rect{fill:#3C3489;stroke:#AFA9EC}
+  .purple .th{fill:#CECBF6}.purple .ts{fill:#AFA9EC}
+  
+  .teal rect{fill:#085041;stroke:#5DCAA5}
+  .teal .th{fill:#9FE1CB}.teal .ts{fill:#5DCAA5}
+  
+  .gray rect{fill:#444441;stroke:#B4B2A9}
+  .gray .th{fill:#D3D1C7}.gray .ts{fill:#B4B2A9}
+  
+  .arr,.head{stroke:#9C9A92}
+  .dot{stroke:#FAC775}
+  .dot-green{stroke:#C0DD97}
+  .hl{stroke:#FAC775}
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .cap.static{display:none}
+  .pkt1{animation:p1 15s linear infinite}
+  .hl-q1{animation:hq1 15s linear infinite}
+  .hl-a1{animation:ha1 15s linear infinite}
+  .hl-q2{animation:hq2 15s linear infinite}
+  .hl-a2{animation:ha2 15s linear infinite}
+  .hl-q3{animation:hq3 15s linear infinite}
+  .hl-a3{animation:ha3 15s linear infinite}
+  .hl-q4{animation:hq4 15s linear infinite}
+  .hl-a4{animation:ha4 15s linear infinite}
+  .hl-a5{animation:ha5 15s linear infinite}
+  .c1{animation:kc1 15s linear infinite}
+  .c2{animation:kc2 15s linear infinite}
+  .c3{animation:kc3 15s linear infinite}
+  .c4{animation:kc4 15s linear infinite}
+  .c5{animation:kc5 15s linear infinite}
+}
+
+/* 15s sequence: Step 1 (0-18%), Step 2 (18-38%), Step 3 (38-58%), Step 4 (58-78%), Step 5 (78-100%) */
+@keyframes p1{
+  0%{transform:translate(36px, 50px);opacity:1}
+  8%{transform:translate(200px, 50px);opacity:1}
+  15%{transform:translate(420px, 50px);opacity:1}
+  18%{transform:translate(420px, 50px);opacity:0}
+  
+  19%{transform:translate(200px, 74px);opacity:0}
+  20%{transform:translate(200px, 74px);opacity:1}
+  26%{transform:translate(200px, 140px);opacity:1}
+  34%{transform:translate(420px, 140px);opacity:1}
+  38%{transform:translate(420px, 140px);opacity:0}
+  
+  39%{transform:translate(200px, 164px);opacity:0}
+  40%{transform:translate(200px, 164px);opacity:1}
+  46%{transform:translate(200px, 230px);opacity:1}
+  54%{transform:translate(420px, 220px);opacity:1}
+  58%{transform:translate(420px, 220px);opacity:0}
+  
+  59%{transform:translate(200px, 254px);opacity:0}
+  60%{transform:translate(200px, 254px);opacity:1}
+  66%{transform:translate(200px, 335px);opacity:1}
+  74%{transform:translate(420px, 335px);opacity:1}
+  78%{transform:translate(420px, 335px);opacity:0}
+  
+  79%{transform:translate(200px, 359px);opacity:0}
+  80%{transform:translate(200px, 359px);opacity:1}
+  88%,96%{transform:translate(200px, 425px);opacity:1}
+  100%{transform:translate(200px, 425px);opacity:0}
+}
+
+@keyframes hq1{0%,14%{opacity:1}18%,100%{opacity:0}}
+@keyframes ha1{8%,17%{opacity:1}18%,100%{opacity:0}}
+
+@keyframes hq2{0%,18%{opacity:0}19%,34%{opacity:1}38%,100%{opacity:0}}
+@keyframes ha2{0%,26%{opacity:0}27%,37%{opacity:1}38%,100%{opacity:0}}
+
+@keyframes hq3{0%,38%{opacity:0}39%,54%{opacity:1}58%,100%{opacity:0}}
+@keyframes ha3{0%,46%{opacity:0}47%,57%{opacity:1}58%,100%{opacity:0}}
+
+@keyframes hq4{0%,58%{opacity:0}59%,74%{opacity:1}78%,100%{opacity:0}}
+@keyframes ha4{0%,66%{opacity:0}67%,77%{opacity:1}78%,100%{opacity:0}}
+
+@keyframes ha5{0%,78%{opacity:0}79%,98%{opacity:1}100%{opacity:0}}
+
+@keyframes kc1{0%,16%{opacity:1}18%,100%{opacity:0}}
+@keyframes kc2{0%,18%{opacity:0}20%,36%{opacity:1}38%,100%{opacity:0}}
+@keyframes kc3{0%,38%{opacity:0}40%,56%{opacity:1}58%,100%{opacity:0}}
+@keyframes kc4{0%,58%{opacity:0}60%,76%{opacity:1}78%,100%{opacity:0}}
+@keyframes kc5{0%,78%{opacity:0}80%,98%{opacity:1}100%{opacity:0}}
+</style>
+
+<!-- Question 1: Bidirectional -->
+<g class="purple">
+  <rect x="40" y="26" width="320" height="48" rx="8"/>
+  <text class="th" x="200" y="44" text-anchor="middle">Need bidirectional, low-latency interaction?</text>
+  <text class="ts" x="200" y="61" text-anchor="middle">Full-duplex frame streaming, gaming, chat</text>
+  <rect class="hl hl-q1" x="40" y="26" width="320" height="48"/>
+</g>
+
+<!-- Yes Arrow to WebSockets -->
+<path class="arr" d="M 360 50 L 420 50"/>
+<path class="head" d="M 414 45 L 420 50 L 414 55"/>
+<text class="branch-lbl" x="390" y="42" text-anchor="middle">Yes</text>
+
+<!-- Solution 1: WebSockets -->
+<g class="teal">
+  <rect x="424" y="26" width="220" height="48" rx="8"/>
+  <text class="th" x="534" y="44" text-anchor="middle">WebSockets / gRPC Bidi</text>
+  <text class="ts" x="534" y="61" text-anchor="middle">RFC 6455 / HTTP/2 Bidirectional</text>
+  <rect class="hl hl-a1" x="424" y="26" width="220" height="48"/>
+</g>
+
+<!-- Down Arrow (No) Q1 to Q2 -->
+<path class="arr" d="M 200 74 L 200 114"/>
+<path class="head" d="M 195 108 L 200 114 L 205 108"/>
+<text class="branch-lbl-no" x="214" y="96">No</text>
+
+<!-- Question 2: Server-Push Stream -->
+<g class="purple">
+  <rect x="40" y="116" width="320" height="48" rx="8"/>
+  <text class="th" x="200" y="134" text-anchor="middle">Only need real-time stream of server updates?</text>
+  <text class="ts" x="200" y="151" text-anchor="middle">Unidirectional text/event or binary stream</text>
+  <rect class="hl hl-q2" x="40" y="116" width="320" height="48"/>
+</g>
+
+<!-- Yes Arrow to SSE -->
+<path class="arr" d="M 360 140 L 420 140"/>
+<path class="head" d="M 414 135 L 420 140 L 414 145"/>
+<text class="branch-lbl" x="390" y="132" text-anchor="middle">Yes</text>
+
+<!-- Solution 2: SSE / gRPC Server -->
+<g class="teal">
+  <rect x="424" y="116" width="220" height="48" rx="8"/>
+  <text class="th" x="534" y="134" text-anchor="middle">Server-Sent Events (SSE)</text>
+  <text class="ts" x="534" y="151" text-anchor="middle">text/event-stream / gRPC Server Stream</text>
+  <rect class="hl hl-a2" x="424" y="116" width="220" height="48"/>
+</g>
+
+<!-- Down Arrow (No) Q2 to Q3 -->
+<path class="arr" d="M 200 164 L 200 204"/>
+<path class="head" d="M 195 198 L 200 204 L 205 198"/>
+<text class="branch-lbl-no" x="214" y="186">No</text>
+
+<!-- Question 3: Long-running Operation -->
+<g class="purple">
+  <rect x="40" y="206" width="320" height="48" rx="8"/>
+  <text class="th" x="200" y="224" text-anchor="middle">Is operation long-running (minutes to hours)?</text>
+  <text class="ts" x="200" y="241" text-anchor="middle">Video render, export, ML inference, billing</text>
+  <rect class="hl hl-q3" x="40" y="206" width="320" height="48"/>
+</g>
+
+<!-- Split Arrow to Internal / 3rd Party -->
+<path class="arr" d="M 360 230 L 390 230 L 390 216 L 420 216"/>
+<path class="head" d="M 414 211 L 420 216 L 414 221"/>
+<text class="branch-lbl" x="390" y="204" text-anchor="middle">Internal</text>
+
+<path class="arr" d="M 390 230 L 390 254 L 420 254"/>
+<path class="head" d="M 414 249 L 420 254 L 414 259"/>
+<text class="branch-lbl" x="390" y="270" text-anchor="middle">3rd-Party</text>
+
+<!-- Solution 3a: Async 202 -->
+<g class="teal">
+  <rect x="424" y="200" width="220" height="32" rx="6"/>
+  <text class="th" x="534" y="221" text-anchor="middle" font-size="12px">Async Request-Reply (202 + Polling)</text>
+  <rect class="hl hl-a3" x="424" y="200" width="220" height="32"/>
+</g>
+
+<!-- Solution 3b: Webhooks -->
+<g class="teal">
+  <rect x="424" y="238" width="220" height="32" rx="6"/>
+  <text class="th" x="534" y="259" text-anchor="middle" font-size="12px">Webhooks (Event Callback)</text>
+  <rect class="hl hl-a3" x="424" y="238" width="220" height="32"/>
+</g>
+
+<!-- Down Arrow (No) Q3 to Q4 -->
+<path class="arr" d="M 200 254 L 200 304"/>
+<path class="head" d="M 195 298 L 200 304 L 205 298"/>
+<text class="branch-lbl-no" x="214" y="282">No</text>
+
+<!-- Question 4: Pub/Sub Broadcast -->
+<g class="purple">
+  <rect x="40" y="306" width="320" height="48" rx="8"/>
+  <text class="th" x="200" y="324" text-anchor="middle">Multiple services react to state changes?</text>
+  <text class="ts" x="200" y="341" text-anchor="middle">Decoupled consumers, async notifications</text>
+  <rect class="hl hl-q4" x="40" y="306" width="320" height="48"/>
+</g>
+
+<!-- Yes Arrow to Pub/Sub -->
+<path class="arr" d="M 360 330 L 420 330"/>
+<path class="head" d="M 414 325 L 420 330 L 414 335"/>
+<text class="branch-lbl" x="390" y="322" text-anchor="middle">Yes</text>
+
+<!-- Solution 4: Pub/Sub -->
+<g class="teal">
+  <rect x="424" y="306" width="220" height="48" rx="8"/>
+  <text class="th" x="534" y="324" text-anchor="middle">Pub/Sub Event-Driven</text>
+  <text class="ts" x="534" y="341" text-anchor="middle">Apache Kafka / AWS SNS+SQS / RabbitMQ</text>
+  <rect class="hl hl-a4" x="424" y="306" width="220" height="48"/>
+</g>
+
+<!-- Down Arrow (No) Q4 to Standard Sync Default -->
+<path class="arr" d="M 200 354 L 200 404"/>
+<path class="head" d="M 195 398 L 200 404 L 205 398"/>
+<text class="branch-lbl-no" x="214" y="382">No (Default)</text>
+
+<!-- Solution 5: Standard Synchronous -->
+<g class="gray">
+  <rect x="40" y="406" width="320" height="52" rx="8"/>
+  <text class="th" x="200" y="426" text-anchor="middle">Standard Synchronous Data Query/Mutation</text>
+  <text class="ts" x="200" y="444" text-anchor="middle">RESTful APIs / gRPC Unary / GraphQL</text>
+  <rect class="hl hl-a5" x="40" y="406" width="320" height="52"/>
+</g>
+
+<!-- Moving Packet Dot -->
+<circle class="dot pkt1" cx="0" cy="0" r="5"/>
+
+<!-- Dynamic Animated Captions -->
+<g class="cap c1">
+  <text class="th" x="340" y="500" text-anchor="middle">Step 1: Check bidirectional low-latency needs (Chat, gaming) → WebSockets / gRPC Bidi</text>
+</g>
+<g class="cap c2">
+  <text class="th" x="340" y="500" text-anchor="middle">Step 2: Check server stream updates (Live metrics, LLM token streams) → Server-Sent Events (SSE)</text>
+</g>
+<g class="cap c3">
+  <text class="th" x="340" y="500" text-anchor="middle">Step 3: Check long-running workloads → Async Request-Reply (202 Polling) or Webhooks</text>
+</g>
+<g class="cap c4">
+  <text class="th" x="340" y="500" text-anchor="middle">Step 4: Check fan-out to multiple downstream consumers → Pub/Sub Event-Driven (Kafka / SNS+SQS)</text>
+</g>
+<g class="cap c5">
+  <text class="th" x="340" y="500" text-anchor="middle">Step 5: Default transactional commands &amp; CRUD queries → REST / gRPC Unary / GraphQL</text>
+</g>
+
+<g class="cap static">
+  <text class="th" x="340" y="500" text-anchor="middle">Architectural Decision Tree: Map requirements to optimal communication protocols.</text>
+</g>
+
+</svg>
+'''
+
+out_path = Path("animated_images/api-communication-decision-tree.svg")
+out_path.write_text(SVG_CONTENT.strip() + "\n", encoding="utf-8")
+print(f"Generated {out_path} ({len(SVG_CONTENT)} bytes)")

@@ -343,6 +343,33 @@ stateDiagram-v2
 
 ### 9.1 High-Level Pattern Selection Tree
 
+![API Communication Patterns Decision Tree](../../../../../animated_images/api-communication-decision-tree.svg)
+
+```mermaid
+flowchart TD
+    Q1{"Need bidirectional, low-latency interaction?"}
+    
+    Q1 -- "Yes" --> A1["WebSockets or gRPC Bidirectional Streaming"]
+    Q1 -- "No" --> Q2{"Client only needs real-time stream of updates from server?"}
+    
+    Q2 -- "Yes" --> A2["Server-Sent Events (SSE) / gRPC Server Streaming"]
+    Q2 -- "No" --> Q3{"Is the operation long-running (minutes to hours)?"}
+    
+    Q3 -- "Yes: Internal Service" --> A3a["Asynchronous Request-Reply (202 Accepted + Polling)"]
+    Q3 -- "Yes: Third-Party Integration" --> A3b["Webhooks (Event Callback)"]
+    Q3 -- "No" --> Q4{"Do multiple services need to react to state changes?"}
+    
+    Q4 -- "Yes" --> A4["Pub/Sub Event-Driven (Kafka / SNS+SQS)"]
+    Q4 -- "No" --> A5["Standard Synchronous: REST / gRPC Unary / GraphQL"]
+
+    classDef question fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef answer fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    classDef sync fill:#F1EFE8,stroke:#5F5E5A,stroke-width:1.5px,color:#444441
+    class Q1,Q2,Q3,Q4 question
+    class A1,A2,A3a,A3b,A4 answer
+    class A5 sync
+```
+
 ```text
 Do you need bidirectional, low-latency interaction?
   ├── Yes ──> WebSockets (or gRPC Bidirectional Streaming)

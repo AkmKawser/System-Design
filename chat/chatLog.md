@@ -2068,3 +2068,26 @@ This file records the chronological session log of all user requests, architectu
 - **Agent Response**:
   - Confirmed addition of the decision tree to Section 9 of the API Communication Patterns manual with direct links and rendered overview.
 
+---
+
+## 📅 Session 91: Visual Decision Tree Diagrams (Mermaid + Canonical Animated SVG)
+
+- **Timestamp**: 2026-11-23
+- **User Instruction**:
+  > *"make the tree using diagramm"*
+- **Agentic Log**:
+  - Converted the ASCII API communication pattern decision tree into dual diagram visual formats:
+    1. **Interactive Mermaid Flowchart**: Integrated directly into [`topics/0.FUNDAMENTALS/API Architecture and Design/output/query_API_Architecture_and_Design/001_api_communication_patterns_taxonomy_and_architectural_mechanics.md`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/query_API_Architecture_and_Design/001_api_communication_patterns_taxonomy_and_architectural_mechanics.md#91-high-level-pattern-selection-tree) under Section 9.1 with styled decision diamonds (`#EEEDFE`), leaf solution pills (`#E1F5EE`), and default synchronous command boxes (`#F1EFE8`).
+    2. **Canonical Claude Animated Vector SVG**: Engineered [`animated_images/api-communication-decision-tree.svg`](../animated_images/api-communication-decision-tree.svg) adhering strictly to [`architecture/diagram_style_guide.md`](../architecture/diagram_style_guide.md):
+       - ViewBox `0 0 680 540`, accessible `<title>` and `<desc>`, `role="img"`.
+       - Full Light/Dark mode adaptability via `@media (prefers-color-scheme: dark)`.
+       - Animated traveling packet indicator (`@keyframes p1`) navigating question nodes and branch paths across a 15s synchronized cycle.
+       - Synchronized step captions (`c1` through `c5`) highlighting architectural considerations for each protocol family.
+       - Static fallback for reduced motion.
+  - Validated XML well-formedness of the SVG using Python `xml.etree.ElementTree`.
+  - Audited full repository markdown rendering via `python engine/scripts/audit_rendering.py --all`: **100% pass across all 210 markdown files with 0 errors**.
+  - Synchronized repository to GitHub remote `origin/main` per Universal Rule 3.
+- **Agent Response**:
+  - Presented the interactive Mermaid diagram, embedded animated vector SVG, and direct clickable links.
+
+
