@@ -2005,7 +2005,7 @@ This file records the chronological session log of all user requests, architectu
 - **Agentic Log**:
   - Identified 72 figures across the book with sub-optimal source resolutions or squished aspect ratios (e.g. 712x2400 squished sequence scans, 1640x118 compressed collaboration lines, low-res state charts, and fuzzy screen mockups).
   - Engineered [`engine/scripts/remake_canonical_diagrams.py`](../engine/scripts/remake_canonical_diagrams.py) generating 75 crisp, theme-adaptive Standalone Vector SVGs adhering strictly to [`architecture/diagram_style_guide.md`](../architecture/diagram_style_guide.md):
-    1. **Animated Sequence Diagrams (10 figures)**: Implemented Canonical Claude animated sequence diagrams across Chapters 11, 13, 14, 20, 21, 30, 32, 36, and 38. Adheres strictly to layout invariants (120px participant boxes at $x = 160 + 140 \cdot i$, dashed vertical lifelines, 40px message spacing, solid 1.5px request arrows, dashed 1.5px response arrows, centered 12px labels, continuous moving amber dot via `@keyframes dotSequence`, arrow step fades via `@keyframes msgFadeN`, and dynamic synchronized captions via `@keyframes capFadeN`, with static captions for reduced motion).
+    1. **Animated Sequence Diagrams (10 figures)**: Implemented Canonical Claude animated sequence diagrams across Chapters 11, 13, 14, 20, 21, 30, 32, 36, and 38. Adheres strictly to layout invariants (120px participant boxes at `x = 160 + 140 * i`, dashed vertical lifelines, 40px message spacing, solid 1.5px request arrows, dashed 1.5px response arrows, centered 12px labels, continuous moving amber dot via `@keyframes dotSequence`, arrow step fades via `@keyframes msgFadeN`, and dynamic synchronized captions via `@keyframes capFadeN`, with static captions for reduced motion).
     2. **Activity Diagrams (16 figures)**: Remade squished workflows across Chapters 2, 4, 13, 30, 34, 36, and 40 into clean procedural flows with initial states, rounded action pills, decision diamonds (`Valid?` with `[Yes]` and `[Retry]` branches), and final bullseye terminals.
     3. **Collaboration / Communication Diagrams (11 figures)**: Remade unreadable flows in Chapters 4, 5, 13, 15, 24, 26, 27, 31, 32, and 40 into clean structural object diagrams with underlined `:Instance` classifiers, association links, and numbered call sequence indicators (`1.0: Request() →`, `2.0: Match() →`, etc.).
     4. **State Machine / Statechart Diagrams (7 figures)**: Remade lifecycle diagrams in Chapters 4, 10, 24, 30, and 39 with dual-compartment state boxes (state name + entry/do/exit actions) and event-triggered transitions (`[guard] / action`).
@@ -2020,3 +2020,29 @@ This file records the chronological session log of all user requests, architectu
   - Synchronized all assets to GitHub `origin/main` per Rule 3.
 - **Agent Response**:
   - Detailed the remaking of all 75 low-quality source diagrams into Canonical Claude vector SVGs with full theme adaptability and animated sequence diagrams.
+
+---
+
+## 📅 Session 89: Ingestion of API Communication Patterns Query Manual
+
+- **Timestamp**: 2026-11-23
+- **User Instruction**:
+  > *"keep this repose in the query folder of api architecture and design folder"*
+- **Agentic Log**:
+  - Authored comprehensive architectural query manual [`001_api_communication_patterns_taxonomy_and_architectural_mechanics.md`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/query_API_Architecture_and_Design/001_api_communication_patterns_taxonomy_and_architectural_mechanics.md) in `topics/0.FUNDAMENTALS/API Architecture and Design/output/query_API_Architecture_and_Design/`.
+  - Structured the guide into 10 comprehensive architectural sections:
+    1. **Taxonomy & Architecture Map**: Global visual taxonomy spanning 7 communication pattern families.
+    2. **Request–Reply & Invocational Patterns**: Synchronous Request-Reply, Asynchronous Request-Reply (202 Accepted + Location status polling), Fire-and-Forget, and Webhooks (reverse API event callbacks with HMAC-SHA256 signature verification).
+    3. **Real-Time & Push Models**: Comparative protocol matrix and protocol packet walkthroughs for Short Polling, Long Polling, Server-Sent Events (SSE / `text/event-stream`), WebSockets (RFC 6455 full-duplex framing), and GraphQL Subscriptions.
+    4. **Binary & Chunked Streaming**: HTTP/1.1 Chunked Transfer Encoding and gRPC Streaming topologies (Unary, Server Streaming, Client Streaming, and Bidirectional Streaming over HTTP/2).
+    5. **Event-Driven & Decoupled Topologies**: Publish-Subscribe (Pub/Sub), Competing Consumers work queues, Event-Carried State Transfer (ECST), and the Transactional Outbox Pattern with Change Data Capture (CDC / Debezium).
+    6. **Architectural Gateway & Composition**: API Gateway, Backend-for-Frontend (BFF), API Aggregator / Composition, and Scatter-Gather (Fan-out/Fan-in).
+    7. **Transport & Connection Optimization**: TCP/TLS connection pooling (handshake latency amortizations), HTTP/2 & HTTP/3 multiplexing mechanics (head-of-line blocking elimination).
+    8. **Resiliency & Traffic Shaping**: Idempotent retries with exponential backoff and randomized jitter, Circuit Breaker state machine (Closed, Open, Half-Open), and Token Bucket / Leaky Bucket rate limiting.
+    9. **Architectural Decision Matrix**: Step-by-step decision flow tree for selecting the optimal communication pattern based on interaction requirements.
+    10. **Repository Cross-References**: Connected with ingested course sources, HLD messaging topologies, and networking transport modules.
+  - Updated Master Navigation Catalog [`index.md`](../index.md) and Syllabus Curriculum [`outline.md`](../outline.md).
+  - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 210 markdown files with 0 errors**.
+  - Synchronized changes to GitHub remote `origin/main` per Universal Rule 3.
+- **Agent Response**:
+  - Confirmed creation and indexing of the API Communication Patterns query manual with direct links and overview.
