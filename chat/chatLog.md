@@ -2046,3 +2046,25 @@ This file records the chronological session log of all user requests, architectu
   - Synchronized changes to GitHub remote `origin/main` per Universal Rule 3.
 - **Agent Response**:
   - Confirmed creation and indexing of the API Communication Patterns query manual with direct links and overview.
+
+---
+
+## 📅 Session 90: Integrated Quick-Reference Selection Tree into API Communication Patterns Manual
+
+- **Timestamp**: 2026-11-23
+- **User Instruction**:
+  > *"@[code_block] add this also"*
+- **Agentic Log**:
+  - Enhanced [`topics/0.FUNDAMENTALS/API Architecture and Design/output/query_API_Architecture_and_Design/001_api_communication_patterns_taxonomy_and_architectural_mechanics.md`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/query_API_Architecture_and_Design/001_api_communication_patterns_taxonomy_and_architectural_mechanics.md):
+    - Added the concise pattern selection decision tree as Section 9.1:
+      - Bidirectional low-latency (WebSockets / gRPC Bidirectional Streaming)
+      - Server real-time streaming updates (SSE / gRPC Server Streaming)
+      - Long-running operations (202 Accepted + Polling vs. Webhooks)
+      - Multi-consumer state reactions (Pub/Sub Event-Driven Kafka / SNS+SQS)
+      - Synchronous query/mutation (REST / gRPC Unary / GraphQL)
+    - Preserved deep architectural decision flowchart under Section 9.2.
+  - Validated rendering integrity via `python engine/scripts/audit_rendering.py --all`: **100% pass across all 210 markdown files with 0 errors**.
+  - Synchronized repository to GitHub remote `origin/main` per Universal Rule 3.
+- **Agent Response**:
+  - Confirmed addition of the decision tree to Section 9 of the API Communication Patterns manual with direct links and rendered overview.
+

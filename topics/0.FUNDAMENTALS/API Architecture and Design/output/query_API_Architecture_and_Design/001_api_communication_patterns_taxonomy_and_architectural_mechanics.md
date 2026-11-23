@@ -339,7 +339,26 @@ stateDiagram-v2
 
 ---
 
-## 9. Architectural Decision Matrix
+## 9. Architectural Decision Matrices & Selection Trees
+
+### 9.1 High-Level Pattern Selection Tree
+
+```text
+Do you need bidirectional, low-latency interaction?
+  ├── Yes ──> WebSockets (or gRPC Bidirectional Streaming)
+  └── No
+       ├── Does the client only need a real-time stream of updates from server?
+       │     └── Yes ──> Server-Sent Events (SSE) / gRPC Server Streaming
+       ├── Is the operation long-running (minutes to hours)?
+       │     ├── Internal service ──> Asynchronous Request-Reply (202 Accepted + Polling)
+       │     └── Third-party integration ──> Webhooks (Event Callback)
+       ├── Do multiple services need to react to state changes?
+       │     └── Yes ──> Pub/Sub Event-Driven (Kafka / SNS+SQS)
+       └── Standard synchronous data query/mutation
+             └── Yes ──> REST / gRPC Unary / GraphQL
+```
+
+### 9.2 Deep Architectural Decision Flowchart
 
 ```text
 Do you require real-time, low-latency client interaction?
