@@ -2414,3 +2414,25 @@ This file records the chronological session log of all user requests, architectu
   - Automatically staged, committed, and pushed changes to remote `origin/main` per Universal Rule 3.
 - **Agent Response**:
   - Confirmed the creation of `topics/outline/outline.md`, provided direct clickable links, and presented an architectural summary of the comprehensive outline.
+
+
+---
+
+## 📅 Session 105: Conceptual Alignment: System Design vs. Distributed Systems Scope
+
+- **Timestamp**: 2026-11-24
+- **User Instruction**:
+  > *"is system design mostly about distributed systems>"*
+- **Agentic Log**:
+  - Analyzed the foundational taxonomy and scope of System Design across industry, academia, and Big Tech:
+    1. **Deconstructed the Big Tech Interview Distortion Effect**: Clarified why Big Tech hiring rounds heavily emphasize High-Level Distributed Systems (scaling to billions of requests across data centers) while real-world engineering requires equal mastery of in-process architecture, memory management, and data structures.
+    2. **Mapped System Design across the 3 Architectural Tiers**:
+       - **Single-Node / In-Process System Design (`1.LLD`)**: Designing systems within one physical machine/process (embedded storage engines like RocksDB/SQLite, OS kernels, browser rendering engines, LMAX Disruptor lock-free matching engines, CPU cache-locality, and concurrency primitives).
+       - **System Foundations (`0.FUNDAMENTALS`)**: Requirements engineering, API protocols, OS sockets, language execution models (JVM, Go, Rust), and software architecture styles/patterns.
+       - **Multi-Node Distributed Systems (`2.HLD`)**: Invoked only when a single machine's physical limits (CPU, RAM, disk, geographic latency, or high-availability failover) are exceeded, introducing the complexities of consensus (Raft/Paxos), CAP/PACELC trade-offs, network partitions, and sharding.
+    3. **Established the Distributed Trade-off Invariant**: Emphasized that distributing a system is an operational and complexity trade-off (costing a 1,000,000x latency penalty from nanosecond memory calls to millisecond network RPCs), not a default goal.
+  - Recorded session activity in [`chat/chatLog.md`](chatLog.md).
+  - Executed rendering audit via `engine/scripts/audit_rendering.py`: 100% pass across all modified files with 0 errors.
+  - Automatically staged, committed, and pushed changes to remote `origin/main` per Universal Rule 3.
+- **Agent Response**:
+  - Delivered an insightful, authoritative architectural breakdown explaining the full spectrum of System Design, demonstrating why distributed systems are merely one pillar of the discipline, and mapping it to the repository's 3-tier architecture.
