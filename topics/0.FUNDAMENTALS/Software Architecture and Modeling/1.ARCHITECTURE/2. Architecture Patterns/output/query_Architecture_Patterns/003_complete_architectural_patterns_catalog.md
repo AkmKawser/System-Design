@@ -1,10 +1,10 @@
-# 2. Architecture Patterns: Comprehensive Theory, Mechanics, and Architectural Diagrams
+# 2. Architecture Patterns: Comprehensive Theory, Mechanics, and Graphical Diagrams
 
 > **Canonical Academic & Industry References**:
 > - Richards, Mark, and Neal Ford. *Fundamentals of Software Architecture: A Modern Engineering Approach*. O'Reilly Media, 2020.
 > - Richards, Mark, Neal Ford, and Raju Gandhi. *Software Architecture: Patterns, Antipatterns, and Pitfalls*. O'Reilly Media, 2024.
 > - Fowler, Martin. *Patterns of Enterprise Application Architecture*. Addison-Wesley, 2002.
-> - Buschmann, Frank, et al. *Pattern-Oriented Software Architecture (POSA)*, Volumes 1–4. Wiley.
+> - Buschmann, Frank, et al. *Pattern-Oriented Software Architecture (POSA)*, Volumes 1-4. Wiley.
 > - Hohpe, Gregor, and Bobby Woolf. *Enterprise Integration Patterns*. Addison-Wesley.
 
 ---
@@ -13,26 +13,27 @@
 
 Before analyzing individual patterns, architects must distinguish the three structural tiers of software engineering:
 
-```text
-+-------------------------------------------------------------------------------+
-| 1. ARCHITECTURAL STYLE (Macro-Level / System Topology)                        |
-|    - Defines physical deployment units, runtime boundaries, enterprise shape. |
-|    - Examples: Monolithic Layered, Modular Monolith, Microservices, EDA.     |
-+-------------------------------------------------------------------------------+
-                                      |
-                                      v Adopts & Contains
-+-------------------------------------------------------------------------------+
-| 2. ARCHITECTURAL PATTERN (Meso-Level / Subsystem & Cross-Service Solutions)   |
-|    - Concrete structural templates solving recurring state, flow & data traps.|
-|    - Examples: MVC, CQRS, Saga, Transactional Outbox, BFF, Circuit Breaker.   |
-+-------------------------------------------------------------------------------+
-                                      |
-                                      v Implemented In Code By
-+-------------------------------------------------------------------------------+
-| 3. DESIGN PATTERN (Micro-Level / In-Memory Object & Class Mechanics)          |
-|    - Object-oriented idioms solving class composition and instantiation (GoF).|
-|    - Examples: Observer, Strategy, Factory Method, Decorator, Composite.     |
-+-------------------------------------------------------------------------------+
+```mermaid
+flowchart TD
+    Style["1. Architectural Style (Macro-Level / System Topology)
+    - Defines physical deployment units, runtime boundaries, enterprise shape.
+    - Examples: Monolithic Layered, Modular Monolith, Microservices, EDA."]
+    
+    Style -->|"Adopts and Contains"| Pattern["2. Architectural Pattern (Meso-Level / Subsystem & Cross-Service Solutions)
+    - Concrete structural templates solving recurring state, flow & data traps.
+    - Examples: MVC, CQRS, Saga, Transactional Outbox, BFF, Circuit Breaker."]
+    
+    Pattern -->|"Implemented In Code By"| Design["3. Design Pattern (Micro-Level / In-Memory Object & Class Mechanics)
+    - Object-oriented idioms solving class composition and instantiation (GoF).
+    - Examples: Observer, Strategy, Factory Method, Decorator, Composite."]
+
+    classDef styleClass fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef patternClass fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    classDef designClass fill:#FEF3C7,stroke:#D97706,stroke-width:1.5px,color:#78350F
+    
+    class Style styleClass
+    class Pattern patternClass
+    class Design designClass
 ```
 
 ---
@@ -45,29 +46,23 @@ Before analyzing individual patterns, architects must distinguish the three stru
 The Model-View-Controller pattern addresses the fundamental UI dilemma: **tight coupling between visual presentation and business domain logic**. Without separation, modifying visual layouts breaks data validation, and automated unit testing of domain rules requires launching graphics runtimes.
 
 MVC establishes a strict tripartite separation of concerns:
-1. **Model**: Represents domain state, entity invariants, and business rules. The model is completely unaware of views or controllers.
-2. **View**: Renders visual representation to the client. In classic GUI MVC (Smalltalk), View observes the Model. In Web MVC (Spring MVC/Rails), View is a stateless template rendered by the Controller.
-3. **Controller**: Translates incoming user gestures/HTTP requests into domain commands on the Model and selects the appropriate View to render.
+- **Model**: Represents domain state, entity invariants, and business rules. The model is completely unaware of views or controllers.
+- **View**: Renders visual representation to the client. In classic GUI MVC (Smalltalk), View observes the Model. In Web MVC (Spring MVC/Rails), View is a stateless template rendered by the Controller.
+- **Controller**: Translates incoming user gestures/HTTP requests into domain commands on the Model and selects the appropriate View to render.
 
-#### Architectural Diagram
-```text
-  [ User Gestures / HTTP Requests ]
-                 |
-                 v
-       +-------------------+
-       |    Controller     | -- 1. Translates input to domain mutation --+
-       +-------------------+                                            |
-                 |                                                      v
-        3. Selects & Binds                                     +------------------+
-                 |                                             |      Model       |
-                 v                                             |  (Domain State)  |
-       +-------------------+                                   +------------------+
-       |       View        | <-- 2. Queries state (Web) /               ^
-       |  (Presentation)   |      Receives State Update (GUI Observer) -+
-       +-------------------+
-                 |
-                 v
-       [ HTML / Screen Rendered to User ]
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    User["User Gestures / HTTP Requests"] --> Controller["Controller"]
+    Controller -->|"1. Translates input to domain command"| Model["Model (Domain State)"]
+    Controller -->|"3. Selects & Binds"| View["View (Presentation)"]
+    Model -.->|"2. State Notification / Data Query"| View
+    View --> Display["Rendered Screen / HTML Response"]
+
+    classDef comp fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef ext fill:#F1EFE8,stroke:#5F5E5A,stroke-width:1.5px,color:#444441
+    class Controller,Model,View comp
+    class User,Display ext
 ```
 
 #### Step-by-Step Execution Lifecycle (Web MVC)
@@ -80,7 +75,7 @@ MVC establishes a strict tripartite separation of concerns:
 
 #### Trade-Off Analysis
 - **Strengths**: Clear separation of concerns, high independent testability of domain logic, parallel development between frontend designers and backend engineers.
-- **Weaknesses**: Risk of **"Fat Controllers"** where developers inappropriately stuff persistence calls and business validation into controller methods; high boilerplate overhead for trivial CRUD.
+- **Weaknesses**: Risk of **Fat Controllers** where developers inappropriately stuff persistence calls and business validation into controller methods; high boilerplate overhead for trivial CRUD.
 - **Production Stacks**: Spring Boot Web MVC, Ruby on Rails, ASP.NET Core MVC, Laravel.
 
 ---
@@ -92,20 +87,26 @@ MVVM was formulated by John Gossman at Microsoft to resolve the excessive boiler
 
 MVVM introduces a declarative **Data Binding Engine**. The **ViewModel** acts as an abstraction of the View, exposing observable state properties and commands without holding any direct reference to UI widgets or windows.
 
-#### Architectural Diagram
-```text
-+------------------+    Declarative 2-Way Binding     +------------------+               +------------------+
-|       View       | <------------------------------> |    ViewModel     | -- Mutates -->|      Model       |
-|  (XAML/XML/DOM)  |  [Value Converters & Observers]  | (Observable State|               |  (Domain State)  |
-|                  |                                  |   & Commands)    | <-- Notifies -|                  |
-+------------------+                                  +------------------+               +------------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart LR
+    View["View (XML / DOM / XAML)"] <-->|"Declarative 2-Way Data Binding
+    (Value Converters & Observers)"| ViewModel["ViewModel
+    (Observable State & Commands)"]
+    ViewModel -->|"Invokes Domain Mutation"| Model["Model (Domain State)"]
+    Model -.->|"Notifies State Updates"| ViewModel
+
+    classDef comp fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef model fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class View,ViewModel comp
+    class Model model
 ```
 
 #### Step-by-Step Execution Lifecycle
 1. **Binding Initialization**: When the View mounts, it establishes declarative bindings against the ViewModel's observable properties (e.g. `userProfile.fullName`).
 2. **User Gesture**: The user types text into an input box.
 3. **Automatic View-to-ViewModel Sync**: The data-binding engine automatically updates the ViewModel's in-memory variable without any manual event listener code.
-4. **Command Execution**: User clicks "Submit". The View fires `vm.submitCommand.execute()`.
+4. **Command Execution**: User clicks Submit. The View fires `vm.submitCommand.execute()`.
 5. **Model Synchronization**: The ViewModel invokes domain operations on the Model.
 6. **Automatic Model-to-View Sync**: The Model updates state; the ViewModel triggers `PropertyChanged`; the View automatically re-renders the affected widget.
 
@@ -123,14 +124,21 @@ MVP originated at Taligent and became standard in enterprise desktop and early A
 
 In MVP, the View is completely **passive (Passive View)**. The View implements an explicit interface containing only dumb setter and getter primitives. The **Presenter** sits strictly in the middle, intercepting view events, executing business logic via the Model, and explicitly commanding the View what to display.
 
-#### Architectural Diagram
-```text
-+-------------------------+               +-------------------------+               +-------------------------+
-|          View           | -- Event ---> |        Presenter        | -- Command ---> |          Model          |
-|  implements IOrderView  |               |   (Presentation Logic)  |                 |     (Domain State)      |
-|  - showLoadingSpinner() | <-- Command - |  - calls view.display() | <-- State ----- |                         |
-|  - displayOrderSummary()|               |                         |                 |                         |
-+-------------------------+               +-------------------------+               +-------------------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart LR
+    View["Passive View
+    implements IOrderView
+    - showLoadingSpinner()
+    - displayOrderSummary()"] <-->|"Explicit Commands & Events"| Presenter["Presenter
+    (Presentation Logic)"]
+    Presenter <-->|"Domain Commands & State"| Model["Model
+    (Domain Entities)"]
+
+    classDef comp fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef model fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class View,Presenter comp
+    class Model model
 ```
 
 #### Trade-Off Analysis
@@ -146,25 +154,23 @@ In MVP, the View is completely **passive (Passive View)**. The View implements a
 Originating from reactive functional programming (Elm and Cycle.js), MVI solves the problem of **unpredictable state mutations** in rich, asynchronous applications where multiple background threads and user clicks mutate state simultaneously.
 
 MVI enforces strict **Unidirectional Data Flow (UDF)**:
-1. **Intent**: Represents an immutable intention/event triggered by user action or system event.
-2. **Model (State Machine)**: Pure functional reducers take the current immutable State and an Intent, outputting a brand-new immutable State.
-3. **View**: A pure function that renders the single immutable State object (`View = f(State)`).
+- **Intent**: Represents an immutable intention/event triggered by user action or system event.
+- **Model (State Machine)**: Pure functional reducers take the current immutable State and an Intent, outputting a brand-new immutable State.
+- **View**: A pure function that renders the single immutable State object (`View = f(State)`).
 
-#### Architectural Diagram
-```text
-          +---------------------------------------------------------+
-          |                                                         |
-          v                                                         |
-   +-------------+       +-------------+       +-------------+      |
-   |    User     | --->  |   Intent    | --->  |    Model    | -----+
-   |   Action    |       | (Immutable) |       |  (Reducer)  | (New Immutable
-   +-------------+       +-------------+       +-------------+      State)
-          ^                                           |
-          |                                           v
-          |                                    +-------------+
-          +----------------------------------- |    View     |
-                  Renders Pure State           |  f(State)   |
-                                               +-------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    User["User Interaction"] -->|"Dispatches"| Intent["Intent (Action Record)"]
+    Intent -->|"Processed By"| Reducer["Model (State Reducer Machine)"]
+    Reducer -->|"Emits New"| State["Single Immutable State"]
+    State -->|"Renders As Function"| View["View: f(State)"]
+    View -.->|"Presents UI To"| User
+
+    classDef comp fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef flow fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Intent,Reducer,State comp
+    class User,View flow
 ```
 
 #### Trade-Off Analysis
@@ -181,26 +187,28 @@ In early web servers, requests were routed directly to individual physical scrip
 
 The Front Controller pattern routes **every incoming HTTP request to a single centralized dispatcher component**. The dispatcher executes a pipeline of intercepting filters (security, decompression, metric recording, locale resolution) before delegating to specific action handlers.
 
-#### Architectural Diagram
-```text
-  [ Incoming HTTP Requests: /orders, /users, /checkout ]
-                         |
-                         v
-             +-----------------------+
-             |   Front Controller    |
-             | (e.g. DispatcherServlet)
-             +-----------------------+
-                         |
-          +--------------+--------------+ Intercepting Filters:
-          | Pipeline     | Execution    | - Auth & JWT Validation
-          v              v              v - Logging & Tracing
-     [Security]     [CORS/CSRF]    [RateLimit]
-                         |
-                         v Handler Mapping
-             +-----------------------+
-             |      Controller       |
-             | (Specific Action Bean)|
-             +-----------------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Client["Client HTTP Requests
+    (/orders, /catalog, /checkout)"] --> FC["Front Controller Dispatcher
+    (e.g., DispatcherServlet)"]
+    
+    subgraph Filters["Intercepting Filter Pipeline"]
+        F1["1. Security & JWT Filter"] --> F2["2. CORS & Rate Limit Filter"]
+        F2 --> F3["3. Metrics & OpenTelemetry Filter"]
+    end
+    
+    FC --> Filters
+    Filters --> Handler["Target Controller Handler
+    (OrderController.createOrder)"]
+
+    classDef fc fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef filt fill:#FEF3C7,stroke:#D97706,stroke-width:1.5px,color:#78350F
+    classDef target fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class FC fc
+    class F1,F2,F3 filt
+    class Handler target
 ```
 
 #### Trade-Off Analysis
@@ -216,38 +224,37 @@ The Front Controller pattern routes **every incoming HTTP request to a single ce
 
 #### Conceptual Theory
 In traditional enterprise applications, the same data model is used to handle both writes (commands) and reads (queries). This creates structural friction:
-1. **Relational Normalization vs. Fast Reads**: Normalization is optimal for transaction writes (preventing anomalies), but catastrophic for complex read screens requiring 12 table joins.
-2. **Asymmetric Load**: Enterprise systems typically experience 90-99% read traffic versus 1-10% write traffic. Scaling the combined model wastes database compute.
+- **Relational Normalization vs. Fast Reads**: Normalization is optimal for transaction writes (preventing anomalies), but catastrophic for complex read screens requiring 12 table joins.
+- **Asymmetric Load**: Enterprise systems typically experience 90-99% read traffic versus 1-10% write traffic. Scaling the combined model wastes database compute.
 
 CQRS cleanly splits the application into two distinct pipelines:
 - **Command Stack**: Optimized exclusively for high-integrity mutations, domain validation, and ACID transactional writes.
 - **Query Stack**: Optimized exclusively for high-throughput, denormalized, read-only projections.
 
-#### Architectural Diagram
-```text
-                                  +-----------------------------------------+
-                                  |               Client Application        |
-                                  +-----------------------------------------+
-                                          |                           ^
-                       HTTP POST (Command)|                           | HTTP GET (Query)
-                                          v                           |
-                               +---------------------+     +---------------------+
-                               |   Command Handler   |     |    Query Service    |
-                               +---------------------+     +---------------------+
-                                          |                           ^
-                                          v                           |
-                               +---------------------+                |
-                               |  Write Domain Model |                | Fast Denormalized
-                               +---------------------+                | Read Queries
-                                          |                           |
-                                          v                           |
-                               +---------------------+     +---------------------+
-                               |   Write Database    |     |   Read Projection   |
-                               |   (RDBMS / ACID)    |     |  (Elastic / Redis)  |
-                               +---------------------+     +---------------------+
-                                          |                           ^
-                                          |   Async Event Sync (CDC)  |
-                                          +---------------------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Client["Client Application"]
+    
+    subgraph CommandStack["Command Stack (Writes)"]
+        CH["Command Handler"] --> WM["Write Domain Model"]
+        WM --> WDB[("Write Database (RDBMS ACID)")]
+    end
+    
+    subgraph QueryStack["Query Stack (Reads)"]
+        QS["Query Service"] --> RDB[("Read Projection Store (Elasticsearch / Redis)")]
+    end
+    
+    Client -->|"HTTP POST (Command)"| CH
+    Client -->|"HTTP GET (Query)"| QS
+    WDB -.->|"Asynchronous Event Sync (CDC / Outbox)"| RDB
+
+    classDef client fill:#F1EFE8,stroke:#5F5E5A,stroke-width:1.5px,color:#444441
+    classDef cmd fill:#FEE2E2,stroke:#DC2626,stroke-width:1.5px,color:#991B1B
+    classDef qry fill:#E0F2FE,stroke:#0284C7,stroke-width:1.5px,color:#075985
+    class Client client
+    class CH,WM,WDB cmd
+    class QS,RDB qry
 ```
 
 #### Step-by-Step Execution Lifecycle
@@ -271,25 +278,26 @@ Traditional CRUD architectures store only the **current state** of an entity by 
 
 Event Sourcing replaces state-based storage with an **immutable, append-only chronological log of domain events**. An entity's current state is never stored as an authoritative record; it is dynamically reconstituted by replaying all historical events from the beginning of time.
 
-#### Architectural Diagram
-```text
-[ Traditional CRUD ]
-Entity Row: | ID: 101 | Name: Alice | Balance: $150 |  <-- Previous balance of $100 is lost forever!
+#### Graphical Architectural Diagram
+```mermaid
+flowchart LR
+    subgraph Stream["Append-Only Event Stream"]
+        E1["1. AccountOpened
+        Amount: 100 USD"] --> E2["2. MoneyDeposited
+        Amount: 100 USD"]
+        E2 --> E3["3. MoneyWithdrawn
+        Amount: 50 USD"]
+    end
+    
+    Stream -->|"Replay Events / Apply Reducer"| Aggregate["Reconstituted Aggregate
+    Current Balance: 150 USD"]
+    Snapshot[("Snapshot Store
+    (Every 100 Events)")] -.->|"Hydrates Base State"| Aggregate
 
-[ Event Sourced Model ]
-Append-Only Event Stream:
-+---------------------+     +---------------------+     +---------------------+
-| 1. AccountOpened    | --> | 2. MoneyDeposited   | --> | 3. MoneyWithdrawn   |
-| Amount: $100        |     | Amount: $100        |     | Amount: $50         |
-| Timestamp: 09:00 AM |     | Timestamp: 09:15 AM |     | Timestamp: 09:30 AM |
-+---------------------+     +---------------------+     +---------------------+
-                                                                   |
-                                                                   v Replay Events
-                                                        +---------------------+
-                                                        | Current Balance:    |
-                                                        | $100 + $100 - $50   |
-                                                        | = $150              |
-                                                        +---------------------+
+    classDef evt fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef agg fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class E1,E2,E3 evt
+    class Aggregate,Snapshot agg
 ```
 
 #### Snapshotting Optimization
@@ -298,7 +306,7 @@ Replaying 50,000 events to compute a customer's account balance introduces unacc
 - To reconstitute the aggregate, the system loads the latest snapshot and replays only the events that occurred after the snapshot index.
 
 #### Trade-Off Analysis
-- **Strengths**: Complete, tamper-proof audit trail; enables "time-travel" debugging (reconstructing the exact system state at any historical second); eliminates object-relational impedance mismatch.
+- **Strengths**: Complete, tamper-proof audit trail; enables time-travel debugging (reconstructing the exact system state at any historical second); eliminates object-relational impedance mismatch.
 - **Weaknesses**: Event schema evolution is notoriously difficult (how to handle events written 5 years ago when models change); replaying without snapshots bottlenecks memory and CPU.
 - **Production Stacks**: EventStoreDB, Apache Kafka, Axon Server, Marten (PostgreSQL event store for .NET).
 
@@ -313,27 +321,26 @@ In a distributed microservice architecture, a business transaction often spans m
 
 The Saga Pattern structures a distributed transaction as a **sequence of local transactions**. Each local transaction updates a single database and publishes an event or message. If any step fails, the Saga coordinates **Compensating Transactions** that run in reverse order to semantically undo earlier partial state changes.
 
-#### Architectural Topologies: Orchestration vs. Choreography
-```text
-[ Choreography-Based Saga (Reactive) ]
-[Order Service] -- OrderCreated --> [Payment Service] -- PaymentAuthorized --> [Inventory Service]
-      ^                                    |                                           |
-      +--------- PaymentFailed ------------+------------- OutOfStock -----------------+
-                                                (Compensates Payment)
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    subgraph OrchestratedSaga["Orchestrated Saga Pattern"]
+        Coord["Saga Orchestrator State Machine"]
+        S1["Order Service"]
+        S2["Payment Service"]
+        S3["Inventory Service"]
+        
+        Coord -->|"1. Create Order"| S1
+        Coord -->|"2. Process Payment"| S2
+        Coord -->|"3. Reserve Stock"| S3
+        Coord -.->|"Compensating: Refund Payment on Failure"| S2
+        Coord -.->|"Compensating: Cancel Order on Failure"| S1
+    end
 
-[ Orchestration-Based Saga (Central Coordinator) ]
-                              +---------------------------+
-                              |      Order Saga           |
-                              |      Orchestrator         |
-                              +---------------------------+
-                                 |           |           |
-                     1. Process  |           |           | 3. Reserve
-                     Payment     |           | 2. Status | Stock
-                                 v           v           v
-                         +-------------+   +---------+   +-------------+
-                         |   Payment   |   |  Order  |   |  Inventory  |
-                         |   Service   |   | Service |   |   Service   |
-                         +-------------+   +---------+   +-------------+
+    classDef orch fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef svc fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Coord orch
+    class S1,S2,S3 svc
 ```
 
 #### Compensation Mechanics
@@ -358,33 +365,25 @@ Microservices frequently need to update a database entity and notify other servi
 
 The Transactional Outbox pattern guarantees that database state updates and event publishing occur with **atomic At-Least-Once consistency** by storing outgoing events directly inside an `outbox` table within the same database transaction.
 
-#### Architectural Diagram
-```text
-+--------------------------------------------------------+
-| Order Service (Local ACID Transaction Boundary)        |
-|                                                        |
-|  1. INSERT INTO orders VALUES (...);                   |
-|  2. INSERT INTO outbox_table (event_id, payload, ...); |
-+--------------------------------------------------------+
-                           |
-                           | Committed atomically to local DB
-                           v
-             +--------------------------+
-             |       PostgreSQL         |
-             |   orders | outbox_table  |
-             +--------------------------+
-                           |
-                           | 3. Tails Write-Ahead Log (WAL)
-                           v
-             +--------------------------+
-             | Debezium (CDC Connector) |
-             +--------------------------+
-                           |
-                           | 4. Publishes reliably
-                           v
-             +--------------------------+
-             |      Apache Kafka        |
-             +--------------------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart LR
+    subgraph ServiceBoundary["Service Boundary (Local ACID Transaction)"]
+        App["Order Service"] --> DB[("PostgreSQL Database
+        - orders table
+        - outbox_table")]
+    end
+    
+    DB -->|"Tails Transaction Log (WAL)"| CDC["Debezium CDC Connector"]
+    CDC -->|"Guaranteed Publish"| Kafka["Apache Kafka Event Bus"]
+    Kafka -->|"Idempotent Consume"| Consumer["Downstream Consumer"]
+
+    classDef app fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef cdc fill:#FEF3C7,stroke:#D97706,stroke-width:1.5px,color:#78350F
+    classDef broker fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class App,DB app
+    class CDC cdc
+    class Kafka,Consumer broker
 ```
 
 #### Step-by-Step Execution Lifecycle
@@ -405,22 +404,21 @@ The Transactional Outbox pattern guarantees that database state updates and even
 #### Conceptual Theory
 Relational database I/O bottlenecks under heavy read concurrency. Cache-Aside positions an in-memory key-value cache (Redis, Memcached) alongside the primary datastore, giving the application direct control over caching behavior.
 
-#### Architectural Diagram & Mechanics
-```text
-[ Read Flow ]
-Client -- 1. Query --> App -- 2. Check Cache --> [ Redis Cache ]
-                       |                               |
-                       +-- 3. If Cache Hit: Return ----+
-                       |
-                       +-- 4. If Cache Miss:
-                               a. Query DB ------------> [ PostgreSQL ]
-                               b. Write Cache ---------> [ Redis Cache ]
-                               c. Return Data
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Client["Client"] --> App["Application Server"]
+    App -->|"1. Check Cache"| Cache[("Redis Cache")]
+    Cache -->|"2a. Hit: Return Data"| App
+    App -->|"2b. Miss: Query Database"| DB[("PostgreSQL Database")]
+    DB -->|"3. Return Record"| App
+    App -.->|"4. Populate Cache Key"| Cache
+    App -->|"5. Return Response"| Client
 
-[ Write Flow ]
-Client -- 1. Update -> App -- 2. Write to DB ----------> [ PostgreSQL ]
-                       |
-                       +-- 3. Invalidate Cache Key ---> [ Redis Cache ]
+    classDef app fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef db fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Client,App app
+    class Cache,DB db
 ```
 
 #### Pitfall: The Cache Stampede (Thundering Herd)
@@ -438,13 +436,21 @@ When a high-traffic cache key expires, thousands of concurrent requests miss the
 
 #### Conceptual Theory
 Unlike Cache-Aside where the application orchestrates both cache and database, In-Line caching positions the cache directly in the data access path:
-1. **Read-Through**: Application queries cache. On miss, the cache provider transparently queries the database, caches the result, and returns.
-2. **Write-Through**: Application writes to cache. The cache provider synchronously commits to database before acknowledging success.
-3. **Write-Behind (Write-Back)**: Application writes to cache, which acknowledges immediately. The cache asynchronously flushes queued writes to the database in batched intervals.
+- **Read-Through**: Application queries cache. On miss, the cache provider transparently queries the database, caches the result, and returns.
+- **Write-Through**: Application writes to cache. The cache provider synchronously commits to database before acknowledging success.
+- **Write-Behind (Write-Back)**: Application writes to cache, which acknowledges immediately. The cache asynchronously flushes queued writes to the database in batched intervals.
 
-```text
-Write-Behind Mechanics:
-App -- 1. Fast Write (In-Memory) --> [ Cache Queue ] -- 2. Batched Flush (Async) --> [ Database ]
+#### Graphical Architectural Diagram
+```mermaid
+flowchart LR
+    App["Application"] -->|"1. Fast In-Memory Write"| CacheQueue[("Cache Dirty Write Queue")]
+    CacheQueue -->|"Acknowledges Immediately"| App
+    CacheQueue -.->|"2. Asynchronous Batched Flush"| DB[("Persistent Database")]
+
+    classDef app fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef storage fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class App app
+    class CacheQueue,DB storage
 ```
 
 #### Trade-Off Analysis
@@ -459,18 +465,18 @@ App -- 1. Fast Write (In-Memory) --> [ Cache Queue ] -- 2. Batched Flush (Async)
 #### Conceptual Theory
 When a database hits physical vertical hardware boundaries (CPU, RAM, disk I/O limits), data must be partitioned horizontally across independent database instances (**Shards**).
 
-```text
-                        +------------------------+
-                        |   Shard Router Proxy   |
-                        |  (Hash: user_id % 3)   |
-                        +------------------------+
-                                     |
-           +-------------------------+-------------------------+
-           v                         v                         v
-+---------------------+   +---------------------+   +---------------------+
-|       Shard 0       |   |       Shard 1       |   |       Shard 2       |
-|  (Users: 0, 3, 6)   |   |  (Users: 1, 4, 7)   |   |  (Users: 2, 5, 8)   |
-+---------------------+   +---------------------+   +---------------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Client["Client Query / Command"] --> Router["Shard Router Proxy (hash modulo 3)"]
+    Router -->|"Keys: 0, 3, 6..."| Shard0[("Database Shard 0")]
+    Router -->|"Keys: 1, 4, 7..."| Shard1[("Database Shard 1")]
+    Router -->|"Keys: 2, 5, 8..."| Shard2[("Database Shard 2")]
+
+    classDef router fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef shard fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Client,Router router
+    class Shard0,Shard1,Shard2 shard
 ```
 
 #### Trade-Off Analysis
@@ -489,31 +495,29 @@ Exposing internal microservices directly to public clients introduces fatal secu
 
 An API Gateway acts as the **single consolidated entry point (Reverse Proxy)** for all client traffic, decoupling edge ingress concerns from internal domain services.
 
-#### Architectural Diagram
-```text
-  [ Mobile App ]      [ Web SPA ]      [ 3rd-Party API ]
-        |                  |                   |
-        +------------------+-------------------+
-                           | Public TLS Traffic
-                           v
-        +--------------------------------------+
-        |             API Gateway              |
-        |  - TLS Termination    - Rate Limit   |
-        |  - JWT Verification   - Logging      |
-        |  - Canary Routing     - WAF Defense  |
-        +--------------------------------------+
-                           |
-         +-----------------+-----------------+ Internal Network (mTLS)
-         v                 v                 v
-   +-----------+     +-----------+     +-----------+
-   |   Order   |     |  Catalog  |     |  Payment  |
-   |  Service  |     |  Service  |     |  Service  |
-   +-----------+     +-----------+     +-----------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Clients["Clients (Mobile, Web, 3rd-Party)"] --> GW["API Gateway Reverse Proxy
+    - TLS Termination
+    - JWT Introspection
+    - Distributed Rate Limiting
+    - Canary Routing"]
+    GW --> Svc1["Order Service"]
+    GW --> Svc2["Catalog Service"]
+    GW --> Svc3["Payment Service"]
+
+    classDef client fill:#F1EFE8,stroke:#5F5E5A,stroke-width:1.5px,color:#444441
+    classDef gw fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef svc fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Clients client
+    class GW gw
+    class Svc1,Svc2,Svc3 svc
 ```
 
 #### Trade-Off Analysis
 - **Strengths**: Centralized edge security, unified rate limiting and metrics; eliminates multi-round-trip mobile latency; insulates internal topologies from public contracts.
-- **Weaknesses**: Single point of failure if not clustered across availability zones; risk of becoming an "Enterprise Service Bus" (ESB) antipattern if business logic is stuffed into the gateway.
+- **Weaknesses**: Single point of failure if not clustered across availability zones; risk of becoming an Enterprise Service Bus (ESB) antipattern if business logic is stuffed into the gateway.
 - **Production Stacks**: Envoy Proxy, Kong, Apache APISIX, AWS API Gateway, Traefik.
 
 ---
@@ -527,25 +531,23 @@ Formulated by Sam Newman, the BFF pattern addresses conflicting UI requirements 
 
 Instead of building a single bloated generic API Gateway that satisfies no one, BFF creates **dedicated, client-specific gateway services owned by the respective frontend teams**.
 
-#### Architectural Diagram
-```text
-+-----------------+       +-----------------+       +-----------------+
-|   Mobile App    |       |   Desktop Web   |       |    Smart TV     |
-+-----------------+       +-----------------+       +-----------------+
-         |                         |                         |
-         v                         v                         v
-+-----------------+       +-----------------+       +-----------------+
-|   Mobile BFF    |       |    Web BFF      |       |   Smart TV BFF  |
-| (Compact JSON)  |       | (Rich Payloads) |       | (Stream Optimized)
-+-----------------+       +-----------------+       +-----------------+
-         |                         |                         |
-         +-------------------------+-------------------------+
-                                   |
-                   Internal Microservices Mesh
-                                   v
-          +--------------+  +--------------+  +--------------+
-          | User Service |  | Cart Service |  | Media Service|
-          +--------------+  +--------------+  +--------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Mobile["Mobile Client"] --> MobileBFF["Mobile BFF (Compact JSON, WebP)"]
+    Desktop["Desktop Web"] --> WebBFF["Web BFF (Deep Graph Payloads)"]
+    SmartTV["Smart TV"] --> TVBFF["TV BFF (Stream Optimized)"]
+    
+    MobileBFF --> Mesh["Internal Microservice Network"]
+    WebBFF --> Mesh
+    TVBFF --> Mesh
+
+    classDef client fill:#F1EFE8,stroke:#5F5E5A,stroke-width:1.5px,color:#444441
+    classDef bff fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef mesh fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Mobile,Desktop,SmartTV client
+    class MobileBFF,WebBFF,TVBFF bff
+    class Mesh mesh
 ```
 
 #### Trade-Off Analysis
@@ -561,22 +563,21 @@ Instead of building a single bloated generic API Gateway that satisfies no one, 
 - **Aggregator Pattern**: A composite service receives a request, calls Services A, B, and C in parallel, merges the response objects into a single JSON schema, and returns it to the client.
 - **Scatter-Gather Pattern**: The orchestrator broadcasts a query concurrently to *N* dynamic providers (e.g., flight booking engines, insurance quote vendors) with a **strict deadline timeout**. It aggregates whatever responses arrive before timeout and discards late responses.
 
-```text
-[ Scatter-Gather Flow ]
-                    +-------------------------+
-                    |    Scatter Gatherer     |
-                    +-------------------------+
-                       |     Broadcast     |
-         +-------------+-------------------+-------------+
-         v             v                   v             v
-    [Airline A]   [Airline B]         [Airline C]   [Airline D]
-    (Responds)    (Responds)          (Timed Out)   (Responds)
-         |             |                   |             |
-         +-------------+-------------------+-------------+
-                       v (Deadline: 800ms)
-                    +-------------------------+
-                    |  Ranks & Returns A, B, D| (Drops C)
-                    +-------------------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Client["Client Request"] --> SG["Scatter-Gather Orchestrator"]
+    SG -->|"Concurrent Query (Deadline: 800ms)"| P1["Provider A (Responds in 200ms)"]
+    SG -->|"Concurrent Query (Deadline: 800ms)"| P2["Provider B (Responds in 450ms)"]
+    SG -->|"Concurrent Query (Deadline: 800ms)"| P3["Provider C (Timed Out: Dropped)"]
+    P1 --> SG
+    P2 --> SG
+    SG -->|"Aggregated & Ranked Results"| Response["Combined Response to Client"]
+
+    classDef sg fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef prov fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Client,SG,Response sg
+    class P1,P2,P3 prov
 ```
 
 ---
@@ -588,18 +589,22 @@ In polyglot microservice environments (combining Go, Java, Python, Node.js), wri
 
 The Sidecar pattern deploys a supporting helper container **in the same physical network namespace (Pod / Localhost)** as the main application container. The application communicates only with `localhost`, and the Sidecar handles all network complexity.
 
-```text
-+--------------------------------------------------------+
-| Kubernetes Pod Boundary (Shared Localhost & IP)        |
-|                                                        |
-|  +----------------------+        +------------------+  |
-|  | Main App Container   | --HTTP->  Sidecar Proxy   |  |
-|  | (Python / Java / Go) | <------|  (Envoy Sidecar) |  |
-|  +----------------------+        +------------------+  |
-+-------------------------------------------+------------+
-                                            | Outbound mTLS
-                                            v
-                                   [ Remote Microservices ]
+#### Graphical Architectural Diagram
+```mermaid
+flowchart LR
+    subgraph Pod["Kubernetes Pod Boundary (Shared Localhost & IP)"]
+        App["Main App Container
+        (Python / Java / Go)"] <-->|"Localhost HTTP / IPC"| Sidecar["Envoy Sidecar Proxy
+        - mTLS Encryption
+        - Distributed Tracing
+        - Retries & Circuit Breaking"]
+    end
+    Sidecar <-->|"mTLS over Network"| Mesh["Remote Microservices"]
+
+    classDef pod fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef ext fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class App,Sidecar pod
+    class Mesh ext
 ```
 
 ---
@@ -611,6 +616,24 @@ When modernizing legacy systems or integrating with third-party software, legacy
 
 An Anti-Corruption Layer acts as a **bidirectional translation firewall**: it translates outbound requests from new domain schemas into legacy RPC/XML protocols, and unmarshalls legacy responses back into clean, modern domain entities.
 
+#### Graphical Architectural Diagram
+```mermaid
+flowchart LR
+    Modern["Modern Microservice
+    (Clean DDD Model)"] <-->|"Modern Domain Contract"| ACL["Anti-Corruption Layer (ACL)
+    - Protocol Adapter
+    - Schema Translator
+    - Facade Interface"]
+    ACL <-->|"Legacy SOAP / XML / RPC"| Legacy["Legacy Mainframe / 3rd-Party"]
+
+    classDef modern fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    classDef acl fill:#FEF3C7,stroke:#D97706,stroke-width:1.5px,color:#78350F
+    classDef legacy fill:#F1EFE8,stroke:#5F5E5A,stroke-width:1.5px,color:#444441
+    class Modern modern
+    class ACL acl
+    class Legacy legacy
+```
+
 ---
 
 ## 5. Workflow & Coordination Patterns
@@ -620,18 +643,14 @@ An Anti-Corruption Layer acts as a **bidirectional translation firewall**: it tr
 #### Conceptual Theory
 The defining dilemma of distributed workflows: **Centralized Authority vs. Autonomous Emergence**.
 
-```text
-+-------------------------------------------------------------------------------+
-| Feature               | Orchestration               | Choreography            |
-+-----------------------+-----------------------------+-------------------------+
-| Coordination          | Central Orchestrator        | Decentralized Event Bus |
-| Workflow Visibility   | High (Single State Machine) | Low (Implicit in logs)  |
-| Coupling              | High to Orchestrator        | Loose (Pub/Sub)         |
-| Point of Failure      | Single Coordinator Node     | Distributed / Resilient |
-| Error Recovery        | Deterministic Compensations | Complex Event Rollbacks |
-| Best For              | Complex Business Workflows  | High-Volume Streaming   |
-+-------------------------------------------------------------------------------+
-```
+| Feature | Orchestration | Choreography |
+| :--- | :--- | :--- |
+| **Coordination** | Central Orchestrator | Decentralized Event Bus |
+| **Workflow Visibility** | High (Single State Machine) | Low (Implicit across logs) |
+| **Coupling** | High to Orchestrator | Loose (Pub/Sub) |
+| **Point of Failure** | Single Coordinator Node | Distributed / Resilient |
+| **Error Recovery** | Deterministic Compensations | Complex Event Rollbacks |
+| **Best For** | Complex Business Workflows | High-Volume Streaming |
 
 ---
 
@@ -640,8 +659,22 @@ The defining dilemma of distributed workflows: **Centralized Authority vs. Auton
 #### Conceptual Theory
 Divides a complex processing task into a series of discrete, independent, reusable components (**Filters**) connected by communication channels (**Pipes**).
 
-```text
-[ Raw Audio Stream ] --> [ Decrypt Filter ] --> [ Transcode Filter ] --> [ Watermark Filter ] --> [ Output ]
+#### Graphical Architectural Diagram
+```mermaid
+flowchart LR
+    Raw["Raw Ingestion Stream"] --> Pipe1["Pipe"]
+    Pipe1 --> F1["Filter 1: Decryption"]
+    F1 --> Pipe2["Pipe"]
+    Pipe2 --> F2["Filter 2: Schema Validation"]
+    F2 --> Pipe3["Pipe"]
+    Pipe3 --> F3["Filter 3: Enrichment"]
+    F3 --> Pipe4["Pipe"]
+    Pipe4 --> Dest["Processed Sink"]
+
+    classDef filter fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef pipe fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class F1,F2,F3 filter
+    class Raw,Pipe1,Pipe2,Pipe3,Pipe4,Dest pipe
 ```
 - **Strengths**: Exceptional modularity, composability, and pipeline reordering; filters can scale horizontally.
 - **Weaknesses**: High serialization/deserialization CPU overhead between pipeline stages.
@@ -653,6 +686,28 @@ Divides a complex processing task into a series of discrete, independent, reusab
 #### Conceptual Theory
 Designed for non-deterministic domains where no closed mathematical algorithm exists (speech recognition, bioinformatics, tactical routing). 
 Independent expert components (**Knowledge Sources**) opportunistically inspect a shared memory structure (**Blackboard**), calculate partial hypotheses, and write deductions back until an acceptable solution emerges.
+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Blackboard[("Shared Blackboard Store
+    (Hypotheses & Solution Space)")]
+    
+    KS1["Knowledge Source 1: Acoustic Expert"] <--> Blackboard
+    KS2["Knowledge Source 2: Grammar Expert"] <--> Blackboard
+    KS3["Knowledge Source 3: Lexicon Expert"] <--> Blackboard
+    
+    Controller["Blackboard Controller / Scheduler"] -.->|"Arbitrates Activation"| KS1
+    Controller -.->|"Arbitrates Activation"| KS2
+    Controller -.->|"Arbitrates Activation"| KS3
+
+    classDef bb fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#78350F
+    classDef ks fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef ctrl fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Blackboard bb
+    class KS1,KS2,KS3 ks
+    class Controller ctrl
+```
 
 ---
 
@@ -668,32 +723,14 @@ The Circuit Breaker wraps remote invocations with a state machine:
 - **Open**: Error threshold exceeded (e.g. > 50% failures in 10s). Requests fail fast immediately with fallback responses; network calls are aborted.
 - **Half-Open**: Sleep duration expires. Trial probe requests are allowed through to evaluate downstream health.
 
-#### State Machine Diagram
-```text
-                  +----------------------------------------+
-                  |                 CLOSED                 | <----------------------+
-                  |         (Normal Execution)             |                        |
-                  +----------------------------------------+                        |
-                                      |                                             |
-                       Failures > 50% | Error Threshold                             | Probe Calls
-                       in Window      | Exceeded                                    | Succeed
-                                      v                                             |
-                  +----------------------------------------+                        |
-                  |                  OPEN                  |                        |
-                  |          (Fail-Fast Instantly)         |                        |
-                  +----------------------------------------+                        |
-                                      |                                             |
-                        Sleep Window  | Wait e.g. 30s                               |
-                        Elapsed       |                                             |
-                                      v                                             |
-                  +----------------------------------------+                        |
-                  |               HALF-OPEN                | -----------------------+
-                  |         (Trial Probe Traffic)          |
-                  +----------------------------------------+
-                                      |
-                                      | Probe Call Fails
-                                      v
-                               (Return to OPEN)
+#### Graphical State Machine Diagram
+```mermaid
+stateDiagram-v2
+    [*] --> Closed
+    Closed --> Open: Error threshold exceeded (> 50% failures in window)
+    Open --> HalfOpen: Sleep window elapsed (e.g., 30s probe wait)
+    HalfOpen --> Closed: Probe requests succeed
+    HalfOpen --> Open: Probe request fails
 ```
 
 #### Trade-Off Analysis
@@ -710,34 +747,55 @@ Named after watertight compartments in ocean vessels: if a ship's hull is punctu
 
 In software, Bulkhead **isolates execution resources (thread pools, memory, connection pools)** into isolated compartments. If one downstream service (e.g., Shipping Service) hangs, only its allocated thread pool exhausts; critical services (Checkout, Payment) continue operating unaffected.
 
-```text
-+--------------------------------------------------------+
-| API Service Process                                    |
-|                                                        |
-|  +---------------------------+  +-------------------+  |
-|  | Orders Thread Pool (100)  |  | Search Pool (50)  |  |
-|  | (Active & Healthy)        |  | (Active & Healthy)|  |
-|  +---------------------------+  +-------------------+  |
-|                                                        |
-|  +--------------------------------------------------+  |
-|  | Recommendations Thread Pool (20) - [EXHAUSTED!]  |  |
-|  | (Failing service contained here; others survive) |  |
-|  +--------------------------------------------------+  |
-+--------------------------------------------------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    subgraph ServiceProcess["Application Process"]
+        subgraph Pool1["Orders Thread Pool (100)"]
+            T1["Thread 1..100 (Healthy)"]
+        end
+        subgraph Pool2["Catalog Thread Pool (50)"]
+            T2["Thread 1..50 (Healthy)"]
+        end
+        subgraph Pool3["Recommendations Pool (20)"]
+            T3["All 20 Exhausted! (Failing Dependency Isolated)"]
+        end
+    end
+    Orders["Orders API"] --> Pool1
+    Catalog["Catalog API"] --> Pool2
+    Recs["Recommendations API"] --> Pool3
+
+    classDef ok fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    classDef bad fill:#FEE2E2,stroke:#DC2626,stroke-width:1.5px,color:#991B1B
+    class Pool1,Pool2,T1,T2 ok
+    class Pool3,T3 bad
 ```
 
 ---
 
 ### 6.3 Ambulance / Priority Queue vs. 6.4 Dead Letter Queue (DLQ)
 
-```text
-[ Ambulance / Priority Queue ]
-Incoming Traffic --> [ Classifier ] --+-- Priority Traffic --> [ Ambulance Queue ] --> [ VIP Workers ]
-                                      |
-                                      +-- Normal Traffic   --> [ Standard Queue  ] --> [ Normal Workers ]
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    subgraph PriorityRouting["Ambulance (Priority Queue)"]
+        Traffic["Incoming Requests"] --> Classifier["Traffic Classifier"]
+        Classifier -->|"VIP / Health Alert"| FastQueue["Ambulance Fast-Lane Queue"]
+        Classifier -->|"Standard / Batch"| StdQueue["Normal Queue"]
+        FastQueue --> VIPWorkers["Dedicated High-Priority Workers"]
+        StdQueue --> StdWorkers["Standard Consumer Workers"]
+    end
+    
+    subgraph DLQRouting["Dead Letter Queue (DLQ)"]
+        Msg["Poison Message"] --> Worker["Consumer Worker"]
+        Worker -->|"Retry Exceeded (> 5 attempts)"| DLX["Dead Letter Exchange"]
+        DLX --> DLQ["Dead Letter Store & Alerting Dashboard"]
+    end
 
-[ Dead Letter Queue (DLQ) ]
-Message --> [ Consumer ] -- Fails Retries (e.g. 5x) --> [ Dead Letter Exchange ] --> [ DLQ Store ] --> [ Alert / Replay ]
+    classDef prio fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef dlq fill:#FEF3C7,stroke:#D97706,stroke-width:1.5px,color:#78350F
+    class Traffic,Classifier,FastQueue,StdQueue,VIPWorkers,StdWorkers prio
+    class Msg,Worker,DLX,DLQ dlq
 ```
 
 ---
@@ -758,28 +816,37 @@ Formulated by Alistair Cockburn, Hexagonal Architecture solves the problem of **
 
 Core Axiom: **Application domain logic sits at the center, completely unaware of databases or delivery mechanisms**. The domain defines **Ports** (interfaces). External infrastructure components plug in as interchangeable **Adapters**.
 
-#### Architectural Diagram
-```text
-           [ DRIVING / PRIMARY ADAPTERS ]               [ DRIVEN / SECONDARY ADAPTERS ]
-           
-       +-------------------+                                 +-------------------+
-       |     REST API      |                                 |    PostgreSQL     |
-       |   Spring Web /    |                                 |    Repository     |
-       |    FastAPI        |                                 |     (Adapter)     |
-       +---------+---------+                                 +---------^---------+
-                 | Calls                                               | Implements
-                 v                                                     |
-       +-------------------+                                 +-------------------+
-       |   Driving Port    |                                 |    Driven Port    |
-       | (Use Case / API)  |                                 |  (Repository /    |
-       +---------+---------+                                 |  Notification)    |
-                 |                                           +---------^---------+
-                 v                                                     |
-       +---------------------------------------------------------------+---------+
-       |                      CORE APPLICATION & DOMAIN LAYER                    |
-       |                  - Domain Entities (Order, Customer)                    |
-       |                  - Business Rules & Invariant Validations               |
-       +-------------------------------------------------------------------------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart LR
+    subgraph DrivingAdapters["Driving (Primary) Adapters"]
+        REST["REST Controller (Spring/FastAPI)"]
+        CLI["CLI Command Handler"]
+    end
+    
+    subgraph Hexagon["Core Application Hexagon"]
+        PortIn["Driving Port (OrderUseCase Interface)"]
+        Domain["Domain Entities & Business Invariants"]
+        PortOut["Driven Port (OrderRepository Interface)"]
+        
+        PortIn --> Domain
+        Domain --> PortOut
+    end
+    
+    subgraph DrivenAdapters["Driven (Secondary) Adapters"]
+        SQL["PostgreSQL Adapter"]
+        Msg["Kafka Event Publisher Adapter"]
+    end
+    
+    REST --> PortIn
+    CLI --> PortIn
+    PortOut --> SQL
+    PortOut --> Msg
+
+    classDef adapter fill:#F1EFE8,stroke:#5F5E5A,stroke-width:1.5px,color:#444441
+    classDef hex fill:#EEEDFE,stroke:#534AB7,stroke-width:2px,color:#3C3489
+    class REST,CLI,SQL,Msg adapter
+    class PortIn,Domain,PortOut hex
 ```
 
 #### Step-by-Step Flow
@@ -799,14 +866,35 @@ Core Axiom: **Application domain logic sits at the center, completely unaware of
 ### 7.2 Clean Architecture / Onion Architecture
 
 Concentric circles where the **Dependency Rule** dictates that dependencies point strictly **inward**:
-```text
-[ Frameworks & Drivers: DB, Web, UI, Devices ]
-       v
-  [ Interface Adapters: Controllers, Gateways, Presenters ]
-         v
-    [ Application Business Rules: Use Cases ]
-           v
-      [ Enterprise Business Rules: Entities (Center) ]
+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    subgraph Layer4["4. Frameworks & Drivers (Web, DB, UI, Devices)"]
+        subgraph Layer3["3. Interface Adapters (Controllers, Gateways, Presenters)"]
+            subgraph Layer2["2. Application Business Rules (Use Cases)"]
+                subgraph Layer1["1. Enterprise Business Rules (Entities - Core)"]
+                    Entities["Domain Entities"]
+                end
+                UseCases["Use Cases & Interactors"]
+            end
+            Adapters["Controllers, Gateways, Presenters"]
+        end
+        Drivers["Databases, HTTP Frameworks, External APIs"]
+    end
+
+    Drivers --> Adapters
+    Adapters --> UseCases
+    UseCases --> Entities
+
+    classDef l1 fill:#E1F5EE,stroke:#0F6E56,stroke-width:2px,color:#085041
+    classDef l2 fill:#EEEDFE,stroke:#534AB7,stroke-width:2px,color:#3C3489
+    classDef l3 fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#78350F
+    classDef l4 fill:#F1EFE8,stroke:#5F5E5A,stroke-width:2px,color:#444441
+    class Entities l1
+    class UseCases l2
+    class Adapters l3
+    class Drivers l4
 ```
 
 ---
@@ -816,23 +904,29 @@ Concentric circles where the **Dependency Rule** dictates that dependencies poin
 #### Conceptual Theory
 Named after the Australian Strangler Fig vine that seeds in the upper branches of a host tree, grows downward, and gradually replaces the host tree until the original tree rots away.
 
-The Strangler Fig pattern safely modernizes monolithic architectures with **zero "Big Bang" deployment risk**:
+The Strangler Fig pattern safely modernizes monolithic architectures with **zero Big Bang deployment risk**:
 1. Place an edge routing proxy in front of the legacy monolith.
 2. Build new features or extract domain slices as independent microservices.
 3. Repoint the edge proxy to route specific URL paths to the new services.
 4. Gradually strangle and decommission monolithic code until the monolith is retired.
 
-```text
-Phase 1: Intercept Route             Phase 2: Strangle Module              Phase 3: Monolith Retired
-+----------------------+             +----------------------+              +----------------------+
-|     Edge Router      |             |     Edge Router      |              |     Edge Router      |
-+----------+-----------+             +------+--------+------+              +------+--------+------+
-           | 100% Traffic                   | 80%    | 20%                        | 50%    | 50%
-           v                                v        v                            v        v
-+----------------------+             +--------+  +----------+              +--------+  +----------+
-|   Legacy Monolith    |             | Legacy |  | New Svc  |              | Svc A  |  |  Svc B   |
-+----------------------+             | Monol. |  | (Orders) |              +--------+  +----------+
-                                     +--------+  +----------+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Edge["Edge Routing Proxy (API Gateway / Ingress)"]
+    
+    Edge -->|"90% Traffic (Legacy Paths)"| Monolith["Legacy Monolithic Core"]
+    Edge -->|"10% Traffic (Strangled Slices)"| Svc1["New Microservice 1 (Orders)"]
+    Edge -->|"New Capabilities"| Svc2["New Microservice 2 (Payments)"]
+    
+    Monolith -.->|"Gradually Deprecated & Decommissioned"| Decom["Decommissioned"]
+
+    classDef edge fill:#EEEDFE,stroke:#534AB7,stroke-width:1.5px,color:#3C3489
+    classDef legacy fill:#FEE2E2,stroke:#DC2626,stroke-width:1.5px,color:#991B1B
+    classDef modern fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Edge edge
+    class Monolith,Decom legacy
+    class Svc1,Svc2 modern
 ```
 
 ---
@@ -840,6 +934,24 @@ Phase 1: Intercept Route             Phase 2: Strangle Module              Phase
 ### 7.4 Microkernel (Plugin) Pattern
 
 Divides the system into a minimal **Core System** (lifecycle management, extension registries) and independent **Plugin Modules** (specialized business adapters, payment methods, algorithms).
+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Core["Microkernel Core System
+    - Plugin Registry & Discovery
+    - Lifecycle Management
+    - Internal Event Bus"]
+    
+    P1["Plugin A: Stripe Gateway"] <-->|"Core SPI Contract"| Core
+    P2["Plugin B: PayPal Gateway"] <-->|"Core SPI Contract"| Core
+    P3["Plugin C: Crypto Gateway"] <-->|"Core SPI Contract"| Core
+
+    classDef core fill:#EEEDFE,stroke:#534AB7,stroke-width:2px,color:#3C3489
+    classDef plug fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Core core
+    class P1,P2,P3 plug
+```
 - **Canonical Examples**: VS Code, Eclipse, Jira, Linux Kernel modules.
 
 ---
@@ -850,6 +962,28 @@ Coordinates distributed communications between independent clients and servers v
 - Servers register service capabilities and network endpoints with the Broker.
 - Clients send requests to the Broker without knowing the physical IP of the server.
 - The Broker marshals parameters, routes requests, unmarshals responses, and handles location transparency.
+
+#### Graphical Architectural Diagram
+```mermaid
+flowchart TD
+    Client["Client Application"] -->|"1. Invokes Service (Location Transparent)"| Broker["Broker Coordinator
+    - Service Registry
+    - Parameter Marshalling
+    - Message Router"]
+    
+    Broker -->|"2. Dispatches Invocation"| Server["Remote Service Instance"]
+    Server -->|"3. Returns Result"| Broker
+    Broker -->|"4. Unmarshals & Returns"| Client
+    
+    Server -.->|"Registers Capabilities & Endpoint"| Broker
+
+    classDef client fill:#F1EFE8,stroke:#5F5E5A,stroke-width:1.5px,color:#444441
+    classDef broker fill:#FEF3C7,stroke:#D97706,stroke-width:2px,color:#78350F
+    classDef server fill:#E1F5EE,stroke:#0F6E56,stroke-width:1.5px,color:#085041
+    class Client client
+    class Broker broker
+    class Server server
+```
 
 ---
 

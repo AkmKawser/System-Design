@@ -69,7 +69,7 @@ These rules are permanent operational constraints. The agent must enforce them p
 - **Directive**: For **EVERY single modeling concept** discussed, documented, or solved in this repository (e.g., in query manuals, design patterns, architectural syntheses, and problem solutions), the agent **MUST** provide an end-to-end multi-tier demonstration detailing what happens at three distinct layers:
   1. **Coding Level (Strictly Java / OOP Application Logic)**: Show the concrete backend object-oriented implementation in **Java** (e.g., classes, interfaces, abstract classes, field references, method signatures, dependency injection, concurrency primitives, or design pattern wiring).
   2. **UML Diagram Level**: Show the exact formal diagram specification in **Mermaid** and/or **PlantUML** (e.g., Class diagram with multiplicities and visibility, Sequence diagram with lifelines and activation boxes, State Machine with guards/triggers, or Component diagram with ports and interfaces).
-  3. **Runtime Architecture / Memory State Level**: Show the concrete physical execution state at runtime. Illustrate the JVM heap object graph, pointer references, stack frames during execution, event queue delivery, or distributed microservice network payloads using structured ASCII state maps or data flow diagrams.
+  3. **Runtime Architecture / Memory State Level**: Show the concrete physical execution state at runtime. Illustrate the JVM heap object graph, pointer references, stack frames during execution, event queue delivery, or distributed microservice network payloads using graphical state diagrams (Mermaid sequence/flowchart diagrams or standalone vector SVGs).
 - **Enforcement**: No theoretical concept or operational query manual can be considered complete without this explicit **OOP Code -> UML Diagram -> Runtime State** breakdown.
 
 ### Rule 10: Single README Policy (One `README.md` Per Project)
@@ -181,6 +181,17 @@ These rules are permanent operational constraints. The agent must enforce them p
   7. **Universal Diagram Archetype Policy (Mandatory Claude Animated SVG)**:
      - Moving forward, **ALL diagrams created across the repository MUST use this Canonical Claude Animated SVG format** adhering to the respective archetype in [`architecture/diagram_style_guide.md`](../architecture/diagram_style_guide.md) (Horizontal Pipeline, Sequence Diagram, Topology, or State Machine).
      - Static Mermaid diagrams are preserved as companion text-mode code representations, but the primary pedagogical visualization asset must always be the theme-adaptive, animated standalone SVG.
+
+### Rule 18: Strict Prohibition of ASCII Diagrams (Mandatory Graphical Diagrams Only)
+- **Directive**: The creation, generation, or embedding of ASCII text diagrams (e.g., text boxes constructed with `+---+`, `| |`, `+===+`, `┌───┐`, `└───┘`, `-->`, or Unicode box-drawing characters inside code fences or blockquotes) is **STRICTLY AND PERMANENTLY PROHIBITED** across the entire repository.
+- **Mandatory Graphical Standard**:
+  - Every architecture diagram, component layout, execution flow, data pipeline, state machine, and sequence topology **MUST** be rendered exclusively as a **formal graphical diagram**:
+    1. **Mermaid Graphical Diagrams**: Rendered via standard ```` ```mermaid ```` code blocks (`flowchart TD/LR`, `sequenceDiagram`, `stateDiagram-v2`, `classDiagram`, `erDiagram`). All node labels with special characters (`()`, `:`, `/`, `&`) must strictly use double quotes (e.g. `Node["Label (Info)"]`). No HTML tags (`<br>`, `<b>`) inside labels.
+    2. **Canonical Standalone Animated SVGs**: Following Rule 17 and `architecture/diagram_style_guide.md`.
+    3. **Vector SVG / High-Resolution Images**: Extracted or ingested visual assets linked via clean markdown syntax.
+- **Enforcement**:
+  - The rendering auditor (`engine/scripts/audit_rendering.py`) and agent checks will strictly flag and reject any ASCII art / pseudo-box diagrams.
+  - Whenever diagrams are requested or needed in technical manuals, query responses, or study notes, the agent must generate rich, graphical Mermaid diagrams or standalone SVGs—never text-based box drawings.
 
 ---
 
