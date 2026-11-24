@@ -193,6 +193,20 @@ These rules are permanent operational constraints. The agent must enforce them p
   - The rendering auditor (`engine/scripts/audit_rendering.py`) and agent checks will strictly flag and reject any ASCII art / pseudo-box diagrams.
   - Whenever diagrams are requested or needed in technical manuals, query responses, or study notes, the agent must generate rich, graphical Mermaid diagrams or standalone SVGs—never text-based box drawings.
 
+### Rule 19: Mandatory Pre-Rendered Graphical Diagram Images in Documents (Strict Prohibition of Raw Diagram Code in Published Docs)
+- **Directive**: Rather than leaving raw diagram code blocks (such as raw ```` ```mermaid ````, ```` ```dot ````, or PlantUML code fences) directly in documents where they display as unrendered code text (especially in Google Docs, external document readers, and published manuals), the agent **MUST** programmatically pre-render all diagrams into crisp, high-resolution visual images (**PNG**) using the local rendering engine (`engine/scripts/render_all_catalog_diagrams.py` or Playwright Chromium).
+- **Mandatory Embedding Protocol**:
+  1. **Image Asset Generation**: Every diagram must be compiled and rendered to a 2x device-scale PNG stored in the topic's localized `images/` directory (e.g. `output/query_<topic>/images/<diagram-slug>.png`).
+  2. **Hyphenated File Naming Invariant**: Diagram image filenames **MUST strictly use hyphens (`-`), NEVER underscores (`_`)** (e.g., `01-overview-taxonomy.png`, `02-mvc-pattern.png`). Underscores in markdown image URLs cause markdown parsers (such as Goldmark and CommonMark) to misinterpret pairs of underscores as emphasis/italics (`\_`), breaking image path resolution during document ingestion.
+  3. **Image Link Embedding**: Embed the rendered diagram directly into the document using standard Markdown image syntax:
+     ```markdown
+     ![Diagram Title](images/diagram-slug.png)
+     ```
+  4. **Zero Raw Diagram Code in Google Docs**: When synchronizing or importing to Google Docs (`gdocs mutate import-md` or `gdocs mutate insert-image-from-file`), Google Docs receives the native visual image, ensuring reader-facing documents display actual visual architectural schematics rather than raw monospace code blocks.
+- **Enforcement**:
+  - The rendering auditor (`engine/scripts/audit_rendering.py`) and agent verification checks will enforce that query manuals and study guides embed rendered graphical image assets that resolve on disk.
+  - Whenever synchronizing to Google Docs, all diagrams must appear as rendered images.
+
 ---
 
 ## 🏛️ 2. Finalized Repository Architecture & Output Guidelines (Learning-Roadmap Architecture)

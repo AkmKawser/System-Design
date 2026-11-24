@@ -2164,3 +2164,24 @@ This file records the chronological session log of all user requests, architectu
   - Executed automated Git commit and push to remote `origin/main` per Universal Rule 3.
 - **Agent Response**:
   - Confirmed establishment of Universal Rule 18, elimination of all ASCII diagrams in favor of 28 graphical Mermaid diagrams, successful update to Google Doc tab `t.xlbamg66amln`, and clean repository synchronization.
+
+
+---
+
+## 📅 Session 95: Universal Rule 19 (Pre-Rendered Diagram Images in Docs) & Direct Image Ingestion
+
+- **Timestamp**: 2026-11-24
+- **User Instruction**:
+  > *"rather than using marmaid code directly add the generated diagrams in the docs. make this a rule.,"*
+- **Agentic Log**:
+  - Established permanent repository governance directive in [`chat/universal_rules.md`](universal_rules.md):
+    - **Universal Rule 19**: *Mandatory Pre-Rendered Graphical Diagram Images in Documents (Strict Prohibition of Raw Diagram Code in Published Docs)*. Strictly prohibits leaving raw diagram code blocks (such as ```` ```mermaid ```` or ```` ```dot ````) in reader-facing documents and Google Docs where they appear as unrendered text. Mandates compiling all diagrams to 2x device-scale high-resolution PNG images.
+    - **Hyphenated File Naming Invariant**: Mandated that all diagram image filenames must use hyphens (`-`), never underscores (`_`), eliminating markdown emphasis/italics parser collisions (`\_`) during document ingestion.
+  - Engineered local automated diagram compiler [`engine/scripts/render_all_catalog_diagrams.py`](../engine/scripts/render_all_catalog_diagrams.py) using Playwright Chromium with offline cached `mermaid.min.js`.
+  - Compiled and rendered all 28 Mermaid architecture diagrams from [`003_complete_architectural_patterns_catalog.md`](../topics/0.FUNDAMENTALS/Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/003_complete_architectural_patterns_catalog.md) into crisp, high-DPI PNG images inside `output/query_Architecture_Patterns/images/`.
+  - Replaced all 28 raw ```` ```mermaid ```` code fences in `003_complete_architectural_patterns_catalog.md` with direct native image references (`![<Title>](images/<diagram-slug>.png)`).
+  - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 211 markdown files with 0 errors**.
+  - Synchronized updated manual into Google Doc tab `t.xlbamg66amln` ("2. Architecture Pattens") in document `1ZQeIwLXWqNBSeZQJrwiWpcQGnssX2VdTemhMzWAVwdY` via `gdocs mutate import-md --auto-fit-tables`. Google Drive uploaded all 28 image assets and embedded native visual images directly into the Google Doc canvas.
+  - Staged, committed, and pushed changes to remote `origin/main` per Universal Rule 3.
+- **Agent Response**:
+  - Confirmed establishment of Universal Rule 19, local high-DPI compilation of all 28 diagrams into PNG assets, direct visual image embedding into Google Docs tab `t.xlbamg66amln`, and complete remote Git synchronization.
