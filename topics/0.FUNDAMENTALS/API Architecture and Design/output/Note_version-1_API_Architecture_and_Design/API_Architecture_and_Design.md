@@ -18,12 +18,9 @@ tags:
   - "System Design"
   - "Backend Engineering"
   - "Hussein Nasser"
----
 # API Architecture and Engineering: The Definitive Unified Guide
 
 **Source Attribution**: Enriched with foundational networking, communication patterns, socket models, and proxy architectures from *Fundamentals of Backend Engineering* by Hussein Nasser (Udemy).
-
----
 
 ## Table of Contents
 
@@ -95,8 +92,6 @@ tags:
    - [8.7. Graceful API Connection Shutdown](#87-graceful-api-connection-shutdown)
 9. [Related Master Curricula](#-related-master-curricula)
 
----
-
 ## 1. Part 1: The Core Mental Model & Fundamentals
 
 ### 1.1. What is an API? (First Principles & Intuitive Mental Models)
@@ -110,14 +105,13 @@ To build an intuitive foundation, contrast a **User Interface (UI)** with an **A
 | **User Interface (UI)** | **Human Being**      | Eyes, mouse clicks, keyboard taps, finger swipes       | Visual screens, CSS buttons, graphical forms         | Deliver an intuitive visual experience for humans.                      |
 | **API**                 | **Computer Program** | Method calls, network packets, structured byte streams | HTTP requests, JSON payloads, Protobuf binary frames | Deliver a predictable, machine-readable protocol for automated systems. |
 
-```mermaid
-flowchart LR
-    Human["👤 Human User"] -->|"Visual Clicks & Inputs"| UI["🖥️ User Interface (UI)\n(Web Browser / Mobile App)"]
-    UI -->|"Machine Data Calls"| API["⚡ Application Programming Interface (API)\n(Contract Boundary)"]
-    API -->|"Internal Execution"| Core["🏢 Core Backend Systems\n(Databases, Services, Mainframes)"]
-```
+![1.1. What is an API? (First Principles & Intuitive Mental Models) Architecture Diagram](images/01-11-what-is-an-api-first-principles-intui.png)
 
-![UI to API to Backend Flow](../../../../../animated_images/ui-api-backend-flow.svg)
+---
+
+![UI to API to Backend Flow](images/ui-api-backend-flow.gif)
+
+---
 
 #### The 3 Canonical Mental Models of an API:
 
@@ -138,24 +132,11 @@ To truly understand why APIs exist, examine these three real-world analogies:
    - Customers cannot walk into a bank vault and pick up stacks of 100-dollar bills.
    - Instead, they approach a bulletproof teller window (the **API Boundary**). They show their official ID (Authentication / Credentials), submit a structured withdrawal slip with their account number and desired amount (Request Payload), and the teller verifies their balance and hands over the authorized funds (Response).
 
----
-
 ### 1.2. What Can an API Do? (Deep-Dive into the 6 Core Capabilities with Diagrams)
 
 In modern software engineering, an API is far more than a simple data pipeline. APIs perform **six foundational operational responsibilities**. Below, each capability is analyzed through its problem statement, operational mechanics, real-world example, and architectural diagram.
 
-```mermaid
-flowchart TD
-    subgraph Capabilities["6 Core Capabilities of an API"]
-        direction TB
-        C1["1. Data Access & Abstraction\n(Controlled, secure data retrieval without leaking DB internals)"]
-        C2["2. Business Logic & Workflow Orchestration\n(Executing complex multi-step backend operations reliably)"]
-        C3["3. Decoupling & Polyglot Interoperability\n(Connecting disparate languages, frameworks, and operating systems)"]
-        C4["4. Third-Party Integration & Monetization\n(Packaging proprietary systems as commercial developer services)"]
-        C5["5. Security, Guardrails & Policy Enforcement\n(Shielding backend infrastructure from attacks, misuse, and leaks)"]
-        C6["6. Asynchronous Event Dispatching & Webhooks\n(Pushing real-time notifications when long-running jobs finish)"]
-    end
-```
+![The 3 Canonical Mental Models of an API: Architecture Diagram](images/02-the-3-canonical-mental-models-of-an-api.png)
 
 ---
 
@@ -170,24 +151,12 @@ flowchart TD
 * **How the API Solves This**:
   The API acts as an **abstraction barrier**. Clients make standard HTTP requests (`GET /v1/orders/123`). The API server authenticates the caller, validates their permission, manages an internal connection pool to the database, executes the optimized SQL query, maps the relational rows into a clean JSON structure, and returns only the fields the client is permitted to see.
 
-```mermaid
-flowchart LR
-    subgraph Danger["❌ The Anti-Pattern: Direct Database Exposure"]
-        direction TB
-        BadMobile["Mobile App"] -->|"Leaked DB Credentials\nDirect SQL over Internet"| BadDB[("Exposed PostgreSQL\n(Crashes at 100 connections)")]
-    end
+![Capability 1: Data Access & Abstraction (Controlled CRUD Without Direct Database Access) Architecture Diagram](images/03-capability-1-data-access-abstraction-con.png)
 
-    subgraph Secure["✅ The API Abstraction Pattern"]
-        direction TB
-        ClientApp["Mobile / Web App"] -->|"GET /v1/orders/123\n(Bearer Token)"| APIServer["API Server\n(Auth, Schema Mapping)"]
-        APIServer -->|"Internal Pooled TCP\n(HikariCP)"| InternalDB[("Private Database\n(Isolated in private VPC)")]
-    end
-```
+---
 
 * **Concrete Real-World Example**:
   An e-commerce mobile application fetches a user's recent orders via `GET /v1/users/me/orders`. The app developer does not know or care whether the backend stores data in PostgreSQL, DynamoDB, or an SAP mainframe. If the company migrates its database engine next year, the mobile app code remains 100% untouched.
-
----
 
 #### Capability 2: Business Logic & Workflow Orchestration (Complex Operations)
 
@@ -196,39 +165,16 @@ flowchart LR
 * **How the API Solves This**:
   The API provides a single, atomic endpoint (`POST /v1/checkout`). The client triggers the entire workflow with one call. The API server orchestrates the steps transactionally: if the credit card charge fails, it immediately rolls back the inventory reservation and returns a clear error to the user.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User as Mobile App (Customer)
-    participant API as API Server (Checkout Orchestrator)
-    participant Inv as Inventory Service
-    participant Pay as Payment Gateway (Stripe)
-    participant DB as Orders Database
-    participant Email as Notification Worker
+![Capability 2: Business Logic & Workflow Orchestration (Complex Operations) Architecture Diagram](images/04-capability-2-business-logic-workflow-orc.png)
 
-    User->>API: POST /v1/checkout (items, address, paymentMethod)
-    API->>Inv: Reserve 1x Laptop (Lock Stock)
-    Inv-->>API: Stock Reserved
-    API->>Pay: Charge 1,200 USD to Card
-    alt Card Declined
-        Pay-->>API: 402 Card Declined
-        API->>Inv: Release Laptop Reservation
-        API-->>User: HTTP 402 ("Card Declined: Insufficient Funds")
-    else Card Succeeded
-        Pay-->>API: Charge Success (ch_9921)
-        API->>DB: INSERT INTO orders (...)
-        DB-->>API: Order Saved (#ORD-882)
-        API-)Email: Enqueue async receipt email
-        API-->>User: HTTP 201 Created (Order #ORD-882 Confirmed)
-    end
-```
+---
 
-![Animated Checkout Sequence Diagram](../../../../../animated_images/checkout-sequence-diagram.svg)
+![Animated Checkout Sequence Diagram](images/checkout-sequence-diagram.gif)
+
+---
 
 * **Concrete Real-World Example**:
   When you order an Uber, your phone invokes `POST /v1/rides/request`. That single API call calculates the upfront fare based on traffic algorithms, locates nearby active drivers using spatial geospatial indexing, alerts drivers via real-time sockets, and pre-authorizes your payment card.
-
----
 
 #### Capability 3: Decoupling & Polyglot Interoperability (Language Independence)
 
@@ -243,34 +189,12 @@ sequenceDiagram
 * **How the API Solves This**:
   APIs establish a universal **wire protocol contract** (such as JSON over HTTP/2 or Protocol Buffers over gRPC). Because every operating system and programming language knows how to send network packets and serialize bytes, software written in completely incompatible languages can collaborate seamlessly.
 
-```mermaid
-flowchart TD
-    subgraph Clients["Frontend Clients"]
-        React["Web Browser\n(TypeScript / React)"]
-        iOS["iPhone App\n(Swift)"]
-    end
+![Capability 3: Decoupling & Polyglot Interoperability (Language Independence) Architecture Diagram](images/05-capability-3-decoupling-polyglot-interop.png)
 
-    subgraph APILayer["The API Boundary (Universal Wire Protocol: JSON / Protobuf)"]
-        PublicAPI["API Gateway / Aggregator\n(Go / Rust)"]
-    end
-
-    subgraph PolyglotServices["Backend Polyglot Microservices"]
-        MLService["AI Recommendation Engine\n(Python / PyTorch)"]
-        BankService["Core Banking Ledger\n(Java / Spring Boot)"]
-        SearchService["Real-time Search Engine\n(C++ / Rust)"]
-    end
-
-    React -->|"HTTPS / JSON"| PublicAPI
-    iOS -->|"HTTPS / JSON"| PublicAPI
-    PublicAPI -->|"gRPC / Protobuf"| MLService
-    PublicAPI -->|"gRPC / Protobuf"| BankService
-    PublicAPI -->|"gRPC / Protobuf"| SearchService
-```
+---
 
 * **Concrete Real-World Example**:
   A modern AI application uses a Next.js (TypeScript) web frontend. When the user asks a question, the web frontend calls an API Gateway written in Go. The Go gateway invokes a deep learning model running in Python on an NVIDIA GPU cluster via a high-performance gRPC API.
-
----
 
 #### Capability 4: Third-Party Integration & Monetization (APIs as Products)
 
@@ -279,27 +203,14 @@ flowchart TD
 * **How the API Solves This**:
   Specialized organizations package complex, proprietary capabilities into public APIs, transforming internal software into commercial **Software-as-a-Service (SaaS)** products. Developers around the globe integrate these capabilities with a few lines of code, paying per API request.
 
-```mermaid
-flowchart LR
-    YourApp["Your SaaS Application\n(E-Commerce Store)"]
+![Capability 4: Third-Party Integration & Monetization (APIs as Products) Architecture Diagram](images/06-capability-4-third-party-integration-mon.png)
 
-    Stripe["💳 Stripe API\n(Global Payments)"]
-    Twilio["📱 Twilio API\n(SMS & 2FA Codes)"]
-    OpenAI["🤖 OpenAI API\n(Generative AI & LLMs)"]
-    SendGrid["📧 SendGrid API\n(Transactional Emails)"]
-
-    YourApp -->|"POST /v1/charges"| Stripe
-    YourApp -->|"POST /v1/messages"| Twilio
-    YourApp -->|"POST /v1/chat/completions"| OpenAI
-    YourApp -->|"POST /v1/mail/send"| SendGrid
-```
+---
 
 * **Concrete Real-World Example**:
   - **Stripe**: Handles credit card compliance (PCI-DSS) and bank settlements via API.
   - **Twilio**: Delivers SMS verification codes to cell phones across 180 countries via API.
   - **OpenAI**: Exposes multi-billion parameter neural networks via API.
-
----
 
 #### Capability 5: Security, Guardrails & Policy Enforcement
 
@@ -308,25 +219,7 @@ flowchart LR
 * **How the API Solves This**:
   An API layer acts as a strict **security border control**. Before any request reaches the backend business code, the API gateway validates the cryptographic signature of the user's access token, checks whether the client has exceeded their allowed rate limit (e.g. max 100 requests per minute), scrubs inputs to prevent SQL Injection (SQLi) or Cross-Site Scripting (XSS), and masks sensitive data (such as social security numbers) before returning responses.
 
-```mermaid
-flowchart TD
-    Attacker["🚨 Malicious Client / Script"] -->|"1,000 requests/sec + SQL Injection Payload"| BorderGuard
-
-    subgraph BorderGuard["API Security & Guardrail Boundary"]
-        direction TB
-        RL["1. Rate Limiter\n(Token Bucket / Redis)"]
-        WAF["2. Payload Inspector / WAF\n(Block SQLi, XSS, Malformed JSON)"]
-        Auth["3. Cryptographic Token Validator\n(Verify JWT Signature & Expiry)"]
-        RBAC["4. Authorization Filter\n(Enforce Roles & Scopes)"]
-    end
-
-    RL -->|"Exceeded 100 req/min"| E429["⛔ HTTP 429 Too Many Requests"]
-    WAF -->|"Contains 'OR 1=1--'"| E400["⛔ HTTP 400 Malformed Payload"]
-    Auth -->|"Expired or Forged Token"| E401["⛔ HTTP 401 Unauthorized"]
-    RBAC -->|"User lacks admin role"| E403["⛔ HTTP 403 Forbidden"]
-
-    BorderGuard -->|"✅ Passed All Guardrails"| CoreBackend["Core Internal Microservices\n(Safe & Protected)"]
-```
+![Capability 5: Security, Guardrails & Policy Enforcement Architecture Diagram](images/07-capability-5-security-guardrails-policy-.png)
 
 ---
 
@@ -341,28 +234,7 @@ flowchart TD
   2. The server responds immediately with `HTTP 202 Accepted` and a unique `job_id`.
   3. When the background worker finally finishes rendering the video 10 minutes later, the API server **reverses the role**: it acts as a client and sends an asynchronous HTTP POST request (**a Webhook**) directly to a server URL provided by the client.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Client Server (Consumer)
-    participant API as API Server (Provider)
-    participant Queue as Background Worker Queue
-    participant Worker as Video Processing Worker
-
-    Note over Client,API: Phase 1: Asynchronous Job Initiation
-    Client->>API: POST /v1/video/render (video_url, webhook_url: "https://my.app/hook")
-    API->>Queue: Enqueue render task
-    API-->>Client: HTTP 202 Accepted (jobId: "job_9981", status: "QUEUED")
-    Note over Client: Client connection closes immediately (no threads held open)
-
-    Note over Queue,Worker: Phase 2: Long-Running Background Execution (10 Minutes)
-    Queue->>Worker: Dequeue render task
-    Worker->>Worker: Transcode 4K Video frames...
-
-    Note over Worker,Client: Phase 3: The Webhook Callback (Reverse API Call)
-    Worker->>Client: POST https://my.app/hook (Payload: job_9981 SUCCESS, downloadUrl)
-    Client-->>Worker: HTTP 200 OK (Acknowledged)
-```
+![Capability 6: Asynchronous Event Dispatching & Webhooks (Reverse APIs) Architecture Diagram](images/08-capability-6-asynchronous-event-dispatch.png)
 
 ---
 
@@ -370,22 +242,9 @@ sequenceDiagram
 
 Every standard API interaction operates as an exchange between a **Client (Consumer)** and a **Server (Provider)**:
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Client Application
-    participant API as API Server
+![1.3. Anatomy of an API Request and Response Cycle Architecture Diagram](images/09-13-anatomy-of-an-api-request-and-respons.png)
 
-    Note over Client,API: 1. THE REQUEST
-    Client->>API: POST /v1/orders HTTP/1.1
-    Note right of Client: Headers: Authorization, Content-Type\nBody: {"productId": 42, "quantity": 2}
-
-    Note over API: 2. SERVER EXECUTION (Auth check, validation, database write)
-
-    Note over API,Client: 3. THE RESPONSE
-    API-->>Client: HTTP/1.1 201 Created
-    Note left of API: Headers: Content-Type: application/json\nBody: {"orderId": "ord_99", "status": "CONFIRMED"}
-```
+---
 
 #### The 5 Components of an API Request:
 
@@ -417,37 +276,13 @@ sequenceDiagram
 2. **Response Headers**: Metadata from the server (`Content-Type`, `Cache-Control`, `RateLimit-Remaining`).
 3. **Response Body**: The requested data or structured error details.
 
----
-
 ### 1.4. Categorization by Access Scope (Private, Partner, Public, Composite)
 
 APIs are categorized by who is permitted to access them and where they reside in the network topology:
 
-```mermaid
-flowchart TD
-    subgraph PublicNet["Untrusted Public Internet"]
-        PublicUser["Public Developer\n(Open API)"]
-        PartnerCorp["B2B Enterprise Partner\n(Partner API via mTLS)"]
-    end
+![1.4. Categorization by Access Scope (Private, Partner, Public, Composite) Architecture Diagram](images/10-14-categorization-by-access-scope-privat.png)
 
-    subgraph Perimeter["Edge / Gateway Tier"]
-        Gateway["Enterprise API Gateway"]
-    end
-
-    subgraph InternalVPC["Secure Private Cloud (VPC)"]
-        Composite["Composite API Orchestrator\n(Aggregates multi-service calls)"]
-        SvcA["Order Microservice\n(Private API)"]
-        SvcB["Inventory Microservice\n(Private API)"]
-        SvcC["Billing Microservice\n(Private API)"]
-    end
-
-    PublicUser -->|"API Key / OAuth2"| Gateway
-    PartnerCorp -->|"mTLS / IP Whitelist"| Gateway
-    Gateway --> Composite
-    Composite --> SvcA
-    Composite --> SvcB
-    Composite --> SvcC
-```
+---
 
 1. **Private / Internal APIs**:
    - Reside strictly inside private Virtual Private Clouds (VPCs). Never exposed to the public internet. Used for microservice-to-microservice communication.
@@ -458,36 +293,16 @@ flowchart TD
 4. **Composite APIs**:
    - Specialized orchestrators that execute a sequence of multiple internal microservice calls and aggregate the results into a single payload, saving mobile clients multiple network round-trips.
 
----
-
 ### 1.5. Synchronous vs. Asynchronous Communication Topologies
 
 APIs manage compute workloads across two distinct execution modes:
 
-```mermaid
-flowchart TD
-    subgraph SyncFlow["Synchronous Request-Response (Blocking)"]
-        direction TB
-        C1["Client"] -->|"1. POST /v1/users (Wait)"| S1["API Server"]
-        S1 -->|"2. Write to DB"| DB1[("Database")]
-        DB1 -->|"3. OK"| S1
-        S1 -->|"4. HTTP 201 Created"| C1
-    end
+![1.5. Synchronous vs. Asynchronous Communication Topologies Architecture Diagram](images/11-15-synchronous-vs-asynchronous-communica.png)
 
-    subgraph AsyncFlow["Asynchronous Workload (Non-Blocking Worker Queue)"]
-        direction TB
-        C2["Client"] -->|"1. POST /v1/reports/export"| S2["API Server"]
-        S2 -->|"2. Enqueue Job"| Q2["Message Queue (Kafka / RabbitMQ)"]
-        S2 -->|"3. HTTP 202 Accepted (jobId: 882)"| C2
-        Q2 -->|"4. Process in background"| W2["Background Worker Pool"]
-        W2 -->|"5. Push Webhook callback or poll status"| C2
-    end
-```
+---
 
 * **Synchronous Workload**: The client thread blocks and waits until the server completes processing and returns the response. Ideal for fast, deterministic reads and writes (< 200 milliseconds).
 * **Asynchronous Workload**: For long-running operations (file imports, video transcoding, PDF generation), the API server enqueues the task in a message broker (RabbitMQ/Kafka) and returns an immediate `HTTP 202 Accepted`. This releases the client connection immediately, preventing thread starvation and gateway timeouts.
-
----
 
 ### 1.6. The Master Architectural Map: Who Talks to Whom in Modern Systems?
 
@@ -495,36 +310,13 @@ For a beginner stepping into backend and systems engineering, looking at modern 
 
 To master APIs, you must understand **who is talking to whom**, **what language (protocol) they are speaking**, and **why they are talking in the first place**.
 
----
-
 #### 1.6.1. The Mental Model: The Modern Distributed City
 
 Think of a modern software system as a **secure walled city**:
 
-```mermaid
-flowchart TD
-    subgraph OutsideWorld["🌍 The Outside World (Public, Untrusted)"]
-        Visitors["Citizens & Travelers\n(Mobile Apps, Browsers, IoT Devices)"]
-    end
+![1.6.1. The Mental Model: The Modern Distributed City Architecture Diagram](images/12-161-the-mental-model-the-modern-distribu.png)
 
-    subgraph CityGates["🛡️ City Gates & Customs (North-South Traffic)"]
-        direction TB
-        GateGuard["Border Control & Security\n(WAF, DDoS Shield, DNS)"]
-        TollBooth["Traffic Directors & Translators\n(Load Balancers, API Gateways)"]
-    end
-
-    subgraph InsideCity["🏛️ Inside the City Walls (East-West Traffic)"]
-        direction TB
-        Offices["Offices & Specialists\n(Microservices: Orders, Billing, Users)"]
-        Warehouses["Secure Vaults & Pantries\n(Databases, Redis Caches, S3 Storage)"]
-        ConveyorBelts["Internal Message Couriers\n(Kafka Event Streams, RabbitMQ Queues)"]
-    end
-
-    Visitors -->|"North-South: Crossing from outside to inside"| CityGates
-    CityGates -->|"Authorized Handoff"| InsideCity
-    Offices <-->|"East-West: Safe internal communication"| Warehouses
-    Offices <-->|"East-West: Decoupled tasks"| ConveyorBelts
-```
+---
 
 #### The Two Fundamental Directions of Network Traffic:
 
@@ -535,77 +327,11 @@ flowchart TD
    - **What it is**: Traffic traveling horizontally between servers, microservices, caches, and databases located inside the private datacenter.
    - **Characteristics**: Highly trusted, runs on private high-speed fiber networks (Virtual Private Cloud - VPC), optimized for ultra-low latency (< 2 milliseconds), and often speaks compact binary protocols (gRPC, Redis RESP, database native protocols).
 
----
-
 #### 1.6.2. The Global Architectural Topology
 
 Below is the complete architectural layout showing all 6 tiers of a production enterprise system:
 
-```mermaid
-flowchart TD
-    subgraph ClientTier ["1. Client Tier (External / Public)"]
-        Browser["Web Browser (SPA / SSR)"]
-        Mobile["Mobile App (iOS / Android)"]
-        IoT["IoT / Embedded Device"]
-        ThirdParty["Third-Party API Client"]
-    end
-
-    subgraph EdgeTier ["2. Edge & Ingress Tier (North-South)"]
-        DNS["DNS Resolver"]
-        CDN["Content Delivery Network (CDN)"]
-        WAF["Web App Firewall / DDOS Shield"]
-        LB["L4 / L7 Load Balancer"]
-        Gateway["API Gateway / BFF"]
-    end
-
-    subgraph ServiceTier ["3. Application & Microservices Tier (East-West)"]
-        ServiceA["Frontend / Aggregator Service"]
-        ServiceB["Core Domain Microservice"]
-        Sidecar["Service Mesh Sidecar (Envoy)"]
-        Worker["Async Background Worker"]
-    end
-
-    subgraph AsyncTier ["4. Message & Event Streaming Tier"]
-        Queue["Message Queue (RabbitMQ / SQS)"]
-        Stream["Event Log / Stream (Kafka)"]
-    end
-
-    subgraph DataTier ["5. Data & Storage Tier"]
-        RDBMS["Relational DB (PostgreSQL / MySQL)"]
-        NoSQL["Document / Key-Value DB (MongoDB / DynamoDB)"]
-        Cache["In-Memory Cache (Redis)"]
-        Search["Search Engine (Elasticsearch)"]
-        ObjectStore["Object Storage (S3 / GCS)"]
-    end
-
-    subgraph PlatformTier ["6. Identity & Observability Tier"]
-        AuthServer["Identity Provider (OAuth2 / OIDC)"]
-        Telemetry["Telemetry Collector (OTel / Prometheus)"]
-    end
-
-    Browser --> DNS
-    Browser --> CDN
-    Browser --> WAF --> LB --> Gateway
-    Mobile --> Gateway
-    ThirdParty --> Gateway
-    IoT --> Gateway
-
-    Gateway --> ServiceA
-    ServiceA <--> Sidecar <--> ServiceB
-    ServiceA --> Cache
-    ServiceB --> RDBMS
-    ServiceB --> NoSQL
-    ServiceB --> Search
-    ServiceB --> ObjectStore
-
-    ServiceB --> Queue --> Worker
-    ServiceB --> Stream --> Worker
-    Worker --> RDBMS
-
-    ServiceA -.-> AuthServer
-    ServiceA -.-> Telemetry
-    ServiceB -.-> Telemetry
-```
+![1.6.2. The Global Architectural Topology Architecture Diagram](images/13-162-the-global-architectural-topology.png)
 
 ---
 
@@ -620,14 +346,9 @@ In production software engineering, communication occurs across **ten distinct b
 * **The Beginner Intuition**:
   When you type `https://api.example.com` on your phone, your phone has no idea which physical machine in the world hosts that API. First, it must ask the **DNS Resolver** for the IP address. Then, before reaching your server, the request passes through a **Content Delivery Network (CDN)** for fast cached images, a **Web Application Firewall (WAF)** to block hackers, and a **Load Balancer** that distributes millions of incoming connections across server clusters.
 
-```mermaid
-flowchart LR
-    Phone["📱 Smartphone Client"] -->|"1. What is IP of api.com?"| DNS["🌐 DNS Resolver"]
-    DNS -->|"2. IP is 198.51.100.1"| Phone
-    Phone -->|"3. HTTPS GET /v1/home"| WAF["🛡️ WAF (Cloudflare)\n(Check for attacks)"]
-    WAF -->|"4. Clean Traffic"| LB["⚖️ Load Balancer\n(Distribute connections)"]
-    LB -->|"5. Routed Request"| Gateway["🚪 API Gateway\n(Validate Token)"]
-```
+![Category 1: Client ↔ Edge & Network Ingress (North–South Ingress) Architecture Diagram](images/14-category-1-client-edge-network-ingress-n.png)
+
+---
 
 | Source Component                    | Target Component                                       | Purpose & Responsibility                                                                         | Protocols & Mechanisms                                | Interaction Pattern                     |
 | :---------------------------------- | :----------------------------------------------------- | :----------------------------------------------------------------------------------------------- | :---------------------------------------------------- | :-------------------------------------- |
@@ -649,12 +370,9 @@ flowchart LR
 * **The Beginner Intuition**:
   Once a request successfully clears the front gates (API Gateway), it enters the private network. The API Gateway decides which internal service should handle the request: should it go to the **Order Service**, the **User Service**, or a specialized **Backend-for-Frontend (BFF)** that formats the response specifically for mobile screens?
 
-```mermaid
-flowchart LR
-    GW["🚪 API Gateway"] -->|"Path: /v1/mobile/*"| BFF["📱 Mobile BFF\n(Compacts data for mobile)"]
-    GW -->|"Path: /v1/orders/*"| Orders["📦 Order Service"]
-    GW -->|"Path: /v1/billing/*"| Billing["💳 Billing Service"]
-```
+![Category 2: Edge ↔ Application Services (Crossing the Perimeter) Architecture Diagram](images/15-category-2-edge-application-services-cro.png)
+
+---
 
 | Source Component                        | Target Component                      | Purpose & Responsibility                                                                              | Protocols & Mechanisms                                     | Interaction Pattern |
 | :-------------------------------------- | :------------------------------------ | :---------------------------------------------------------------------------------------------------- | :--------------------------------------------------------- | :------------------ |
@@ -669,13 +387,9 @@ flowchart LR
 * **The Beginner Intuition**:
   In a microservices architecture, a single user click requires multiple internal services to work together. When the **Order Service** needs to know if an item is in stock, it calls the **Inventory Service** directly using high-speed internal calls (**gRPC**), looking up the current IP address of the Inventory Service using a **Service Registry** (like Consul or Kubernetes CoreDNS).
 
-```mermaid
-flowchart LR
-    OrderSvc["📦 Order Service"] -->|"1. Where is Inventory Service?"| Registry["🗺️ Service Registry\n(Kubernetes CoreDNS)"]
-    Registry -->|"2. Available at IP 10.0.4.12"| OrderSvc
-    OrderSvc -->|"3. gRPC: CheckStock(SKU-991)"| InvSvc["🏭 Inventory Service\n(at 10.0.4.12)"]
-    InvSvc -->|"4. Stock Confirmed"| OrderSvc
-```
+![Category 3: Service ↔ Service (East–West Microservices) Architecture Diagram](images/16-category-3-service-service-eastwest-micr.png)
+
+---
 
 | Source Component         | Target Component                                           | Purpose & Responsibility                                                                              | Protocols & Mechanisms                           | Interaction Pattern          |
 | :----------------------- | :--------------------------------------------------------- | :---------------------------------------------------------------------------------------------------- | :----------------------------------------------- | :--------------------------- |
@@ -690,18 +404,9 @@ flowchart LR
 * **The Beginner Intuition**:
   Imagine if every software engineer had to write code for encryption, retries, timeout management, and distributed tracing inside their microservice. It would lead to massive duplication and bugs! Instead, engineers attach a **"Sidecar" helper proxy** (like Envoy in Istio) right next to each microservice container on the same machine. The microservice just sends plain traffic to `localhost`, and the Sidecar automatically encrypts it, logs trace headers, and handles retries.
 
-```mermaid
-flowchart LR
-    subgraph Pod["Single Machine / Kubernetes Pod"]
-        App["📦 Application Code\n(Order Service)"]
-        Sidecar["🛡️ Envoy Sidecar Proxy\n(Attached on localhost:15001)"]
-    end
+![Category 4: Service ↔ Mesh Sidecar / Local Agent (Intra-Node) Architecture Diagram](images/17-category-4-service-mesh-sidecar-local-ag.png)
 
-    ExternalSvc["🏭 Inventory Service Sidecar"]
-
-    App -->|"1. Plain HTTP to localhost"| Sidecar
-    Sidecar -->|"2. Auto-encrypt mTLS + Trace Header"| ExternalSvc
-```
+---
 
 | Source Component                           | Target Component                                      | Purpose & Responsibility                                                                                  | Protocols & Mechanisms                                                               | Interaction Pattern          |
 | :----------------------------------------- | :---------------------------------------------------- | :-------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- | :--------------------------- |
@@ -720,20 +425,9 @@ flowchart LR
   - **Search Engines (Elasticsearch)** for fuzzy text matching.
   - **Object Stores (AWS S3)** for storing files, images, and videos.
 
-```mermaid
-flowchart LR
-    Service["📦 Application Service"]
+![Category 5: Service ↔ Data Storage & Caching (The Persistence Tier) Architecture Diagram](images/18-category-5-service-data-storage-caching-.png)
 
-    Redis[("⚡ Redis Cache\n(< 1ms Session/Token lookup)")]
-    Postgres[("🐘 PostgreSQL\n(ACID relational records)")]
-    Elastic[("🔍 Elasticsearch\n(Fast full-text search)")]
-    S3[("🪣 AWS S3\n(PDF receipts & images)")]
-
-    Service -->|"1. Check hot cache (RESP)"| Redis
-    Service -->|"2. Relational Query (SQL)"| Postgres
-    Service -->|"3. Search Query (JSON/HTTP)"| Elastic
-    Service -->|"4. Upload/Download Blob (REST)"| S3
-```
+---
 
 | Source Component              | Target Component                                        | Purpose & Responsibility                                                                         | Protocols & Mechanisms                                                                     | Interaction Pattern                   |
 | :---------------------------- | :------------------------------------------------------ | :----------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- | :------------------------------------ |
@@ -750,13 +444,9 @@ flowchart LR
 * **The Beginner Intuition**:
   If every service called every other service directly, a single slow service would cause the whole company's system to grind to a halt. Instead, services use **Message Brokers** like RabbitMQ or Kafka. When an order is placed, the Order Service publishes an event: `"Order #123 Placed"`. It doesn't wait around; it goes back to serving users. Independent background workers pick up the message whenever they are ready.
 
-```mermaid
-flowchart LR
-    OrderSvc["📦 Order Service"] -->|"1. Publish Event\n(order.placed)"| Kafka["📬 Kafka Event Stream\n(Ordered Log of Events)"]
-    Kafka -->|"2. Read at own pace"| EmailWorker["📧 Email Worker\n(Sends confirmation)"]
-    Kafka -->|"3. Read at own pace"| AnalyticsWorker["📊 Analytics Worker\n(Updates dashboard)"]
-    Kafka -->|"4. Read at own pace"| FraudWorker["🚨 Fraud Detector\n(Analyzes risk)"]
-```
+![Category 6: Service ↔ Asynchronous Messaging & Event Streams Architecture Diagram](images/19-category-6-service-asynchronous-messagin.png)
+
+---
 
 | Source Component                    | Target Component                                   | Purpose & Responsibility                                                                    | Protocols & Mechanisms                      | Interaction Pattern                             |
 | :---------------------------------- | :------------------------------------------------- | :------------------------------------------------------------------------------------------ | :------------------------------------------ | :---------------------------------------------- |
@@ -773,11 +463,9 @@ flowchart LR
 * **The Beginner Intuition**:
   What happens if the hard drive holding your database suddenly dies? To prevent data loss, database servers talk directly to other database servers behind the scenes! The **Primary Database** writes changes to an append-only log (Write-Ahead Log - WAL) and continuously streams those bytes to **Read Replicas**. In distributed databases, nodes use voting protocols (**Raft** or **Paxos**) to agree on transactions.
 
-```mermaid
-flowchart LR
-    Primary[("🐘 Primary DB Node\n(Accepts all Writes)")] -->|"Continuous WAL Streaming Replication"| Replica1[("🐘 Read Replica 1\n(Serves Read traffic)")]
-    Primary -->|"Continuous WAL Streaming Replication"| Replica2[("🐘 Read Replica 2\n(Serves Read traffic)")]
-```
+![Category 7: Data Store ↔ Data Store (Internal Replication & Storage Clustering) Architecture Diagram](images/20-category-7-data-store-data-store-interna.png)
+
+---
 
 | Source Component                | Target Component                               | Purpose & Responsibility                                                                             | Protocols & Mechanisms                                               | Interaction Pattern                |
 | :------------------------------ | :--------------------------------------------- | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------- | :--------------------------------- |
@@ -793,17 +481,9 @@ flowchart LR
 * **The Beginner Intuition**:
   Not all communication goes over a Wi-Fi or Ethernet cable. When your Java or Go program runs on a Linux server, it must talk to the **Operating System Kernel** to read files or open network sockets. It does this through **System Calls (`syscall`)**. Multiple programs running on the same server can exchange data at lightning speed using **Unix Domain Sockets** or **Shared Memory** without ever touching the network card!
 
-```mermaid
-flowchart TD
-    App["💻 Application Process (User Space)"]
-    Kernel["⚙️ Operating System Kernel (Kernel Space)"]
-    Hardware["🔌 Network Interface Card (NIC / Hardware)"]
+![Category 8: Intra-Host & Low-Level Process Communication (Same Machine) Architecture Diagram](images/21-category-8-intra-host-low-level-process-.png)
 
-    App -->|"1. System Call: socket(), read(), write()"| Kernel
-    Kernel -->|"2. DMA Memory Copy"| Hardware
-    Hardware -->|"3. Interrupt Signal: 'Data has arrived!'"| Kernel
-    Kernel -->|"4. Wake up epoll event loop"| App
-```
+---
 
 | Source Component             | Target Component                       | Purpose & Responsibility                                                                                  | Protocols & Mechanisms                                                                                  | Interaction Pattern                      |
 | :--------------------------- | :------------------------------------- | :-------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------ | :--------------------------------------- |
@@ -821,14 +501,9 @@ flowchart TD
 * **The Beginner Intuition**:
   How does the API Gateway know that a user's login token is real without asking the main database on every single click? The system uses an **Identity Provider** (like Auth0, Okta, or Keycloak). The Identity Provider cryptographically signs a JSON Web Token (JWT). The API server fetches the public verification keys (**JWKS**) once, caches them, and verifies tokens instantly in memory!
 
-```mermaid
-flowchart LR
-    User["👤 User App"] -->|"1. Login with credentials"| IdP["🔐 Identity Provider (Auth0/Okta)"]
-    IdP -->|"2. Returns signed JWT Token"| User
-    User -->|"3. Request + Bearer JWT"| Gateway["🚪 API Gateway"]
-    Gateway -->|"4. Fetch Public Keys (Cached)"| JWKS["🔑 JWKS Key Endpoint"]
-    Gateway -->|"5. Verify signature offline in < 1ms"| Gateway
-```
+![Category 9: Security, Identity & Governance Infrastructure Architecture Diagram](images/22-category-9-security-identity-governance-.png)
+
+---
 
 | Source Component                | Target Component                                          | Purpose & Responsibility                                                                     | Protocols & Mechanisms                                                         | Interaction Pattern          |
 | :------------------------------ | :-------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------- | :--------------------------- |
@@ -847,12 +522,9 @@ flowchart LR
   - You call **Twilio's API** to send SMS text messages.
   - When a customer pays an invoice on Stripe, Stripe calls your **Webhook endpoint** to tell your backend that the payment succeeded.
 
-```mermaid
-flowchart LR
-    InternalBackend["🏢 Your Backend Service"] <-->|"Synchronous Outbound API Call\n(POST https://api.stripe.com/v1/charges)"| Stripe["💳 Stripe Cloud"]
-    InternalBackend <-->|"Synchronous Outbound API Call\n(POST https://api.twilio.com/v1/messages)"| Twilio["📱 Twilio Cloud"]
-    Stripe -->|"Asynchronous Inbound Callback\n(POST https://your-api.com/webhooks/stripe)"| WebhookReceiver["🪝 Your Webhook Receiver"]
-```
+![Category 10: Cross-Organization & External Integrations Architecture Diagram](images/23-category-10-cross-organization-external-.png)
+
+---
 
 | Source Component                        | Target Component                                        | Purpose & Responsibility                                                                   | Protocols & Mechanisms                                         | Interaction Pattern                   |
 | :-------------------------------------- | :------------------------------------------------------ | :----------------------------------------------------------------------------------------- | :------------------------------------------------------------- | :------------------------------------ |
@@ -860,57 +532,15 @@ flowchart LR
 | **Third-Party Provider (Stripe)** | **Internal Webhook Consumer**                     | Notifies your system asynchronously when an external event completes (e.g., invoice paid). | Webhooks (HTTPS POST with HMAC SHA-256 signature verification) | Asynchronous Callback Push            |
 | **Internal Email Worker**         | **External Mail Server (SMTP Relay / SendGrid)**  | Transmits transactional emails to user mailboxes.                                          | SMTP over TLS (Port 587/465), SendGrid Web API                 | Push / Relay                          |
 
----
-
 #### 1.6.4. The Complete End-to-End Story: The 3-Second Life of an "Order Coffee" Request
 
 To tie all 10 communication boundaries together into one clear mental picture, trace what happens under the hood when a user taps **"Order Caramel Macchiato"** on a mobile app:
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User as User Mobile App
-    participant DNS as DNS Resolver (Cat 1)
-    participant WAF as Cloudflare WAF / LB (Cat 1)
-    participant GW as API Gateway (Cat 1 & 2)
-    participant Auth as Identity Provider (Cat 9)
-    participant OrderSvc as Order Microservice (Cat 3 & 4)
-    participant Cache as Redis Cache (Cat 5)
-    participant DB as Postgres DB (Cat 5 & 7)
-    participant Kafka as Kafka Event Stream (Cat 6)
-    participant Stripe as External Stripe API (Cat 10)
-
-    Note over User,DNS: 1. Network Ingress & Resolution
-    User->>DNS: Resolve api.starbucks.com
-    DNS-->>User: Return Edge IP 198.51.100.1
-    User->>WAF: POST /v1/orders (with Bearer JWT)
-    WAF->>GW: Clean traffic passed through Load Balancer
-
-    Note over GW,Auth: 2. Authentication & Gateway Handoff
-    GW->>Auth: Validate JWT signature against cached JWKS
-    Auth-->>GW: Token Valid (User ID: cust_42)
-    GW->>OrderSvc: Forward request via internal gRPC (East-West)
-
-    Note over OrderSvc,DB: 3. Persistence & Cache Checks
-    OrderSvc->>Cache: Check item price & active discount
-    Cache-->>OrderSvc: Cache Hit: $5.50
-    OrderSvc->>Stripe: Charge $5.50 to saved card
-    Stripe-->>OrderSvc: 200 OK (Charge ch_9981 success)
-    OrderSvc->>DB: INSERT INTO orders (cust_42, Macchiato, PAID)
-    DB-->>OrderSvc: Order saved (#ORD-771)
-
-    Note over OrderSvc,Kafka: 4. Asynchronous Event Notification
-    OrderSvc-)Kafka: Publish event "order.created" (#ORD-771)
-    Note over Kafka: Kitchen display tablet & barista worker pick up task asynchronously
-
-    Note over OrderSvc,User: 5. Immediate Synchronous Response
-    OrderSvc-->>GW: Return Order Details
-    GW-->>User: HTTP 201 Created (Order #ORD-771 Confirmed!)
-```
-
-By understanding this 5-stage lifecycle, a beginner can see how **every single component** in the 10 categories has a specific, vital role in making modern applications fast, secure, and resilient.
+![1.6.4. The Complete End-to-End Story: The 3-Second Life of an "Order Coffee" Request Architecture Diagram](images/24-164-the-complete-end-to-end-story-the-3-.png)
 
 ---
+
+By understanding this 5-stage lifecycle, a beginner can see how **every single component** in the 10 categories has a specific, vital role in making modern applications fast, secure, and resilient.
 
 ## 2. Part 2: Network Transport & Low-Level Communication Protocols
 
@@ -922,21 +552,7 @@ In backend engineering, choosing how two software components communicate across 
 
 Below, all **nine canonical communication patterns** are analyzed in depth, covering first-principles intuition, low-level mechanics, wire protocol headers, failure modes, and architectural diagrams.
 
-```mermaid
-flowchart TD
-    subgraph Patterns["9 Core Backend Communication Patterns"]
-        direction TB
-        P_RR["1. Request-Response\n(Stateless / Ephemeral connection)"]
-        P_SYNC["2. Synchronous vs Asynchronous Workloads\n(Blocking vs Background Worker Queue)"]
-        P_SPOLL["3. Short Polling\n(Periodic client checks)"]
-        P_LPOLL["4. Long Polling\n(Hanging GET socket hold)"]
-        P_SSE["5. Server-Sent Events (SSE)\n(HTTP text/event-stream unidirectional push)"]
-        P_WS["6. WebSockets\n(Full-duplex bidirectional TCP stream)"]
-        P_PUBSUB["7. Publish-Subscribe (PubSub)\n(Fan-out topics & partitioned event logs)"]
-        P_MUX["8. Multiplexing vs Demultiplexing\n(HTTP/2 streams vs DB connection pooling)"]
-        P_SIDE["9. Sidecar Pattern\n(Offloading mTLS, proxies, and tracing)"]
-    end
-```
+![2.1. Backend Communication Design Patterns (Hussein Nasser Model) Architecture Diagram](images/25-21-backend-communication-design-patterns.png)
 
 ---
 
@@ -956,29 +572,9 @@ flowchart TD
   6. The server serializes the result and writes the response bytes back to the socket.
   7. The client parses and deserializes the response.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Client Application
-    participant Wire as Network Wire (TCP/IP)
-    participant Server as Backend Server (App Runtime)
-    participant DB as Database / Storage
+![2.1.1. Pattern 1: Request-Response (The Foundation) Architecture Diagram](images/26-211-pattern-1-request-response-the-found.png)
 
-    Note over Client: Phase 1: Client Preparation (t0) (Serialize object to JSON / Protobuf)
-    Client->>Wire: Flush request bytes to OS socket buffer
-
-    Note over Wire: Phase 2: Network Transit (t1) (Packets traverse routers & reorder)
-    Wire->>Server: Kernel receives bytes in recv_buf
-    Note over Server: Phase 3: Parsing & Deserialization (t2) (Locate boundary & parse DTO)
-    Server->>DB: Execute query / business logic (t3)
-    DB-->>Server: Query Result
-    Note over Server: Phase 4: Response Serialization (t4) (Generate HTTP headers + JSON body)
-    Server->>Wire: Flush response bytes to socket
-
-    Note over Wire: Phase 5: Return Transit (t5)
-    Wire->>Client: Bytes arrive at client socket
-    Note over Client: Phase 6: Client Consumption (t6) (Parse HTTP response & render)
-```
+---
 
 * **The Resumable Chunked Upload Pattern**:
   In standard request-response, uploading a 5-gigabyte file in a single request is fragile: if the mobile network drops at 99%, the entire transfer fails and must start from byte 0.
@@ -987,40 +583,15 @@ sequenceDiagram
 * **Where Request-Response Falls Short**:
   Request-response requires the client to initiate every interaction. The server cannot proactively send data when an event happens. For live notifications, chat, or long-running tasks, pure request-response becomes inefficient.
 
----
-
 #### 2.1.2. Pattern 2: Synchronous vs. Asynchronous Workloads
 
 * **Mental Model & Real-World Analogy**:
   - **Synchronous**: Standing at the coffee counter waiting for the barista to brew your espresso. You cannot leave or do anything else until the cup is handed to you.
   - **Asynchronous**: Ordering a large pizza. The cashier hands you a receipt with an order number and says: "We will call your number when it is baked." You sit down, read a book, or check your phone while the pizza cooks in the background.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Client App
-    participant API as API Server
-    participant Queue as Message Broker (Kafka/RabbitMQ)
-    participant Worker as Background Worker Pool
+![2.1.2. Pattern 2: Synchronous vs. Asynchronous Workloads Architecture Diagram](images/27-212-pattern-2-synchronous-vs-asynchronou.png)
 
-    Note over Client,API: Pattern A: Synchronous Blocking Workload
-    Client->>API: POST /v1/reports/pdf (Export 1M rows)
-    Note over API: API thread BLOCKS and WAITS for 45 seconds (Consumes thread pool & holds socket open)
-    Note over Client: Client is frozen waiting...
-    API-->>Client: HTTP 200 OK (PDF Binary)
-
-    Note over Client,Worker: Pattern B: Asynchronous Worker Queue Workload
-    Client->>API: POST /v1/reports/pdf (Export 1M rows)
-    API->>Queue: Enqueue task: generate_report (id: job_881)
-    API-->>Client: HTTP 202 Accepted (Location: /jobs/job_881)
-    Note over Client: Client connection closes in 15ms (Thread released immediately)
-
-    Queue->>Worker: Worker picks up task & processes for 45s
-    Worker->>Worker: Upload finished PDF to S3
-  
-    Client->>API: GET /jobs/job_881 (Status check)
-    API-->>Client: HTTP 200 OK (Status: COMPLETED, downloadUrl: s3://...)
-```
+---
 
 * **The Synchronous Thread Starvation Trap**:
   If an API server uses synchronous blocking workers (such as Tomcat with 200 threads) and handles requests that take 30 seconds to finish, a sudden influx of 250 concurrent requests will completely consume all 200 threads. Any new incoming request—even a simple 5ms health check (`GET /health`)—will be queued and eventually rejected with **`HTTP 504 Gateway Timeout`** or **`HTTP 503 Service Unavailable`**.
@@ -1028,8 +599,6 @@ sequenceDiagram
 
   - Tasks taking **< 200 milliseconds**: Synchronous request-response is optimal.
   - Tasks taking **> 1 second** (video transcoding, report generation, bulk emails): Must be offloaded to an asynchronous message broker with an immediate **`HTTP 202 Accepted`** response.
-
----
 
 #### 2.1.3. Pattern 3: Short Polling (Periodic Inquiries)
 
@@ -1042,39 +611,14 @@ sequenceDiagram
   2. Request 2 (T = 2s): `GET /v1/notifications` → Server queries database → Returns `[]`.
   3. Request 3 (T = 4s): `GET /v1/notifications` → Server queries database → Returns `[{"id": 1, "text": "New message"}]`.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Client Application
-    participant Server as API Server
-    participant DB as Database
+![2.1.3. Pattern 3: Short Polling (Periodic Inquiries) Architecture Diagram](images/28-213-pattern-3-short-polling-periodic-inq.png)
 
-    Client->>Server: 1. GET /v1/notifications (T = 0s)
-    Server->>DB: SELECT * FROM notifications WHERE user_id = 42
-    DB-->>Server: 0 rows found
-    Server-->>Client: HTTP 200 OK (Empty: [])
-
-    Note over Client: Wait 2 seconds (Network Idle)
-
-    Client->>Server: 2. GET /v1/notifications (T = 2s)
-    Server->>DB: SELECT * FROM notifications WHERE user_id = 42
-    DB-->>Server: 0 rows found
-    Server-->>Client: HTTP 200 OK (Empty: [])
-
-    Note over Client: Wait 2 seconds (Event occurs on backend!)
-
-    Client->>Server: 3. GET /v1/notifications (T = 4s)
-    Server->>DB: SELECT * FROM notifications WHERE user_id = 42
-    DB-->>Server: 1 new row found!
-    Server-->>Client: HTTP 200 OK ([{id: 99, text: "New Alert"}])
-```
+---
 
 * **Why Short Polling Fails at Scale**:
   1. **Massive Handshake Waste**: In HTTP/1.1 without keep-alive, each poll opens a new TCP connection (3-way handshake) and TLS negotiation (1-2 RTT), consuming substantial CPU on load balancers.
   2. **Database Query Stampede**: If 100,000 active mobile users poll every 2 seconds, the backend database is hammered with **50,000 queries per second**, 99.9% of which return zero rows.
   3. **High Latency**: If an event occurs 10 milliseconds after Request 1, the client will not see it until Request 2 fires (up to a 2-second delay).
-
----
 
 #### 2.1.4. Pattern 4: Long Polling (The Hanging GET)
 
@@ -1091,29 +635,12 @@ sequenceDiagram
   5. If the timeout expires before any event occurs, the server responds with an empty `HTTP 204 No Content` or `HTTP 200 OK (empty)`.
   6. In both cases, as soon as the client receives the response, it **immediately opens another long-polling request**, repeating the cycle.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Client Application
-    participant Server as API Server
-    participant Bus as Internal Event Bus
+![2.1.4. Pattern 4: Long Polling (The Hanging GET) Architecture Diagram](images/29-214-pattern-4-long-polling-the-hanging-g.png)
 
-    Client->>Server: 1. GET /v1/notifications (Long-Poll)
-    Note over Server: No data yet. Server HOLDS TCP socket open (request suspended)
-
-    Note over Bus,Server: Event occurs at T = 8.5 seconds ("payment.received")
-    Bus->>Server: Event Published: Payment #991
-    Server-->>Client: 2. HTTP 200 OK (Payload: Payment #991)
-    Note over Client: Connection closes. Client processes data.
-
-    Client->>Server: 3. GET /v1/notifications (Instantly reconnects!)
-    Note over Server: Server HOLDS new TCP socket open...
-```
+---
 
 * **The Browser 6-Connection Limit Trap**:
   Under HTTP/1.1, web browsers enforce a maximum of **6 concurrent TCP connections per domain**. If a user opens 6 browser tabs of your web app and each tab opens a long-polling connection, all 6 available sockets for that domain become occupied. Any subsequent standard API call (`fetch('/v1/user')` or `POST /checkout`) is put in a **"Stalled" state** by the browser, completely freezing the web application.
-
----
 
 #### 2.1.5. Pattern 5: Server-Sent Events (SSE - Unidirectional HTTP Push)
 
@@ -1141,34 +668,14 @@ sequenceDiagram
 
      *(Note: Every event chunk must end with a double newline `\n\n`)*.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Browser as Browser (EventSource)
-    participant Server as API Server (SSE Endpoint)
-    participant Feed as Live Market Data Feed
+![2.1.5. Pattern 5: Server-Sent Events (SSE - Unidirectional HTTP Push) Architecture Diagram](images/30-215-pattern-5-server-sent-events-sse-uni.png)
 
-    Browser->>Server: GET /v1/live-prices (Accept: text/event-stream)
-    Server-->>Browser: HTTP 200 OK (Content-Type: text/event-stream)
-    Note over Browser,Server: Connection remains OPEN permanently!
-
-    Feed->>Server: Price update: BTC = 92,000
-    Server-->>Browser: id: 1\nevent: crypto\ndata: {"BTC": 92000}\n\n
-
-    Feed->>Server: Price update: ETH = 3,400
-    Server-->>Browser: id: 2\nevent: crypto\ndata: {"ETH": 3400}\n\n
-
-    Note over Browser,Server: Wi-Fi Drops & Reconnects!
-    Browser->>Server: GET /v1/live-prices (Header: Last-Event-ID: 2)
-    Note over Server: Server inspects Last-Event-ID and replays only missed events (id > 2)
-```
+---
 
 * **Why Engineers Love SSE**:
   1. **Zero Custom Handshake**: It is pure HTTP. Works seamlessly through enterprise firewalls, reverse proxies, and load balancers.
   2. **Native Browser Reconnection**: Browsers feature a built-in `EventSource` JavaScript API that automatically reconnects if the network drops, transmitting the `Last-Event-ID` header so the server can replay missed events.
   3. **HTTP/2 Multiplexing Superpower**: Unlike long polling, over HTTP/2, an SSE stream consumes only **one logical stream** over an existing shared TCP connection, completely immune to the 6-connection limit.
-
----
 
 #### 2.1.6. Pattern 6: WebSockets (Full-Duplex Bidirectional Streams)
 
@@ -1195,36 +702,14 @@ sequenceDiagram
   3. **The Raw TCP Frame Stream**: The HTTP parser is completely detached from the socket. The underlying TCP socket remains open indefinitely in **full-duplex mode**.
   4. Both client and server can transmit binary or UTF-8 text frames at any millisecond with **only 2 to 10 bytes of framing overhead** per message (compared to 500–1,000 bytes of headers on every HTTP request).
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Browser Client
-    participant Proxy as Reverse Proxy (Envoy / Nginx)
-    participant WS as WebSocket Backend Server
+![2.1.6. Pattern 6: WebSockets (Full-Duplex Bidirectional Streams) Architecture Diagram](images/31-216-pattern-6-websockets-full-duplex-bid.png)
 
-    Note over Client,WS: Phase 1: HTTP 101 Handshake Upgrade
-    Client->>Proxy: GET /ws (Upgrade: websocket, Connection: Upgrade)
-    Proxy->>WS: Forward hop-by-hop Upgrade headers
-    WS-->>Proxy: HTTP 101 Switching Protocols
-    Proxy-->>Client: HTTP 101 Switching Protocols
-
-    Note over Client,WS: Phase 2: Full-Duplex Bi-directional Binary/Text Framing
-    Client->>WS: Frame 1: {"action": "join", "room": "lobby"} (Overhead: 2 bytes)
-    WS-->>Client: Frame 2: {"status": "joined", "users": 142}
-  
-    par Server-Initiated Push
-        WS-->>Client: Frame 3: {"sender": "Alice", "msg": "Hello world!"}
-    and Client-Initiated Push
-        Client->>WS: Frame 4: {"sender": "Bob", "msg": "Hey Alice!"}
-    end
-```
+---
 
 * **The Stateful Server Clustering Challenge**:
   Because WebSockets maintain persistent, stateful TCP sockets in the server's local RAM:
   - If User A connects to Server 1, and User B connects to Server 2, Server 1 cannot deliver User A's message to User B directly.
   - **The Solution**: All WebSocket backend servers must be connected to a shared **Redis Pub/Sub** or Kafka cluster. When Server 1 receives a message, it publishes it to Redis, which broadcasts it to Server 2 to reach User B.
-
----
 
 #### 2.1.7. Pattern 7: Publish-Subscribe (PubSub & Event Streaming)
 
@@ -1237,36 +722,13 @@ sequenceDiagram
   3. **Consumers (Subscribers)** register interest in specific topics.
   4. The Broker handles **Fan-Out**: a single published event is delivered to multiple independent consumer services simultaneously.
 
-```mermaid
-flowchart LR
-    subgraph Producers["Event Producers"]
-        OrderSvc["📦 Order Service"]
-    end
+![2.1.7. Pattern 7: Publish-Subscribe (PubSub & Event Streaming) Architecture Diagram](images/32-217-pattern-7-publish-subscribe-pubsub-e.png)
 
-    subgraph Broker["Message Broker / Event Stream (Apache Kafka)"]
-        direction TB
-        Topic["Topic: orders.created\n(Partitioned Immutable Log)"]
-    end
-
-    subgraph Consumers["Independent Consumer Groups"]
-        BillingGroup["💳 Billing Service\n(Charges payment)"]
-        EmailGroup["📧 Notification Service\n(Sends email receipt)"]
-        AnalyticsGroup["📊 Data Warehouse\n(Streams to BigQuery)"]
-        FraudGroup["🚨 Fraud ML Engine\n(Scores risk)"]
-    end
-
-    OrderSvc -->|"Publish: Order #8812"| Topic
-    Topic -->|"Partition Stream"| BillingGroup
-    Topic -->|"Partition Stream"| EmailGroup
-    Topic -->|"Partition Stream"| AnalyticsGroup
-    Topic -->|"Partition Stream"| FraudGroup
-```
+---
 
 * **Push vs. Pull Delivery**:
   - **RabbitMQ (Broker Push)**: The broker actively pushes queued messages to connected worker sockets until the worker's prefetch limit is reached.
   - **Kafka (Consumer Pull)**: Events are appended to an immutable disk log. Consumers continuously **poll** the log at their own pace, tracking their progress using committed numeric offsets. If the Notification Service crashes for an hour, it simply resumes reading from its last offset without losing any data!
-
----
 
 #### 2.1.8. Pattern 8: Multiplexing vs. Demultiplexing
 
@@ -1274,34 +736,14 @@ flowchart LR
   - **Multiplexing**: An HOV carpool lane on a highway. Instead of 4 people driving 4 separate cars (occupying 4 lanes of road space), all 4 share 1 car over 1 lane.
   - **Demultiplexing**: A busy post office where hundreds of letters arrive in one mail truck, and the sorting room distributes them into 50 separate post office boxes.
 
-```mermaid
-flowchart TD
-    subgraph MUX["Multiplexing: HTTP/2 Ingress (Many Streams over 1 Socket)"]
-        direction LR
-        S1["Stream 1: GET /user"] --> MuxEngine["HTTP/2 Binary Framing"]
-        S2["Stream 2: GET /orders"] --> MuxEngine
-        S3["Stream 3: POST /cart"] --> MuxEngine
-        MuxEngine -->|"1 Physical TCP Connection"| Gateway["API Gateway"]
-    end
+![2.1.8. Pattern 8: Multiplexing vs. Demultiplexing Architecture Diagram](images/33-218-pattern-8-multiplexing-vs-demultiple.png)
 
-    subgraph DEMUX["Demultiplexing: Database Connection Pool (HikariCP)"]
-        direction LR
-        APIReqs["5,000 Concurrent HTTP Requests"] --> Pool["HikariCP Connection Pool"]
-        Pool --> DB1["TCP Socket 1"]
-        Pool --> DB2["TCP Socket 2"]
-        Pool --> DB3["TCP Socket 3"]
-        DB1 --> RDBMS[("PostgreSQL Database")]
-        DB2 --> RDBMS
-        DB3 --> RDBMS
-    end
-```
+---
 
 * **Multiplexing (Frontend Ingress)**:
   In HTTP/1.1, fetching 20 images required opening 20 separate TCP connections or queueing them sequentially. In HTTP/2, the client splits requests into discrete binary frames marked with a **Stream ID**. All streams travel interleaved across **a single physical TCP connection**, saving memory, CPU handshakes, and port allocation.
 * **Demultiplexing (Backend Database Connection Pools)**:
   Because relational databases (PostgreSQL, MySQL) execute queries synchronously over individual TCP connections (one query per socket at a time), a backend cannot send 5,000 queries over one database socket simultaneously. Instead, backends use a **Connection Pool** (like HikariCP) that keeps a fixed pool (e.g. 50 warm connections) open, taking concurrent incoming API requests and **demultiplexing** them across the available pool sockets.
-
----
 
 #### 2.1.9. Pattern 9: The Sidecar Pattern (Decoupled Infrastructure Proxy)
 
@@ -1314,22 +756,7 @@ flowchart TD
   - Outbound traffic: When the application makes an HTTP call to another microservice, Linux `iptables` rules silently intercept the packets and redirect them to `localhost:15001` (the Envoy sidecar).
   - The sidecar terminates mTLS, injects W3C `traceparent` headers, applies circuit-breaker thresholds, encrypts the connection, and transmits it over the wire to the destination sidecar.
 
-```mermaid
-flowchart LR
-    subgraph PodA["Kubernetes Pod A (Order Service)"]
-        AppA["📦 Order Application\n(Java / Spring Boot)"]
-        SidecarA["🛡️ Envoy Sidecar Proxy\n(localhost:15001)"]
-        AppA -->|"1. Plaintext HTTP to localhost"| SidecarA
-    end
-
-    subgraph PodB["Kubernetes Pod B (Inventory Service)"]
-        SidecarB["🛡️ Envoy Sidecar Proxy\n(localhost:15001)"]
-        AppB["🏭 Inventory Application\n(Go / gRPC)"]
-        SidecarB -->|"3. Plaintext HTTP to localhost"| AppB
-    end
-
-    SidecarA <==|"2. Mutual TLS (mTLS) Encrypted Tunnel\n+ Distributed Tracing Headers"|==> SidecarB
-```
+![2.1.9. Pattern 9: The Sidecar Pattern (Decoupled Infrastructure Proxy) Architecture Diagram](images/34-219-pattern-9-the-sidecar-pattern-decoup.png)
 
 ---
 
@@ -1347,8 +774,6 @@ flowchart LR
 | **Multiplexing (HTTP/2)**      | TCP (Binary Framing)                   | Multiple Streams over 1 Socket         | Single physical TCP connection            | Very Low (Consolidates connection state)                | Low (Zero handshake latency per stream) | Modern web applications loading 50+ API assets simultaneously.                    |
 | **Sidecar Pattern**            | Localhost / UDS / mTLS                 | Intercepted in-line proxy              | Local loopback + inter-mesh mTLS          | Moderate (Small memory footprint per sidecar)           | Sub-millisecond local hop               | Enterprise microservices, zero-trust mTLS encryption, service mesh observability. |
 
----
-
 ### 2.2. The Browser 6-Connection Limit Trap & HTTP/1.1 Stalling
 
 In HTTP/1.1, modern browsers (Chrome, Firefox, Safari) enforce a strict limit of **maximum 6 concurrent TCP connections per origin (domain)**:
@@ -1357,16 +782,12 @@ In HTTP/1.1, modern browsers (Chrome, Firefox, Safari) enforce a strict limit of
 * Any subsequent user action triggering standard API requests (`fetch('/api/v1/user')` or `axios.post('/checkout')`) will enter a **"Stalled" state** in the browser network waterfall, completely freezing the user interface until a held socket closes.
 * **Remediation**: Migrate to **HTTP/2** (which multiplexes hundreds of logical streams over a single physical TCP socket, eliminating the 6-connection barrier) or use domain sharding.
 
----
-
 ### 2.3. Stateful vs. Stateless API Backends
 
 * **Stateless Backend**: Every API request contains all credentials and contextual state required for execution (e.g. self-contained JWT token).
   - *Advantage*: Any server instance behind a round-robin load balancer can serve any request; effortless horizontal autoscaling.
 * **Stateful Backend**: Server stores session state in local memory; clients must be routed to the exact same server via **Sticky Sessions (Session Affinity)** on the load balancer.
   - *Disadvantage*: If Server A crashes, all connected users lose their active session; uneven traffic distribution creates hotspot servers.
-
----
 
 ### 2.4. Transport Protocol Evolution: HTTP/1.1 vs. HTTP/2 vs. HTTP/3 (QUIC)
 
@@ -1382,28 +803,7 @@ Modern API performance is bounded by the underlying transport protocol:
 | **Header Compression**          | None (Redundant headers sent per request)        | HPACK (Indexed table + Huffman coding)                        | QPACK (Optimized for out-of-order UDP delivery)                                              |
 | **Connection Migration**        | Bound to IP + Port (Fails on Wi-Fi to 5G switch) | Bound to IP + Port (Fails on network switch)                  | **Connection ID (CID)**: Seamless migration across Wi-Fi/Cellular without reconnecting |
 
-```mermaid
-flowchart TD
-    subgraph H1["HTTP/1.1: Head-of-Line Blocking"]
-        direction LR
-        Req1["Request 1 (Slow DB)"] --> Socket1["TCP Socket 1 (Blocked)"]
-        Req2["Request 2 (Fast)"] --> Stalled["Must wait in queue until Req 1 finishes!"]
-    end
-
-    subgraph H2["HTTP/2: Multiplexed Streams over 1 TCP Socket"]
-        direction LR
-        S1["Stream 1 (Data Frame)"] --> TCPSocket["Single TCP Socket"]
-        S2["Stream 2 (Data Frame)"] --> TCPSocket
-        NoteH2["Issue: If 1 TCP packet is dropped, OS pauses ALL streams until retransmitted!"]
-    end
-
-    subgraph H3["HTTP/3 (QUIC): Independent UDP Streams"]
-        direction LR
-        Q1["Stream 1 (UDP)"] --> QUICLayer["QUIC Engine"]
-        Q2["Stream 2 (UDP)"] --> QUICLayer
-        NoteH3["True Independence: Packet loss on Stream 1 NEVER blocks Stream 2!"]
-    end
-```
+![2.4. Transport Protocol Evolution: HTTP/1.1 vs. HTTP/2 vs. HTTP/3 (QUIC) Architecture Diagram](images/35-24-transport-protocol-evolution-http11-v.png)
 
 ---
 
@@ -1424,24 +824,13 @@ By default, the operating system TCP stack uses **Nagle's Algorithm** to reduce 
 
 Because databases (e.g. PostgreSQL, MySQL) process queries synchronously over single TCP connections, backends use a **Connection Pool** (e.g. HikariCP) to keep multiple hot TCP connections open, demultiplexing concurrent HTTP API requests across the pool.
 
----
-
 ### 2.6. The Latency Spectrum of HTTPS & 0-RTT Replay Vulnerabilities
 
 > **Source**: Hussein Nasser, *Fundamentals of Backend Engineering*, Section 4 ("Many ways to HTTPS").
 
-```mermaid
-flowchart TD
-    subgraph Handshakes["HTTPS Handshake Latency Spectrum"]
-        H1["1. HTTPS over TCP with TLS 1.2\n(TCP 3-Way Handshake + TLS 1.2 Negotiation = 3 RTT)"]
-        H2["2. HTTPS over TCP with TLS 1.3\n(TCP 3-Way Handshake + TLS 1.3 1-RTT = 2 RTT)"]
-        H3["3. HTTPS over TCP Fast Open (TFO) + TLS 1.3\n(Data piggybacked on SYN = 1 RTT)"]
-        H4["4. HTTPS over QUIC / HTTP/3\n(UDP Combined Connection + TLS 1.3 Handshake = 1 RTT)"]
-        H5["5. TLS 1.3 / QUIC with 0-RTT (Early Data)\n(Cached Session Ticket Resumption = 0 RTT)"]
-    end
+![2.6. The Latency Spectrum of HTTPS & 0-RTT Replay Vulnerabilities Architecture Diagram](images/36-26-the-latency-spectrum-of-https-0-rtt-r.png)
 
-    H1 --> H2 --> H3 --> H4 --> H5
-```
+---
 
 #### The Critical Security Dilemma: 0-RTT Early Data and Replay Attacks
 
@@ -1452,20 +841,11 @@ In TLS 1.3 and QUIC, a returning client can transmit encrypted application data 
   - ✅ **ALLOWED in 0-RTT**: Purely safe and idempotent requests (`GET /v1/products/123`, `HEAD /status`).
   - ❌ **STRICTLY FORBIDDEN in 0-RTT**: Non-idempotent state mutations (`POST /v1/payments`, `POST /v1/transfers`). Gateways must reject 0-RTT early data for state-changing endpoints with `HTTP 425 Too Early`.
 
----
-
 ## 3. Part 3: Architectural Paradigms (Choosing the Right Tool)
 
-```mermaid
-flowchart LR
-    subgraph Paradigms["4 Major Architectural Paradigms"]
-        direction TB
-        REST["REST (HTTP/1.1 or HTTP/2)\n• Resource-oriented\n• Universal browser support\n• Stateless & Cacheable"]
-        gRPC["gRPC (HTTP/2)\n• Action/RPC-oriented\n• Binary Protobuf wire format\n• Ultra-low latency microservices\n• Bi-directional streaming"]
-        GQL["GraphQL (HTTP)\n• Graph & Query-oriented\n• Client-driven data fetching\n• Solves over/under-fetching\n• Single endpoint POST /graphql"]
-        WS["WebSockets (TCP)\n• Connection-oriented\n• Full-duplex bidirectional stream\n• Real-time chat & live feeds"]
-    end
-```
+![3. Part 3: Architectural Paradigms (Choosing the Right Tool) Architecture Diagram](images/37-3-part-3-architectural-paradigms-choosin.png)
+
+---
 
 ### 3.1. REST & Richardson Maturity Model
 
@@ -1489,8 +869,6 @@ REST (Representational State Transfer), formalized by Roy Fielding, treats syste
 }
 ```
 
----
-
 ### 3.2. gRPC & Protocol Buffers (Binary High-Performance RPC)
 
 gRPC is Google's open-source RPC framework built on HTTP/2:
@@ -1503,8 +881,6 @@ gRPC is Google's open-source RPC framework built on HTTP/2:
   3. Client Streaming (Stream of requests, single response)
   4. Bidirectional Streaming (Independent concurrent streams over 1 socket)
 
----
-
 ### 3.3. GraphQL: Schema-Driven Querying & The N+1 Problem
 
 Designed by Meta to solve mobile network over-fetching and under-fetching:
@@ -1514,14 +890,10 @@ Designed by Meta to solve mobile network over-fetching and under-fetching:
 * **The N+1 Database Problem**: A query fetching 100 orders and their authors can trigger 1 query for orders + 100 queries for authors (101 database round-trips!).
 * **Mitigation**: **DataLoader batching and memoization caches**, which collect IDs within a single event loop tick and execute a single SQL query: `SELECT * FROM authors WHERE id IN (...)`.
 
----
-
 ### 3.4. WebSockets & Server-Sent Events (SSE)
 
 * **WebSockets (`ws://`, `wss://`)**: Initial HTTP 101 Upgrade handshake transitions the TCP socket into a persistent, bidirectional binary/text frame stream. Best for multiplayer gaming, live chat, and collaborative whiteboards.
 * **Server-Sent Events (SSE)**: Standard HTTP connection (`text/event-stream`) where the server pushes unidirectional event streams to the browser. Simpler than WebSockets, supports automatic reconnects natively, and works seamlessly over HTTP/2.
-
----
 
 ### 3.5. Master Synthesis Matrix: Technology Comparison
 
@@ -1537,16 +909,12 @@ Designed by Meta to solve mobile network over-fetching and under-fetching:
 | **Streaming Support**   | Chunked transfer / SSE                              | **Native Bi-directional Streaming**                    | Subscriptions (via WS or SSE)                      | **Native Bi-directional Streaming**                    |
 | **Best Use Case**       | Public APIs, CRUD web services, partner integration | High-throughput internal microservices, low-latency backends | Complex composite web applications, mobile screens | Real-time chat, multiplayer gaming, financial ticker streams |
 
----
-
 ## 4. Part 4: Contract-First Design, Data Modeling & SerDe
 
 ### 4.1. Contract-First vs. Code-First Philosophy
 
 * **Code-First**: Developers write controller code and auto-generate Swagger docs via reflection. **Pitfall**: Leaks internal implementation details, tightly couples client to backend changes, and prevents parallel frontend-backend development.
 * **Contract-First (Industry Best Practice)**: The API contract is written and reviewed in **OpenAPI 3.1** or **Protobuf IDL** *before* a single line of backend code is created. Mock servers (e.g. Prism) run immediately, allowing frontend teams to build against the contract simultaneously.
-
----
 
 ### 4.2. RESTful URI Modeling & Semantic HTTP Verbs
 
@@ -1574,8 +942,6 @@ Canonical Pattern: https://api.enterprise.com/v1/{resource}/{resource-id}/{sub-r
 | **`DELETE`**  | Remove resource                |           No           |         **YES**         |                No                |
 | **`POST`**    | Create child / trigger process |           No           |          **NO**          | Only with explicit cache headers |
 
----
-
 ### 4.3. Data Interchange Formats: JSON vs. XML vs. Protobuf
 
 | Dimension                  | JSON (JavaScript Object Notation)              | XML (Extensible Markup Language)                        | Protocol Buffers (Protobuf)                                              |
@@ -1594,33 +960,13 @@ Clients and servers negotiate payload format dynamically using standard HTTP hea
 * `Accept`: Declares which format the client is willing to receive from the server (e.g. `Accept: application/json, application/xml;q=0.5`).
 * If the server cannot satisfy the requested format, it returns **`HTTP 406 Not Acceptable`**.
 
----
-
 ### 4.4. Serializer and Deserializer (SerDe) Architecture & Security
 
 Serialization and Deserialization are the bidirectional transformation engines that sit between in-memory language runtime objects and external network wire formats.
 
-```mermaid
-flowchart LR
-    subgraph ClientSide ["Client Application"]
-        CO["In-Memory Object\n(Client Runtime)"]
-    end
+![4.4. Serializer and Deserializer (SerDe) Architecture & Security Architecture Diagram](images/38-44-serializer-and-deserializer-serde-arc.png)
 
-    subgraph Wire ["Network Wire (HTTP / TCP)"]
-        Payload["Serialized Payload\n(JSON / XML / Protobuf Bytes)"]
-    end
-
-    subgraph ServerSide ["Backend Service"]
-        DTO["Data Transfer Object (DTO)\nwith Schema Validation"]
-        Entity["Internal Domain Entity\n(Database / ORM Model)"]
-    end
-
-    CO -->|"Serialization\n(toJson / encode)"| Payload
-    Payload -->|"Deserialization & Validation\n(Type-checking, Sanitization)"| DTO
-    DTO -->|"Entity Mapping\n(Business Logic)"| Entity
-    Entity -->|"DTO Projection\n(Strip Sensitive PII)"| DTO
-    DTO -->|"Serialization\n(Response Payload)"| Payload
-```
+---
 
 #### Engineering Invariants of API SerDe:
 
@@ -1628,23 +974,13 @@ flowchart LR
 2. **Strict Schema & Type Validation**: Deserializers must reject unknown properties or type mismatches early, returning **`HTTP 422 Unprocessable Content`** or **`HTTP 400 Bad Request`** with detailed field-level error messages before touching business logic.
 3. **Deserialization Security (RCE Defense)**: Never enable polymorphic default typing in deserializers (such as unsafe Jackson `enableDefaultTyping()` or Python `pickle`), which allows attackers to instantiate arbitrary Java/Python gadget classes on the server and trigger Remote Code Execution (RCE).
 
----
-
 ### 4.5. The 5 Data Passing Channels in APIs
 
 APIs provide 5 distinct mechanisms to transmit data from the caller to the server. Choosing the correct mechanism preserves HTTP semantics and enables caching:
 
-```mermaid
-flowchart TD
-    subgraph DataPassing ["5 API Data Passing Channels"]
-        direction TB
-        C1["1. Path Parameters: /v1/users/{userId}/orders/{orderId}\n• Primary identity and hierarchical resource navigation\n• Immutable resource identifiers"]
-        C2["2. Query Parameters: /v1/products?category=shoes&sort=price&limit=20\n• Filtering, searching, sorting, and pagination\n• Optional parameters with sensible defaults"]
-        C3["3. Request Headers: Authorization: Bearer <token>, Accept-Language: fr-FR\n• Metadata, credentials, idempotency keys, and routing context\n• Never pass sensitive business data in URL paths"]
-        C4["4. Request Body: POST /v1/users (JSON / XML payload)\n• Complex nested objects, mutation payloads, and bulk arrays\n• Preserved across POST, PUT, and PATCH methods"]
-        C5["5. Multipart Form Data: multipart/form-data (RFC 7578)\n• Binary file uploads combined with structured JSON metadata\n• Boundaries separate discrete text and file chunks"]
-    end
-```
+![4.5. The 5 Data Passing Channels in APIs Architecture Diagram](images/39-45-the-5-data-passing-channels-in-apis.png)
+
+---
 
 | Channel                       | Best For                                                     | Invariant Rule                                                                                          |
 | :---------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------------------------------------------------ |
@@ -1654,22 +990,13 @@ flowchart TD
 | **Request Body**        | Complex payloads, creates, updates                           | Prohibited on `GET` and `DELETE` requests in standard HTTP caching specifications.                  |
 | **Multipart Form Data** | Media uploads with metadata                                  | Requires streaming parsers to prevent loading multi-gigabyte files into server RAM.                     |
 
----
-
 ## 5. Part 5: Production-Grade Behavioral & Operational Patterns
 
 ### 5.1. Pagination Strategies: Offset vs. Keyset (Cursor)
 
-```mermaid
-flowchart TD
-    subgraph OffsetPaging["Offset-Based Pagination: LIMIT 20 OFFSET 100000"]
-        O1["DB scans 100,020 rows"] --> O2["Discards first 100,000 rows"] --> O3["Returns 20 rows\n(High CPU, O(N) degradation, page drifting)"]
-    end
+![5.1. Pagination Strategies: Offset vs. Keyset (Cursor) Architecture Diagram](images/40-51-pagination-strategies-offset-vs-keyse.png)
 
-    subgraph CursorPaging["Keyset / Cursor-Based Pagination: WHERE id > 'ord_999' LIMIT 20"]
-        C1["B-Tree index seek directly to 'ord_999'"] --> C2["Reads exactly next 20 rows\n(O(1) index seek, stable under inserts)"]
-    end
-```
+---
 
 1. **Offset-Based (`?page=5&limit=20` or `?offset=100&limit=20`)**:
    - **Pros**: Easy to implement, allows jumping directly to arbitrary pages (e.g. "Go to Page 42").
@@ -1678,40 +1005,13 @@ flowchart TD
    - **Pros**: Constant time lookup (`O(log N)` B-Tree seek). Completely immune to page drift during active writes.
    - **Cons**: Cannot jump to arbitrary distant pages (must traverse sequentially forward/backward).
 
----
-
 ### 5.2. Distributed Idempotency Key Architecture
 
 Network failures during a `POST /payments` request leave clients unsure if the transaction succeeded. If the client retries, the user might be charged twice.
 
 **The Solution: The Idempotency Key Pattern**:
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Client App
-    participant GW as API Gateway / Filter
-    participant Cache as Redis (Idempotency Store)
-    participant Core as Core Payment Service
-    participant DB as Postgres DB
-
-    Client->>GW: POST /v1/payments (Header: Idempotency-Key: "uuid-123")
-    GW->>Cache: SET "idemp:uuid-123" "IN_PROGRESS" NX EX 120s
-    alt Key already exists and has cached response
-        Cache-->>GW: Return Cached Response (HTTP 201 + Body)
-        GW-->>Client: Return Cached Response (Instant, No processing)
-    else Key exists and is "IN_PROGRESS"
-        Cache-->>GW: Lock Conflict (Request currently processing)
-        GW-->>Client: HTTP 409 Conflict ("Transaction in flight")
-    else Key successfully set (Lock Acquired)
-        Cache-->>GW: OK (Lock granted)
-        GW->>Core: Process Payment
-        Core->>DB: Insert Payment Record
-        Core-->>GW: Payment Completed (ID: pay_998)
-        GW->>Cache: SET "idemp:uuid-123" {status: 201, body: {...}} EX 86400s
-        GW-->>Client: HTTP 201 Created (Payment Object)
-    end
-```
+![5.2. Distributed Idempotency Key Architecture Architecture Diagram](images/41-52-distributed-idempotency-key-architect.png)
 
 ---
 
@@ -1723,8 +1023,6 @@ sequenceDiagram
 | **Query Parameter**     | `GET /orders?version=2`                   | Simple, but can conflict with business query parameters and CDN caching rules.                                                           |
 | **Custom Header**       | `X-API-Version: 2`                        | Clean URIs, but invisible in browser address bar; requires sophisticated gateway routing.                                                |
 | **Content Negotiation** | `Accept: application/vnd.company.v2+json` | Purest REST implementation; high cognitive load for client developers, complicates CDN caching.                                          |
-
----
 
 ### 5.4. Standardized Error Contracts: RFC 7807 (Problem Details)
 
@@ -1746,20 +1044,13 @@ Never return plain text or ad-hoc JSON errors (`{"error": "bad request"}`). Impl
 }
 ```
 
----
-
 ### 5.5. Multi-Tier API Caching & Conditional Revalidation
 
 High-performance APIs minimize network payload and database load using a multi-tiered caching topology:
 
-```mermaid
-flowchart LR
-    Client["Client Browser / Mobile"] -->|"1. Check Local Cache"| ClientCache["HTTP Client Cache"]
-    Client -->|"2. Cache Miss: Request"| CDN["CDN Edge Cache (Cloudflare/CloudFront)"]
-    CDN -->|"3. Edge Miss: Forward"| Gateway["API Gateway / Reverse Proxy"]
-    Gateway -->|"4. Check Key"| Redis["In-Memory Distributed Cache (Redis)"]
-    Gateway -->|"5. App Execution"| App["Backend Application & Database"]
-```
+![5.5. Multi-Tier API Caching & Conditional Revalidation Architecture Diagram](images/42-55-multi-tier-api-caching-conditional-re.png)
+
+---
 
 #### Core HTTP Caching Directives (`Cache-Control`)
 
@@ -1791,8 +1082,6 @@ If-None-Match: "686897696a7c76edd82"
 1. If the resource has **not changed**, the server returns **`HTTP 304 Not Modified`** with **zero payload body**, saving database queries and network bandwidth.
 2. If the resource has changed, the server returns **`HTTP 200 OK`** with the updated payload and a new `ETag`.
 
----
-
 ### 5.6. Localization and Internationalization (i18n)
 
 Production APIs serving global client applications must decouple presentation language, formatting, and time from internal business logic:
@@ -1812,39 +1101,18 @@ Production APIs serving global client applications must decouple presentation la
    - APIs must store and transmit all timestamps in **UTC in ISO 8601 format** (`2026-11-17T01:25:00Z`).
    - Clients may transmit a `Time-Zone` or `X-Timezone` header (e.g. `Time-Zone: America/New_York`) when request processing requires business day calculations.
 
----
-
 ### 5.7. Large File Upload & Blob Streaming Architecture
 
 Streaming large file uploads (video, high-res images, archives) directly through application API servers causes thread pool exhaustion, high memory pressure, and gateway timeouts.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Client as Client App
-    participant API as API Gateway / Backend
-    participant Storage as Cloud Object Storage (S3 / GCS)
+![5.7. Large File Upload & Blob Streaming Architecture Architecture Diagram](images/43-57-large-file-upload-blob-streaming-arch.png)
 
-    Note over Client,Storage: The Direct-to-Storage Pre-Signed URL Pattern
-    Client->>API: POST /v1/files/upload-url (filename, mime, size)
-    API->>API: Validate user permissions & file size limits
-    API->>Storage: Generate cryptographic Pre-Signed PUT URL (TTL: 15 min)
-    Storage-->>API: Return signed URL
-    API-->>Client: HTTP 200 OK (upload_url, file_id)
-  
-    Client->>Storage: PUT upload_url (Stream binary payload to cloud storage)
-    Storage-->>Client: HTTP 200 OK (ETag header)
-  
-    Client->>API: POST /v1/files/file_992/complete (Confirms upload finished)
-    API-->>Client: HTTP 200 OK (File Resource Active)
-```
+---
 
 #### Upload Invariants:
 
 1. **Never Buffer in RAM**: If an API server must proxy file uploads, enforce streaming chunked transfers directly to disk or upstream storage rather than reading the entire payload into a byte array in memory.
 2. **Validate MIME Types via Magic Bytes**: Never trust the client's `Content-Type` header or file extension. Inspect the initial file header bytes (magic numbers) on the server to prevent malicious executable uploads.
-
----
 
 ### 5.8. Batching, Bulk Operations & Transactional APIs
 
@@ -1869,39 +1137,19 @@ When client workflows require modifying dozens or hundreds of resources, firing 
    }
    ```
 
----
-
 ### 5.9. Webhooks & Reverse APIs (Outbound Event Callbacks)
 
 A Webhook is an **inversion of the API request model**: instead of the client continuously polling the API, the API server acts as an HTTP client that sends an asynchronous POST request to a client-configured URL when an event occurs.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant System as Internal Event Bus (Kafka / RabbitMQ)
-    participant Worker as Webhook Dispatch Worker
-    participant ClientHook as Client Webhook Endpoint (HTTPS)
+![5.9. Webhooks & Reverse APIs (Outbound Event Callbacks) Architecture Diagram](images/44-59-webhooks-reverse-apis-outbound-event-.png)
 
-    System->>Worker: Event: payment.succeeded (Order #8842)
-    Worker->>Worker: Compute HMAC SHA-256 signature using Client Secret
-    Worker->>ClientHook: POST https://client.app/webhooks/payments (with X-Signature-256 and X-Timestamp)
-  
-    alt Client returns 2xx within 5 seconds
-        ClientHook-->>Worker: HTTP 200 OK
-        Worker->>Worker: Mark webhook delivery successful
-    else Client times out or returns 5xx error
-        ClientHook-->>Worker: HTTP 500 Internal Error / Timeout
-        Worker->>Worker: Schedule exponential backoff retry (1m, 5m, 30m, 2h, 24h)
-    end
-```
+---
 
 #### Webhook Security Invariants:
 
 1. **HMAC SHA-256 Signatures**: Include an `X-Signature-256` header calculated as `HMAC_SHA256(timestamp + "." + payload, shared_secret)`. This guarantees payload integrity and authenticates the sender.
 2. **Replay Attack Defense**: Include an `X-Timestamp` header. The receiver must reject requests older than 5 minutes to prevent replay attacks.
 3. **Strict Timeout Enforcements**: Dispatch workers must set a strict connection and read timeout (e.g. 5 seconds) to prevent slow external client servers from exhausting worker thread pools.
-
----
 
 ## 6. Part 6: Low-Level Implementation (LLD) & Operating System Execution
 
@@ -1989,50 +1237,9 @@ public class PaymentApiController {
 }
 ```
 
----
-
 ### 6.2. Tier 2: Formal UML Modeling
 
-```mermaid
-classDiagram
-    class PaymentApiController {
-        -PaymentService paymentService
-        -IdempotencyStore idempotencyStore
-        +handleCreatePayment(CreatePaymentRequest) PaymentResponse
-    }
-
-    class PaymentService {
-        +process(CreatePaymentRequest) PaymentResponse
-    }
-
-    class IdempotencyStore {
-        -ConcurrentHashMap cache
-        +get(String key) PaymentResponse
-        +putIfAbsent(String key, PaymentResponse resp) boolean
-    }
-
-    class CreatePaymentRequest {
-        <<record>>
-        +UUID accountId
-        +long amountInCents
-        +String currency
-        +String idempotencyKey
-    }
-
-    class PaymentResponse {
-        <<record>>
-        +UUID paymentId
-        +UUID accountId
-        +long amountInCents
-        +String status
-        +String idempotencyKey
-    }
-
-    PaymentApiController --> PaymentService : delegates execution
-    PaymentApiController --> IdempotencyStore : queries / stores keys
-    PaymentApiController ..> CreatePaymentRequest : consumes
-    PaymentApiController ..> PaymentResponse : produces
-```
+![6.2. Tier 2: Formal UML Modeling Architecture Diagram](images/45-62-tier-2-formal-uml-modeling.png)
 
 ---
 
@@ -2057,20 +1264,15 @@ IdempotencyStore Memory Graph:
 ================================================================================
 ```
 
----
-
 ### 6.4. Backend OS Kernel & Socket Execution Patterns (Hussein Nasser Model)
 
 > **Source**: Hussein Nasser, *Fundamentals of Backend Engineering*, Section 5 ("Backend Execution Patterns").
 
 When thousands of API clients connect simultaneously, how does the operating system kernel accept connections without crashing?
 
-```mermaid
-flowchart LR
-    Client["Client (TCP SYN)"] --> SYN_Q["SYN Queue\n(Half-Open TCP Connections\ntcp_max_syn_backlog)"]
-    SYN_Q -->|"Client ACK\n(3-Way Complete)"| ACCEPT_Q["Accept Queue\n(Established Sockets awaiting accept()\nsomaxconn)"]
-    ACCEPT_Q -->|"accept() syscall"| AppWorker["Application Worker Process\n(epoll / Worker Thread)"]
-```
+![6.4. Backend OS Kernel & Socket Execution Patterns (Hussein Nasser Model) Architecture Diagram](images/46-64-backend-os-kernel-socket-execution-pa.png)
+
+---
 
 #### The 4 Canonical Execution Threading Models:
 
@@ -2079,24 +1281,13 @@ flowchart LR
 3. **Event-Driven Non-Blocking I/O (`epoll` / `kqueue` / IOCP)**: Utilized by Nginx, Netty, Node.js, Envoy. Sockets are registered in non-blocking mode with the kernel event loop. When bytes arrive in the kernel socket buffer (`recv_buf`), the kernel notifies the event loop, enabling a single thread to handle 100,000 concurrent API connections.
 4. **Socket Sharding (`SO_REUSEPORT`)**: Multiple isolated backend processes bind to the exact same IP and Port. The Linux kernel load-balances incoming TCP connections directly across processes, eliminating the single acceptor thread lock bottleneck.
 
----
-
 ## 7. Part 7: High-Level Design (HLD) & Edge Infrastructure
 
 ### 7.1. The API Gateway Topology
 
 In modern distributed microservices, clients **never** call internal microservices directly. Instead, all traffic terminates at the **API Gateway**:
 
-```mermaid
-flowchart TD
-    Client["Client Devices\n(Mobile App, Browser, 3rd Party API)"] --> WAF["Cloudflare / AWS WAF\n(DDoS Mitigation, Bot Defense)"]
-    WAF --> LB["L4 / L7 Load Balancer\n(AWS ALB / F5)"]
-    LB --> Gateway["API Gateway Cluster (Envoy / Kong / Spring Cloud)\n• SSL/TLS Termination\n• Edge JWT Validation\n• Distributed Rate Limiting\n• Path-Based Dynamic Routing\n• Metrics & Distributed Tracing"]
-
-    Gateway -->|"Route: /v1/users/*"| UserService["User Microservice"]
-    Gateway -->|"Route: /v1/orders/*"| OrderService["Order Microservice"]
-    Gateway -->|"Route: /v1/payments/*"| PaymentService["Payment Microservice"]
-```
+![7.1. The API Gateway Topology Architecture Diagram](images/47-71-the-api-gateway-topology.png)
 
 ---
 
@@ -2131,16 +1322,12 @@ else
 end
 ```
 
----
-
 ### 7.3. Backend-for-Frontend (BFF) Pattern
 
 Instead of building one monolithic "universal" API that serves Mobile, Desktop Web, and IoT devices simultaneously, the **Backend-for-Frontend (BFF)** pattern deploys small, dedicated edge services tailored specifically to each frontend:
 
 * **Mobile BFF**: Aggregates 10 microservice calls into 1 lightweight payload, strips unused fields to save cellular bandwidth, and optimizes for high latency.
 * **Web BFF**: Emits rich, multi-panel payloads, renders server-side HTML/React components, and leverages high-bandwidth broadband connections.
-
----
 
 ### 7.4. Reverse Proxying & Load Balancing In-Depth (Hussein Nasser Model)
 
@@ -2162,8 +1349,6 @@ Instead of building one monolithic "universal" API that serves Mobile, Desktop W
 | **Connection Sticky**  | **Strictly sticky per TCP connection**. All segments on socket go to 1 server. | **Load balances per individual HTTP request**, even over 1 TCP socket!  |
 | **Security Risk**      | Agnostic: Cannot inspect payloads for SQLi or malicious headers.                     | **Centralized Security**: Blocks malicious payloads, manages WAF rules. |
 
----
-
 ### 7.5. WebSocket Reverse Proxying & Hop-by-Hop Transitions
 
 To proxy WebSockets through an L7 reverse proxy (e.g. Nginx, Envoy):
@@ -2172,13 +1357,9 @@ To proxy WebSockets through an L7 reverse proxy (e.g. Nginx, Envoy):
 2. Reverse proxy must recognize that these are **hop-by-hop headers** (which are normally stripped by proxies) and explicitly forward them to the backend server.
 3. Once the backend replies with `HTTP 101 Switching Protocols`, the proxy switches from HTTP parsing mode to **raw TCP tunneling mode**, keeping the connection alive indefinitely without triggering HTTP idle timeouts.
 
----
-
 ### 7.6. HTTP Request Smuggling Vulnerabilities
 
 When a frontend L7 proxy and a backend server disagree on the boundaries of an HTTP request (e.g. frontend parses `Content-Length`, backend prioritizes `Transfer-Encoding: chunked`), an attacker can hide a secondary API request inside the payload of the first request. The backend server executes the smuggled request under the identity of the next innocent user on that connection!
-
----
 
 ## 8. Part 8: Security, Governance & Observability
 
@@ -2186,14 +1367,9 @@ When a frontend L7 proxy and a backend server disagree on the boundaries of an H
 
 API security establishes two distinct cryptographic and logical boundaries:
 
-```mermaid
-flowchart LR
-    Request["Incoming API Request"] --> AuthN{"1. Authentication\n(Verification)\n'Who are you?'"}
-    AuthN -->|Invalid / Missing| E401["HTTP 401 Unauthorized\n(WWW-Authenticate header)"]
-    AuthN -->|Valid Identity| AuthZ{"2. Authorization\n(Validation)\n'Are you allowed to do this?'"}
-    AuthZ -->|Insufficient Scope / Role| E403["HTTP 403 Forbidden\n(Access Denied)"]
-    AuthZ -->|Authorized| Execution["3. Controller & Business Logic Execution"]
-```
+![8.1. Authentication (AuthN) vs. Authorization (AuthZ) Architecture Diagram](images/48-81-authentication-authn-vs-authorization.png)
+
+---
 
 | Security Dimension            | Authentication (AuthN - Verification)                                                 | Authorization (AuthZ - Validation)                                                                                |
 | :---------------------------- | :------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------- |
@@ -2201,8 +1377,6 @@ flowchart LR
 | **Verification Medium** | Passwords, API Keys, JWT signatures, mTLS client certificates, biometric passkeys     | Roles (RBAC), Permissions, OAuth 2.0 Scopes (`read:reports`, `write:orders`), Attribute-Based Policies (ABAC) |
 | **HTTP Failure Status** | **`HTTP 401 Unauthorized`** (Mandates a `WWW-Authenticate` response header) | **`HTTP 403 Forbidden`** (Identity is known and valid, but caller lacks necessary privileges)             |
 | **Common Protocols**    | OpenID Connect (OIDC), HTTP Basic / Bearer, mTLS (RFC 8705)                           | OAuth 2.0 (RFC 6749), Open Policy Agent (OPA), AWS IAM / XACML                                                    |
-
----
 
 ### 8.2. User Registration & Client Onboarding Lifecycle
 
@@ -2223,8 +1397,6 @@ APIs expose distinct onboarding channels for human end-users versus automated th
    - The `client_secret` is displayed **only once** upon creation and stored hashed on the backend.
 3. **Scope Grant Assignment**: The developer requests specific access scopes (e.g. `orders:read`), requiring administrative approval or user consent.
 
----
-
 ### 8.3. Session Cookie Tokens vs. Stateless Bearer Tokens
 
 | Architectural Dimension      | Stateful Session Cookies (`Set-Cookie`)                                                    | Stateless Bearer Tokens (JWT in `Authorization`)                                            |
@@ -2236,31 +1408,13 @@ APIs expose distinct onboarding channels for human end-users versus automated th
 | **Cross-Platform Fit** | Ideal for traditional browser web applications                                               | **Universal**: Standard for Mobile apps, SPA frontends, CLI tools, and microservices    |
 | **CSRF Vulnerability** | **High** (Browser attaches cookies automatically on cross-site calls)                  | **Immune** (Browsers never attach custom `Authorization` headers automatically)       |
 
----
-
 ### 8.4. Cross-Site Request Forgery (CSRF) in API Systems
 
 Cross-Site Request Forgery (CSRF) is an attack where a malicious website tricks a user's browser into executing unwanted actions on a trusted API where the user is currently authenticated.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Victim as User (Browser)
-    participant BankAPI as Bank API (api.bank.com)
-    actor Attacker as Evil Site (evil.com)
+![8.4. Cross-Site Request Forgery (CSRF) in API Systems Architecture Diagram](images/49-84-cross-site-request-forgery-csrf-in-ap.png)
 
-    Note over Victim,BankAPI: 1. User logs into Bank API. Bank sets Session Cookie.
-    Victim->>BankAPI: POST /login (Credentials)
-    BankAPI-->>Victim: Set-Cookie: session_id=xyz; Path=/; Domain=bank.com
-  
-    Note over Victim,Attacker: 2. User visits malicious site while session is active.
-    Victim->>Attacker: Visit evil.com
-    Attacker-->>Victim: Returns page with hidden form auto-submitting to api.bank.com
-  
-    Note over Victim,BankAPI: 3. Browser executes auto-submitting form.
-    Victim->>BankAPI: POST /transfer (Browser attaches cookie automatically!)
-    BankAPI->>BankAPI: Validates session_id cookie and transfers funds!
-```
+---
 
 #### Why Pure Token-Based APIs Are Immune to CSRF:
 
@@ -2275,8 +1429,6 @@ sequenceDiagram
    - Client JavaScript reads the token and injects it into a custom header: `X-CSRF-Token: <token>`.
    - The server validates that the header token matches the session expectation before executing any mutating method (`POST`, `PUT`, `DELETE`).
 
----
-
 ### 8.5. Distributed Observability: OpenTelemetry & W3C Trace Context
 
 To trace an API request across 20 distributed microservices, APIs propagate standard **W3C Trace Context** HTTP headers:
@@ -2287,27 +1439,11 @@ To trace an API request across 20 distributed microservices, APIs propagate stan
   - `00f067aa...`: Parent Span ID (identifies the immediate upstream calling node).
   - `01`: Trace flags (Sampling active).
 
----
-
 ### 8.6. The 10-Stage Journey of an API Request to the Backend
 
 > **Source**: Hussein Nasser, *Fundamentals of Backend Engineering*, Section 7 ("The Journey of a Request to the Backend").
 
-```mermaid
-flowchart TD
-    S1["1. DNS Resolution\n(Browser cache -> OS cache -> Recursive Resolver -> Authoritative NS)"]
-    S2["2. TCP 3-Way Handshake\n(SYN -> SYN-ACK -> ACK over client-edge socket)"]
-    S3["3. TLS 1.3 Handshake\n(Key exchange & certificate validation at Edge WAF/CDN)"]
-    S4["4. HTTP Serialization\n(Client encodes URI, Headers, and JSON body into wire segments)"]
-    S5["5. Reverse Proxy / Gateway Ingress\n(Envoy parses headers, validates JWT, enforces rate limits)"]
-    S6["6. Kernel Socket Ingestion\n(Packets arrive at NIC -> Kernel interrupt -> socket recv_buf)"]
-    S7["7. Process Event Loop / Thread Allocation\n(epoll awakens application worker thread)"]
-    S8["8. Business Domain Execution\n(Controller parses DTO -> Service executes business logic)"]
-    S9["9. Database Pool Query Execution\n(Worker acquires idle connection from HikariCP pool)"]
-    S10["10. Response Serialization & Keep-Alive\n(HTTP 200 serialized -> socket send_buf -> Keep-Alive reuse)"]
-
-    S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8 --> S9 --> S10
-```
+![8.6. The 10-Stage Journey of an API Request to the Backend Architecture Diagram](images/50-86-the-10-stage-journey-of-an-api-reques.png)
 
 ---
 
@@ -2320,8 +1456,6 @@ When deploying new backend versions, servers must never terminate abruptly (whic
 3. **Wait Window**: The server waits for active in-flight requests to complete (e.g. 30 seconds).
 4. **TCP FIN Teardown**: Sockets exchange standard TCP `FIN` / `ACK` packets to close connections gracefully before the process exits.
 
----
-
 ## 🔗 Related Master Curricula
 
 - [`System_Requirements_Engineering.md`](<../../System%20Requirements/System_Requirements_Engineering.md>): Functional and non-functional vectors (SLA, latency, QPS capacity planning).
@@ -2329,4 +1463,4 @@ When deploying new backend versions, servers must never terminate abruptly (whic
 - [`001_software_architecture_patterns_antipatterns_and_pitfalls.md`](<../../Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/001_software_architecture_patterns_antipatterns_and_pitfalls.md>): Enterprise integration patterns.
 - [`HLD_Overview.md`](../../../2.HLD/HLD_Overview/output/Note_version-1_HLD_Overview/HLD_Overview.md): Large-scale distributed systems and consensus.
 
-[def]: animated_images\ui-api-backend-flow.svg
+[def]: images/ui-api-backend-flow.gif
