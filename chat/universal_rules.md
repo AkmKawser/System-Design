@@ -246,7 +246,6 @@ System-Design/
 │
 └── topics/                                   # Domain Knowledge & Learning Roadmaps Root
     ├── 0.FUNDAMENTALS/                       # Core Software Engineering Foundations
-    │   ├── outline_0.FUNDAMENTALS.md         # Topic Manifest
     │   ├── System Requirements/
     │   ├── Software Development Lifecycle/
     │   ├── Software Architecture and Modeling/
@@ -259,11 +258,15 @@ System-Design/
     │   └── Networking/                       # Terminal Leaf: template/, Data_Ingestion/Courses/, output/
     │
     ├── 1.LLD/                                # Low-Level Design Root
-    │   ├── outline_1.LLD.md                  # LLD Manifest
     │   ├── DESIGN_PATTERNS/                  # Terminal Leaf: template/, Data_Ingestion/, output/
     │   └── UML-DIAGRAMMING/                  # Terminal Leaf: template/, Data_Ingestion/, output/
     │
     └── 2.HLD/                                # High-Level Design Root
-        ├── outline_2.HLD.md                  # HLD Manifest
-        └── HLD_Overview/                     # Terminal Leaf: template/, Data_Ingestion/, output/
+        ├── HLD_Overview/                     # Terminal Leaf: template/, Data_Ingestion/, output/
+        ├── 1.DISTRIBUTED_FOUNDATIONS/        # Terminal Leaf: template/, Data_Ingestion/, output/
+        ├── 2.LOAD_BALANCING_TRAFFIC_INGRESS/ # Terminal Leaf: template/, Data_Ingestion/, output/
+        ├── 3.DISTRIBUTED_STORAGE_CACHING/    # Terminal Leaf: template/, Data_Ingestion/, output/
+        ├── 4.STREAMING_ASYNCHRONOUS_SYSTEMS/ # Terminal Leaf: template/, Data_Ingestion/, output/
+        ├── 5.DISTRIBUTED_RESILIENCE_OBSERVABILITY/ # Terminal Leaf: template/, Data_Ingestion/, output/
+        └── 6.SYSTEM_DESIGN_CASE_STUDIES/     # Terminal Leaf: template/, Data_Ingestion/, output/
 ```

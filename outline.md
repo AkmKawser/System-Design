@@ -35,8 +35,11 @@ flowchart TD
     L1 --> L_UML["UML 2.5 Metamodels & Modeling"]
 
     H2 --> H_DIST["Distributed Systems Foundations"]
-    H2 --> H_DATA["Data Partitioning, Caching & Storage"]
-    H2 --> H_MICRO["Microservices & Event-Driven Topologies"]
+    H2 --> H_INGRESS["Load Balancing & Traffic Ingress"]
+    H2 --> H_STORAGE["Distributed Storage & Sharding"]
+    H2 --> H_CACHE["Distributed Caching Architectures"]
+    H2 --> H_STREAM["Messaging & Stream Processing"]
+    H2 --> H_RESIL["Resilience & Observability"]
     H2 --> H_CASE["Industrial Case Studies & Deep Dives"]
 ```
 
@@ -169,32 +172,75 @@ flowchart TD
 
 ## 🌐 2. HLD (High-Level Design & Distributed Systems)
 
-### Module 2.1: Distributed Systems Core Foundations
-- **Directory**: [`topics/2.HLD/HLD_Overview/`](topics/2.HLD/HLD_Overview/)
-- **Outputs**: [`HLD_Overview.md`](topics/2.HLD/HLD_Overview/output/Note_version-1_HLD_Overview/HLD_Overview.md)
+### Module 2.1: Distributed Systems Core Foundations & Theoretical Invariants
+- **Directory**: [`topics/2.HLD/1.DISTRIBUTED_FOUNDATIONS/`](topics/2.HLD/1.DISTRIBUTED_FOUNDATIONS/)
 - **Core Syllabi**:
-  1. **System Invariants**: Scalability (Vertical vs Horizontal), Availability, Fault Tolerance, Latency vs Throughput.
-  2. **Theoretical Guarantees**: CAP Theorem (Consistency, Availability, Partition Tolerance), PACELC Theorem, BASE Properties.
-  3. **Consensus & Coordination**: Paxos, Raft, Zab (ZooKeeper), Leader Election, Distributed Clock Synchronization (NTP, Lamport timestamps, Vector clocks).
+  1. **Performance & Scalability Invariants**: Vertical vs. Horizontal Scaling, Latency vs. Throughput, Tail Latency amplification in microservices (`p50`, `p90`, `p99`, `p99.9`), Little's Law, High Availability math (SLO, SLA, SLI, MTBF, MTTR, calculating "Five Nines" 99.999% availability).
+  2. **Theoretical Guarantees & Laws**: CAP Theorem (Consistency vs. Availability vs. Partition Tolerance in network partitions), PACELC Theorem (Latency vs. Consistency in normal states), ACID vs. BASE, the 8 Fallacies of Distributed Computing.
+  3. **Time, Clocks & Ordering**: Physical clock drift, Network Time Protocol (NTP), Google TrueTime (GPS + Atomic clocks in Spanner), Logical Clocks (Lamport Timestamps, Vector Clocks for causality tracking and version vectors).
+  4. **Consensus & Coordination Protocols**: Raft Consensus (Leader Election, Log Replication, Safety Invariants), Paxos, ZooKeeper (ZAB Protocol), etcd, Quorums (`W + R > N`), Split-Brain prevention, Fencing Tokens.
 
-### Module 2.2: Distributed Storage, Caching & Data Partitioning
+### Module 2.2: Traffic Ingress, Edge Networking & Load Balancing
+- **Directory**: [`topics/2.HLD/2.LOAD_BALANCING_TRAFFIC_INGRESS/`](topics/2.HLD/2.LOAD_BALANCING_TRAFFIC_INGRESS/)
 - **Core Syllabi**:
-  1. **Data Partitioning Strategies**: Range-based partitioning, Hash-based partitioning, Consistent Hashing (Virtual Nodes).
-  2. **Replication Topologies**: Single-Leader (Active-Passive), Multi-Leader (Active-Active), Leaderless (Dynamo-style, Quorum reads/writes: `W + R > N`).
-  3. **Distributed Caching**: Cache Aside, Read-Through, Write-Through, Write-Behind (Write-Back), Eviction policies (LRU, LFU, FIFO, ARC).
-  4. **Cache Invalidation & Consistency**: Thundering Herd problem, Cache Penetration, Cache Breakdown, Cache Avalanche, Distributed Locks (Redis Redlock, ZooKeeper ephemeral nodes).
+  1. **Edge Routing & Global Traffic Management**: Global Server Load Balancing (GSLB), GeoDNS, Latency-Based Routing, Anycast BGP Routing, Content Delivery Networks (CDNs, edge POPs, origin shielding, edge workers).
+  2. **Layer 4 vs. Layer 7 Load Balancing**: Transport-layer packet forwarding (IP + Port, TCP/UDP, Maglev/Katran/IPVS) vs. Application-layer content routing (HTTP headers, URL paths, cookies, TLS termination via Envoy/Nginx/ALB).
+  3. **Load Balancing Routing Topologies**: Reverse Proxy mode, NAT mode, Direct Server Return (DSR) for asymmetric request/response traffic optimization.
+  4. **Routing Algorithms**: Round Robin, Weighted Round Robin, IP Hash, Least Connections, Weighted Least Response Time (TTFB), Consistent Hashing (Virtual Nodes), Power of Two Random Choices (P2C).
+  5. **High Availability & Clustering**: Active-Passive failover (VRRP / Keepalived with Floating Virtual IP), Active-Active with BGP Anycast + ECMP switches, health checking (active vs. passive, flap damping).
+  6. **API Gateways & Reverse Proxies**: Path-based routing, authentication/authorization validation, distributed tracing header injection, SSL/TLS offloading.
+  7. **Distributed Rate Limiting & Congestion Control**: Token Bucket, Leaky Bucket, Fixed Window, Sliding Window Counter (multi-region Redis + Lua scripts), concurrency limits, load shedding.
 
-### Module 2.3: Microservices, Integration & Asynchronous Topologies
+### Module 2.3: Distributed Storage, Sharding & Replication
+- **Directory**: [`topics/2.HLD/3.DISTRIBUTED_STORAGE_CACHING/`](topics/2.HLD/3.DISTRIBUTED_STORAGE_CACHING/)
 - **Core Syllabi**:
-  1. **Edge Infrastructure**: API Gateways (Rate limiting, authentication, SSL termination, request routing), Reverse Proxies (Nginx, Envoy), Load Balancers (L4 vs L7, round-robin, least connections, consistent hash).
-  2. **Communication & Messaging**: Message Queues (RabbitMQ, SQS), Distributed Commit Logs (Apache Kafka, Apache Pulsar), Event Brokers vs Task Queues.
-  3. **Distributed Transactions**: 2-Phase Commit (2PC), 3-Phase Commit (3PC), Saga Pattern (Choreography vs Orchestration), Transactional Outbox Pattern, Change Data Capture (CDC / Debezium).
+  1. **Database Selection Framework**: Relational (PostgreSQL, MySQL) vs. Document (MongoDB) vs. Key-Value (Redis, DynamoDB) vs. Wide-Column (Cassandra, ScyllaDB) vs. Graph (Neo4j) vs. Time-Series (TimescaleDB).
+  2. **Data Partitioning (Sharding)**: Range-based vs. Hash-based partitioning, Consistent Hashing (Virtual Nodes), resharding mechanics, hotspot mitigation (celebrity key problem).
+  3. **Replication Topologies**: Single-Leader (Active-Passive with synchronous/asynchronous WAL streaming), Multi-Leader (Active-Active with conflict resolution via Last-Write-Wins and CRDTs), Leaderless (Dynamo-style with Sloppy Quorums, Hinted Handoff, Read Repair).
+  4. **Storage Engine Internals**: LSM-Trees (Log-Structured Merge-Trees: MemTable, SSTables, Bloom Filters, Compaction in Cassandra/RocksDB) vs. B+ Trees (Page cache, in-place updates in InnoDB/PostgreSQL).
+  5. **Distributed Transactions & Data Integrity**: Two-Phase Commit (2PC) vs. Three-Phase Commit (3PC), Saga Pattern (Choreography vs. Orchestration with compensating actions), Transactional Outbox Pattern, Change Data Capture (CDC / Debezium).
 
-### Module 2.4: Real-World Distributed System Case Studies
+### Module 2.4: Distributed Caching Architectures
+- **Directory**: [`topics/2.HLD/3.DISTRIBUTED_STORAGE_CACHING/`](topics/2.HLD/3.DISTRIBUTED_STORAGE_CACHING/)
 - **Core Syllabi**:
-  1. **URL Shortening Service** (TinyURL): Base62 encoding, KGS (Key Generation Service), distributed uniqueness, caching strategy.
-  2. **Rate Limiting Engine**: Token Bucket, Leaky Bucket, Fixed Window Counter, Sliding Window Log, Sliding Window Counter (Redis + Lua).
-  3. **Distributed Unique ID Generator**: Twitter Snowflake, UUIDv4 vs UUIDv7, Ticket Servers.
-  4. **High-Throughput Chat / Messaging System** (WhatsApp / Discord): WebSockets, long polling, presence servers, message ordering, fan-out architecture.
-  5. **Notification System**: Priority queues, multi-channel dispatch (Push, SMS, Email), idempotency, deduplication.
-  6. **Video Streaming Architecture** (YouTube / Netflix): Transcoding pipelines (HLS, DASH), Content Delivery Networks (CDNs), adaptive bitrate streaming.
+  1. **Multi-Tier Cache Placement**: Browser / Client Cache -> Edge CDN -> API Gateway Cache -> Application Local Cache (Caffeine) -> Distributed Cluster (Redis, Memcached).
+  2. **Cache Access Patterns**: Cache-Aside (Lazy Loading), Read-Through, Write-Through, Write-Behind (Write-Back), Refresh-Ahead.
+  3. **Eviction Policies**: LRU (Least Recently Used), LFU (Least Frequently Used), FIFO, Segmented LRU, Adaptive Replacement Cache (ARC).
+  4. **Distributed Cache Failure Modes & Mitigations**: Cache Stampede / Thundering Herd (probabilistic early expiration XFetch, distributed locks), Cache Penetration (Bloom Filters, null caching), Cache Breakdown, Cache Avalanche (randomized jittered TTLs).
+  5. **Distributed Locking**: Redis Redlock algorithm, ZooKeeper ephemeral zNodes, database advisory locks.
+
+### Module 2.5: Asynchronous Messaging & Real-Time Stream Processing
+- **Directory**: [`topics/2.HLD/4.STREAMING_ASYNCHRONOUS_SYSTEMS/`](topics/2.HLD/4.STREAMING_ASYNCHRONOUS_SYSTEMS/)
+- **Core Syllabi**:
+  1. **Message Queues vs. Distributed Commit Logs**: Point-to-Point Task Queues (RabbitMQ, SQS) vs. Partitioned Append-Only Logs (Apache Kafka, Apache Pulsar), AMQP exchanges, dead-letter queues (DLQ), zero-copy transfer (`sendfile`).
+  2. **Event Sourcing & CQRS**: Storing immutable sequences of state-change events vs. CRUD, synchronizing command write-models with materialized query read-models.
+  3. **Real-Time Stream Analytics**: Apache Flink, Spark Streaming, Kafka Streams, windowing primitives (Tumbling, Sliding, Session windows), handling late-arriving data with Watermarks.
+  4. **Message Delivery Guarantees & Idempotency**: At-Most-Once vs. At-Least-Once vs. Exactly-Once processing, distributed deduplication, idempotent consumers.
+
+### Module 2.6: Distributed Resilience, Fault Tolerance & Security
+- **Directory**: [`topics/2.HLD/5.DISTRIBUTED_RESILIENCE_OBSERVABILITY/`](topics/2.HLD/5.DISTRIBUTED_RESILIENCE_OBSERVABILITY/)
+- **Core Syllabi**:
+  1. **Resilience & Fault Tolerance Patterns**: Circuit Breaker (Closed, Open, Half-Open states via Resilience4j/Envoy), Bulkhead isolation (thread pool and socket pool partitioning), Timeouts, Exponential Backoff with full jitter, graceful degradation and fallbacks.
+  2. **Zero-Trust Security**: OAuth 2.0 / OIDC, JWT signature verification (RS256 vs. HS256), mutual TLS (mTLS) with SPIFFE/SPIRE certificates, secrets management (HashiCorp Vault).
+
+### Module 2.7: Distributed Observability & Operational Telemetry
+- **Directory**: [`topics/2.HLD/5.DISTRIBUTED_RESILIENCE_OBSERVABILITY/`](topics/2.HLD/5.DISTRIBUTED_RESILIENCE_OBSERVABILITY/)
+- **Core Syllabi**:
+  1. **The 3 Pillars of Observability**: Distributed Tracing (OpenTelemetry, Jaeger, W3C TraceContext context propagation), Metrics (Prometheus, Grafana, RED method for services, USE method for infrastructure), Structured Centralized Logging (ELK / EFK, OpenSearch, correlation IDs).
+  2. **Health Checking & Chaos Engineering**: Deep vs. shallow health probes, canary deployments, blue-green deployments, Chaos Engineering (Chaos Monkey, latency and packet drop injection).
+
+### Module 2.8: Canonical Real-World Distributed System Case Studies
+- **Directory**: [`topics/2.HLD/6.SYSTEM_DESIGN_CASE_STUDIES/`](topics/2.HLD/6.SYSTEM_DESIGN_CASE_STUDIES/)
+- **Core Syllabi**:
+  1. **URL Shortening Service (TinyURL / Bitly)**: Base62 encoding, Key Generation Service (KGS), 100:1 read/write ratio, multi-region caching, global redirection.
+  2. **Distributed Unique ID Generator**: Twitter Snowflake (64-bit ID composition: timestamp + worker ID + sequence), clock drift mitigations, UUIDv7.
+  3. **Distributed Rate Limiter**: Multi-region Redis clusters, sliding window log vs. counter, Lua scripts, token bucket edge filters.
+  4. **Social Media Feed System (Twitter / Instagram)**: Fan-out on Write (push) vs. Fan-out on Read (pull) vs. Hybrid celebrity model, timeline caching, home timeline generation.
+  5. **Real-Time Chat & Messaging (WhatsApp / Discord)**: WebSocket gateway clusters, presence servers, message ordering, end-to-end encryption, ephemeral channels.
+  6. **Global Video Streaming Platform (Netflix / YouTube)**: Ingestion chunking, multi-bitrate HLS/DASH transcoding pipelines, 2-tier CDN edge caching, adaptive bitrate streaming.
+  7. **Flash Sale / High-Concurrency Ticketing (Ticketmaster / Amazon Prime Day)**: High-concurrency Redis distributed locks, in-memory stock reservation, queue throttling, overselling prevention.
+  8. **Ride-Sharing & Geospatial Matching (Uber / Lyft)**: Geospatial indexing (Quadtree, Google S2, Uber H3), real-time driver-rider matching engine, WebSocket telemetry.
+  9. **Distributed Financial Ledger (Stripe / Banking)**: Double-entry bookkeeping, strict idempotency keys, zero-data-loss ACID state machines, fraud scoring pipeline.
+  10. **Distributed Web Crawler & Search (Google Search)**: Distributed BFS crawl frontier, URL deduplication (Bloom filters), inverted indexing, PageRank, distributed parsing.
+  11. **Cloud File Storage & Sync (Dropbox / Google Drive)**: Chunk-based block storage, content-addressable storage (SHA-256), delta synchronization algorithms, metadata databases.
+  12. **Distributed Key-Value Store (DynamoDB / Cassandra Clone)**: Consistent hashing ring, SSTables, LSM trees, hinted handoff, gossip protocol, quorum reads/writes.
