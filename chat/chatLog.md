@@ -2212,3 +2212,34 @@ This file records the chronological session log of all user requests, architectu
   - Committed and pushed changes to remote `origin/main` per Universal Rule 3.
 - **Agent Response**:
   - Detailed the Playwright visual inspection findings, structural fixes applied to eliminate text wrapping beside images and remove empty headings, and confirmed document synchronization with visual proof.
+
+---
+
+## 📅 Session 97: Universal Document Preparation Engine (`prepare_doc_for_sync.py`) & Automated Layout Guards
+
+- **Timestamp**: 2026-11-24
+- **User Instruction**:
+  > *"please modify the script so from the next time when i tell you to write a doc these kind of issues not happen"*
+- **Agentic Log**:
+  - Identified the core systemic causes of layout, downscaling, and heading anomalies in Google Docs imports:
+    1. *Image-Text Paragraph Concatenation*: In CommonMark/Goldmark, an image directly preceding text or headings without an intervening block divider merges into a single inline paragraph, wrapping text around the image.
+    2. *Empty Setext Headings*: Bare horizontal dividers (`---`) immediately preceding `#` ATX headings are interpreted by markdown parsers as Setext heading underlines, creating empty headings (`HEADING_2 ""` / `HEADING_3 ""`).
+    3. *Microscopic Ribbon Images*: Unconstrained horizontal diagrams (`flowchart LR`) stretch up to 3300px+, downscaling into unreadable ribbons when fitted to a portrait page.
+    4. *Underscore Ingestion Collision*: Image filenames containing underscores (`_`) get escaped as markdown italics (`\_`), breaking image asset paths.
+    5. *Newline Character Offset Drift*: CRLF line endings (`\r\n`) cause UTF-16 character index drift in Google Docs API mutations.
+  - Engineered Canonical Document Preparation Engine [`engine/scripts/prepare_doc_for_sync.py`](../engine/scripts/prepare_doc_for_sync.py):
+    - Automatically discovers raw Mermaid code blocks and renders them into 2x high-resolution PNGs via Playwright Chromium with offline cached `mermaid.min.js`.
+    - Constrains diagram width to ~850px with vertical layouts (`flowchart TD`) for 16:9 to 4:3 publication aspect ratios.
+    - Programmatically isolates every diagram image on its own dedicated paragraph followed by a clean horizontal divider (`\n\n---\n\n`).
+    - Strips all bare horizontal rules (`---`) directly preceding ATX headings (`#`), eliminating empty Setext headings.
+    - Enforces strictly hyphenated image filenames (`-`, never `_`).
+    - Standardizes file line endings to strict LF (`\n`).
+  - Enhanced Universal Rendering Auditor [`engine/scripts/audit_rendering.py`](../engine/scripts/audit_rendering.py):
+    - **Rule 18 Enforcement**: Added automated regex detection (`\+[-=]{3,}\+`, `[┌├└][-─]{3,}[┐┤┘]`) inside code blocks to reject ASCII text-box art across the entire repository.
+    - **Rule 19 Enforcement**: Added automated checks rejecting images immediately followed by headings without divider `---`, and rejecting image filenames with underscores.
+  - Replaced legacy ASCII diagram in [`002_sequence_diagram_and_object_interactions.md`](../topics/0.FUNDAMENTALS/System%20Requirements/UML-DIAGRAMMING/output/query_UML-DIAGRAMMING/002_sequence_diagram_and_object_interactions.md) (lines 346–384) with a formal graphical Mermaid `flowchart TD` representing JVM Call Stack and Heap Memory graphs.
+  - Updated [`chat/universal_rules.md`](universal_rules.md) under Rule 19 to codify `python engine/scripts/prepare_doc_for_sync.py <file>` as the mandatory pre-sync pipeline before any Google Docs sync or import.
+  - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 211 markdown files with 0 errors**.
+  - Staged, committed, and pushed changes to remote `origin/main` per Universal Rule 3.
+- **Agent Response**:
+  - Documented the permanent automation engine and layout guards implemented in `prepare_doc_for_sync.py` and `audit_rendering.py`, ensuring all future documents and diagram updates automatically adhere to layout and rendering standards before Google Docs synchronization.

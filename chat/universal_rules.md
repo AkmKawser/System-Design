@@ -193,19 +193,23 @@ These rules are permanent operational constraints. The agent must enforce them p
   - The rendering auditor (`engine/scripts/audit_rendering.py`) and agent checks will strictly flag and reject any ASCII art / pseudo-box diagrams.
   - Whenever diagrams are requested or needed in technical manuals, query responses, or study notes, the agent must generate rich, graphical Mermaid diagrams or standalone SVGs—never text-based box drawings.
 
-### Rule 19: Mandatory Pre-Rendered Graphical Diagram Images in Documents (Strict Prohibition of Raw Diagram Code in Published Docs)
-- **Directive**: Rather than leaving raw diagram code blocks (such as raw ```` ```mermaid ````, ```` ```dot ````, or PlantUML code fences) directly in documents where they display as unrendered code text (especially in Google Docs, external document readers, and published manuals), the agent **MUST** programmatically pre-render all diagrams into crisp, high-resolution visual images (**PNG**) using the local rendering engine (`engine/scripts/render_all_catalog_diagrams.py` or Playwright Chromium).
-- **Mandatory Embedding Protocol**:
-  1. **Image Asset Generation**: Every diagram must be compiled and rendered to a 2x device-scale PNG stored in the topic's localized `images/` directory (e.g. `output/query_<topic>/images/<diagram-slug>.png`).
-  2. **Hyphenated File Naming Invariant**: Diagram image filenames **MUST strictly use hyphens (`-`), NEVER underscores (`_`)** (e.g., `01-overview-taxonomy.png`, `02-mvc-pattern.png`). Underscores in markdown image URLs cause markdown parsers (such as Goldmark and CommonMark) to misinterpret pairs of underscores as emphasis/italics (`\_`), breaking image path resolution during document ingestion.
-  3. **Image Link Embedding**: Embed the rendered diagram directly into the document using standard Markdown image syntax:
-     ```markdown
-     ![Diagram Title](images/diagram-slug.png)
+### Rule 19: Mandatory Pre-Rendered Graphical Diagram Images in Documents & Pre-Sync Engine Execution
+- **Directive**: Rather than leaving raw diagram code blocks (such as raw ```` ```mermaid ````, ```` ```dot ````, or PlantUML code fences) directly in documents where they display as unrendered code text (especially in Google Docs, external document readers, and published manuals), the agent **MUST** programmatically pre-render all diagrams into crisp, high-resolution visual images (**PNG**) using the local rendering engine (`engine/scripts/prepare_doc_for_sync.py` or Playwright Chromium).
+- **Mandatory Embedding & Layout Hygiene Protocol**:
+  1. **Automated Document Preparation Engine**: Before any Google Docs synchronization (`gdocs mutate import-md`, `gdocs mutate sync`, etc.), the agent **MUST** run:
+     ```bash
+     python engine/scripts/prepare_doc_for_sync.py <path/to/file.md>
      ```
-  4. **Zero Raw Diagram Code in Google Docs**: When synchronizing or importing to Google Docs (`gdocs mutate import-md` or `gdocs mutate insert-image-from-file`), Google Docs receives the native visual image, ensuring reader-facing documents display actual visual architectural schematics rather than raw monospace code blocks.
+     This script programmatically enforces all layout, rendering, and typography invariants in a single automated pass.
+  2. **Image Asset Generation & Constrained Dimensions**: Every diagram is compiled and rendered to a 2x device-scale PNG stored in the topic's localized `images/` directory (e.g. `output/query_<topic>/images/<diagram-slug>.png`). Diagrams are rendered with width constrained (~850px) and vertical layout (`flowchart TD`) to prevent microscopic ribbon downscaling in portrait documents.
+  3. **Hyphenated File Naming Invariant**: Diagram image filenames **MUST strictly use hyphens (`-`), NEVER underscores (`_`)** (e.g., `01-overview-taxonomy.png`, `02-mvc-pattern.png`). Underscores in markdown image URLs cause markdown parsers (such as Goldmark and CommonMark) to misinterpret pairs of underscores as emphasis/italics (`\_`), breaking image path resolution during document ingestion.
+  4. **Image Isolation & Dedicated Divider**: Every standalone image must exist on its own dedicated paragraph followed by a horizontal divider (`\n\n---\n\n`), preventing inline image-text paragraph concatenation and preventing text/headings from wrapping awkwardly beside images.
+  5. **Removal of Pre-Heading Dividers**: Bare horizontal rules (`---`) directly preceding ATX headings (`#`) must be removed, preventing Goldmark/Drive API from interpreting them as Setext heading underlines that produce empty headings (`HEADING_2 ""` / `HEADING_3 ""`).
+  6. **Strict LF Line Endings**: Documents must use UNIX-style line endings (`\n`), eliminating carriage returns (`\r\n`) to prevent Google Drive UTF-16 character offset drift during batch text mutations.
+  7. **Zero Raw Diagram Code in Google Docs**: Google Docs receives native visual PNG images on dedicated blocks, ensuring reader-facing documents display publication-grade architectural schematics with zero unrendered code blocks.
 - **Enforcement**:
-  - The rendering auditor (`engine/scripts/audit_rendering.py`) and agent verification checks will enforce that query manuals and study guides embed rendered graphical image assets that resolve on disk.
-  - Whenever synchronizing to Google Docs, all diagrams must appear as rendered images.
+  - The rendering auditor (`engine/scripts/audit_rendering.py`) and agent verification checks strictly enforce that query manuals and study guides embed rendered graphical image assets that resolve on disk, without ASCII art, unquoted special characters, or missing divider rules.
+  - Whenever synchronizing to Google Docs, running `python engine/scripts/prepare_doc_for_sync.py <file>` is mandatory.
 
 ---
 

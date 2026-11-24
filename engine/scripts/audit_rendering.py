@@ -108,6 +108,14 @@ def audit_file(file_path: Path) -> list[str]:
             if reserved_classdef:
                 errors.append(f'Line {line_idx}: Mermaid reserved keyword used as classDef name: {reserved_classdef[0]}. Rename classDef class.')
             continue
+
+        # Rule 18: Ban on ASCII text-box diagrams in code blocks
+        if in_code_block and not in_mermaid:
+            if re.search(r"\+[-=]{3,}\+", line) or re.search(r"[┌├└][-─]{3,}[┐┤┘]", line):
+                errors.append(
+                    f"Line {line_idx}: Rule 18 violation: ASCII text-box diagram detected ('{line.strip()}'). "
+                    "All diagrams must be graphical (Mermaid, SVG, or rendered PNG)."
+                )
             
         # 3. Prose Checks (Outside Code Blocks)
         if not in_code_block:
@@ -138,6 +146,14 @@ def audit_file(file_path: Path) -> list[str]:
     if fence_count % 2 != 0:
         errors.append(f"Unbalanced code fences detected: total count is {fence_count} (expected even number).")
         
+    # Rule 19: Check for images immediately followed by headings without a block divider
+    img_heading_merges = list(re.finditer(r"(!\[[^\]]+\]\(images/[^\)]+\))\s*\n{1,2}(\#{1,4}\s+[^\n]+)", content))
+    for m in img_heading_merges:
+        errors.append(
+            f"Rule 19 violation: Image directly followed by heading '{m.group(2).strip()}' without divider '---'. "
+            "Run 'python engine/scripts/prepare_doc_for_sync.py' to format image dividers."
+        )
+
     return errors
 
 def check_single_readme() -> list[str]:

@@ -343,44 +343,22 @@ end
 
 A sequence diagram directly mirrors the physical execution state of the JVM. Every activation box corresponds to a call frame pushed onto the current thread's **JVM Call Stack**, and message parameters are pointers in the **JVM Heap**.
 
-```
-====================================================================================================
-                        JVM RUNTIME MEMORY SNAPSHOT DURING MESSAGE 4 & 5
-====================================================================================================
-
-               JVM THREAD STACK (Thread: "main")                     JVM HEAP MEMORY GRAPH
-          +-----------------------------------------+
-Step 5:   | Order.calculateTotal()                  |--------+
-          | - local: this (ptr to Order @0x4A10)    |        |
-          +-----------------------------------------+        |
-Step 4:   | OrderService.placeOrder(...)            |        |
-          | - param: customerId = "CUST-992"        |        |
-          | - param: items = List@0x1B20            |        |
-          | - local: order = ptr @0x4A10            |---+    |
-          | - field: inventoryService = ptr @0x2C30 |   |    |
-          | - field: paymentGateway = ptr @0x3D40   |   |    |
-          +-----------------------------------------+   |    |
-Step 1:   | CheckoutController.handleRequest()      |   |    |
-          +-----------------------------------------+   |    |
-                                                        |    |
-                                                        v    v
-                                                 +--------------------------------+
-                                                 | Object: Order (@0x4A10)        |
-                                                 |--------------------------------|
-                                                 | orderId: "ORD-8812"            |
-                                                 | customerId: "CUST-992"         |
-                                                 | status: PENDING                |
-                                                 | items: [OrderItem@0x5E01, ...] |
-                                                 +--------------------------------+
-                                                                |
-                                                                v
-                                                 +--------------------------------+
-                                                 | Object: OrderItem (@0x5E01)    |
-                                                 |--------------------------------|
-                                                 | sku: "TECH-101"                |
-                                                 | quantity: 2                    |
-                                                 | unitPrice: 49.99               |
-                                                 +--------------------------------+
+```mermaid
+flowchart TD
+    subgraph Stack ["JVM Thread Stack (Thread: 'main')"]
+        Frame3["Step 5: Order.calculateTotal()\n- local: this (ptr @0x4A10)"]
+        Frame2["Step 4: OrderService.placeOrder(...)\n- param: customerId = 'CUST-992'\n- param: items = List@0x1B20\n- local: order = ptr @0x4A10\n- field: inventoryService = ptr @0x2C30\n- field: paymentGateway = ptr @0x3D40"]
+        Frame1["Step 1: CheckoutController.handleRequest()"]
+        Frame3 --> Frame2
+        Frame2 --> Frame1
+    end
+    subgraph Heap ["JVM Heap Memory Graph"]
+        OrderObj["Object: Order (@0x4A10)\n- orderId: 'ORD-8812'\n- customerId: 'CUST-992'\n- status: PENDING\n- items: List@0x1B20"]
+        ItemObj["Object: OrderItem (@0x5E01)\n- sku: 'TECH-101'\n- quantity: 2\n- unitPrice: 49.99"]
+        OrderObj -->|"references"| ItemObj
+    end
+    Frame3 -.->|"this pointer"| OrderObj
+    Frame2 -.->|"order pointer"| OrderObj
 ```
 
 ### Traceability Execution Matrix: Code -> UML -> Memory
