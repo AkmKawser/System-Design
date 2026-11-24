@@ -2179,9 +2179,36 @@ This file records the chronological session log of all user requests, architectu
     - **Hyphenated File Naming Invariant**: Mandated that all diagram image filenames must use hyphens (`-`), never underscores (`_`), eliminating markdown emphasis/italics parser collisions (`\_`) during document ingestion.
   - Engineered local automated diagram compiler [`engine/scripts/render_all_catalog_diagrams.py`](../engine/scripts/render_all_catalog_diagrams.py) using Playwright Chromium with offline cached `mermaid.min.js`.
   - Compiled and rendered all 28 Mermaid architecture diagrams from [`003_complete_architectural_patterns_catalog.md`](../topics/0.FUNDAMENTALS/Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/003_complete_architectural_patterns_catalog.md) into crisp, high-DPI PNG images inside `output/query_Architecture_Patterns/images/`.
-  - Replaced all 28 raw ```` ```mermaid ```` code fences in `003_complete_architectural_patterns_catalog.md` with direct native image references (`![<Title>](images/<diagram-slug>.png)`).
+  - Replaced all 28 raw ```` ```mermaid ```` code fences in `003_complete_architectural_patterns_catalog.md` with direct native image references (`rendered PNG image files`).
   - Executed full repository rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 211 markdown files with 0 errors**.
   - Synchronized updated manual into Google Doc tab `t.xlbamg66amln` ("2. Architecture Pattens") in document `1ZQeIwLXWqNBSeZQJrwiWpcQGnssX2VdTemhMzWAVwdY` via `gdocs mutate import-md --auto-fit-tables`. Google Drive uploaded all 28 image assets and embedded native visual images directly into the Google Doc canvas.
   - Staged, committed, and pushed changes to remote `origin/main` per Universal Rule 3.
 - **Agent Response**:
   - Confirmed establishment of Universal Rule 19, local high-DPI compilation of all 28 diagrams into PNG assets, direct visual image embedding into Google Docs tab `t.xlbamg66amln`, and complete remote Git synchronization.
+
+
+---
+
+## 📅 Session 96: Visual Document Inspection via Playwright & Layout Alignment Fix
+
+- **Timestamp**: 2026-11-24
+- **User Instruction**:
+  > *"please check the doc file using playwrite. some of the text are not placed properly fix that"*
+- **Agentic Log**:
+  - Drove Playwright Chromium to navigate to Google Doc `https://docs.google.com/document/d/1ZQeIwLXWqNBSeZQJrwiWpcQGnssX2VdTemhMzWAVwdY/edit?tab=t.xlbamg66amln` and inspect visual rendering:
+    - Identified that inline images followed immediately by headings merged into the same paragraph (`NORMAL_TEXT "[image]Step-by-Step Execution Lifecycle"`), wrapping headings and list items into a narrow vertical column beside the image.
+    - Identified that bare `---` divider syntax preceding `#` headings caused Goldmark to generate 31 empty Setext headings (`HEADING_2 ""` and `HEADING_3 ""`).
+    - Identified that ultra-wide horizontal `flowchart LR` diagrams (up to 3366px wide) caused disproportionate document scaling.
+  - Engineered [`engine/scripts/generate_polished_patterns_catalog.py`](../engine/scripts/generate_polished_patterns_catalog.py):
+    - Re-architected wide diagrams into balanced multi-tier `flowchart TD` structures (~850px width, 16:9 to 4:3 aspect ratios).
+    - Pre-rendered all 28 diagrams into high-DPI PNGs in `output/query_Architecture_Patterns/images/`.
+  - Re-structured [`003_complete_architectural_patterns_catalog.md`](../topics/0.FUNDAMENTALS/Software%20Architecture%20and%20Modeling/1.ARCHITECTURE/2.%20Architecture%20Patterns/output/query_Architecture_Patterns/003_complete_architectural_patterns_catalog.md):
+    - Isolated every diagram on its own dedicated paragraph followed by a divider `---`.
+    - Removed bare `---` directly preceding `#` headings, eliminating all 31 empty Setext headings.
+  - Synchronized polished manual to Google Doc tab `t.xlbamg66amln` via `gdocs mutate import-md --auto-fit-tables`.
+  - Verified document body via `gdocs readonly dump-body`: Confirmed images are isolated on their own lines (`[image]\n`) and headings start on fresh full-width lines.
+  - Verified visual rendering via Playwright screenshots across multiple scroll offsets, confirming proper layout, centered diagrams, and full-width text formatting.
+  - Verified rendering audit via `engine/scripts/audit_rendering.py --all`: **100% pass across all 211 files with 0 errors**.
+  - Committed and pushed changes to remote `origin/main` per Universal Rule 3.
+- **Agent Response**:
+  - Detailed the Playwright visual inspection findings, structural fixes applied to eliminate text wrapping beside images and remove empty headings, and confirmed document synchronization with visual proof.
