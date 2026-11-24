@@ -195,7 +195,7 @@ flowchart TD
 - **Directory**: [`topics/2.HLD/3.DISTRIBUTED_STORAGE_CACHING/`](topics/2.HLD/3.DISTRIBUTED_STORAGE_CACHING/)
 - **Core Syllabi**:
   1. **Database Selection Framework**: Relational (PostgreSQL, MySQL) vs. Document (MongoDB) vs. Key-Value (Redis, DynamoDB) vs. Wide-Column (Cassandra, ScyllaDB) vs. Graph (Neo4j) vs. Time-Series (TimescaleDB).
-  2. **Data Partitioning (Sharding)**: Range-based vs. Hash-based partitioning, Consistent Hashing (Virtual Nodes), resharding mechanics, hotspot mitigation (celebrity key problem).
+  2. **Data Partitioning (Sharding)**: Range-based vs. Hash-based partitioning, Consistent Hashing (Virtual Nodes), resharding mechanics, hotspot mitigation (celebrity key problem), Scatter-Gather query mechanics & distributed pagination (distributed offset problem vs. shard-checkpoint cursors in DynamoDB/Cassandra/Elasticsearch).
   3. **Replication Topologies**: Single-Leader (Active-Passive with synchronous/asynchronous WAL streaming), Multi-Leader (Active-Active with conflict resolution via Last-Write-Wins and CRDTs), Leaderless (Dynamo-style with Sloppy Quorums, Hinted Handoff, Read Repair).
   4. **Storage Engine Internals**: LSM-Trees (Log-Structured Merge-Trees: MemTable, SSTables, Bloom Filters, Compaction in Cassandra/RocksDB) vs. B+ Trees (Page cache, in-place updates in InnoDB/PostgreSQL).
   5. **Distributed Transactions & Data Integrity**: Two-Phase Commit (2PC) vs. Three-Phase Commit (3PC), Saga Pattern (Choreography vs. Orchestration with compensating actions), Transactional Outbox Pattern, Change Data Capture (CDC / Debezium).
