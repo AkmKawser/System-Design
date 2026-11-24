@@ -55,41 +55,6 @@ While often contrasted unfavorably against microservices in modern industry disc
 5. **Atomic Database Transaction**: The persistence layer executes SQL statements across all affected domain tables within a single physical database transaction (`BEGIN TRANSACTION` -> `COMMIT`), ensuring absolute ACID consistency with zero two-phase commit overhead.
 6. **Response Generation**: The controller serializes the result into JSON or HTML and returns HTTP 201 Created to the caller in single-digit milliseconds.
 
-#### Concrete Implementation Structure
-
-```java
-// Monolithic Package Topology: All modules execute in the same process
-package com.enterprise.ecommerce;
-
-@RestController
-@RequestMapping("/api/v1/orders")
-public class OrderController {
-    private final OrderService orderService;
-    private final InventoryService inventoryService; // Direct in-memory dependency
-    private final BillingService billingService;     // Direct in-memory dependency
-
-    public OrderController(OrderService orderService, 
-                           InventoryService inventoryService, 
-                           BillingService billingService) {
-        this.orderService = orderService;
-        this.inventoryService = inventoryService;
-        this.billingService = billingService;
-    }
-
-    @PostMapping
-    @Transactional // Single database transaction spans all domains
-    public ResponseEntity<OrderReceipt> placeOrder(@RequestBody OrderRequest request) {
-        // 1. Direct in-memory method call
-        inventoryService.reserve(request.getProductId(), request.getQuantity());
-        // 2. Direct in-memory method call
-        billingService.charge(request.getCustomerId(), request.getTotalAmount());
-        // 3. Direct persistence in shared database
-        Order order = orderService.createOrder(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new OrderReceipt(order.getId()));
-    }
-}
-```
-
 #### Physical Runtime & Memory Topology
 * **Process Address Space**: All functional capabilities reside within a single Operating System process address space.
 * **Heap Architecture**: Objects are allocated on a shared heap. Parameter passing occurs via 64-bit memory reference pointers (`ptr @0x4A10`) without serialization or network I/O.
@@ -140,49 +105,6 @@ The **Layered Architecture Style** (traditionally structured as **3-Tier** or **
 5. **Persistence Execution**: The repository maps domain entities to relational tables and dispatches SQL statements over a pooled JDBC connection.
 6. **Isolated Upward Unwinding**: The database returns result sets, which the persistence layer wraps into domain objects and passes to the business layer, which passes them to the presentation layer for response serialization.
 
-#### Concrete Implementation Structure
-
-```java
-// Layer 1: Presentation Layer
-@RestController
-@RequestMapping("/users")
-public class UserController {
-    private final UserService userService; // Strictly depends ONLY on Layer below
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        return ResponseEntity.ok(UserDTO.fromDomain(user));
-    }
-}
-
-// Layer 2: Business Logic Layer (Isolated from HTTP/Web Concerns)
-@Service
-public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository; // Strictly depends ONLY on Persistence Layer
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    @Override
-    public User getUserById(Long id) {
-        return userRepository.findById(id)
-            .orElseThrow(() -> new UserNotFoundException("User " + id + " does not exist"));
-    }
-}
-
-// Layer 3: Persistence Layer (Encapsulates SQL / Database specifics)
-@Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    // Generates: SELECT * FROM users WHERE id = ?
-}
-```
-
 #### Physical Runtime & Memory Topology
 * **Stack Frame Flow**: In a 3-tier architecture, execution proceeds via synchronized JVM thread stack frames: `Controller.handle()` pushes `Service.execute()`, which pushes `Repository.query()`.
 * **Layer Isolation in Memory**: Data is transformed across layer boundaries: `Request DTO` -> `Domain Entity` -> `Persistence Record` -> `Response DTO`. This prevents database schema changes from leaking into UI clients.
@@ -229,44 +151,6 @@ Microservices completely avoid shared databases and monolithic deployments. Serv
    - `Inventory Service` consumes `PaymentCompletedEvent`, reserves physical warehouse stock, and emits `StockAllocatedEvent`.
 5. **State Finalization**: `Order Service` consumes `StockAllocatedEvent`, updates order status to `CONFIRMED`, and sends a push notification to the client.
 
-#### Concrete Implementation Structure
-
-```go
-// Order Microservice: Go implementation communicating via gRPC & Kafka
-package main
-
-import (
-    "context"
-    "encoding/json"
-    "github.com/segmentio/kafka-go"
-)
-
-type OrderServer struct {
-    db          *sql.DB
-    kafkaWriter *kafka.Writer
-}
-
-func (s *OrderServer) CreateOrder(ctx context.Context, req *OrderRequest) (*OrderResponse, error) {
-    // 1. Persist locally to isolated database (Database-per-Service)
-    orderID := generateUUID()
-    _, err := s.db.ExecContext(ctx, "INSERT INTO orders (id, customer_id, amount, status) VALUES (?, ?, ?, ?)",
-        orderID, req.CustomerId, req.Amount, "PENDING")
-    if err != nil {
-        return nil, err
-    }
-
-    // 2. Publish domain event to Kafka for decoupled asynchronous processing
-    event := OrderCreatedEvent{OrderID: orderID, CustomerID: req.CustomerId, Amount: req.Amount}
-    payload, _ := json.Marshal(event)
-    s.kafkaWriter.WriteMessages(ctx, kafka.Message{
-        Key:   []byte(orderID),
-        Value: payload,
-    })
-
-    return &OrderResponse{OrderId: orderID, Status: "PENDING"}, nil
-}
-```
-
 #### Physical Runtime & Memory Topology
 * **Network & Serialization Overhead**: Every inter-service invocation leaves the process boundary, passing through Linux TCP sockets, network interfaces (NIC), and TLS handshakes, introducing serialization (JSON/Protobuf) latency.
 * **Distributed State**: No shared memory exists across services. Data is partitioned across separate database instances.
@@ -311,33 +195,6 @@ EDA provides the highest level of architectural decoupling: event producers have
    - The *Inventory Processor* reserves warehouse inventory.
    - The *Notification Processor* queues a customer email.
 5. **Downstream Event Cascading**: If fraud is detected, the Fraud Processor publishes `FraudDetectedEvent`, prompting the Payment Processor to halt payment processing.
-
-#### Concrete Implementation Structure
-
-```typescript
-// Event-Driven Consumer using TypeScript & KafkaJS
-import { Kafka } from 'kafkajs';
-
-const kafka = new Kafka({ clientId: 'notification-service', brokers: ['kafka:9092'] });
-const consumer = kafka.consumer({ groupId: 'notification-group' });
-
-async function run() {
-  await consumer.connect();
-  await consumer.subscribe({ topic: 'order.placed', fromBeginning: false });
-
-  await consumer.run({
-    eachMessage: async ({ topic, partition, message }) => {
-      const event = JSON.parse(message.value!.toString());
-      console.log(`[Notification Service] Received OrderPlaced event: ${event.orderId}`);
-      
-      // Autonomous decoupled side-effect
-      await sendCustomerConfirmationEmail(event.customerEmail, event.orderId);
-    },
-  });
-}
-
-run().catch(console.error);
-```
 
 #### Physical Runtime & Memory Topology
 * **Buffering & Backpressure**: Event brokers provide buffer queues (OS page cache / disk-backed logs) that absorb traffic spikes, insulating downstream consumers from crashing under heavy load.
@@ -390,48 +247,6 @@ Under extreme, unpredictable concurrent load (e.g. concert ticket on-sales, Blac
 6. **Immediate Client Response**: The client receives an immediate success response (< 2ms total latency).
 7. **Asynchronous Disk Flush**: The Data Writer drains the Data Pump queue in bulk batches and persists records to the backing database at a controlled, manageable write cadence.
 
-#### Concrete Implementation Structure
-
-```java
-// Space-Based Architecture: Processing Unit with Embedded In-Memory Data Grid
-package com.enterprise.space;
-
-import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.map.IMap;
-
-@Component
-public class TicketBookingProcessingUnit {
-    private final IMap<String, Ticket> ticketSpace; // Replicated in-memory tuple space
-    private final DataPumpClient dataPump;          // Asynchronous persistence queue
-
-    public TicketBookingProcessingUnit(HazelcastInstance hazelcast, DataPumpClient dataPump) {
-        this.ticketSpace = hazelcast.getMap("ticket-space");
-        this.dataPump = dataPump;
-    }
-
-    public BookingConfirmation bookTicket(String ticketId, String customerId) {
-        // 1. Lock and mutate 100% in local memory (sub-millisecond execution)
-        ticketSpace.lock(ticketId);
-        try {
-            Ticket ticket = ticketSpace.get(ticketId);
-            if (ticket.isReserved()) {
-                throw new TicketAlreadySoldException("Ticket " + ticketId + " taken");
-            }
-            ticket.setReserved(true);
-            ticket.setCustomerId(customerId);
-            ticketSpace.put(ticketId, ticket); // Replicates automatically across grid
-
-            // 2. Enqueue state mutation to Data Pump out-of-band
-            dataPump.enqueueMutation(new DataMutation("UPDATE", "tickets", ticket));
-
-            return new BookingConfirmation(ticketId, customerId, "CONFIRMED");
-        } finally {
-            ticketSpace.unlock(ticketId);
-        }
-    }
-}
-```
-
 #### Physical Runtime & Memory Topology
 * **RAM-Centric Execution**: Active application state is stored entirely in memory (RAM). Memory addresses are accessed directly via pointers without relational SQL parsing or disk seek latency.
 * **Replication Bandwidth**: Requires high-bandwidth, low-latency internal network interconnects (10GbE/40GbE) to sustain distributed in-memory data replication across nodes.
@@ -475,38 +290,6 @@ Instead of splitting a system into dozens of fine-grained microservices with ind
 4. **Direct Shared Database Transaction**: When writing order and billing records, services can leverage direct SQL joins or coordinated transactions against their respective schemas within the shared database.
 5. **Independent Service Deployment**: If an update is required in `Billing Service`, only the `Billing Service` container is rebuilt and redeployed. The `Order`, `Customer`, and `Warehouse` services experience zero downtime.
 
-#### Concrete Implementation Structure
-
-```yaml
-# Docker Compose Topology: Service-Based Architecture with Shared Database
-version: '3.8'
-
-services:
-  api-gateway:
-    image: nginx:alpine
-    ports: ["80:80"]
-    depends_on: [customer-service, order-service, billing-service]
-
-  customer-service:
-    image: enterprise/customer-service:1.2
-    environment:
-      - DB_URL=jdbc:postgresql://shared-db:5432/enterprise_db?currentSchema=customer_schema
-
-  order-service:
-    image: enterprise/order-service:2.0
-    environment:
-      - DB_URL=jdbc:postgresql://shared-db:5432/enterprise_db?currentSchema=order_schema
-
-  billing-service:
-    image: enterprise/billing-service:1.1
-    environment:
-      - DB_URL=jdbc:postgresql://shared-db:5432/enterprise_db?currentSchema=billing_schema
-
-  shared-db:
-    image: postgres:15-alpine
-    volumes: ["db_data:/var/lib/postgresql/data"]
-```
-
 #### Physical Runtime & Memory Topology
 * **Independent Process Quanta**: Each service runs in its own process/container with dedicated memory and garbage collection. A memory leak in `Customer Service` will not crash `Order Service`.
 * **Database Connection Contention**: Because all services share the database, total concurrent database connections must be carefully managed across all service connection pools to prevent connection pool exhaustion.
@@ -549,48 +332,6 @@ In a modular monolith, all code compiles and executes within a **single physical
 3. **Exclusive Persistence**: `OrderRepository` writes to the `orders` schema. It does not touch `inventory` or `billing` tables.
 4. **In-Memory Event Dispatch**: `OrderModule` publishes an `OrderPlacedEvent` to the local in-memory event bus (e.g. Spring `ApplicationEventPublisher`).
 5. **Decoupled Reaction**: `BillingModule` listens for `OrderPlacedEvent`, captures it asynchronously on a worker thread, charges the payment method, and records transactions in the `billing` schema.
-
-#### Concrete Implementation Structure & ArchUnit Enforcement
-
-```java
-// 1. Module Public Interface (Only this interface is exposed)
-package com.enterprise.order.api;
-
-public interface OrderModuleFacade {
-    OrderReceiptDTO placeOrder(OrderRequestDTO request);
-}
-
-// 2. Package-Private Internal Implementation (Invisible to other modules)
-package com.enterprise.order.internal;
-
-class OrderServiceImpl implements OrderModuleFacade {
-    private final OrderRepository repository; // Package-private
-    private final ApplicationEventPublisher eventPublisher;
-
-    @Override
-    public OrderReceiptDTO placeOrder(OrderRequestDTO request) {
-        Order order = new Order(request);
-        repository.save(order);
-        eventPublisher.publishEvent(new OrderPlacedEvent(order.getId()));
-        return new OrderReceiptDTO(order.getId());
-    }
-}
-
-// 3. Compile-Time Architecture Test (Fails build if boundaries are violated)
-@AnalyzeClasses(packages = "com.enterprise")
-public class ArchitectureBoundaryTest {
-
-    @ArchTest
-    public static final ArchRule order_internals_should_not_be_accessed_by_other_modules =
-        noClasses().that().resideOutsideOfPackage("..order..")
-            .should().accessClassesThat().resideInPackage("..order.internal..");
-
-    @ArchTest
-    public static final ArchRule modules_must_only_interact_through_public_api =
-        classes().that().resideInAPackage("..order.api..")
-            .should().onlyBeAccessed().byAnyPackage("..billing..", "..inventory..", "..web..");
-}
-```
 
 #### Physical Runtime & Memory Topology
 * **Single Process Simplicity**: Deploys as a single container or binary. Requires no service mesh, no container orchestration, and zero distributed networking costs.
