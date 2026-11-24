@@ -27,6 +27,8 @@ Learning-Roadmap_Project-Structure/
 │   └── Upcoming Updates.md                   # Shared Agent Memory roadmap & implementation plan
 │
 └── topics/                                   # Domain Knowledge & Learning Roadmaps Root
+    ├── outline/                              # Dedicated Master Curriculum Directory
+    │   └── outline.md                        # Master Detailed Topic Outline
     └── <topic_name>/                         # Immediate Topic Subfolder (e.g. 0.FUNDAMENTALS/)
         └── [Intermediate Subfolders...]/     # Arbitrary nesting (e.g., LLD/, Design_Patterns/)
             └── <last_subfolder>/             # Terminal Leaf Node (Identified via index.md)

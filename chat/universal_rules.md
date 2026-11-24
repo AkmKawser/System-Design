@@ -113,12 +113,12 @@ These rules are permanent operational constraints. The agent must enforce them p
   3. **Multi-Modal Synchronization**: Every embedded diagram must be paired with precise source attribution (Figure number, chapter, page number) alongside the agent's autonomous architectural explanation, failure mode analysis, and trade-off evaluation.
   4. **Disk Existence & Integrity Verification**: The agent must verify that every embedded image path physically resolves on disk (audited via `scripts/audit_rendering.py`). Broken or non-existent image paths are strictly forbidden.
 
-### Rule 15: Single `outline.md` Policy (Universal Master Topic Outline Protocol)
-- **Directive**: There must be **strictly one `outline.md` file in the entire repository**, located at the repository root (`System-Design/outline.md`). **Only topic outlines from all over the project are kept in this file**.
+### Rule 15: Canonical Master Topic Outline Protocol (`topics/outline/outline.md`)
+- **Directive**: The detailed, comprehensive master topic curriculum is authored and maintained in [`topics/outline/outline.md`](../topics/outline/outline.md), with a high-level mirror and navigation bridge preserved at the repository root [`outline.md`](../outline.md). It consolidates all learning roadmaps, domain syllabi, and architectural modules across **0.FUNDAMENTALS**, **1.LLD**, and **2.HLD**.
 - **Mandatory Principles & Invariants**:
-  1. **Strictly Topic Outline Content**: Unlike `index.md` (which maps filesystem navigation, terminal folders, query outputs, and versioned notes) and `README.md` (which provides the project landing overview and output catalog), `outline.md` is **strictly reserved for holding the comprehensive pedagogical curriculum and topic syllabus breakdown** across all domains (`0.FUNDAMENTALS`, `1.LLD`, `2.HLD`).
-  2. **Zero Scattered Outlines in Subfolders**: No individual or redundant `outline.md`, `Outline.md`, or `outline_<topic>.md` files may exist in subdirectories or topic folders. All topic-level and subtopic-level learning outlines must be consolidated and maintained exclusively inside root `outline.md`.
-  3. **Continuous Synchronization**: Whenever a new topic, subtopic, or curriculum module is created, modified, or reorganized, the agent **MUST** update root `outline.md` to reflect the complete project-wide curriculum.
+  1. **Strictly Topic Outline Content**: `topics/outline/outline.md` is strictly reserved for holding the comprehensive pedagogical curriculum and topic syllabus breakdown across all engineering domains.
+  2. **Centralized Outline Maintenance**: All topic-level and subtopic-level learning outlines are consolidated inside `topics/outline/outline.md` and mirrored at root `outline.md`.
+  3. **Continuous Synchronization**: Whenever a new topic, subtopic, or curriculum module is created, modified, or reorganized, the agent **MUST** update `topics/outline/outline.md` and root `outline.md` to reflect the complete project-wide curriculum.
 
 ### Rule 16: Isolated Book Encapsulation & Concise Naming Protocol (Max Length Limits)
 - **Directive**: Every PDF book in the repository **MUST** reside inside its own dedicated subfolder under `Data_Ingestion/Books/<Book_Folder_Name>/`. Loose PDF book files directly under `Data_Ingestion/Books/` are strictly prohibited. Both the folder name and the PDF file name **MUST adhere to strict character length limits and clean slug conventions** to prevent Windows OS MAX_PATH (260 characters) violations and ensure desktop accessibility.
@@ -245,6 +245,9 @@ System-Design/
 │   └── Upcoming Updates.md                   # Shared Agent Memory roadmap & implementation plan
 │
 └── topics/                                   # Domain Knowledge & Learning Roadmaps Root
+    ├── outline/                              # Dedicated Master Curriculum Directory
+    │   └── outline.md                        # Master Detailed Topic Outline
+    │
     ├── 0.FUNDAMENTALS/                       # Core Software Engineering Foundations
     │   ├── System Requirements/
     │   ├── Software Development Lifecycle/

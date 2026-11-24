@@ -7,6 +7,7 @@ This document is the **single consolidated topic curriculum and learning syllabu
 ## 🧭 Repository Navigation Quick Links
 
 - **Repository Overview & Deliverables**: [`README.md`](README.md)
+- **Detailed Topics Curriculum**: [`topics/outline/outline.md`](topics/outline/outline.md)
 - **Master Navigation Catalog (Queries & Notes)**: [`index.md`](index.md)
 - **Operational Rules & Invariants**: [`chat/universal_rules.md`](chat/universal_rules.md)
 - **Full Activity Transcript**: [`chat/chatLog.md`](chat/chatLog.md)
