@@ -2326,3 +2326,25 @@ This file records the chronological session log of all user requests, architectu
   - Staged, committed, and pushed changes to remote `origin/main` per Universal Rule 3.
 - **Agent Response**:
   - Confirmed the conversion of all animated SVGs to animated GIFs, successful pre-rendering of all 50 Mermaid architecture diagrams into 2x PNGs, and complete synchronization of the 2,332-line manual into Google Doc tab `t.3s5nke7l9gns`.
+
+---
+
+## 📅 Session 101: Preserved API Overview Concepts Extracted & Synced to Dedicated Tab
+
+- **Timestamp**: 2026-11-24
+- **User Instruction**:
+  > *"there we some content in that doc https://docs.google.com/document/d/1ZQeIwLXWqNBSeZQJrwiWpcQGnssX2VdTemhMzWAVwdY/edit?tab=t.3s5nke7l9gns before you started editing. can you keep those concept to this doc: https://docs.google.com/document/d/1ZQeIwLXWqNBSeZQJrwiWpcQGnssX2VdTemhMzWAVwdY/edit?tab=t.phw4j6k2ho0c"*
+- **Agentic Log**:
+  - Retrieved pre-edit content from Google Doc revision history (revision 781) using `gdocs readonly pull-revision`:
+    - Title: `API Architecture and Design: Overview & Communication Patterns`
+    - GitHub Source Link: `https://github.com/AkmKawser/System-Design/.../API_Architecture_and_Design.md`
+    - Embedded Infographic Image: `backend-communication-patterns.png` (extracted from base64 payload in revision 781).
+    - Section Headings: `Backend Communication Design Patterns` and `API Architectural Protocols & Patterns`.
+    - Protocols Comparative Matrix (REST, SOAP, GraphQL, gRPC, WebSockets).
+  - Preserved extracted content locally into [`preserved_api_concepts.md`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/preserved_api_concepts.md) and [`backend-communication-patterns.png`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/images/backend-communication-patterns.png).
+  - Renamed target tab `t.phw4j6k2ho0c` from "Tab 15" to `"API Overview & Communication Patterns"` via `gdocs mutate rename-tab`.
+  - Polished layout via [`engine/scripts/prepare_doc_for_sync.py`](../engine/scripts/prepare_doc_for_sync.py) and verified zero rendering violations via `engine/scripts/audit_rendering.py --all`: **100% pass across all 213 markdown files with 0 errors**.
+  - Synchronized preserved document into tab `t.phw4j6k2ho0c` via `gdocs mutate import-md --update ... --tab t.phw4j6k2ho0c --auto-fit-tables`. Verified that the image renders at 461.2pt width and the comparison table is auto-fitted.
+  - Staged, committed, and pushed changes to remote `origin/main` per Universal Rule 3.
+- **Agent Response**:
+  - Confirmed the extraction of all previous concepts from revision 781, tab renaming to "API Overview & Communication Patterns", and clean synchronization into `t.phw4j6k2ho0c` with direct links.
