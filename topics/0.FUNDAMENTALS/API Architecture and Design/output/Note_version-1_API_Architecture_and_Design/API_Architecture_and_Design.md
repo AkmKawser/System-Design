@@ -1397,16 +1397,79 @@ APIs expose distinct onboarding channels for human end-users versus automated th
    - The `client_secret` is displayed **only once** upon creation and stored hashed on the backend.
 3. **Scope Grant Assignment**: The developer requests specific access scopes (e.g. `orders:read`), requiring administrative approval or user consent.
 
-### 8.3. Session Cookie Tokens vs. Stateless Bearer Tokens
+### 8.3. Session Cookie Tokens vs. Stateless Bearer Tokens (JWT Deep Dive)
+
+#### A. Stateful Session Cookies vs. Stateless JWT (RFC 7519)
 
 | Architectural Dimension      | Stateful Session Cookies (`Set-Cookie`)                                                    | Stateless Bearer Tokens (JWT in `Authorization`)                                            |
 | :--------------------------- | :------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| **Storage Mechanism**  | Browser Cookie jar (`HttpOnly; Secure; SameSite=Strict`)                                   | Client memory / Secure Storage (iOS Keychain / Android Keystore)                              |
+| **Storage Mechanism**  | Browser Cookie jar (`HttpOnly; Secure; SameSite=Strict`)                                   | Client memory / `HttpOnly` Cookie / Secure Storage (iOS Keychain / Android Keystore)          |
 | **Transport Header**   | Automatically attached by browser: `Cookie: session_id=s_882`                              | Explicitly attached by client code: `Authorization: Bearer <jwt>`                           |
 | **Server State Cost**  | **Stateful**: Requires fast shared cache (Redis) to look up session data on every call | **Stateless**: Zero database lookups; server verifies signature using public key        |
-| **Revocation Speed**   | **Immediate**: Deleting the key in Redis revokes the session instantly                 | **Difficult**: Token remains valid until TTL expires unless checked against a blacklist |
+| **Revocation Speed**   | **Immediate**: Deleting the key in Redis revokes the session instantly                 | **Difficult**: Token remains valid until TTL expires unless checked against a denylist  |
 | **Cross-Platform Fit** | Ideal for traditional browser web applications                                               | **Universal**: Standard for Mobile apps, SPA frontends, CLI tools, and microservices    |
 | **CSRF Vulnerability** | **High** (Browser attaches cookies automatically on cross-site calls)                  | **Immune** (Browsers never attach custom `Authorization` headers automatically)       |
+
+#### B. JWT Anatomy (`Header.Payload.Signature`)
+
+A **JSON Web Token (JWT, RFC 7519)** is a compact, URL-safe string composed of three Base64URL-encoded segments separated by dots (`.`):
+
+```text
+<Header>.<Payload>.<Signature>
+```
+
+1. **Header (Algorithm & Metadata)**:
+   Declares the token type (`JWT`), the cryptographic signing algorithm (`HS256`, `RS256`, `ES256`), and the Key ID (`kid`) used for seamless public-key rotation:
+   ```json
+   {
+     "alg": "RS256",
+     "typ": "JWT",
+     "kid": "key-2026-01"
+   }
+   ```
+2. **Payload (Registered & Custom Claims)**:
+   Carries identity assertions and permissions (**claims**):
+   - `iss` (Issuer): Identity provider URL that minted the token.
+   - `sub` (Subject): Unique user or service identifier (`usr_8421`).
+   - `aud` (Audience): Target API service (`orders-api`)—prevents token replay across unrelated services.
+   - `exp` (Expiration Time) & `iat` (Issued At): Epoch timestamps enforcing short token lifetimes.
+   - `jti` (JWT ID): Unique token UUID used for replay tracking and revocation denylists.
+   - Custom Claims: `role`, `tenant_id`, `scopes`.
+   > **Security Invariant**: Base64URL is **encoding, not encryption**. Anyone can decode a JWT payload. Never store plaintext passwords, secrets, or sensitive PII inside an unencrypted JWT (use **JWE** if payload confidentiality is required).
+3. **Signature (Cryptographic Integrity)**:
+   Computed by signing `Base64Url(Header) + "." + Base64Url(Payload)` with the issuer's secret or private key. Any tampering with the payload invalidates the signature immediately.
+
+#### C. Signing Algorithms: `HS256` vs. `RS256` / `ES256` (JWKS)
+
+| Property | `HS256` (HMAC + SHA-256) | `RS256` / `ES256` (RSA / ECDSA) |
+| :--- | :--- | :--- |
+| **Key Model** | **Symmetric** (Single shared secret) | **Asymmetric** (Private Key signs, Public Key verifies) |
+| **Token Minting** | Any service holding the shared secret can sign | **Only** the Auth Server holds the Private Key |
+| **Token Verification** | Requires sharing the secret with every microservice | Any API Gateway or microservice verifies via Public Key (`/.well-known/jwks.json`) |
+| **Blast Radius** | High (compromised verifier can forge admin tokens) | Low (compromised verifier cannot mint tokens) |
+| **Best Fit** | Single monolithic backend | **Microservices, API Gateways, OAuth 2.0 / OIDC** |
+
+#### D. Access Tokens vs. Refresh Token Rotation & Revocation
+
+Because stateless JWTs cannot be revoked mid-flight without reintroducing state, production architectures pair two tokens:
+
+1. **Short-Lived Access Token (JWT, TTL: 5–15 minutes)**:
+   - Sent on every API call (`Authorization: Bearer <jwt>`).
+   - Verified statelessly in memory at the API Gateway or microservice using cached JWKS public keys.
+2. **Long-Lived Refresh Token (Opaque Token, TTL: 7–30 days)**:
+   - Stored **statefully** in the Auth database/Redis and sent only to `POST /v1/auth/refresh`.
+   - **Refresh Token Rotation**: Every refresh request invalidates the used refresh token and issues a brand-new `(Access Token, Refresh Token)` pair. If a stolen old refresh token is replayed, the Auth server detects reuse and immediately revokes the entire token family.
+   - **Immediate Revocation / Ban**: For emergency revocation of active Access Tokens before their 5-minute TTL expires, API Gateways check a lightweight Redis denylist of revoked `jti` IDs (with Redis key TTL equal to the remaining `exp` window).
+
+#### E. Modern Alternatives to JWT
+
+| Alternative | Architectural Mechanics | Best Use Case |
+| :--- | :--- | :--- |
+| **PASETO** (Platform-Agnostic Security Tokens) | Eliminates JWT's `alg: none` and algorithm-confusion flaws by enforcing fixed versioned crypto: `v4.local` (XChaCha20-Poly1305 encrypted) and `v4.public` (Ed25519 signed). | Safer drop-in replacement for stateless JWTs. |
+| **Opaque OAuth 2.0 Tokens + Introspection (RFC 7662)** | High-entropy random strings verified via `POST /oauth/introspect` (or translated to internal JWTs at the API Gateway via the **Phantom Token Pattern**). | Public APIs requiring zero payload leakage and instant revocation. |
+| **API Keys & HMAC Request Signing (AWS SigV4)** | Static secret keys (`sk_live_...`) or per-request HMAC-SHA256 signatures over `(method + URI + timestamp + body)`. | Third-party developer APIs, webhooks, and M2M CLI/SDK traffic. |
+| **Mutual TLS (mTLS / SPIFFE)** | Both client and server present X.509 certificates during the TLS handshake; identity is cryptographically bound at Layer 4/7 without bearer headers. | Zero-trust internal microservice-to-microservice calls (Istio, Envoy). |
+| **Macaroons & Biscuits** | Cryptographic capability tokens supporting **offline attenuation** (holders can restrict a token to read-only or specific paths without calling the Auth server). | Fine-grained delegated authorization in distributed systems. |
 
 ### 8.4. Cross-Site Request Forgery (CSRF) in API Systems
 

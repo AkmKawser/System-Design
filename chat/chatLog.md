@@ -2571,3 +2571,27 @@ This file records the chronological session log of all user requests, architectu
   - Logged Session 111 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
 - **Agent Response**:
   - Delivered the complete usage guide for WordCraft.
+
+
+---
+
+## 📅 Session 112: Generation & Opening of Complete API Architecture & Design Document in WordCraft
+
+- **Timestamp**: 2026-11-27
+- **User Instruction**:
+  > *"open a doc in wordcraft and write in detail about : [Complete 8-Part API Architecture & Design Outline including Section 8.3 JWT Deep Dive]"*
+- **Agentic Log**:
+  - Expanded Section 8.3 of [`API_Architecture_and_Design.md`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.md) with the complete JWT deep dive:
+    - Stateful Session Cookies vs. Stateless JWT (RFC 7519) comparison matrix.
+    - JWT Anatomy (`Header.Payload.Signature`) and registered/custom claims.
+    - Symmetric (`HS256`) vs. Asymmetric (`RS256` / `ES256` + JWKS) signing algorithms.
+    - Access Tokens vs. Refresh Token Rotation & Redis denylist revocation.
+    - Modern Alternatives to JWT (PASETO, Opaque OAuth 2.0 + Introspection, API Keys/HMAC, mTLS/SPIFFE, Macaroons/Biscuits).
+  - Opened [`API_Architecture_and_Design.md`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.md) in the **WordCraft MCP Server** (`open_document` -> 1,480 paragraphs, 12,924 words across all 8 Parts and 52 diagrams).
+  - Saved the full document via WordCraft MCP (`save_document`) as both:
+    - [`API_Architecture_and_Design.docx`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.docx)
+    - [`API_Architecture_and_Design.pdf`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.pdf)
+  - Launched the WordCraft desktop application opening `API_Architecture_and_Design.docx` on screen.
+  - Verified zero rendering errors via `engine/scripts/audit_rendering.py` and committed/pushed to `origin/main` per Universal Rules 1–3.
+- **Agent Response**:
+  - Confirmed creation, formatting, and live opening of the complete 8-part API Architecture & Design document in WordCraft.
