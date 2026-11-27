@@ -2436,3 +2436,18 @@ This file records the chronological session log of all user requests, architectu
   - Automatically staged, committed, and pushed changes to remote `origin/main` per Universal Rule 3.
 - **Agent Response**:
   - Delivered an insightful, authoritative architectural breakdown explaining the full spectrum of System Design, demonstrating why distributed systems are merely one pillar of the discipline, and mapping it to the repository's 3-tier architecture.
+
+
+---
+
+## 📅 Session 106: Single-Topic Placement: JWT in System Design
+
+- **Timestamp**: 2026-11-27
+- **User Instruction**:
+  > *"where does concept of JWT fall in system design? always suggest under single best topic"*
+- **Agentic Log**:
+  - Noted user preference to always recommend a **single best topic** when classifying concepts in System Design.
+  - Identified **`0.FUNDAMENTALS -> Module 0.7: API Architecture and Design`** as the single best home for **JWT (JSON Web Tokens)**, as it is fundamentally an API-level stateless authentication and authorization contract (RFC 7519) used across both monolithic and distributed APIs.
+  - Logged Session 106 in [`chat/chatLog.md`](chatLog.md), verified rendering via `engine/scripts/audit_rendering.py`, and committed/pushed to remote `origin/main` per Universal Rules 1–3.
+- **Agent Response**:
+  - Recommended **`0.FUNDAMENTALS -> API Architecture and Design`** as the single best topic for JWT with a concise explanation of why it belongs there and a direct link to the repository syllabus.
