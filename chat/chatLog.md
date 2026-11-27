@@ -2506,3 +2506,53 @@ This file records the chronological session log of all user requests, architectu
   - Logged Session 109 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
 - **Agent Response**:
   - Presented the complete 8-part API Architecture & Design outline with JWT explicitly pinpointed and linked.
+
+
+---
+
+## 📅 Session 108: Alternatives to JWT in System Design
+
+- **Timestamp**: 2026-11-27
+- **User Instruction**:
+  > *"what are other alternative to jwt"*
+- **Agentic Log**:
+  - Compiled the primary architectural alternatives to JWT across web apps, microservices, and M2M APIs:
+    1. Opaque Stateful Sessions (Cookie + Redis/DB).
+    2. PASETO (Platform-Agnostic Security Tokens).
+    3. Opaque OAuth 2.0 Tokens + Introspection (RFC 7662).
+    4. API Keys & HMAC Request Signing (e.g., AWS SigV4).
+    5. Mutual TLS (mTLS) / SPIFFE Workload Identity.
+    6. Macaroons & Biscuits (attenuable capability tokens).
+    7. SAML 2.0 (Enterprise XML SSO).
+  - Logged Session 108 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
+- **Agent Response**:
+  - Delivered a concise breakdown and decision matrix comparing all major JWT alternatives.
+
+
+---
+
+## 📅 Session 109: Complete API Architecture Outline & Exact JWT Placement
+
+- **Timestamp**: 2026-11-27
+- **User Instruction**:
+  > *"give me a complete outline on api. and show me where jwt is located."*
+- **Agentic Log**:
+  - Inspected [`API_Architecture_and_Design.md`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.md) Table of Contents (Parts 1–8) to provide the exact, complete API syllabus.
+  - Highlighted the exact location of **JWT**: **Part 8: Security, Governance & Observability → 8.3. Session Cookie Tokens vs. Stateless Bearer Tokens (JWT, PASETO, OAuth 2.0 / OIDC)**.
+  - Logged Session 109 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
+- **Agent Response**:
+  - Presented the complete 8-part API Architecture & Design outline with JWT explicitly pinpointed and linked.
+
+
+---
+
+## 📅 Session 110: Step-by-Step API Design Guide Across All Architectures
+
+- **Timestamp**: 2026-11-27
+- **User Instruction**:
+  > *"how to design an api write step by step for all archuitectures"*
+- **Agentic Log**:
+  - Authored a structured, end-to-end step-by-step API design playbook covering universal pre-design foundations, architecture-specific design steps for **REST**, **gRPC**, **GraphQL**, **WebSockets**, **SSE**, and **Webhooks**, and universal production hardening (Auth, Rate Limiting, Observability, Versioning).
+  - Logged Session 110 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
+- **Agent Response**:
+  - Delivered the complete step-by-step API design guide for all major architectures.
