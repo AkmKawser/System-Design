@@ -2470,3 +2470,24 @@ This file records the chronological session log of all user requests, architectu
   - Logged Session 107 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
 - **Agent Response**:
   - Provided the complete technical deep dive on JWT.
+
+
+---
+
+## 📅 Session 108: Alternatives to JWT in System Design
+
+- **Timestamp**: 2026-11-27
+- **User Instruction**:
+  > *"what are other alternative to jwt"*
+- **Agentic Log**:
+  - Compiled the primary architectural alternatives to JWT across web apps, microservices, and M2M APIs:
+    1. Opaque Stateful Sessions (Cookie + Redis/DB).
+    2. PASETO (Platform-Agnostic Security Tokens).
+    3. Opaque OAuth 2.0 Tokens + Introspection (RFC 7662).
+    4. API Keys & HMAC Request Signing (e.g., AWS SigV4).
+    5. Mutual TLS (mTLS) / SPIFFE Workload Identity.
+    6. Macaroons & Biscuits (attenuable capability tokens).
+    7. SAML 2.0 (Enterprise XML SSO).
+  - Logged Session 108 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
+- **Agent Response**:
+  - Delivered a concise breakdown and decision matrix comparing all major JWT alternatives.
