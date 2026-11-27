@@ -2491,3 +2491,18 @@ This file records the chronological session log of all user requests, architectu
   - Logged Session 108 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
 - **Agent Response**:
   - Delivered a concise breakdown and decision matrix comparing all major JWT alternatives.
+
+
+---
+
+## 📅 Session 109: Complete API Architecture Outline & Exact JWT Placement
+
+- **Timestamp**: 2026-11-27
+- **User Instruction**:
+  > *"give me a complete outline on api. and show me where jwt is located."*
+- **Agentic Log**:
+  - Inspected [`API_Architecture_and_Design.md`](../topics/0.FUNDAMENTALS/API%20Architecture%20and%20Design/output/Note_version-1_API_Architecture_and_Design/API_Architecture_and_Design.md) Table of Contents (Parts 1–8) to provide the exact, complete API syllabus.
+  - Highlighted the exact location of **JWT**: **Part 8: Security, Governance & Observability → 8.3. Session Cookie Tokens vs. Stateless Bearer Tokens (JWT, PASETO, OAuth 2.0 / OIDC)**.
+  - Logged Session 109 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
+- **Agent Response**:
+  - Presented the complete 8-part API Architecture & Design outline with JWT explicitly pinpointed and linked.
