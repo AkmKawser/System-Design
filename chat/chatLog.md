@@ -2451,3 +2451,22 @@ This file records the chronological session log of all user requests, architectu
   - Logged Session 106 in [`chat/chatLog.md`](chatLog.md), verified rendering via `engine/scripts/audit_rendering.py`, and committed/pushed to remote `origin/main` per Universal Rules 1–3.
 - **Agent Response**:
   - Recommended **`0.FUNDAMENTALS -> API Architecture and Design`** as the single best topic for JWT with a concise explanation of why it belongs there and a direct link to the repository syllabus.
+
+
+---
+
+## 📅 Session 107: Deep-Dive Explanation of JWT (JSON Web Tokens)
+
+- **Timestamp**: 2026-11-27
+- **User Instruction**:
+  > *"i need detail about JWT"*
+- **Agentic Log**:
+  - Delivered a comprehensive architectural breakdown of **JWT (RFC 7519)** under `0.FUNDAMENTALS -> API Architecture and Design`:
+    - Anatomy (`Header.Payload.Signature`), Base64URL encoding, and standard registered claims (`iss`, `sub`, `aud`, `exp`, `iat`, `jti`).
+    - End-to-end authentication & verification flow (Mermaid sequence diagram).
+    - Cryptographic signing comparison: `HS256` (symmetric) vs. `RS256`/`ES256` (asymmetric + JWKS).
+    - Access Tokens vs. Refresh Token Rotation.
+    - Security pitfalls (`localStorage` XSS, `alg: none`, payload visibility, revocation/denylisting) and JWT vs. Stateful Session comparison matrix.
+  - Logged Session 107 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
+- **Agent Response**:
+  - Provided the complete technical deep dive on JWT.
