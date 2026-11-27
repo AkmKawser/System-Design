@@ -2556,3 +2556,18 @@ This file records the chronological session log of all user requests, architectu
   - Logged Session 110 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
 - **Agent Response**:
   - Delivered the complete step-by-step API design guide for all major architectures.
+
+
+---
+
+## 📅 Session 111: WordCraft MCP & CLI Usage Guide
+
+- **Timestamp**: 2026-11-27
+- **User Instruction**:
+  > *"how to use wordcraft?"*
+- **Agentic Log**:
+  - Verified that the `wordcraft` MCP server is active and loaded in the current session (`new_document`, `open_document`, `save_document`, `type_text`, `select_text`, `insert_table`, `execute`, `batch`, `inspect_document`, `render_page`, etc.).
+  - Prepared a practical guide covering the 3 ways to use WordCraft: (1) Natural-language prompts in chat via MCP, (2) Live desktop window mode (`--control 7981`), and (3) Direct CLI commands (`wordcraft-cli convert/info/text/render/run`).
+  - Logged Session 111 in [`chat/chatLog.md`](chatLog.md) and pushed to `origin/main` per Universal Rules 1 & 3.
+- **Agent Response**:
+  - Delivered the complete usage guide for WordCraft.
